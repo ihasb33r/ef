@@ -2,11 +2,19 @@
 
 {% block fos_user_content %}
 <div class="fos_user_agora">
-{%for sell in agora%}
-<li>{{sell.quantity}}
+{%for sell in sell%}
 
+<li>{{sell.quantity}}
 {{sell.price}}
 {{sell.origin}}
-</li>
+{{sell.quantity}}
+	{%for user in users%}
+		{%if user.id==sell.user.id%}
+		{{user.name}}
+		{%endif%}
+	{% endfor %}
+    </li>
  {% endfor %}
-</div>{% endblock fos_user_content%}
+</div>
+</form>
+{% endblock fos_user_content%}

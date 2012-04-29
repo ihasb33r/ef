@@ -18,11 +18,7 @@ $m=$loc->getProduct()->getId();
 echo '-' . $loc->getAddress().'-'. $loc->getLongitude() .','. $loc->getLatitude() .','. $loc->getDate()->format('Y-m-d H:i:s') ; ?><br><?php
 		$location = $em->getRepository('AcmeUserBundle:Location')->findAll();
 		
- $query = $em
-        ->createQuery('
-            SELECT p FROM AcmeUserBundle:Product p
-            
-            WHERE p.id = '.$m)->getResult();	
+ $query = $em->createQuery('SELECT p FROM AcmeUserBundle:Product p WHERE p.id = '.$m)->getResult();	
 
 foreach ($query as $prod)
 {

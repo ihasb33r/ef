@@ -48,7 +48,12 @@ class Sell
      * @ORM\Column(name="origin", type="string", length=255)
      */
     private $origin;
-
+    /**
+     * @var integer $agor
+     *
+     * @ORM\Column(name="agor", type="integer")
+     */
+    private $agor;
 
     /**
      * Get id
@@ -220,4 +225,26 @@ class Sell
         $this->buy = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+
+
+
+    /**
+     * Set agor
+     *
+     * @param integer $agor
+     */
+    public function setAgor($agor)
+    {
+        $this->agor = $agor;
+    }
+
+    /**
+     * Get agor
+     *
+     * @return integer 
+     */
+    public function getAgor()
+    {
+        return $this->agor;
+    }
 }
