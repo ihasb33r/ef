@@ -10,17 +10,27 @@ class PazariController extends Controller
     public function indexAction()
     {
 	  $em = $this->getDoctrine()->getEntityManager();
- $product = $em->getRepository('AcmeUserBundle:Product')->findAll();
- 
+ $location = $em->getRepository('AcmeUserBundle:Location')->findAll();
 
-foreach($product as $prod)
+foreach($location as $loc)
+{ echo $loc->getAddress();
+$m=$loc->getProduct()->getId();
+echo '-' . $loc->getAddress().'-'. $loc->getLongitude() .','. $loc->getLatitude() .','. $loc->getDate()->format('Y-m-d H:i:s') ; ?><br><?php
+		$location = $em->getRepository('AcmeUserBundle:Location')->findAll();
+		
+ $query = $em
+        ->createQuery('
+            SELECT p FROM AcmeUserBundle:Product p
+            
+            WHERE p.id = '.$m)->getResult();	
+
+foreach ($query as $prod)
 {
-	foreach($prod->getLocation() as $loc) {
-        echo '-' . $loc->getAddress().'-'. $loc->getLongitude() .','. $loc->getLatitude() .','. $loc->getDate()->format('Y-m-d H:i:s') ; ?><br><?php
-		echo $prod->getName();
-		echo'<img src="'.$prod->getImage().'" width="300" height="250" align="center" />';
-		
-		
+echo $prod->getName();
+}
+
+
+	
 		#olo auto upologizei thn prohgoumenh mera
 $today = getdate();
 $day=$today['mday'];
@@ -46,7 +56,7 @@ if($day=='1' and $month=='2')
 		
 		
 
-}
+
 #prepei na ftiaksoume kati pou na diagrafei tis prohgoumenes sunanthseis 
 	return $this->render('AcmeUserBundle:Default:pazari.html.twig');
    
