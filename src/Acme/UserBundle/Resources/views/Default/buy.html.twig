@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<div class="fos_user_agora">
+{%for sell in agora%}
+<li>{{sell.quantity}}
+
+{{sell.price}}
+{{sell.origin}}
+</li>
+ {% endfor %}
+</div>{% endblock fos_user_content%}

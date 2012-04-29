@@ -1,0 +1,13 @@
+# src/Acme/UserBundle/Resources/config/routing.yml
+pazari:
+    pattern:  /pazari
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+sell:
+    pattern:  /sell
+    defaults: { _controller: AcmeUserBundle:Sell:index }
+sell_add:
+    pattern: /sell_add
+    defaults: { _controller: AcmeUserBundle:Sell:index }
+buy:
+    pattern:  /buy
+    defaults: { _controller: AcmeUserBundle:Buy:index }
