@@ -2,6 +2,7 @@
 
 {% block fos_user_content %}
 <div class="fos_user_agora">
+
 {%for sell in sell%}
 
 <li>{{sell.quantity}}
@@ -15,6 +16,10 @@
 	{% endfor %}
     </li>
  {% endfor %}
+ {% for key in upol %} 
+      {{ key }}
+ 
+    {% endfor %} 
 </div>
 </form>
 {% endblock fos_user_content%}

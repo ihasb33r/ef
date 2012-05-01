@@ -20,7 +20,12 @@ class Buy
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    /**
+     * @var integer $quantity
+     *
+     * @ORM\Column(name="quantity", type="integer")
+     */
+    private $quantity;
 
     /**
      * Get id

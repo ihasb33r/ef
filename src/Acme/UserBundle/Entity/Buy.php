@@ -20,7 +20,12 @@ class Buy
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    /**
+     * @var integer $quantity
+     *
+     * @ORM\Column(name="quantity", type="integer")
+     */
+    private $quantity;
 
     /**
      * Get id
@@ -80,5 +85,25 @@ class Buy
     public function getSell()
     {
         return $this->sell;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return integer 
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 }

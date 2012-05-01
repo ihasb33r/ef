@@ -14,3 +14,6 @@ buy:
 form_submit:
     pattern:  /buy_new
     defaults: { _controller: AcmeUserBundle:Buy:new }
+profile:
+    pattern:  /profile
+    defaults: { _controller: AcmeUserBundle:Profile:show}
