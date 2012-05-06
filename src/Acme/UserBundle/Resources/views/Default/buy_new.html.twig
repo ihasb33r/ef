@@ -1,0 +1,30 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+    </div>
+</div>
+<div class="row header">
+<div class="twelve columns">
+
+</div>
+</div>
+<div class="row article">
+    <div class="six columns offset-by-one form">
+
+
+<div class="fos_user_agora">
+{%for key in kod%}
+<h6>Η αγορά σας πραγματοποιήθηκε επιτυχώς</h6>
+<h6>Ο κωδικός αγοράς σας είναι:000000{{key}}</h6>
+{%endfor%}
+
+
+</div>
+</form>
+</div>
+</div>
+{% endblock fos_user_content%}

@@ -1,0 +1,41 @@
+{% form_theme form 'AcmeTaskBundle:Form:fields.html.twig' %}
+
+{% extends "AcmeTaskBundle:Default:base.html.twig" %}
+{% block title %} Προσθήκη νέας τοποθεσίας {% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+    </div>
+</div>
+<div class="row header">
+<div class="twelve columns">
+<h3> Προσθήκη νέας Τοποθεσίας</h3>
+</div>
+</div>
+<div class="row article">
+    <div class="six columns offset-by-one form">
+
+
+<form class="nice" action="{{ path('location_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+	
+	{{ form_row(form.name) }}
+    {{ form_row(form.address) }}
+    {{ form_row(form.phone) }}
+    {{ form_row(form.suntetagmenes) }}
+
+    {{ form_rest(form) }}
+    <input type="submit" />
+</form>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}

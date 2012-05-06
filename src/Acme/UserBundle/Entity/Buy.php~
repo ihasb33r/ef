@@ -86,4 +86,24 @@ class Buy
     {
         return $this->sell;
     }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return integer 
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
 }

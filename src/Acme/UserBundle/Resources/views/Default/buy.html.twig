@@ -1,25 +1,54 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
+
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+    </div>
+</div>
+<div class="row header">
+<div class="twelve columns">
+<h3> Συναντήσεις </h3>
+</div>
+</div>
+<div class="row article">
+    <div class="six columns offset-by-one form">
+
+
 <div class="fos_user_agora">
+{%for location in loca%}
+{%for key in loc%}
+{%if location.id==key%}
+
+Παζάρι με:{{location.product.name}}
 
 {%for sell in sell%}
 
-<li>{{sell.quantity}}
-{{sell.price}}
-{{sell.origin}}
-{{sell.quantity}}
+{%if sell.location.id==key%}
 	{%for user in users%}
 		{%if user.id==sell.user.id%}
-		{{user.name}}
+	<h6>Το όνομα του παραγωγού είναι:	{{user.name}}</h6>
 		{%endif%}
 	{% endfor %}
-    </li>
+<h6>Η αρχική διαθέσιμη ποσότητα είναι:{{sell.quantity}}</h6>
+<h6>Η τιμή είναι:{{sell.price}}</h6>
+<h6>Η προέλευση είναι: {{sell.origin}}</h6>
+<h6>Η ελάχιστη ποσότητα παραγγελιών είναι: {{sell.minquantity}}	</h6>
+ <form  action="{{ path('buy_new') }}" method="post"  class="nice">
+<input type="hidden" name="id" value="{{sell.id}}"/>
+<input type="text" name="quant" />
+<button type="submit">Αγορά</button>
+</form>
+   {%endif%}
+{%endfor%}
+   {%endif%}
+
+{%endfor%}
  {% endfor %}
- {% for key in upol %} 
-      {{ key }}
- 
-    {% endfor %} 
+
 </div>
 </form>
+</div>
+</div>
 {% endblock fos_user_content%}

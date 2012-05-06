@@ -144,6 +144,25 @@ class Sell
     {
         return $this->origin;
     }
+	   /**
+     * Set agor
+     *
+     * @param integer $agor
+     */
+    public function setAgor($agor)
+    {
+        $this->agor = $agor;
+    }
+
+    /**
+     * Get agor
+     *
+     * @return integer 
+     */
+    public function getAgor()
+    {
+        return $this->agor;
+    }
     /**
      * @ORM\OneToMany(targetEntity="buy", mappedBy="Sell")
      */
@@ -228,23 +247,5 @@ class Sell
 
 
 
-    /**
-     * Set agor
-     *
-     * @param integer $agor
-     */
-    public function setAgor($agor)
-    {
-        $this->agor = $agor;
-    }
-
-    /**
-     * Get agor
-     *
-     * @return integer 
-     */
-    public function getAgor()
-    {
-        return $this->agor;
-    }
+ 
 }

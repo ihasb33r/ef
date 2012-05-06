@@ -121,7 +121,7 @@ class User extends BaseUser
         return $this->phone;
     }
     /**
-     * @ORM\OneToMany(targetEntity="Sell", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Sell", mappedBy="user", cascade={"persist","remove","merge"})
      */
     protected $sell;
 

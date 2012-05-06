@@ -1,0 +1,41 @@
+
+<div class="fos_user_user_show">
+{%for buy in buy%}
+	{%for key in id%}
+		{%for sell in sell%}
+			{%if buy.user.id==key and sell.user.id==key%}	
+				{%for location in loc%}
+					{%if location.id==sell.location.id%}
+						{%for product in product%}
+							{%if product.id==location.product.id%}
+							<h6>Έχετε αγοράσει το προϊόν:</h6>{{product.name}}
+							{%endif%}
+						{%endfor%}
+					{%endif%}
+				{%endfor%}
+				<h6>σε ποσότητα:</h6>
+			{{buy.quantity}}	
+			{%endif%}
+		{%endfor%}
+	{%endfor%}
+{%endfor%}
+{%for sell in sell%}
+	{%for key in id%}
+		{%if sell.user.id==key%}	
+			{%for location in loc%}
+				{%if location.id==sell.location.id%}
+					{%for product in product%}
+						{%if product.id==location.product.id%}
+							<h6>Πουλάτε το προϊόν:</h6>{{product.name}}
+						{%endif%}
+					{%endfor%}
+				{%endif%}
+			{%endfor%}
+				<h6>σε ποσότητα:</h6>
+			{{sell.quantity}}
+			<h6>με ελάχιστη ποσότητα αγοράς:</h6>
+			{{sell.minquantity}}
+		{%endif%}
+	{%endfor%}
+{%endfor%}
+</div>

@@ -28,12 +28,7 @@ class Product
      */
     private $name;
 
-    /**
-     * @var string $category
-     *
-     * @ORM\Column(name="category", type="string", length=255)
-     */
-    private $category;
+
 
     /**
      * @var string $image
@@ -73,25 +68,7 @@ class Product
         return $this->name;
     }
 
-    /**
-     * Set category
-     *
-     * @param string $category
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
 
-    /**
-     * Get category
-     *
-     * @return string 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 
     /**
      * Set image

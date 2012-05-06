@@ -11,9 +11,12 @@ sell_add:
 buy:
     pattern:  /buy
     defaults: { _controller: AcmeUserBundle:Buy:index }
-form_submit:
+buy_new:
     pattern:  /buy_new
     defaults: { _controller: AcmeUserBundle:Buy:new }
 profile:
     pattern:  /profile
     defaults: { _controller: AcmeUserBundle:Profile:show}
+sell_new:
+    pattern:  /sell_new
+    defaults: { _controller: AcmeUserBundle:Sell:new }

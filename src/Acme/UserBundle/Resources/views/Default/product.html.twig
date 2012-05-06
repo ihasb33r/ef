@@ -1,0 +1,14 @@
+<form action="{{ path('product_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+	
+	{{ form_row(form.name) }}
+    {{ form_row(form.category) }}
+	{{ form_row(form.image) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.amount) }}
+	{{ form_row(form.min_amount) }}
+
+    {{ form_rest(form) }}
+    <input type="submit" />
+</form>
+

@@ -1,7 +1,49 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-<div class="fos_user_pazari">
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+    </div>
+</div>
+<div class="row header">
+<div class="twelve columns">
+<h3> Συναντήσεις </h3>
+</div>
+</div>
+<div class="row article">
+    <div class="six columns offset-by-one form">
 
 
-</div>{% endblock fos_user_content %}
+{%for loca in locat %}
+
+	{% if ((loca.date|date("d")>=("now"|date("d"))and(loca.date|date("m")==("now"|date("m")))) or (loca.date|date("m")>("now"|date("m"))) ) %}
+	<table border="1">
+		{%for prod in query%}
+			{% if prod.id == loca.product.id%}
+			   
+			<td> <img src="/ef/web/{{prod.image}}"></img></td>
+			<td> <h5>Παζαρί με:{{prod.name}}</h5>
+			{%endif%}
+		{% endfor %}
+		{{loca.address}}
+	{{loca.date|date("d/m/Y")}}
+
+  <form  action="{{ path('buy') }}" method="post"  class="nice">
+<input type="hidden" name="id" value="{{loca.id}}"/>
+<button type="submit">Αγορά</button>
+</form>
+<form  action="{{ path('sell') }}" method="post"  class="nice">
+<input type="hidden" name="id" value="{{loca.id}}"/>
+<button type="submit">Πώληση</button>
+</form>
+	</td>
+	</table>
+	{%endif%}
+<br>
+{% endfor %}
+</form>
+<br>
+</div>
+</div>
+{% endblock fos_user_content %}
