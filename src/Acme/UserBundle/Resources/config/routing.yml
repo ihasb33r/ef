@@ -20,3 +20,12 @@ profile:
 sell_new:
     pattern:  /sell_new
     defaults: { _controller: AcmeUserBundle:Sell:new }
+price:
+    pattern:  /price
+    defaults: { _controller: AcmeUserBundle:Price:new }
+edit_new:
+   pattern: /edit_new
+   defaults: { _controller: AcmeUserBundle:Profile:editnew}
+edit_new_sell:
+   pattern: /edit_new_sell
+   defaults: { _controller: AcmeUserBundle:Profile:editnewsell}

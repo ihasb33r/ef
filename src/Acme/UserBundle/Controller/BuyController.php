@@ -42,31 +42,21 @@ if($sell->getId()==$id)
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-		$id=$user->getId();
-	#sto pinaka agor na pros8esw thn agora
-	$buy = new Buy();
-	$user= new User();
-
-	#de mporw na vrw tropo na apo8hkeuw ta foreign keys
-  
-    #$buy->getSell()->addId();
-    $buy->setQuantity($quantity);
-	//$buy->setUser($user);
-    $em = $this->getDoctrine()->getEntityManager();
-    $em->persist($buy);
-    $em->flush();
+		$idi=$user->getId();
 	
-	
-	
-    #update ton pinaka sell gia ta agorasmena
 	$sell = $em->getRepository('AcmeUserBundle:Sell')->find($id);	
     $sell->setAgor($sell->getAgor()+$quantity);
-	$b = $em->getRepository('AcmeUserBundle:Buy')->findById($id);
-	foreach ($b as $ba)
-	{$kod[]= $ba->getId();}
+	$buy= new Buy();
+	$buy->setQuantity($_POST['quant']);
+	$buy->setUser($user);
+     $buy->setSell($sell);
+    $em = $this->getDoctrine()->getEntityManager();
+    $em->persist($buy);
+	$em->persist($sell);
+	$em->persist($user);
     $em->flush();
-
-	}
+	
+    $kod[]=$buy->getId();}
 	return $this->render('AcmeUserBundle:Default:buy_new.html.twig', array('kod'=>$kod));
 	
 	

@@ -131,7 +131,155 @@ class __TwigTemplate_7f9caa248d57e356587f280bd69cdace extends Twig_Template
                         .form {
                             padding-left:10px;
                         }
+    .phone {
 
+        top:17px;
+    }
+
+
+    .nav a {
+        top:95px;
+        color:green;
+        position:relative;
+        padding:25px;
+        /* to url diorthoma */
+        background:url(\"/ef/web/images/stripe.png\");
+        border-radius:10px;
+        font-weight:bold;
+        font-size:1.5em;
+    }
+\t.nava {
+        top:0px;
+     
+        padding:25px;
+        /* to url diorthoma */
+        background:url(\"/ef/web/images/stripe.png\");
+        border-radius:10px;
+        
+    }
+\t
+ul.art-vmenu, ul.art-vmenu li
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  line-height: 0;
+}
+
+ul.art-vmenu ul
+{
+  display: none;
+}
+
+ul.art-vmenu ul.active
+{
+  display: block;
+}
+/* end VMenu */
+
+/* begin VMenuItem */
+ul.art-vmenu a
+{
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 26px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+ul.art-vmenu li.art-vmenu-separator
+{
+  display: block;
+  padding: 0 0 0 0;
+  margin: 0;
+  font-size: 1px;
+}
+
+ul.art-vmenu .art-vmenu-separator-span
+{
+  display: block;
+  padding: 0;
+  font-size: 1px;
+  height: 0;
+  line-height: 0;
+  border: none;
+}
+
+ul.art-vmenu a .r, ul.art-vmenu a .l
+{
+  position: absolute;
+  display: block;
+  top: 0;
+  height: 88px;
+  background-image: url('/ef/web/images/vmenuitem.png');
+}
+
+ul.art-vmenu a .l
+{
+  left: 0;
+  right: 0;
+}
+
+ul.art-vmenu a .r
+{
+  width: 884px;
+  right: 0;
+  clip: rect(auto, auto, auto, 884px);
+}
+
+ul.art-vmenu a .t, ul.art-vmenu ul a
+{
+  font-family: Arial, Helvetica, Sans-Serif;
+  font-style: normal;
+
+  font-weight:bold;
+  font-size:16px;
+}
+
+ul.art-vmenu a .t
+{
+  display: block;
+  position:relative;
+  top:0;
+  line-height: 26px;
+  color:green ;
+  padding: 0 10px 0 10px;
+  margin-left:0;
+  margin-right:0;
+}
+
+ul.art-vmenu a.active .l, ul.art-vmenu a.active .r
+{
+  top: -62px;
+}
+
+ul.art-vmenu a.active .t
+{
+  color: #4B676E;
+}
+
+ul.art-vmenu a:hover .l, ul.art-vmenu a:hover .r
+{
+  top: -31px;
+}
+
+ul.art-vmenu a:hover .t
+{
+  color: #0281A0;
+}
+
+    .logo {
+        
+        background:url(\"/ef/web/images/stripe.png\");
+        border-radius:10px;
+    }
+    .logo img{
+
+        margin:15px;
+        width:80%;
+    }
 
                     </style>
 <script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
@@ -139,19 +287,29 @@ class __TwigTemplate_7f9caa248d57e356587f280bd69cdace extends Twig_Template
                 </head>
                 <body>
                     <div class=\"container top\">
+\t\t\t\t\t
                         <div class=\"row\">
-                            <div class=\"seven columns top\">
-                                <img src=\"/ef/web/images/logo.png\">
-                            </div>
-                            <div class=\"three offset-by-two columns top phone\">
-                                <p class=\"phonehelp\">
-                                Για βοήθεια καλέστε:
-                                </p>
-                                <h2>12345</h2>
-                                <p class=\"phonetax\">
-                                Αστική Χρέωση
-                                </p>
-                            </div>
+                          <div class=\"three columns top logo\">
+            <img src=\"/ef/web/images/logo.png\">
+        </div>
+        <div class=\"two columns nav\">
+            <a href=\"pazari\">Αρχικη</a>
+        </div>
+        <div class=\"two columns nav\">
+            <a href=\"login\">Σύνδεση</a>
+        </div>
+        <div class=\"two columns nav\">
+            <a href=\"register\">Εγγραφή</a>
+        </div>
+        <div class=\"three columns top phone\">
+            <p class=\"phonehelp\">
+            Για βοήθεια καλέστε:
+            </p>
+            <h2>12345</h2>
+            <p class=\"phonetax\">
+            Αστική Χρέωση
+            </p>
+        </div>
                         </div>
                     </div>
                     <div class=\"container\">
@@ -159,15 +317,15 @@ class __TwigTemplate_7f9caa248d57e356587f280bd69cdace extends Twig_Template
                             <div class=\"nine columns\">
                         
     ";
-        // line 140
+        // line 298
         $this->displayBlock('content', $context, $blocks);
-        // line 141
+        // line 299
         echo "                            </div>
                             <div class=\"three columns sidebar\">
     ";
-        // line 143
+        // line 301
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 144
+        // line 302
         echo "                            </div>
                         </div>
                     </div>
@@ -183,13 +341,13 @@ class __TwigTemplate_7f9caa248d57e356587f280bd69cdace extends Twig_Template
         echo " ";
     }
 
-    // line 140
+    // line 298
     public function block_content($context, array $blocks = array())
     {
         echo " ";
     }
 
-    // line 143
+    // line 301
     public function block_sidebar($context, array $blocks = array())
     {
         echo " ";

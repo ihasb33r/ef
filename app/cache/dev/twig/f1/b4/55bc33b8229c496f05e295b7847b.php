@@ -8,13 +8,14 @@ class __TwigTemplate_f1b455bc33b8229c496f05e295b7847b extends Twig_Template
         parent::__construct($env);
 
         $this->blocks = array(
-            'fos_user_content' => array($this, 'block_fos_user_content'),
+            'content' => array($this, 'block_content'),
+            'sidebar' => array($this, 'block_sidebar'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "FOSUserBundle::layout.html.twig";
+        return "AcmeUserBundle:Default:base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -22,130 +23,155 @@ class __TwigTemplate_f1b455bc33b8229c496f05e295b7847b extends Twig_Template
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_fos_user_content($context, array $blocks = array())
+    // line 2
+    public function block_content($context, array $blocks = array())
     {
-        // line 4
-        echo "
-<div class=\"row\">
+        // line 3
+        echo "<div class=\"row\">
     <div class=\"twelve columns\">
-        <img style=\"position:relative;top:10px;\" src=\"/images/backgroundarticle.png\">
+        <img style=\"position:relative;top:10px;\" src=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/backgroundarticle.png"), "html", null, true);
+        echo "\">
     </div>
 </div>
-<div class=\"row header\">
-<div class=\"twelve columns\">
-<h3> Συναντήσεις </h3>
-</div>
-</div>
-<div class=\"row article\">
-    <div class=\"six columns offset-by-one form\">
-
-
-<div class=\"fos_user_agora\">
+<div class=\"row article\"><div class=\"six columns offset-by-one\">
 ";
-        // line 20
+        // line 9
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "loca"));
         foreach ($context['_seq'] as $context["_key"] => $context["location"]) {
-            // line 21
+            // line 10
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "loc"));
             foreach ($context['_seq'] as $context["_key"] => $context["key"]) {
-                // line 22
+                // line 11
                 if (($this->getAttribute($this->getContext($context, "location"), "id") == $this->getContext($context, "key"))) {
-                    // line 23
+                    // line 12
                     echo "
-Παζάρι με:";
-                    // line 24
+<h5>Ξ Ξ±Ξ¶Ξ¬ΟΞΉ ΞΌΞµ: ";
+                    // line 13
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "location"), "product"), "name"), "html", null, true);
-                    echo "
+                    echo "</h5>
 
 ";
-                    // line 26
+                    // line 15
                     $context['_parent'] = (array) $context;
                     $context['_seq'] = twig_ensure_traversable($this->getContext($context, "sell"));
                     foreach ($context['_seq'] as $context["_key"] => $context["sell"]) {
-                        // line 27
+                        // line 16
                         echo "
 ";
-                        // line 28
+                        // line 17
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "sell"), "location"), "id") == $this->getContext($context, "key"))) {
-                            // line 29
+                            // line 18
                             echo "\t";
                             $context['_parent'] = (array) $context;
                             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "users"));
                             foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-                                // line 30
+                                // line 19
                                 echo "\t\t";
                                 if (($this->getAttribute($this->getContext($context, "user"), "id") == $this->getAttribute($this->getAttribute($this->getContext($context, "sell"), "user"), "id"))) {
-                                    // line 31
-                                    echo "\t<h6>Το όνομα του παραγωγού είναι:\t";
+                                    // line 20
+                                    echo "<table><tr><td>\t<h6>Ξ Ξ±ΟΞ±Ξ³Ο‰Ξ³ΟΟ‚:";
                                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "user"), "name"), "html", null, true);
-                                    echo "</h6>
+                                    echo " ";
+                                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "user"), "lastname"), "html", null, true);
+                                    echo "</h6></td><td> <img src=\"/ef/web/images/stars.png\"></td></tr>
 \t\t";
                                 }
-                                // line 33
+                                // line 22
                                 echo "\t";
                             }
                             $_parent = $context['_parent'];
                             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
                             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                            // line 34
-                            echo "<h6>Η αρχική διαθέσιμη ποσότητα είναι:";
-                            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "quantity"), "html", null, true);
-                            echo "</h6>
-<h6>Η τιμή είναι:";
-                            // line 35
-                            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "price"), "html", null, true);
-                            echo "</h6>
-<h6>Η προέλευση είναι: ";
-                            // line 36
+                            // line 23
+                            echo "<tr><td><h6>Ξ ΟΞΏΞ­Ξ»ΞµΟ…ΟƒΞ·: </td><td>";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "origin"), "html", null, true);
-                            echo "</h6>
-<h6>Η ελάχιστη ποσότητα παραγγελιών είναι: ";
-                            // line 37
+                            echo "</h6></td></tr>
+
+<tr><td><h6>Ξ‘ΟΟ‡ΞΉΞΊΞ® Ο€ΞΏΟƒΟΟ„Ξ·Ο„Ξ±: </td><td>";
+                            // line 25
+                            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "quantity"), "html", null, true);
+                            echo " ΞΊΞΉΞ»Ξ¬</h6></td></tr>
+<tr><td><h6>Ξ¤ΞΉΞΌΞ®:</td><td> ";
+                            // line 26
+                            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "price"), "html", null, true);
+                            echo " ΞµΟ…ΟΟ</h6>
+<tr><td><h6>Ξ— ΞµΞ»Ξ¬Ο‡ΞΉΟƒΟ„Ξ· Ο€ΞΏΟƒΟΟ„Ξ·Ο„Ξ± Ο€Ξ±ΟΞ±Ξ³Ξ³ΞµΞ»ΞΉΟΞ½ ΞµΞ―Ξ½Ξ±ΞΉ:</td><td>";
+                            // line 27
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "minquantity"), "html", null, true);
-                            echo "\t</h6>
+                            echo "\tΞΊΞΉΞ»Ξ¬</h6></td></tr>
+
+</td></tr>
  <form  action=\"";
-                            // line 38
+                            // line 30
                             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("buy_new"), "html", null, true);
                             echo "\" method=\"post\"  class=\"nice\">
 <input type=\"hidden\" name=\"id\" value=\"";
-                            // line 39
+                            // line 31
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "sell"), "id"), "html", null, true);
                             echo "\"/>
-<input type=\"text\" name=\"quant\" />
-<button type=\"submit\">Αγορά</button>
+<tr><td><h6>Ξ ΞΏΟƒΟΟ„Ξ·Ο„Ξ±:</td><td><input type=\"text\" name=\"quant\" /></h6></td></tr>
+<tr><td></td><td><button type=\"submit\">Ξ‘Ξ³ΞΏΟΞ¬</button></td></tr>
 </form>
+</table>
    ";
                         }
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['sell'], $context['_parent'], $context['loop']);
                     $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                    // line 45
+                    // line 38
                     echo "   ";
                 }
-                // line 46
+                // line 39
                 echo "
 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['key'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 48
+            // line 41
             echo " ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['location'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 49
+        // line 42
         echo "
-</div>
+
 </form>
 </div>
 </div>
 ";
+    }
+
+    // line 49
+    public function block_sidebar($context, array $blocks = array())
+    {
+        // line 50
+        echo "<div class=\"three colums nava\">
+\t<div class=\"art-vmenublock\">
+\t\t\t\t\t\t\t\t\t<div class=\"art-vmenublock-body\">
+\t\t\t\t\t\t\t\t\t\t<div class=\"art-vmenublockcontent\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"art-vmenublockcontent-body\">
+\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"art-vmenu\">
+\t\t\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"pazari\" ><span class=\"l\"> </span><span class=\"r\"> </span><span class=\"t\">Ξ‘ΟΟ‡ΞΉΞΊΞ®</span></a></li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"profile\"><span class=\"l\"> </span><span class=\"r\"> </span><span class=\"t\">Ξ ΟΞΏΟ†Ξ―Ξ»</span></a></li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"price\"><span class=\"l\"> </span><span class=\"r\"> </span><span class=\"t\">Ξ¤ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏΟ‚</span></a></li>
+\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href=\"logout\"><span class=\"l\"> </span><span class=\"r\"> </span><span class=\"t\">Ξ‘Ο€ΞΏΟƒΟΞ½Ξ΄ΞµΟƒΞ·</span></a></li>
+\t\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"cleared\"></div>
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t<div class=\"cleared\"></div>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t</div>";
     }
 
     public function getTemplateName()

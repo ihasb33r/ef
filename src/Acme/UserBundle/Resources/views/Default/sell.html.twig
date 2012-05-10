@@ -1,44 +1,52 @@
-{% extends "AcmeUserBundle:Default:base.html.twig" %}
-
-{% block title %}
-
-������� ���� ������ 
-{% endblock %}
-
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block content %}
+
 <div class="row">
     <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
     </div>
 </div>
-<div class="row header">
-<div class="twelve columns">
-<h3> �������� ������� </h3>
-</div>
-</div>
 <div class="row article">
+  
+<div class="fos_user_agora">
     <div class="six columns offset-by-one form">
         <form  action="{{ path('sell_new') }}" method="post"  class="nice">
-
-            {{ form_errors(form) }}
-            {{ form_row(form.quantity) }}
-            {{ form_row(form.min_quantity) }}
-            {{ form_row(form.price) }}
-            {{ form_row(form.origin) }}
-            {{ form_row(form.agor) }}
-            <input type="submit" />
+		<h4>Πώληση προϊόντος</h4>
+			<table><tr>
+			<td>Ποσότητα:</td><td><input type="text" name="quantity" /></td><td>κιλά</td></tr>
+			<tr><td>Ελάχιστη ποσότητα αγοράς:</td><td><input type="text" name="min_quantity" /><td>κιλά</td></td></tr>
+			<tr><td>Τιμή:</td><td><input type="text" name="price" /></td><td>ευρώ</td></tr>
+			<tr><td>Προέλευση:</td><td><input type="text" name="origin" /></td></tr>
+			<input type="hidden" name="agor" value="0" />
+			{%for key in id%}
+<input type="hidden" name="id" value="{{key}}" />
+{%endfor%}
+            <tr><td></td><td><input type="submit" /></td></tr></table>
         </form>
     </div>
 </div>
-{% endblock %}
-
-{% block sidebar %} 
-
-<div class="row">
-    <div class="twelve columns phone">
-        
-        <p> test sidebar content </p>
-</div>
 </div>
 {% endblock %}
+
+{% block sidebar %}
+<div class="three colums nava">
+	<div class="art-vmenublock">
+									<div class="art-vmenublock-body">
+										<div class="art-vmenublockcontent">
+											<div class="art-vmenublockcontent-body">
+												<ul class="art-vmenu">
+												
+													<li><a href="pazari"><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
+													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
+													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
+													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
+											
+												</ul>
+												<div class="cleared"></div>
+											</div>
+										</div>
+										<div class="cleared"></div>
+									</div>
+									</div>
+								</div>{%endblock %}

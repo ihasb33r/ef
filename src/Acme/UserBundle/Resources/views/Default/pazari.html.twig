@@ -1,49 +1,85 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
 
-{% block fos_user_content %}
+{% block content %}
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script type="text/javascript">
+function addmap(id,lat, lng) {
+	var latlng = new google.maps.LatLng(lat, lng);
+	directionsService = new google.maps.DirectionsService();
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	var myOptions = {
+		zoom: 14,
+		center: latlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false
+	};
+	var map = new google.maps.Map(document.getElementById(id),myOptions);
+	var marker = new google.maps.Marker({
+		position: latlng, 
+		map: map 
+	}); 
+}
+</script>
+
 <div class="row">
     <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
     </div>
 </div>
-<div class="row header">
-<div class="twelve columns">
-<h3> ����������� </h3>
-</div>
-</div>
-<div class="row article">
-    <div class="six columns offset-by-one form">
-
-
-{%for loca in locat %}
-
-	{% if ((loca.date|date("d")>=("now"|date("d"))and(loca.date|date("m")==("now"|date("m")))) or (loca.date|date("m")>("now"|date("m"))) ) %}
-	<table border="1">
-		{%for prod in query%}
-			{% if prod.id == loca.product.id%}
-			   
-			<td> <img src="/ef/web/{{prod.image}}"></img></td>
-			<td> <h5>������ ��:{{prod.name}}</h5>
-			{%endif%}
-		{% endfor %}
-		{{loca.address}}
-	{{loca.date|date("d/m/Y")}}
-
-  <form  action="{{ path('buy') }}" method="post"  class="nice">
-<input type="hidden" name="id" value="{{loca.id}}"/>
-<button type="submit">�����</button>
-</form>
-<form  action="{{ path('sell') }}" method="post"  class="nice">
-<input type="hidden" name="id" value="{{loca.id}}"/>
-<button type="submit">������</button>
-</form>
-	</td>
-	</table>
+<div class="row article"><div class="nine columns offset-by-one">
+{%for location in locat %}	
+<table >
+	{% if ((location.date|date("d")>=("now"|date("d"))and(location.date|date("m")==("now"|date("m")))) or (location.date|date("m")>("now"|date("m"))) ) %}
+			<div class="row">
+                {%for prod in query%}
+					{% if prod.id == location.product.id%}
+						
+						<tr><h5>Παζαρί με: {{prod.name}}</h5></tr>
+						<tr><td><h6>Διεύθυνση:{{location.address}}</h6></td>
+					    	<td><h6>Ημέρα συνάντησης:{{location.date|date("d/m/Y")}}</h6></td></tr>
+							<tr><td>	<img style="width:80%; height:150px;" src="/ef/web/{{prod.image}}"></img></td>
+					{%endif%}
+				{% endfor %}
+			<td><div class="span4" id="#map{{location.id}}" style="width:90%; height:150px;"></div></td></tr>
 	{%endif%}
-<br>
+
+		<script>	
+			addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}});
+		</script>
+			<tr><td><form  action="{{ path('buy') }}" method="post"  class="nice">
+			<input type="hidden" name="id" value="{{location.id}}"/>
+			<button type="submit">Αγορά</button>
+			</form></td>
+			<td><form  action="{{ path('sell') }}" method="post"  class="nice">
+			<input type="hidden" name="id" value="{{location.id}}"/>
+			<button type="submit">Πώληση</button>
+			</form></td></tr>
+</table></br>
 {% endfor %}
-</form>
-<br>
 </div>
 </div>
-{% endblock fos_user_content %}
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="three colums nava">
+	<div class="art-vmenublock">
+									<div class="art-vmenublock-body">
+										<div class="art-vmenublockcontent">
+											<div class="art-vmenublockcontent-body">
+												<ul class="art-vmenu">
+												
+													<li><a href="pazari" class="active"><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
+													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
+													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
+													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
+											
+												</ul>
+												<div class="cleared"></div>
+											</div>
+										</div>
+										<div class="cleared"></div>
+									</div>
+									</div>
+								</div>{%endblock %}

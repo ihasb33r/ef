@@ -14,7 +14,7 @@ class __TwigTemplate_6200911051f29180ccb633981897ad7e extends Twig_Template
 
     protected function doGetParent(array $context)
     {
-        return "AcmeUserBundle::layout.html.twig";
+        return "FOSUserBundle::layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())

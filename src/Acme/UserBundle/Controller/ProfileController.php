@@ -26,7 +26,7 @@ class ProfileController extends Controller
 $product= $em->getRepository('AcmeUserBundle:Product')->findAll();
 		$buy = $em->getRepository('AcmeUserBundle:Buy')->findAll(); 
 			 
-        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'), array('buy'=>$buy, 'sell'=>$sell, 'loc'=>$loc, 'id'=>$id, 'product'=>$product));
+        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Profile:show_content.html.'.$this->container->getParameter('fos_user.template.engine'), array('buy'=>$buy, 'sell'=>$sell, 'loc'=>$loc, 'id'=>$id, 'product'=>$product));
     }
 
     /**
@@ -38,22 +38,20 @@ $product= $em->getRepository('AcmeUserBundle:Product')->findAll();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-
-        $form = $this->container->get('fos_user.profile.form');
-        $formHandler = $this->container->get('fos_user.profile.form.handler');
-
-        $process = $formHandler->process($user);
-        if ($process) {
-            $this->setFlash('fos_user_success', 'profile.flash.updated');
-
-            return new RedirectResponse($this->container->get('router')->generate('fos_user_profile_show'));
-        }
-
+	 $id[]=$user->getId();
+			$em = $this->getDoctrine()->getEntityManager();
+			$sell = $em->getRepository('AcmeUserBundle:Sell')->findAll();
+			$buy = $em->getRepository('AcmeUserBundle:Buy')->findAll();
+			$location = $em->getRepository('AcmeUserBundle:Location')->findAll();
+			$product = $em->getRepository('AcmeUserBundle:Product')->findAll();
         return $this->container->get('templating')->renderResponse(
-            'FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-            array('form' => $form->createView(), 'theme' => $this->container->getParameter('fos_user.template.theme'))
-        );
+            'AcmeUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
+           array('sell'=>$sell, 'buy'=>$buy, 'location'=>$location, 'product'=>$product, 'id'=>$id  ));
     }
+	public function editnewAction()
+	{}
+	public function editnewsellAction()
+	{}
 
     protected function setFlash($action, $value)
     {

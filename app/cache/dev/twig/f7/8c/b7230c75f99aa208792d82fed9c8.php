@@ -27,19 +27,30 @@ class __TwigTemplate_f78cb7230c75f99aa208792d82fed9c8 extends Twig_Template
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        echo "Acme Demo Application";
+        echo "e-agrotis";
+    }
+
+    // line 13
+    public function block_fos_user_content($context, array $blocks = array())
+    {
+        echo "</div></div>";
     }
 
     // line 6
-    public function block_fos_user_content($context, array $blocks = array())
-    {
-    }
-
-    // line 5
     public function block_content($context, array $blocks = array())
     {
-        // line 6
-        echo "    ";
+        // line 7
+        echo "<div class=\"row\">
+    <div class=\"twelve columns\">
+        <img style=\"position:relative;top:10px;\" src=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/backgroundarticle.png"), "html", null, true);
+        echo "\">
+    </div>
+</div>
+<div class=\"row article\"><div class=\"six columns offset-by-one\">
+    ";
+        // line 13
         $this->displayBlock('fos_user_content', $context, $blocks);
     }
 

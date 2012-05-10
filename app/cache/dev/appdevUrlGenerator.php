@@ -40,6 +40,9 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'buy_new' => true,
        'profile' => true,
        'sell_new' => true,
+       'price' => true,
+       'edit_new' => true,
+       'edit_new_sell' => true,
        'fos_user_security_login' => true,
        'fos_user_security_check' => true,
        'fos_user_security_logout' => true,
@@ -210,6 +213,21 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getsell_newRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\SellController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/sell_new',  ),));
+    }
+
+    private function getpriceRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\PriceController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/price',  ),));
+    }
+
+    private function getedit_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editnewAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit_new',  ),));
+    }
+
+    private function getedit_new_sellRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editnewsellAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/edit_new_sell',  ),));
     }
 
     private function getfos_user_security_loginRouteInfo()

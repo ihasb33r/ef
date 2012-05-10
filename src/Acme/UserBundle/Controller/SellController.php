@@ -13,36 +13,43 @@ class SellController extends Controller
 {
    public function indexAction(Request $request)
 {
-     $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-		 $id=$user->getId();
-
-        $sell= new Sell();
-		$form = $this->createFormBuilder($sell)
-			->add('quantity', 'text')
-            ->add('min_quantity', 'text')
-            ->add('price', 'text')
-            ->add('origin', 'text')
-			->add('agor', 'integer')
-            ->getForm();
-			
-				if ($request->getMethod() == 'POST') 
-				{   $form->bindRequest($request);
-					$em = $this->getDoctrine()->getEntityManager();
-					$em->persist($sell);
-					$em->flush();
-					echo'ola phgan kala!';
-				}
-				
-        return $this->render('AcmeUserBundle:Default:sell.html.twig', array(
-            'form' => $form->createView() ));
+   
+		$id[]=$_POST['id'];		
+        return $this->render('AcmeUserBundle:Default:sell.html.twig', array('id'=>$id));
 
 				
 }
  public function newAction()
- {echo 'ola kl';
+ {
+ 
+ $id=$_POST['id'];	
+	$user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+		$idi=$user->getId();
+	 $em = $this->getDoctrine()->getEntityManager();
+	$location = $em->getRepository('AcmeUserBundle:Location')->find($id);
+  
+	$sell= new Sell();
+	$sell->setQuantity($_POST['quantity']);
+	$sell->setMinquantity($_POST['min_quantity']);
+	$sell->setPrice($_POST['price']);
+	$sell->setOrigin($_POST['origin']);
+	$sell->setAgor($_POST['agor']);
+	$sell->setUser($user);
+    $sell->setLocation($location);
+    $em = $this->getDoctrine()->getEntityManager();
+    $em->persist($location);
+	$em->persist($sell);
+	$em->persist($user);
+    $em->flush();
+ 
+ 
+ 
+ 
+ 
+ 
  return $this->render('AcmeUserBundle:Default:sell_new.html.twig');
  }
 

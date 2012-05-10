@@ -37,8 +37,10 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        'sell' => true,
        'sell_add' => true,
        'buy' => true,
-       'form_submit' => true,
+       'buy_new' => true,
        'profile' => true,
+       'sell_new' => true,
+       'price' => true,
        'fos_user_security_login' => true,
        'fos_user_security_check' => true,
        'fos_user_security_logout' => true,
@@ -196,7 +198,7 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\BuyController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/buy',  ),));
     }
 
-    private function getform_submitRouteInfo()
+    private function getbuy_newRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\BuyController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/buy_new',  ),));
     }
@@ -204,6 +206,16 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
     private function getprofileRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::showAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/profile',  ),));
+    }
+
+    private function getsell_newRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\SellController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/sell_new',  ),));
+    }
+
+    private function getpriceRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'Acme\\UserBundle\\Controller\\PriceController::newAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/price',  ),));
     }
 
     private function getfos_user_security_loginRouteInfo()

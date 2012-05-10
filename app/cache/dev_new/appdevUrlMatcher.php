@@ -163,14 +163,24 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Acme\\UserBundle\\Controller\\BuyController::indexAction',  '_route' => 'buy',);
         }
 
-        // form_submit
+        // buy_new
         if ($pathinfo === '/buy_new') {
-            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\BuyController::newAction',  '_route' => 'form_submit',);
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\BuyController::newAction',  '_route' => 'buy_new',);
         }
 
         // profile
         if ($pathinfo === '/profile') {
             return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'profile',);
+        }
+
+        // sell_new
+        if ($pathinfo === '/sell_new') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\SellController::newAction',  '_route' => 'sell_new',);
+        }
+
+        // price
+        if ($pathinfo === '/price') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\PriceController::newAction',  '_route' => 'price',);
         }
 
         // fos_user_security_login

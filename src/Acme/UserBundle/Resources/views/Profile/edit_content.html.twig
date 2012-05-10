@@ -1,8 +1,50 @@
-{% form_theme form theme %}
+<tr><h4>Αγορασμένα:</h4></tr>
+<form  action="{{ path('edit_new') }}" method="post"  class="nice">
+{%for buy in buy%}
+<form  action="{{ path('edit_new') }}" method="post"  class="nice">
+	{%for key in id%}
+		{%for sell in sell%}
+			
+			{%if buy.user.id==key and sell.user.id==key%}	
+				{%for location in location%}
+					{%if location.id==sell.location.id%}
+						{%for product in product%}
+							{%if product.id==location.product.id%}
+						<h6>Έχετε αγοράσει το προϊόν: {{product.name}}</h6>
+							{%endif%}
+						{%endfor%}
+					{%endif%}
+				{%endfor%}
+			    <h6>Σε ποσότητα:<input type="text" name="quantity" value="{{buy.quantity}}" />κιλά</h6>
+			{%endif%}
+			
+		{%endfor%}
+	{%endfor%}
+	<input type="submit" />
+			</form>
+{%endfor%}
 
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
+
+<tr><h4>Προς πώληση:</h4></tr>
+{%for sell in sell%}
+<form  action="{{ path('edit_new_sell') }}" method="post"  class="nice">
+	{%for key in id%}
+		{%if sell.user.id==key%}	
+			{%for location in location%}
+				{%if location.id==sell.location.id%}
+					{%for product in product%}
+						{%if product.id==location.product.id%}
+							<h6>Πουλάτε το προϊόν: {{product.name}}</h6>
+						{%endif%}
+					{%endfor%}
+				{%endif%}
+			{%endfor%}
+				<tr><td><h6>Σε ποσότητα: </td><td><input type="text" name="quantity" value="{{sell.quantity}}"/> κιλά</h6></td></tr>
+			<tr><td><h6>Με ελάχιστη ποσότητα αγοράς: </td><td><input type="text" name="minquantity" value="{{sell.minquantity}}"/> κιλά</h6></td></tr>
+		{%endif%}
+	{%endfor%}
+	<tr><td></td><td><input type="submit" /></td>
+	</from>
+{%endfor%}
 </form>
+</div>

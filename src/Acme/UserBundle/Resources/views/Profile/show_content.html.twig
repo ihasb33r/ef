@@ -1,24 +1,34 @@
-
-<div class="fos_user_user_show">
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block content %}
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
+    </div>
+</div>
+<div class="row article"><div class="six columns offset-by-one">
+<tr><h4>Αγορασμένα:</h4></tr>
 {%for buy in buy%}
 	{%for key in id%}
 		{%for sell in sell%}
-			{%if buy.user.id==key and sell.user.id==key%}	
+			{%if buy.user.id==key and buy.sell.id==sell.id%}	
 				{%for location in loc%}
 					{%if location.id==sell.location.id%}
 						{%for product in product%}
 							{%if product.id==location.product.id%}
-							<h6>����� �������� �� ������:</h6>{{product.name}}
+								<h6>Η ημερομηνία του παζαριού είναι:{{location.date|date("d/m/Y")}}</h6>
+						<h6>Έχετε αγοράσει το προϊόν: {{product.name}}</h6>
 							{%endif%}
 						{%endfor%}
 					{%endif%}
+
 				{%endfor%}
-				<h6>�� ��������:</h6>
-			{{buy.quantity}}	
+			<h6>Σε ποσότητα:{{buy.quantity}} κιλά</h6></br>
 			{%endif%}
 		{%endfor%}
 	{%endfor%}
 {%endfor%}
+
+<tr><h4>Προς πώληση:</h4></tr>
 {%for sell in sell%}
 	{%for key in id%}
 		{%if sell.user.id==key%}	
@@ -26,16 +36,39 @@
 				{%if location.id==sell.location.id%}
 					{%for product in product%}
 						{%if product.id==location.product.id%}
-							<h6>������� �� ������:</h6>{{product.name}}
+						<h6>Η ημερομηνία του παζαριού είναι:{{location.date|date("d/m/Y")}}</h6>
+							<h6>Πουλάτε το προϊόν: {{product.name}}</h6>
 						{%endif%}
 					{%endfor%}
 				{%endif%}
 			{%endfor%}
-				<h6>�� ��������:</h6>
-			{{sell.quantity}}
-			<h6>�� �������� �������� ������:</h6>
-			{{sell.minquantity}}
+				<h6>Σε ποσότητα: {{sell.quantity}} κιλά</h6>
+			<h6>Με ελάχιστη ποσότητα αγοράς: {{sell.minquantity}} κιλά</h6></br>
 		{%endif%}
 	{%endfor%}
 {%endfor%}
 </div>
+</div>
+{%endblock %}
+{% block sidebar %}
+<div class="three colums nava">
+	<div class="art-vmenublock">
+									<div class="art-vmenublock-body">
+										<div class="art-vmenublockcontent">
+											<div class="art-vmenublockcontent-body">
+												<ul class="art-vmenu">
+												
+													<li><a href="pazari" ><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
+													<li><a href="profile" class="active"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
+													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
+													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
+											
+												</ul>
+												<div class="cleared"></div>
+											</div>
+										</div>
+										<div class="cleared"></div>
+									</div>
+									</div>
+								</div>
+								{%endblock %}

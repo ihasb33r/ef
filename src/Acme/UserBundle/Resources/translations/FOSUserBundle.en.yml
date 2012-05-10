@@ -12,43 +12,43 @@ group:
         deleted: The group has been deleted
 
 # Security
-"Bad credentials": Invalid username or password
+"Bad credentials": Λάθος όνομα χρήστη ή κωδικός
 
 security:
     login:
-        username: "Username:"
-        password: "Password:"
-        remember_me: Remember me
-        submit: Login
+        username: "Όνομα:"
+        password: "Κωδικός:"
+        remember_me: Απομνημόνευση
+        submit: Σύνδεση
 
 # Profile
 profile:
     show:
-        username: Username
+        username: Όνομα Χρήστη
         email: Email
     edit:
-        submit: Update
+        submit: Αλλαγή
     flash:
-        updated: The profile has been updated
+        updated: Το προφίλ σας έχει αλλάξει
 
 # Password change
 change_password:
-    submit: Change password
+    submit: Αλλαγή κωδικού
     flash:
-        success: The password has been changed
+        success: Ο κωδικός έχει αλλάξει
 
 # Registration
 registration:
     check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
-    confirmed: Congrats %username%, your account is now activated.
+    confirmed: Συγχαρητήρια %username%, ο λογαριασμλος σου έχει ενεργοποιηθεί.
     back: Back to the originating page.
-    submit: Register
+    submit: Εγγραφή
     flash:
-        user_created: The user has been created successfully
+        user_created: Ο χρήστης έχει δημιουργηθεί επιτυχώς 
     email:
-        subject: Welcome %username%!
+        subject: Καλωσήρθες %username%!
         message: |
-            Hello %username%!
+            Γεια σου %username%!
 
             To finish activating your account - please visit %confirmationUrl%
 
@@ -79,32 +79,32 @@ resetting:
 
 # Global strings
 layout:
-    logout: Logout
-    login: Login
-    register: Register
-    logged_in_as: Logged in as %username%
+    logout: Αποσύνδεση
+    login: Σύνδεση
+    register: Εγγραφή
+    logged_in_as: Συνδεδεμένος ως %username%
 
 # Form field labels
 fos_user_group_form_name: "Group name:"
 
-fos_user_profile_form_user_username: "Username:"
+fos_user_profile_form_user_username: "Όνομα Χρήστη:"
 fos_user_profile_form_user_email: "Email:"
-fos_user_profile_form_current: "Current Password:"
-fos_user_profile_form_name: "Name:"
-fos_user_profile_form_lastname: "Lastname:"
-fos_user_profile_form_phone: "Phone:"
+fos_user_profile_form_current: "Τωρινός κωδικός:"
+fos_user_profile_form_name: "Όνομα:"
+fos_user_profile_form_lastname: "Επίθετο:"
+fos_user_profile_form_phone: "Τηλέφωνο"
 
-fos_user_registration_form_username: "Username:"
+fos_user_registration_form_username: "Όνομα χρήστη:"
 fos_user_registration_form_email: "Email:"
-fos_user_registration_form_plainPassword_first: "Password:"
-fos_user_registration_form_plainPassword_second: "Verification:"
-fos_user_registration_form_name: "Name:"
-fos_user_registration_form_lastname: "Lastname:"
-fos_user_registration_form_phone: "Phone:"
+fos_user_registration_form_plainPassword_first: "Κωδικός:"
+fos_user_registration_form_plainPassword_second: "Επιβεβαίωση:"
+fos_user_registration_form_name: "Όνομα:"
+fos_user_registration_form_lastname: "Επίθετο:"
+fos_user_registration_form_phone: "Τηλέφωνο:"
 
-fos_user_resetting_form_new_first: "New password:"
-fos_user_resetting_form_new_second: "Verification:"
+fos_user_resetting_form_new_first: "Νέος κωδικός:"
+fos_user_resetting_form_new_second: "Επιβεβαίωση:"
 
-fos_user_change_password_form_new_first: "New password:"
-fos_user_change_password_form_new_second: "Verification:"
-fos_user_change_password_form_current: "Current password:"
+fos_user_change_password_form_new_first: "Νέος κωδικός:"
+fos_user_change_password_form_new_second: "Επιβεβαίωση:"
+fos_user_change_password_form_current: "Τωρινός Κωδικός:"

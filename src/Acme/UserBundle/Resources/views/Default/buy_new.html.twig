@@ -1,30 +1,39 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
-{% block fos_user_content %}
-
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block content %}
 <div class="row">
     <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="/images/backgroundarticle.png">
+        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
     </div>
 </div>
-<div class="row header">
-<div class="twelve columns">
-
-</div>
-</div>
-<div class="row article">
-    <div class="six columns offset-by-one form">
-
-
-<div class="fos_user_agora">
+<div class="row article"><div class="six columns offset-by-one">
 {%for key in kod%}
-<h6>Η αγορά σας πραγματοποιήθηκε επιτυχώς</h6>
-<h6>Ο κωδικός αγοράς σας είναι:000000{{key}}</h6>
+<h6>Ξ— Ξ±Ξ³ΞΏΟΞ¬ ΟƒΞ±Ο‚ Ο€ΟΞ±Ξ³ΞΌΞ±Ο„ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΞµΟ€ΞΉΟ„Ο…Ο‡ΟΟ‚</h6>
+<h6>Ξ ΞΊΟ‰Ξ΄ΞΉΞΊΟΟ‚ Ξ±Ξ³ΞΏΟΞ¬Ο‚ ΟƒΞ±Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ: 000000{{key}}</h6>
 {%endfor%}
 
-
-</div>
 </form>
 </div>
 </div>
-{% endblock fos_user_content%}
+{% endblock%}
+
+{% block sidebar %}
+<div class="three colums nava">
+	<div class="art-vmenublock">
+									<div class="art-vmenublock-body">
+										<div class="art-vmenublockcontent">
+											<div class="art-vmenublockcontent-body">
+												<ul class="art-vmenu">
+												
+													<li><a href="pazari" class="active"><span class="l"> </span><span class="r"> </span><span class="t">Ξ‘ΟΟ‡ΞΉΞΊΞ®</span></a></li>
+													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Ξ ΟΞΏΟ†Ξ―Ξ»</span></a></li>
+													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Ξ¤ΞΉΞΌΞΏΞΊΞ±Ο„Ξ¬Ξ»ΞΏΞ³ΞΏΟ‚</span></a></li>
+													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Ξ‘Ο€ΞΏΟƒΟΞ½Ξ΄ΞµΟƒΞ·</span></a></li>
+											
+												</ul>
+												<div class="cleared"></div>
+											</div>
+										</div>
+										<div class="cleared"></div>
+									</div>
+									</div>
+								</div>{%endblock %}

@@ -1,0 +1,44 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Τιμοκατάλογος
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="twelve columns">
+        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
+    </div>
+</div>
+<div class="row header">
+<div class="twelve columns">
+<h3> Τιμοκατάλογος </h3>
+</div>
+</div>
+<div class="row article">
+   <img  src="{{ asset('images/price.jpg') }}">
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="three colums nava">
+	<div class="art-vmenublock">
+									<div class="art-vmenublock-body">
+										<div class="art-vmenublockcontent">
+											<div class="art-vmenublockcontent-body">
+												<ul class="art-vmenu">
+												
+													<li><a href="pazari" ><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
+													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
+													<li><a href="price"><span class="l" class="active"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
+													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
+											
+												</ul>
+												<div class="cleared"></div>
+											</div>
+										</div>
+										<div class="cleared"></div>
+									</div>
+									</div>
+								</div>{%endblock %}
+
