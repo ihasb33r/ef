@@ -1,0 +1,11 @@
+{% extends 'AcmeUserBundle:Default:base.html.twig' %}
+
+{% block title %}Acme Demo Application{% endblock %}
+
+{% block content %}
+<div class="row">
+<div class="span9 listing">
+    {% block fos_user_content %}{% endblock %}
+</div>
+</div>
+{% endblock %}

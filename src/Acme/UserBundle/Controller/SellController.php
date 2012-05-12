@@ -14,7 +14,7 @@ class SellController extends Controller
    public function indexAction(Request $request)
 {
    
-		$id[]=$_POST['id'];		
+		$id[]=$_GET['id'];		
         return $this->render('AcmeUserBundle:Default:sell.html.twig', array('id'=>$id));
 
 				

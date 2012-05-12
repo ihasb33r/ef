@@ -23,24 +23,24 @@ class appProdProjectContainer extends Container
     }
     protected function getAnnotationReaderService()
     {
-        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), 'C:\\xampp\\htdocs\\ef\\app/cache/prod/annotations', false);
+        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), '/home/mallias/www/ef/app/cache/prod/annotations', false);
     }
     protected function getAssetic_AssetManagerService()
     {
         $a = $this->get('templating.loader');
-        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('C:\\xampp\\htdocs\\ef\\app/cache/prod/assetic/config'), false)));
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\Symfony\\Bundle\\AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\Sensio\\Bundle\\FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\JMS\\SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/FOSUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeUserBundle', 'C:\\xampp\\htdocs\\ef\\app/Resources/AcmeUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeUserBundle', 'C:\\xampp\\htdocs\\ef\\src\\Acme\\UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', 'C:\\xampp\\htdocs\\ef\\app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
+        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/home/mallias/www/ef/app/cache/prod/assetic/config'), false)));
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/mallias/www/ef/app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/mallias/www/ef/app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/mallias/www/ef/app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/mallias/www/ef/app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/mallias/www/ef/app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/mallias/www/ef/app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/mallias/www/ef/app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/mallias/www/ef/vendor/bundles/Symfony/Bundle/AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/mallias/www/ef/app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/mallias/www/ef/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/mallias/www/ef/app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/mallias/www/ef/vendor/bundles/JMS/SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/mallias/www/ef/app/Resources/FOSUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeUserBundle', '/home/mallias/www/ef/app/Resources/AcmeUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeUserBundle', '/home/mallias/www/ef/src/Acme/UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/home/mallias/www/ef/app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
         return $instance;
     }
     protected function getAssetic_Filter_CssrewriteService()
@@ -55,8 +55,8 @@ class appProdProjectContainer extends Container
     {
         $a = $this->get('kernel');
         $b = $this->get('templating.name_parser');
-        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, 'C:\\xampp\\htdocs\\ef\\app/Resources');
-        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine')), 5 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetWriterCacheWarmer($this, new \Assetic\AssetWriter('C:\\xampp\\htdocs\\ef\\app/../web'))));
+        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/home/mallias/www/ef/app/Resources');
+        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine')), 5 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetWriterCacheWarmer($this, new \Assetic\AssetWriter('/home/mallias/www/ef/app/../web'))));
     }
     protected function getDoctrineService()
     {
@@ -76,24 +76,24 @@ class appProdProjectContainer extends Container
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
         $a = new \Doctrine\Common\Cache\ArrayCache();
-        $a->setNamespace('sf2orm_default_dae3eb8c4dbc7cd8785aa5335a09a8c2');
+        $a->setNamespace('sf2orm_default_2a6c1613fc66cf15fceb4275c3c25b32');
         $b = new \Doctrine\Common\Cache\ArrayCache();
-        $b->setNamespace('sf2orm_default_dae3eb8c4dbc7cd8785aa5335a09a8c2');
+        $b->setNamespace('sf2orm_default_2a6c1613fc66cf15fceb4275c3c25b32');
         $c = new \Doctrine\Common\Cache\ArrayCache();
-        $c->setNamespace('sf2orm_default_dae3eb8c4dbc7cd8785aa5335a09a8c2');
-        $d = new \Symfony\Bridge\Doctrine\Mapping\Driver\XmlDriver(array(0 => 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle\\Resources\\config\\doctrine'));
-        $d->setNamespacePrefixes(array('C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle\\Resources\\config\\doctrine' => 'FOS\\UserBundle\\Entity'));
+        $c->setNamespace('sf2orm_default_2a6c1613fc66cf15fceb4275c3c25b32');
+        $d = new \Symfony\Bridge\Doctrine\Mapping\Driver\XmlDriver(array(0 => '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/config/doctrine'));
+        $d->setNamespacePrefixes(array('/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/config/doctrine' => 'FOS\\UserBundle\\Entity'));
         $d->setGlobalBasename('mapping');
         $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $e->addDriver($d, 'FOS\\UserBundle\\Entity');
-        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => 'C:\\xampp\\htdocs\\ef\\src\\Acme\\UserBundle\\Entity')), 'Acme\\UserBundle\\Entity');
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => '/home/mallias/www/ef/src/Acme/UserBundle/Entity')), 'Acme\\UserBundle\\Entity');
         $f = new \Doctrine\ORM\Configuration();
         $f->setEntityNamespaces(array('FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'AcmeUserBundle' => 'Acme\\UserBundle\\Entity'));
         $f->setMetadataCacheImpl($a);
         $f->setQueryCacheImpl($b);
         $f->setResultCacheImpl($c);
         $f->setMetadataDriverImpl($e);
-        $f->setProxyDir('C:\\xampp\\htdocs\\ef\\app/cache/prod/doctrine/orm/Proxies');
+        $f->setProxyDir('/home/mallias/www/ef/app/cache/prod/doctrine/orm/Proxies');
         $f->setProxyNamespace('Proxies');
         $f->setAutoGenerateProxyClasses(false);
         $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
@@ -128,7 +128,7 @@ class appProdProjectContainer extends Container
     }
     protected function getFileLocatorService()
     {
-        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), 'C:\\xampp\\htdocs\\ef\\app/Resources');
+        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), '/home/mallias/www/ef/app/Resources');
     }
     protected function getFilesystemService()
     {
@@ -397,7 +397,7 @@ class appProdProjectContainer extends Container
     }
     protected function getMonolog_Handler_NestedService()
     {
-        return $this->services['monolog.handler.nested'] = new \Monolog\Handler\StreamHandler('C:\\xampp\\htdocs\\ef\\app/logs/prod.log', 100, true);
+        return $this->services['monolog.handler.nested'] = new \Monolog\Handler\StreamHandler('/home/mallias/www/ef/app/logs/prod.log', 100, true);
     }
     protected function getMonolog_Logger_DoctrineService()
     {
@@ -436,7 +436,7 @@ class appProdProjectContainer extends Container
     }
     protected function getRouterService()
     {
-        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, 'C:\\xampp\\htdocs\\ef\\app/config/routing.yml', array('cache_dir' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod', 'debug' => false, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appprodUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appprodUrlMatcher'));
+        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, '/home/mallias/www/ef/app/config/routing.yml', array('cache_dir' => '/home/mallias/www/ef/app/cache/prod', 'debug' => false, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appprodUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appprodUrlMatcher'));
     }
     protected function getRouterListenerService()
     {
@@ -495,7 +495,7 @@ class appProdProjectContainer extends Container
         $k = new \Symfony\Component\Security\Http\HttpUtils($d);
         $l = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $k, '/logout', '/', NULL);
         $l->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_manager')), 'main', $a, $c), 2 => $l, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $e, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $k, 'main', array('check_path' => '/login_check', 'login_path' => '/login', 'use_forward' => false, 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '4fa2dd499168e', $a), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $e, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $k, '/login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($j, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_manager')), 'main', $a, $c), 2 => $l, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $e, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $k, 'main', array('always_use_default_target_path' => true, 'default_target_path' => '/pazari', 'check_path' => '/login_check', 'login_path' => '/login', 'use_forward' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), NULL, NULL, $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '4fae25e12ec9b', $a), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $j, $e, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $k, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $k, '/login', false), NULL, NULL, $a));
     }
     protected function getSecurity_Rememberme_ResponseListenerService()
     {
@@ -583,7 +583,7 @@ class appProdProjectContainer extends Container
     }
     protected function getTemplating_Helper_CodeService()
     {
-        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, 'C:\\xampp\\htdocs\\ef\\app', 'UTF-8');
+        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, '/home/mallias/www/ef/app', 'UTF-8');
     }
     protected function getTemplating_Helper_FormService()
     {
@@ -638,82 +638,83 @@ class appProdProjectContainer extends Container
     }
     protected function getTranslator_DefaultService()
     {
-        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => 'php', 'translation.loader.yml' => 'yml', 'translation.loader.xliff' => 'xliff'), array('cache_dir' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod/translations', 'debug' => false), $this->get('session'));
+        $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => 'php', 'translation.loader.yml' => 'yml', 'translation.loader.xliff' => 'xliff'), array('cache_dir' => '/home/mallias/www/ef/app/cache/prod/translations', 'debug' => false), $this->get('session'));
         $instance->setFallbackLocale('en');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.ca.xliff', 'ca', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.cs.xliff', 'cs', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.da.xliff', 'da', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.de.xliff', 'de', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.es.xliff', 'es', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.et.xliff', 'et', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.eu.xliff', 'eu', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.fa.xliff', 'fa', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.fi.xliff', 'fi', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.fr.xliff', 'fr', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.he.xliff', 'he', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.hu.xliff', 'hu', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.hy.xliff', 'hy', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.id.xliff', 'id', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.it.xliff', 'it', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.ja.xliff', 'ja', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.lb.xliff', 'lb', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.lt.xliff', 'lt', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.mn.xliff', 'mn', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.nl.xliff', 'nl', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.pl.xliff', 'pl', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.pt_BR.xliff', 'pt_BR', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.pt_PT.xliff', 'pt_PT', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.ro.xliff', 'ro', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.ru.xliff', 'ru', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.sk.xliff', 'sk', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.sl.xliff', 'sl', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.sr.xliff', 'sr', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.sv.xliff', 'sv', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.ua.xliff', 'ua', 'validators');
-        $instance->addResource('xliff', 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\FrameworkBundle/Resources/translations\\validators.zh_CN.xliff', 'zh_CN', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.bg.yml', 'bg', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.ca.yml', 'ca', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.cs.yml', 'cs', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.da.yml', 'da', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.es.yml', 'es', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.et.yml', 'et', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.hr.yml', 'hr', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.hu.yml', 'hu', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.it.yml', 'it', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.ja.yml', 'ja', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.lb.yml', 'lb', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.nl.yml', 'nl', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.pl.yml', 'pl', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.pt_BR.yml', 'pt_BR', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.pt_PT.yml', 'pt_PT', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.ro.yml', 'ro', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.ru.yml', 'ru', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.sk.yml', 'sk', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.sl.yml', 'sl', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\FOSUserBundle.sv.yml', 'sv', 'FOSUserBundle');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.bg.yml', 'bg', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.de.yml', 'de', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.en.yml', 'en', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.es.yml', 'es', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.fr.yml', 'fr', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.hr.yml', 'hr', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.it.yml', 'it', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.ja.yml', 'ja', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.nl.yml', 'nl', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.pl.yml', 'pl', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.pt_BR.yml', 'pt_BR', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.ru.yml', 'ru', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.sk.yml', 'sk', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle/Resources/translations\\validators.sl.yml', 'sl', 'validators');
-        $instance->addResource('yml', 'C:\\xampp\\htdocs\\ef\\src\\Acme\\UserBundle/Resources/translations\\FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.fi.xliff', 'fi', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.zh_CN.xliff', 'zh_CN', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.it.xliff', 'it', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.hy.xliff', 'hy', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.es.xliff', 'es', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.sl.xliff', 'sl', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.ua.xliff', 'ua', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.ru.xliff', 'ru', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.fr.xliff', 'fr', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.pt_BR.xliff', 'pt_BR', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.id.xliff', 'id', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.lt.xliff', 'lt', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.et.xliff', 'et', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.sk.xliff', 'sk', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.sv.xliff', 'sv', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.de.xliff', 'de', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.da.xliff', 'da', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.ca.xliff', 'ca', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.ja.xliff', 'ja', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.cs.xliff', 'cs', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.he.xliff', 'he', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.pt_PT.xliff', 'pt_PT', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.sr.xliff', 'sr', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.nl.xliff', 'nl', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.mn.xliff', 'mn', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.hu.xliff', 'hu', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.eu.xliff', 'eu', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.lb.xliff', 'lb', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.pl.xliff', 'pl', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.ro.xliff', 'ro', 'validators');
+        $instance->addResource('xliff', '/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/translations/validators.fa.xliff', 'fa', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.fr.yml', 'fr', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.sv.yml', 'sv', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.nl.yml', 'nl', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_BR.yml', 'pt_BR', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.de.yml', 'de', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.hr.yml', 'hr', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.hr.yml', 'hr', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.de.yml', 'de', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.bg.yml', 'bg', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.pt_BR.yml', 'pt_BR', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.en.yml', 'en', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.ja.yml', 'ja', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.sl.yml', 'sl', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.sl.yml', 'sl', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.it.yml', 'it', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.ru.yml', 'ru', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.ca.yml', 'ca', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.ro.yml', 'ro', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.nl.yml', 'nl', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.bg.yml', 'bg', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.cs.yml', 'cs', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.es.yml', 'es', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.pl.yml', 'pl', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.lb.yml', 'lb', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.pl.yml', 'pl', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.es.yml', 'es', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.it.yml', 'it', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.da.yml', 'da', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.sk.yml', 'sk', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.hu.yml', 'hu', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.ru.yml', 'ru', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/validators.ja.yml', 'ja', 'validators');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.et.yml', 'et', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_PT.yml', 'pt_PT', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/translations/FOSUserBundle.sk.yml', 'sk', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/src/Acme/UserBundle/Resources/translations/FOSUserBundle.en.yml', 'en', 'FOSUserBundle');
+        $instance->addResource('yml', '/home/mallias/www/ef/src/Acme/UserBundle/Resources/translations/FOSUserBundle.fr.yml', 'fr', 'FOSUserBundle');
         return $instance;
     }
     protected function getTwigService()
     {
-        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => false, 'strict_variables' => false, 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', 'cache' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod/twig', 'charset' => 'UTF-8'));
+        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => false, 'strict_variables' => false, 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction', 'cache' => '/home/mallias/www/ef/app/cache/prod/twig', 'charset' => 'UTF-8'));
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\SecurityExtension($this->get('security.context')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator.default')));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\AssetsExtension($this));
@@ -732,7 +733,7 @@ class appProdProjectContainer extends Container
     protected function getTwig_LoaderService()
     {
         $this->services['twig.loader'] = $instance = new \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader($this->get('templating.locator'), $this->get('templating.name_parser'));
-        $instance->addPath('C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Bundle\\TwigBundle\\DependencyInjection/../../../Bridge/Twig/Resources/views/Form');
+        $instance->addPath('/home/mallias/www/ef/vendor/symfony/src/Symfony/Bundle/TwigBundle/DependencyInjection/../../../Bridge/Twig/Resources/views/Form');
         return $instance;
     }
     protected function getValidatorService()
@@ -761,7 +762,7 @@ class appProdProjectContainer extends Container
     }
     protected function getAssetic_AssetFactoryService()
     {
-        return $this->services['assetic.asset_factory'] = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, new \Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->getDefaultParameters()), 'C:\\xampp\\htdocs\\ef\\app/../web', false);
+        return $this->services['assetic.asset_factory'] = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, new \Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->getDefaultParameters()), '/home/mallias/www/ef/app/../web', false);
     }
     protected function getControllerNameConverterService()
     {
@@ -773,7 +774,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $this->get('fos_user.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fa2dd499168e')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), $this->get('fos_user.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4fae25e12ec9b')));
     }
     protected function getSecurity_Authentication_TrustResolverService()
     {
@@ -781,11 +782,11 @@ class appProdProjectContainer extends Container
     }
     protected function getTemplating_LocatorService()
     {
-        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), 'C:\\xampp\\htdocs\\ef\\app/cache/prod');
+        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/home/mallias/www/ef/app/cache/prod');
     }
     protected function getValidator_Mapping_ClassMetadataFactoryService()
     {
-        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml', 1 => 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle\\Resources\\config\\validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array()))), NULL);
+        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/home/mallias/www/ef/vendor/symfony/src/Symfony/Component/Form/Resources/config/validation.xml', 1 => '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array()))), NULL);
     }
     public function getParameter($name)
     {
@@ -813,12 +814,12 @@ class appProdProjectContainer extends Container
     protected function getDefaultParameters()
     {
         return array(
-            'kernel.root_dir' => 'C:\\xampp\\htdocs\\ef\\app',
+            'kernel.root_dir' => '/home/mallias/www/ef/app',
             'kernel.environment' => 'prod',
             'kernel.debug' => false,
             'kernel.name' => 'app',
-            'kernel.cache_dir' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod',
-            'kernel.logs_dir' => 'C:\\xampp\\htdocs\\ef\\app/logs',
+            'kernel.cache_dir' => '/home/mallias/www/ef/app/cache/prod',
+            'kernel.logs_dir' => '/home/mallias/www/ef/app/logs',
             'kernel.bundles' => array(
                 'FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
@@ -887,8 +888,8 @@ class appProdProjectContainer extends Container
             'validator.mapping.loader.yaml_files_loader.class' => 'Symfony\\Component\\Validator\\Mapping\\Loader\\YamlFilesLoader',
             'validator.validator_factory.class' => 'Symfony\\Bundle\\FrameworkBundle\\Validator\\ConstraintValidatorFactory',
             'validator.mapping.loader.xml_files_loader.mapping_files' => array(
-                0 => 'C:\\xampp\\htdocs\\ef\\vendor\\symfony\\src\\Symfony\\Component\\Form/Resources/config/validation.xml',
-                1 => 'C:\\xampp\\htdocs\\ef\\vendor\\bundles\\FOS\\UserBundle\\Resources\\config\\validation.xml',
+                0 => '/home/mallias/www/ef/vendor/symfony/src/Symfony/Component/Form/Resources/config/validation.xml',
+                1 => '/home/mallias/www/ef/vendor/bundles/FOS/UserBundle/Resources/config/validation.xml',
             ),
             'validator.mapping.loader.yaml_files_loader.mapping_files' => array(
             ),
@@ -907,7 +908,7 @@ class appProdProjectContainer extends Container
             'router.cache_warmer.class' => 'Symfony\\Bundle\\FrameworkBundle\\CacheWarmer\\RouterCacheWarmer',
             'router.options.matcher.cache_class' => 'appprodUrlMatcher',
             'router.options.generator.cache_class' => 'appprodUrlGenerator',
-            'router.resource' => 'C:\\xampp\\htdocs\\ef\\app/config/routing.yml',
+            'router.resource' => '/home/mallias/www/ef/app/config/routing.yml',
             'request_listener.http_port' => 80,
             'request_listener.https_port' => 443,
             'templating.engine.delegating.class' => 'Symfony\\Bundle\\FrameworkBundle\\Templating\\DelegatingEngine',
@@ -1028,7 +1029,7 @@ class appProdProjectContainer extends Container
                 'debug' => false,
                 'strict_variables' => false,
                 'exception_controller' => 'Symfony\\Bundle\\TwigBundle\\Controller\\ExceptionController::showAction',
-                'cache' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod/twig',
+                'cache' => '/home/mallias/www/ef/app/cache/prod/twig',
                 'charset' => 'UTF-8',
             ),
             'monolog.logger.class' => 'Symfony\\Bridge\\Monolog\\Logger',
@@ -1105,7 +1106,7 @@ class appProdProjectContainer extends Container
             'doctrine.orm.validator.unique.class' => 'Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntityValidator',
             'doctrine.orm.validator_initializer.class' => 'Symfony\\Bridge\\Doctrine\\Validator\\EntityInitializer',
             'doctrine.orm.auto_generate_proxy_classes' => false,
-            'doctrine.orm.proxy_dir' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod/doctrine/orm/Proxies',
+            'doctrine.orm.proxy_dir' => '/home/mallias/www/ef/app/cache/prod/doctrine/orm/Proxies',
             'doctrine.orm.proxy_namespace' => 'Proxies',
             'assetic.asset_factory.class' => 'Symfony\\Bundle\\AsseticBundle\\Factory\\AssetFactory',
             'assetic.asset_manager.class' => 'Assetic\\Factory\\LazyAssetManager',
@@ -1120,7 +1121,7 @@ class appProdProjectContainer extends Container
             'assetic.worker.ensure_filter.class' => 'Assetic\\Factory\\Worker\\EnsureFilterWorker',
             'assetic.node.paths' => array(
             ),
-            'assetic.cache_dir' => 'C:\\xampp\\htdocs\\ef\\app/cache/prod/assetic',
+            'assetic.cache_dir' => '/home/mallias/www/ef/app/cache/prod/assetic',
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
             'assetic.helper.dynamic.class' => 'Symfony\\Bundle\\AsseticBundle\\Templating\\DynamicAsseticHelper',
@@ -1129,9 +1130,9 @@ class appProdProjectContainer extends Container
             'assetic.debug' => false,
             'assetic.use_controller' => false,
             'assetic.enable_profiler' => false,
-            'assetic.read_from' => 'C:\\xampp\\htdocs\\ef\\app/../web',
-            'assetic.write_to' => 'C:\\xampp\\htdocs\\ef\\app/../web',
-            'assetic.java.bin' => 'C:\\Windows\\system32\\java.EXE',
+            'assetic.read_from' => '/home/mallias/www/ef/app/../web',
+            'assetic.write_to' => '/home/mallias/www/ef/app/../web',
+            'assetic.java.bin' => '/usr/bin/java',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',

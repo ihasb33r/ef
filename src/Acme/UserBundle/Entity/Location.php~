@@ -43,6 +43,33 @@ class Location
      */
     private $date;
 
+
+    /**
+     * @var string $organiser
+     *
+     * @ORM\Column(name="organiser", type="string", length=255)
+     */
+    private $organiser;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string $extrainfo
+     *
+     * @ORM\Column(name="extrainfo", type="string", length=255)
+     */
+    private $extrainfo;
+
+
+
+
+
+
     /**
      * Notice the latitude property must have a setter
      */

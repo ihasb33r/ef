@@ -1,16 +1,9 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block content %}
-
-<div class="row">
-    <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
-    </div>
-</div>
-<div class="row article">
+<div class="row ">
   
-<div class="fos_user_agora">
-    <div class="six columns offset-by-one form">
+    <div class="span9 listing">
         <form  action="{{ path('sell_new') }}" method="post"  class="nice">
 		<h4>Πώληση προϊόντος</h4>
 			<table><tr>
@@ -25,7 +18,6 @@
             <tr><td></td><td><input type="submit" /></td></tr></table>
         </form>
     </div>
-</div>
 </div>
 {% endblock %}
 

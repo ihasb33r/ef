@@ -1,85 +1,77 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
+{% block title %} Επόμενα Παζάρια {% endblock %}
+
+{% block extracssjava %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+
+<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
+{% endblock %}
+
 {% block content %}
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
-<script type="text/javascript">
-function addmap(id,lat, lng) {
-	var latlng = new google.maps.LatLng(lat, lng);
-	directionsService = new google.maps.DirectionsService();
-	directionsDisplay = new google.maps.DirectionsRenderer();
-	var myOptions = {
-		zoom: 14,
-		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		mapTypeControl: false
-	};
-	var map = new google.maps.Map(document.getElementById(id),myOptions);
-	var marker = new google.maps.Marker({
-		position: latlng, 
-		map: map 
-	}); 
-}
-</script>
 
-<div class="row">
-    <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
+{%for location in locat %}	
+{% if ((location.date|date()) > ("now"|date())) %}
+{%for prod in query%}
+{% if prod.id == location.product.id%}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span6">
+                <h2><span>Παζάρι με:</span> {{prod.name}}</h2>
+            </div>
+            <div class="span3">
+                <h3>{{location.date|date("d/m/Y")}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4" >
+                <div class="details">
+                    <img class="product" src="{{ asset (prod.image)}}">
+                    <dl>
+                        <dt>Οργανωτής</dt>
+                        <dd>{{location.organiser}}</dd>
+
+                        <dt>Τοποθεσία</dt> <dd>{{ location.name }}</dd>
+                        <dt>Διεύθυνση</dt><dd> {{ location.address}} </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="imgmap">
+                    <div class="map" id="#map{{location.id}}"></div>
+                </div>
+            </div>
+        </div>
+        <script>	
+            addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}");
+        </script>
+        <div class="row">
+            <div class="span9 buttons"><a class="btn btn-large" href="{{ path('buy')}}">Προβολή προσφορών</a>
+                <a class="btn btn-large" href="{{ path('sell')}}">Συμμετοχή ως αγρότης</a></div>
+        </div>
     </div>
 </div>
-<div class="row article"><div class="nine columns offset-by-one">
-{%for location in locat %}	
-<table >
-	{% if ((location.date|date("d")>=("now"|date("d"))and(location.date|date("m")==("now"|date("m")))) or (location.date|date("m")>("now"|date("m"))) ) %}
-			<div class="row">
-                {%for prod in query%}
-					{% if prod.id == location.product.id%}
-						
-						<tr><h5>Παζαρί με: {{prod.name}}</h5></tr>
-						<tr><td><h6>Διεύθυνση:{{location.address}}</h6></td>
-					    	<td><h6>Ημέρα συνάντησης:{{location.date|date("d/m/Y")}}</h6></td></tr>
-							<tr><td>	<img style="width:80%; height:150px;" src="/ef/web/{{prod.image}}"></img></td>
-					{%endif%}
-				{% endfor %}
-			<td><div class="span4" id="#map{{location.id}}" style="width:90%; height:150px;"></div></td></tr>
-	{%endif%}
 
-		<script>	
-			addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}});
-		</script>
-			<tr><td><form  action="{{ path('buy') }}" method="post"  class="nice">
-			<input type="hidden" name="id" value="{{location.id}}"/>
-			<button type="submit">Αγορά</button>
-			</form></td>
-			<td><form  action="{{ path('sell') }}" method="post"  class="nice">
-			<input type="hidden" name="id" value="{{location.id}}"/>
-			<button type="submit">Πώληση</button>
-			</form></td></tr>
-</table></br>
+{%endif%}
 {% endfor %}
-</div>
-</div>
+{%endif%}
+{% endfor %}
 {% endblock %}
 
 
 {% block sidebar %}
-<div class="three colums nava">
-	<div class="art-vmenublock">
-									<div class="art-vmenublock-body">
-										<div class="art-vmenublockcontent">
-											<div class="art-vmenublockcontent-body">
-												<ul class="art-vmenu">
-												
-													<li><a href="pazari" class="active"><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
-													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
-													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
-													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
-											
-												</ul>
-												<div class="cleared"></div>
-											</div>
-										</div>
-										<div class="cleared"></div>
-									</div>
-									</div>
-								</div>{%endblock %}
+<div class="row ">
+    <div class="span3 sidebar">
+        <ul class="extra-nav">
+
+            <li><a href="pazari" >Αρχική</a></li>
+            <li><a href="profile">Προφίλ</a></li>
+            <li><a href="price">Τιμοκατάλογος</a></li>
+            <li><a href="logout">Αποσύνδεση</a></li>
+
+        </ul>
+    </div>
+</div>
+</div>{%endblock %}

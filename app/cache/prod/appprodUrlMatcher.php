@@ -55,6 +55,26 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'profile',);
         }
 
+        // sell_new
+        if ($pathinfo === '/sell_new') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\SellController::newAction',  '_route' => 'sell_new',);
+        }
+
+        // price
+        if ($pathinfo === '/price') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\PriceController::newAction',  '_route' => 'price',);
+        }
+
+        // edit_new
+        if ($pathinfo === '/edit_new') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editnewAction',  '_route' => 'edit_new',);
+        }
+
+        // edit_new_sell
+        if ($pathinfo === '/edit_new_sell') {
+            return array (  '_controller' => 'Acme\\UserBundle\\Controller\\ProfileController::editnewsellAction',  '_route' => 'edit_new_sell',);
+        }
+
         // fos_user_security_login
         if ($pathinfo === '/login') {
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);

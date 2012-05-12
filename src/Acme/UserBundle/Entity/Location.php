@@ -43,6 +43,33 @@ class Location
      */
     private $date;
 
+
+    /**
+     * @var string $organiser
+     *
+     * @ORM\Column(name="organiser", type="string", length=255)
+     */
+    private $organiser;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string $extrainfo
+     *
+     * @ORM\Column(name="extrainfo", type="string", length=255)
+     */
+    private $extrainfo;
+
+
+
+
+
+
     /**
      * Notice the latitude property must have a setter
      */
@@ -159,4 +186,64 @@ class Location
     }
 
    
+
+    /**
+     * Set organiser
+     *
+     * @param string $organiser
+     */
+    public function setOrganiser($organiser)
+    {
+        $this->organiser = $organiser;
+    }
+
+    /**
+     * Get organiser
+     *
+     * @return string 
+     */
+    public function getOrganiser()
+    {
+        return $this->organiser;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set extrainfo
+     *
+     * @param string $extrainfo
+     */
+    public function setExtrainfo($extrainfo)
+    {
+        $this->extrainfo = $extrainfo;
+    }
+
+    /**
+     * Get extrainfo
+     *
+     * @return string 
+     */
+    public function getExtrainfo()
+    {
+        return $this->extrainfo;
+    }
 }

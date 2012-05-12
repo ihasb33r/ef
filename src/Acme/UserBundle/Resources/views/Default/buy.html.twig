@@ -1,69 +1,65 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 {% block content %}
 <div class="row">
-    <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
-    </div>
-</div>
-<div class="row article"><div class="six columns offset-by-one">
-{%for location in loca%}
-{%for key in loc%}
-{%if location.id==key%}
+    <div class="span9 listing">
+        {%for location in loca%}
+        {%for key in loc%}
+        {%if location.id==key%}
 
-<h5>Παζάρι με: {{location.product.name}}</h5>
+        <h5>Παζάρι με: {{location.product.name}}</h5>
 
-{%for sell in sell%}
+        {%for sell in sell%}
 
-{%if sell.location.id==key%}
-	{%for user in users%}
-		{%if user.id==sell.user.id%}
-<table><tr><td>	<h6>Παραγωγός:{{user.name}} {{user.lastname}}</h6></td><td> <img src="/ef/web/images/stars.png"></td></tr>
-		{%endif%}
-	{% endfor %}
-<tr><td><h6>Προέλευση: </td><td>{{sell.origin}}</h6></td></tr>
+        {%if sell.location.id==key%}
+        {%for user in users%}
+        {%if user.id==sell.user.id%}
+        <table><tr><td>	<h6>Παραγωγός:{{user.name}} {{user.lastname}}</h6></td><td> <img src="/ef/web/images/stars.png"></td></tr>
+            {%endif%}
+            {% endfor %}
+            <tr><td><h6>Προέλευση: </td><td>{{sell.origin}}</h6></td></tr>
 
-<tr><td><h6>Αρχική ποσότητα: </td><td>{{sell.quantity}} κιλά</h6></td></tr>
-<tr><td><h6>Τιμή:</td><td> {{sell.price}} ευρώ</h6>
-<tr><td><h6>Η ελάχιστη ποσότητα παραγγελιών είναι:</td><td>{{sell.minquantity}}	κιλά</h6></td></tr>
+            <tr><td><h6>Αρχική ποσότητα: </td><td>{{sell.quantity}} κιλά</h6></td></tr>
+            <tr><td><h6>Τιμή:</td><td> {{sell.price}} ευρώ</h6>
+                    <tr><td><h6>Η ελάχιστη ποσότητα παραγγελιών είναι:</td><td>{{sell.minquantity}}	κιλά</h6></td></tr>
 
-</td></tr>
- <form  action="{{ path('buy_new') }}" method="post"  class="nice">
-<input type="hidden" name="id" value="{{sell.id}}"/>
-<tr><td><h6>Ποσότητα:</td><td><input type="text" name="quant" /></h6></td></tr>
-<tr><td></td><td><button type="submit">Αγορά</button></td></tr>
-</form>
-</table>
-   {%endif%}
-{%endfor%}
-   {%endif%}
+            </td></tr>
+            <form  action="{{ path('buy_new') }}" method="post"  class="nice">
+                <input type="hidden" name="id" value="{{sell.id}}"/>
+                <tr><td><h6>Ποσότητα:</td><td><input type="text" name="quant" /></h6></td></tr>
+                <tr><td></td><td><button type="submit">Αγορά</button></td></tr>
+            </form>
+        </table>
+        {%endif%}
+        {%endfor%}
+        {%endif%}
 
-{%endfor%}
- {% endfor %}
+        {%endfor%}
+        {% endfor %}
 
 
-</form>
+    </form>
 </div>
 </div>
 {% endblock%}
 
 {% block sidebar %}
 <div class="three colums nava">
-	<div class="art-vmenublock">
-									<div class="art-vmenublock-body">
-										<div class="art-vmenublockcontent">
-											<div class="art-vmenublockcontent-body">
-												<ul class="art-vmenu">
-												
-													<li><a href="pazari" ><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
-													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
-													<li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
-													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
-											
-												</ul>
-												<div class="cleared"></div>
-											</div>
-										</div>
-										<div class="cleared"></div>
-									</div>
-									</div>
-								</div>{%endblock %}
+    <div class="art-vmenublock">
+        <div class="art-vmenublock-body">
+            <div class="art-vmenublockcontent">
+                <div class="art-vmenublockcontent-body">
+                    <ul class="art-vmenu">
+
+                        <li><a href="pazari" ><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
+                        <li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
+                        <li><a href="price"><span class="l"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
+                        <li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
+
+                    </ul>
+                    <div class="cleared"></div>
+                </div>
+            </div>
+            <div class="cleared"></div>
+        </div>
+    </div>
+</div>{%endblock %}
