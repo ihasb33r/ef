@@ -1,0 +1,94 @@
+
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %}
+Διαχείριση
+{% endblock %}
+
+
+{% block content %}
+
+<script>
+
+    $(document).ready(function(){
+        $($(this).attr("href")).modal();
+    $(".edit").click( function (){
+
+        $("#myModalForm h3").html("Επεξεργασία");
+        $("#myModalForm form").attr("action", "edit");
+        $("#myModalForm #productname").attr("value", "patata");
+
+    });
+
+    $(".new").click( function (){
+
+//        $($(this).attr("href")).show();
+        $("#myModalForm h3").html("Καινούριο Προϊόν");
+        $("#myModalForm form").attr("action", "new");
+
+    });
+});
+
+</script>
+
+<h1>Διαχείριση Προϊόντων</h1>
+<div class="row">
+    <div class="span9 listing">
+        <table class="admin table-striped">
+            <thead>
+                <tr><th></th>
+                    <th>ID</th>
+                    <th>Φωτογραφία</th>
+                    <th>Όνομα</th>
+                </tr>
+                </thead>
+                <tbody>
+        {% for product  in products %}
+            <tr>
+                <td><a id="edit{{product.id}}" data-toggle="modal" class="edit" href="#myModalForm">Επεξεργασία</a></td>
+                <td>{{product.id}}</td>
+                <td><img src="{{asset(product.image)}}"></td>
+                <td>{{product.name}}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        <a data-toggle="modal" class="btn btn-large new" href="#myModalForm">Καινούριο Προϊόν</a>
+    </div>
+</div>
+
+<div class="modal" id="myModalForm">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3 id="modalheader"></h3>
+    </div>
+    <div class="modal-body">
+        <form action="" id="modalForm">
+            <input type="hidden" class="input-xlarge" id="input01">
+            <div class="control-group">
+                <label class="control-label" for="input01">Όνομα προϊόντος</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge" name="name" id="productname">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="fileInput">Φωτογραφία</label>
+                <div class="controls">
+                    <input class="input-file" id="fileInput" type="file">
+                </div>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Close</a>
+        <a href="#" class="btn btn-primary">Save changes</a>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

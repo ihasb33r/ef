@@ -1,0 +1,12 @@
+
+admin:
+    pattern: /
+    defaults: { _controller: AcmeUserBundle:Admin:index }
+
+adminproducts:
+    pattern: /products
+    defaults: { _controller: AcmeUserBundle:AdminProducts:index }
+
+adminlocations:
+    pattern: /locations
+    defaults: { _controller: AcmeUserBundle:AdminLocations:index }
