@@ -1,10 +1,30 @@
+html{
+    min-height:100%;
+}
+
 body{
+    min-height:100%;
     background-image:url("../img/background-bottom.png");
     background-repeat:repeat-x;
     padding-bottom:200px;
-    background-position:center bottom;
+    background-position:right bottom;
     padding-top:20px;
 }
+p.extrainfo{
+
+    font-size:1em;
+
+}
+h1 {
+    font-size:2em;
+background-color:#506100;
+color:white;
+padding: 10px 30px;
+float:left;
+margin-bottom:20px;
+border-radius:5px;
+}
+
 .listing,.sidebar {
     background-color:white;
     border-radius:3px;
@@ -15,15 +35,17 @@ body{
     border:1px solid #c6d0d2;
 }
 
-.listing h2{
+.listing .title h2{
     margin-top:10px;
     padding-left:20px;
+    float:left;
 }
-.listing h2 span{
+.listing .title h2 span{
     font-size:0.7em;
     color: #9C755E;
 }
-.listing h3{
+.listing .title h3{
+    float:right;
     padding-right: 20px;
     margin-top: 20px;
     text-align:right;
@@ -39,6 +61,7 @@ body{
 .sidebar {
     background-color:white;
     border-radius:3px;
+    margin-top:75px;
 }
 .logo {
     background-color:white;
@@ -52,9 +75,7 @@ body{
     box-shadow: 0px 10px 15px -10px #b0bdc0;
 }
 .logo img {
-
-    width:75%;
-
+    width:50%;
 }
 .phone {
     background-color:white;
@@ -66,7 +87,7 @@ body{
 }
 
 .top {
-    margin-bottom:40px;
+    margin-bottom:20px;
 }
 
 .nav{
@@ -109,32 +130,91 @@ body{
     font-family: "Comfortaa", sans-serif;
 }
 
-.imgmap, .details{
-    margin-left:20px;
+.imgmap {
     margin-right:20px;
+    margin-left:20px;
+}
+.details {
     margin-top:20px;
+    margin-left:20px;
 }
 
 .imgmap .map {
     border:solid 1px #ddd;
-    height:265px;
-    margin-left:20px;
-    display:inline-block;
-    float:right;
+    height:202px;
     width:100%;
-
-
 }
 .imgmap .map img{
     max-width:none;
 }
-.imgmap img.product{
+.details img.product{
     float:left;
-    width:25%;
     border:solid 1px #ddd;
+    width:152px;
+    height:152px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
+.details p {
+    float:left;
+
+    margin-left:40px;
+    margin-top:10px;
+    margin-right:20px;
+
+}
+
+dl.info {
+    width:30%;
+    font-size:1.0em;
+    line-height:1.5em;
+    float:left;
+    margin-right:40px;
+}
+
+dl.info dt {
+    font-family:"Comfortaa", sans-serif;
+    font-weight:normal;
+    line-height:1.5em;
+    border-radius:10px;
+    font-weight:bold;
+
+}
+
+dl.info dd {
+    font-weight:bold;
+    margin-bottom:10px;
+    line-height:1.5em;
+}
+
+
+.admin {
+    margin-left:20px;
+    margin-top:20px;
+    margin-bottom:20px;
+    width:90%;
+}
+.admin td{
+    padding:5px;
+    text-align:center;
+}
+
+
+.admin img {
+    width:60px;
+}
+
+.new {
+    margin-left:20px;
+    margin-bottom:40px;
+
 }
 
 /*overrides of bootstrap */
+
+
+
 h1,h2,h3,h4,h5,h6 {
     line-height:1.5em;
 }
@@ -159,4 +239,8 @@ h1,h2,h3,h4,h5,h6 {
 
 .nav>li>a:hover {
     background-color:transparent;
+}
+
+.modal {
+    display:none;
 }

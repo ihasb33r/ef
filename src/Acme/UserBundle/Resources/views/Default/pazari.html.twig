@@ -10,6 +10,12 @@
 
 {% block content %}
 
+<div class="row">
+    <div class="span9">
+        <h1> Επόμενα Παζάρια </h1>
+    </div>
+</div>
+
 
 {%for location in locat %}	
 {% if ((location.date|date()) > ("now"|date())) %}
@@ -18,40 +24,54 @@
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
-            <div class="span6">
-                <h2><span>Παζάρι με:</span> {{prod.name}}</h2>
-            </div>
-            <div class="span3">
+            <div class="span9 title">
+                <h2><span class="hidden-phone">Παζάρι με:</span> {{prod.name}}</h2>
                 <h3>{{location.date|date("d/m/Y")}}</h3>
             </div>
         </div>
         <div class="row">
-            <div class="span4" >
+            <div class="span2" >
                 <div class="details">
                     <img class="product" src="{{ asset (prod.image)}}">
-                    <dl>
+                </div>
+            </div>
+            <div class="span7">
+                <div class="details">
+                    <dl class="info">
                         <dt>Οργανωτής</dt>
                         <dd>{{location.organiser}}</dd>
 
                         <dt>Τοποθεσία</dt> <dd>{{ location.name }}</dd>
                         <dt>Διεύθυνση</dt><dd> {{ location.address}} </dd>
                     </dl>
+                    <dl class="info">
+                        <dt>Τηλέφωνο επικοινωνίας</dt>
+                        <dd>210212121</dd>
+                        <dt>Ώρα έναρξης</dt>
+                        <dd>8:00</dd>
+                        <dt>Ώρα λήξης</dt>
+                        <dd>16:00</dd>
+                    </dl>
+                    <p class="extrainfo"> {{location.extrainfo }}</p>
+                    
                 </div>
             </div>
-            <div class="span5">
+        </div>
+        <div class="row">
+            <div class="span9">
                 <div class="imgmap">
                     <div class="map" id="#map{{location.id}}"></div>
                 </div>
             </div>
-        </div>
-        <script>	
-            addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}");
-        </script>
-        <div class="row">
-            <div class="span9 buttons"><a class="btn btn-large" href="{{ path('buy')}}">Προβολή προσφορών</a>
-                <a class="btn btn-large" href="{{ path('sell')}}">Συμμετοχή ως αγρότης</a></div>
+            <div class="row">
+                <div class="span9 buttons"><a class="btn btn-large" href="{{ path('buy')}}">Προβολή προσφορών</a>
+                    <a class="btn btn-large" href="{{ path('sell')}}">Συμμετοχή ως αγρότης</a></div>
+            </div>
         </div>
     </div>
+    <script>	
+        addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}", "{{location.name}}", "2102121222" );
+    </script>
 </div>
 
 {%endif%}

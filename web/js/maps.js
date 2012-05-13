@@ -1,5 +1,5 @@
 
-var addmap = function(id,lat, lng, ttl) {
+var addmap = function(id,lat, lng, ttl, name, phone) {
     var latlng = new google.maps.LatLng(lat, lng);
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
@@ -15,7 +15,7 @@ var addmap = function(id,lat, lng, ttl) {
         map: map, 
         title: ttl
     }); 
-    var contentString ="<h5>"+ttl+"</h5>"
+    var contentString ="<h5>"+name+"</h5><h6>"+ttl+"</h6><h6>"+phone+"</h6>";
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
