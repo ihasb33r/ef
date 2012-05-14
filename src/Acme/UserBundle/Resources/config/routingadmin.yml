@@ -7,6 +7,14 @@ adminproducts:
     pattern: /products
     defaults: { _controller: AcmeUserBundle:AdminProducts:index }
 
+admin_product_new:
+    pattern: /products_new
+    defaults: { _controller: AcmeUserBundle:AdminProducts:upload }
+
 adminlocations:
     pattern: /locations
     defaults: { _controller: AcmeUserBundle:AdminLocations:index }
+
+admin_locations_new:
+    pattern: /locations_new
+    defaults: { _controller: AcmeUserBundle:AdminLocations:upload }

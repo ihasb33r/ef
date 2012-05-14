@@ -2,11 +2,11 @@
 namespace Acme\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Acme\UserBundle\Entity\Products;
+use Acme\UserBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-//use Symfony\Component\Security\Core\User\UserInterface;
-//use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
 class AdminProductsController extends Controller
 {
@@ -16,8 +16,38 @@ class AdminProductsController extends Controller
         $products = $em->getRepository('AcmeUserBundle:Product')->findAll();
         return $this->render('AcmeUserBundle:Admin:products.html.twig', array('products'=>$products));
     }
-    public function newAction()
+    public function uploadAction(Request $request)
     {
+        $product = new Product();
+
+        $form = $this->createFormBuilder($product)
+            ->add('name', "text")
+            ->add('file', "text")
+            ->getForm()
+            ;
+
+        $myrequest = $this->getRequest();
+        if ($this->getRequest()->getMethod() === 'POST') {
+            $form->bindRequest($myrequest);
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getEntityManager();
+                $product->upload();
+                $em->persist($product);
+                $em->flush();
+                echo "mi gamiese<br/>";
+            }
+            else
+            {
+                echo "a gamisou<br/>";
+            }
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        $products = $em->getRepository('AcmeUserBundle:Product')->findAll();
+
+        return $this->render('AcmeUserBundle:Admin:products.html.twig', array('products'=>$products));
+
+
+
         /*
         $id=$_POST['id'];	
         $user = $this->container->get('security.context')->getToken()->getUser();

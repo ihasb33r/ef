@@ -2,6 +2,7 @@
 
 namespace Acme\UserBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +37,56 @@ class Product
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
+
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+
+
+    public function upload()
+    {
+/*
+        if( null === $this->file){
+            return;
+        }
+ */
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        // set the path property to the filename where you'ved saved the file
+        $this->path = $this->file->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRoodDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image? null : $this->getUploadDir().'/'.$this->image;
+
+    }
+
+
+    public function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this.getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        return 'img/products';
+    }
+
+
+
 
 
     /**
@@ -96,7 +147,7 @@ class Product
 
     public function __construct()
     {
-        $this->location = new ArrayCollection();
+        $this->location = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -118,5 +169,10 @@ class Product
     {
         return $this->location;
     }
+
+
+
+
+
 
 }
