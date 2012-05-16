@@ -10,6 +10,9 @@ adminproducts:
 admin_product_new:
     pattern: /products_new
     defaults: { _controller: AcmeUserBundle:AdminProducts:upload }
+admin_product_delete:
+    pattern: /products_delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminProducts:delete }
 
 adminlocations:
     pattern: /locations

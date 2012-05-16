@@ -10,41 +10,44 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 class AdminProductsController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
         $products = $em->getRepository('AcmeUserBundle:Product')->findAll();
         return $this->render('AcmeUserBundle:Admin:products.html.twig', array('products'=>$products));
     }
+    public function deleteAction($id){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $products = $em->getRepository('AcmeUserBundle:Product')->findOneById($id);
+        $em->remove($products);
+        $em->flush();
+        return $this->indexAction();
+
+
+    }
     public function uploadAction(Request $request)
     {
         $product = new Product();
-
         $form = $this->createFormBuilder($product)
             ->add('name', "text")
-            ->add('file', "text")
+            ->add('file', "file")
             ->getForm()
             ;
-
-        $myrequest = $this->getRequest();
-        if ($this->getRequest()->getMethod() === 'POST') {
-            $form->bindRequest($myrequest);
-            if ($form->isValid()){
-                $em = $this->getDoctrine()->getEntityManager();
-                $product->upload();
-                $em->persist($product);
-                $em->flush();
-                echo "mi gamiese<br/>";
+        if ($this->getRequest()->get('ajax')=="true"){
+            if ($this->getRequest()->getMethod() === 'POST') {
+                $form->bindRequest($this->getRequest());
+                if ($form->isValid()){
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $product->upload();
+                    $em->persist($product);
+                    $em->flush();
+                }
             }
-            else
-            {
-                echo "a gamisou<br/>";
-            }
+            $em = $this->getDoctrine()->getEntityManager();
+            $products = $em->getRepository('AcmeUserBundle:Product')->findAll();
         }
-        $em = $this->getDoctrine()->getEntityManager();
-        $products = $em->getRepository('AcmeUserBundle:Product')->findAll();
-
-        return $this->render('AcmeUserBundle:Admin:products.html.twig', array('products'=>$products));
+        return $this->render('AcmeUserBundle:Admin:add_product.html.twig', array('form'=>$form->createView()));
 
 
 
@@ -74,6 +77,7 @@ class AdminProductsController extends Controller
         return $this->render('AcmeUserBundle:Default:sell_new.html.twig');
          */
     }
+
 
 
 

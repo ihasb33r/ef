@@ -26,6 +26,7 @@ border-radius:5px;
 }
 
 .listing,.sidebar {
+    clear:left;
     background-color:white;
     border-radius:3px;
     margin-bottom:30px;
@@ -210,6 +211,44 @@ dl.info dd {
     margin-bottom:40px;
 
 }
+
+.edit-icon {
+    background-image:url("../img/icons/edit-icon.png");
+    width:12px;
+    height:12px;
+    display:block;
+    float:left;
+    margin-right:5px;
+    margin-left:10px;
+    background-repeat:no-repeat;
+}
+.delete-icon {
+    background-image:url("../img/icons/delete-icon.png");
+    width:12px;
+    height:12px;
+    display:block;
+    float:left;
+    margin-right:10px;
+    margin-left:5px;
+    background-repeat:no-repeat;
+}
+
+.new-icon {
+    width:12px;
+    height:12px;
+    display:block;
+    float:left;
+    margin-right:8px;
+    margin-left:0px;
+    margin-top:4px;
+    background-repeat:no-repeat;
+    background-image:url("../img/icons/plus-icon.png");
+
+}
+.actions {
+    width:70px;
+}
+
 
 /*overrides of bootstrap */
 
