@@ -33,6 +33,7 @@ h1 {
 }
 
 .listing .title h2{
+    height:30px;
     margin-top:10px;
     padding-left:20px;
     float:left;
@@ -42,9 +43,10 @@ h1 {
     color: #9C755E;
 }
 .listing .title h3{
+    height:30px;
     float:right;
     padding-right: 20px;
-    margin-top: 20px;
+    margin-top: 17px;
     text-align:right;
 }
 .buttons{
@@ -272,6 +274,10 @@ dl.info dd {
     width:70px;
 }
 
+.spacing {
+    margin:20px;
+}
+
 
 /*overrides of bootstrap */
 
@@ -299,6 +305,9 @@ h1,h2,h3,h4,h5,h6 {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.06);
     -webkit-font-smoothing: antialiased;
 }
+
+
+
 
 .nav>li>a:hover {
     background-color:transparent;
