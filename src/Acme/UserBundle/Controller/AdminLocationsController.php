@@ -18,6 +18,29 @@ class AdminLocationsController extends Controller
     }
     public function newAction()
     {
+        $location = new Location();
+        $form = $this->createFormBuilder($location)
+            ->add('name', "text")
+            ->add('longitude', "number")
+            ->add('latitude', "number")
+            ->add('organiser', "text")
+            ->add('extrainfo', "textarea")
+            ->add('date', "date")
+            ->add('address', "text")
+            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
+            ->getForm()
+            ;
+        if ($this->getRequest()->get('ajax')=="true"){
+            if ($this->getRequest()->getMethod() === 'POST') {
+                $form->bindRequest($this->getRequest());
+                if ($form->isValid()){
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($location);
+                    $em->flush();
+                }
+            }
+        }
+        return $this->render('AcmeUserBundle:Admin:add_location.html.twig', array('form'=>$form->createView()));
         /*
         $id=$_POST['id'];	
         $user = $this->container->get('security.context')->getToken()->getUser();

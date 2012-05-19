@@ -8,6 +8,36 @@
 
 
 {% block content %}
+
+<script>
+
+    $(document).ready(function(){
+        $($(this).attr("href")).modal();
+    $(".edit").click( function (){
+
+        $("#myModalForm h3").html("Επεξεργασία");
+        $("#myModalForm form").attr("action", "edit");
+        $("#myModalForm #productname").attr("value", "patata");
+
+    });
+
+    $(".new").click( function (){
+
+        $("#myModalForm .modal-body")
+        $.get("{{path('admin_locations_new')}}", function(data){
+
+            $("#myModalForm .modal-body").empty();
+            $("#myModalForm .modal-body").append(data);
+            $("#myModalForm h3").html("Καινούρια Συνάντηση");
+            
+        });
+//        $($(this).attr("href")).show();
+//        $("#myModalForm form").attr("action", "{{path('admin_product_new')}}");
+
+    });
+});
+</script>
+
 <h1>Διαχείριση Προϊόντων</h1>
 <div class="row">
     <div class="span9 listing">
@@ -41,6 +71,20 @@
         {% endfor %}
             </tbody>
         </table>
+        <a data-toggle="modal" class="btn btn-large new" href="#myModalForm"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
+    </div>
+</div>
+
+<div class="modal" id="myModalForm">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3 id="modalheader"></h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Close</a>
+        <a href="#" id="save" class="btn btn-primary" >Save changes</a>
     </div>
 </div>
 

@@ -6,18 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
 {% endblock %}
-
 {% block sidebar %}
-<div class="row ">
-    <div class="span3 sidebar">
-        <ul class="extra-nav">
-            <li><a href="/admin" >Αρχική</a></li>
-            <li><a href="/adming/products">Διαχείριση Προϊόντων</a></li>
-            <li><a href="/admin/meetings">Διαχείριση Συνάντησεων</a></li>
-            <li><a href="/admin/users">Διαχείριση Χρηστών</a></li>
-        </ul>
-    </div>
-</div>
-</div>{%endblock %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

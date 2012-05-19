@@ -14,6 +14,7 @@ class AdminController extends Controller
 {
     public function indexAction(Request $request)
     {
+
         return $this->render('AcmeUserBundle:Admin:admin.html.twig', array());
     }
     public function newAction()

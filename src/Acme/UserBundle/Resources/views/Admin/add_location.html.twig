@@ -1,0 +1,59 @@
+
+<form action='{{path ("admin_locations_new")}}' {{form_enctype(form) }} method="POST" id="modalForm">
+    <div class="control-group">
+        {{form_label(form.name,"Όνομα Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.name)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.address)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.latitude,"Γεωγραφικό Πλάτος", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.latitude)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.longitude,"Γεωγραφικό Μήκος", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.longitude)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.date,"Ημερομηνία", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.date) }} 
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.organiser,"Όνομα Οργανωτή", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.organiser)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.extrainfo,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.extrainfo)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.product,"Προιόν", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.product)}}
+        </div>
+    </div>
+    {{ form_rest(form)}}
+    <input name="ajax" value="true" type="hidden"/>
+</form>
+<script> 
+    $("#save").click(function(){
+
+$("#modalForm").submit();
+
+    });

@@ -20,4 +20,4 @@ adminlocations:
 
 admin_locations_new:
     pattern: /locations_new
-    defaults: { _controller: AcmeUserBundle:AdminLocations:upload }
+    defaults: { _controller: AcmeUserBundle:AdminLocations:new }

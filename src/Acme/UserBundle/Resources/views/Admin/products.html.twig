@@ -25,6 +25,7 @@
 
         $("#myModalForm .modal-body")
         $.get("{{path('admin_product_new')}}", function(data){
+            $("#myModalForm .modal-body").empty();
 
             $("#myModalForm .modal-body").append(data);
             $("#myModalForm h3").html("Καινούριο Προϊόν");
