@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Location
 {
-     /**
+    /**
      * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,7 +36,7 @@ class Location
      * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
-        /**
+    /**
      * @var date $date
      *
      * @ORM\Column(name="date", type="date")
@@ -66,8 +66,26 @@ class Location
     private $extrainfo;
 
 
+    /**
+     * @var string $phone
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    private $phone;
 
+    /**
+     * @var string $starttime
+     *
+     * @ORM\Column(name="starttime", type="string", length=255)
+     */
+    private $starttime;
 
+    /**
+     * @var string $endtime
+     *
+     * @ORM\Column(name="endtime", type="string", length=255)
+     */
+    private $endtime;
 
 
     /**
@@ -86,7 +104,7 @@ class Location
         $this->longitude = $value;
     }
 
-    
+
 
     /**
      * Get latitude
@@ -156,13 +174,13 @@ class Location
     public function getDate()
     {
         return $this->date;
-	
+
     }
-	/**
-	     * @ORM\ManyToOne(targetEntity="Product", inversedBy="location")
-	     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
-	     */
-	    protected $product;
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="location")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
 
 
     /**
@@ -185,7 +203,7 @@ class Location
         return $this->product;
     }
 
-   
+
 
     /**
      * Set organiser
@@ -245,5 +263,65 @@ class Location
     public function getExtrainfo()
     {
         return $this->extrainfo;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set starttime
+     *
+     * @param string $starttime
+     */
+    public function setStarttime($starttime)
+    {
+        $this->starttime = $starttime;
+    }
+
+    /**
+     * Get starttime
+     *
+     * @return string 
+     */
+    public function getStarttime()
+    {
+        return $this->starttime;
+    }
+
+    /**
+     * Set endtime
+     *
+     * @param string $endtime
+     */
+    public function setEndtime($endtime)
+    {
+        $this->endtime = $endtime;
+    }
+
+    /**
+     * Get endtime
+     *
+     * @return string 
+     */
+    public function getEndtime()
+    {
+        return $this->endtime;
     }
 }
