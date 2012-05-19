@@ -74,16 +74,16 @@ class Location
     private $phone;
 
     /**
-     * @var string $starttime
+     * @var time $starttime
      *
-     * @ORM\Column(name="starttime", type="string", length=255)
+     * @ORM\Column(name="starttime", type="time")
      */
     private $starttime;
 
     /**
-     * @var string $endtime
+     * @var time $endtime
      *
-     * @ORM\Column(name="endtime", type="string", length=255)
+     * @ORM\Column(name="endtime", type="time")
      */
     private $endtime;
 
@@ -285,10 +285,11 @@ class Location
         return $this->phone;
     }
 
+
     /**
      * Set starttime
      *
-     * @param string $starttime
+     * @param time $starttime
      */
     public function setStarttime($starttime)
     {
@@ -298,7 +299,7 @@ class Location
     /**
      * Get starttime
      *
-     * @return string 
+     * @return time 
      */
     public function getStarttime()
     {
@@ -308,7 +309,7 @@ class Location
     /**
      * Set endtime
      *
-     * @param string $endtime
+     * @param time $endtime
      */
     public function setEndtime($endtime)
     {
@@ -318,7 +319,7 @@ class Location
     /**
      * Get endtime
      *
-     * @return string 
+     * @return time 
      */
     public function getEndtime()
     {

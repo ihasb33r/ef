@@ -33,6 +33,7 @@
             </div>
             <div class="span7">
                 <div class="details">
+                    <div class="groupinfo">
                     <dl class="info">
                         <dt>Οργανωτής</dt>
                         <dd>{{location.organiser}}</dd>
@@ -41,14 +42,21 @@
                         <dt>Διεύθυνση</dt><dd> {{ location.address}} </dd>
                     </dl>
                     <dl class="info">
-                        <dt>Τηλέφωνο επικοινωνίας</dt>
-                        <dd>210212121</dd>
+                        <dt>Τηλέφωνο </dt>
+                        <dd>{{ location.phone }}</dd>
                         <dt>Ώρα έναρξης</dt>
-                        <dd>8:00</dd>
+                        <dd>{{ location.starttime | date("H:00") }}</dd>
                         <dt>Ώρα λήξης</dt>
-                        <dd>16:00</dd>
+                        <dd>{{ location.endtime | date("H:00") }}</dd>
                     </dl>
-                    <p class="extrainfo"> {{location.extrainfo }}</p>
+                    <div class="clearfix"></div>
+                </div>
+                    <dl class="extrainfo">
+                        <dt >Επιπλέον Πληροφορίες </dt>
+                        <dd > {{location.extrainfo }}</dd>
+                    </dl>
+
+                    <div class="clearfix"></div>
                     
                 </div>
             </div>
