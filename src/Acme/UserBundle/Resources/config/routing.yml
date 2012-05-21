@@ -7,19 +7,28 @@ pazari:
     pattern:  /pazari
     defaults: { _controller: AcmeUserBundle:Pazari:index }
 sell:
-    pattern:  /sell
+    pattern:  /sell/
     defaults: { _controller: AcmeUserBundle:Sell:index }
 sell_add:
     pattern: /sell_add
     defaults: { _controller: AcmeUserBundle:Sell:index }
 buy:
-    pattern:  /buy
+    pattern:  /buy/
     defaults: { _controller: AcmeUserBundle:Buy:index }
 buy_new:
     pattern:  /buy_new
     defaults: { _controller: AcmeUserBundle:Buy:new }
 profile:
     pattern:  /profile
+    defaults: { _controller: AcmeUserBundle:Profile:show}
+edit:
+    pattern:  /edit/
+    defaults: { _controller: AcmeUserBundle:Profile:edit}
+edit_new:
+    pattern:  /edit_new
+    defaults: { _controller: AcmeUserBundle:Profile:editnew}
+poulimena:
+    pattern:  /poulimena
     defaults: { _controller: AcmeUserBundle:Profile:show}
 sell_new:
     pattern:  /sell_new

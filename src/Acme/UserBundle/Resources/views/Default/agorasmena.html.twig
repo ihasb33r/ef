@@ -1,27 +1,30 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Τι έχω αγοράσει {% endblock %}
 {% block content %}
+<h1> Τι έχω αγοράσει</h1>
 <div class="row">
-    <div class="span9">
-         
-         <h1>  Συγχαρητήρια</h1>  </div>
-</div>
-<div class="row ">
-<div class="span9 listing">
-	<div class="row">
-            <div class="span7">
-                <div class="details">
-{%for key in kod%}
-<h6>Η αγορά σας πραγματοποιήθηκε επιτυχώς</h6>
-<h6>Ο κωδικός αγοράς σας είναι: 000000{{key}}</h6>
+    <div class="span9 listing">
+
+{%for key in l%}
+	<h6>Η ημερομηνία του παζαριού είναι:{{key.date|date("d/m/Y")}}</h6>
+							
+								<h6>Σε ποσότητα: {{key.quantity}} κιλά</h6>
+			<h6>Με ελάχιστη ποσότητα αγοράς: {{key.min_quantity}} κιλά</h6></br>
+						
+	
 {%endfor%}
+
 </div>
-</div></div></div></div>
-{% endblock%}
+</div>
+
+{%endblock %}
 {% block sidebar %}
 <div class="row ">
     <div class="span3 sidebar">
         <ul class="extra-nav">
-  <li><a href="pazari" >Αρχική</a></li>
+
+            <li><a href="pazari" >Αρχική</a></li>
             <li><a href="profile">Τι έχω αγοράσει</a></li>
 			<li><a href="profile">Τι έχω πουλήσει</a></li>
             <li><a href="price">Πόσο κοστίζει</a></li>

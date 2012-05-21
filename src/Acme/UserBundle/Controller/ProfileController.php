@@ -19,42 +19,63 @@ class ProfileController extends Controller
         if (!is_object($users) || !$users instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-		 $id[]=$users->getId();
-		  $em = $this->getDoctrine()->getEntityManager();
-		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findAll(); 
-		 $loc= $em->getRepository('AcmeUserBundle:Location')->findAll(); 
-$product= $em->getRepository('AcmeUserBundle:Product')->findAll();
-		$buy = $em->getRepository('AcmeUserBundle:Buy')->findAll(); 
-			 
-        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Profile:show_content.html.'.$this->container->getParameter('fos_user.template.engine'), array('buy'=>$buy, 'sell'=>$sell, 'loc'=>$loc, 'id'=>$id, 'product'=>$product));
+		 $id=$users->getId();
+		 
+		 $query = $this->getDoctrine()->getEntityManager()
+        ->createQuery('SELECT s.id, l.address, s.price, s.origin, l.date, s.quantity, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$id) ;
+		
+		 try {
+        $l=$query->getResult();
+		
+    } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    }
+	
+		
+      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('l'=>$l));
     }
 
-    /**
-     * Edit the user
-     */
+    
     public function editAction()
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-	 $id[]=$user->getId();
-			$em = $this->getDoctrine()->getEntityManager();
-			$sell = $em->getRepository('AcmeUserBundle:Sell')->findAll();
-			$buy = $em->getRepository('AcmeUserBundle:Buy')->findAll();
-			$location = $em->getRepository('AcmeUserBundle:Location')->findAll();
-			$product = $em->getRepository('AcmeUserBundle:Product')->findAll();
-        return $this->container->get('templating')->renderResponse(
-            'AcmeUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-           array('sell'=>$sell, 'buy'=>$buy, 'location'=>$location, 'product'=>$product, 'id'=>$id  ));
+      $id=$_GET['id'];
+	   $query = $this->getDoctrine()->getEntityManager()
+        ->createQuery('SELECT s.id, l.address, s.price, s.origin, l.date, s.quantity, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$id) ;
+		
+		 try {
+        $l=$query->getResult();
+		
+    } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
     }
-	public function editnewAction()
-	{}
-	public function editnewsellAction()
-	{}
+	
+		
+      return $this->render('AcmeUserBundle:Default:poulimena_edit.html.twig', array('l'=>$l));
 
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->setFlash($action, $value);
     }
+	
+	public function editnewAction()
+    {
+	
+ $id=$_POST['id'];	
+	 $em = $this->getDoctrine()->getEntityManager();
+    $sell = $em->getRepository('AcmeUserBundle:Sell')->find($id);
+
+    if (!$sell) {
+        throw $this->createNotFoundException('No product found for id '.$id);
+    }
+  
+	$sell->setQuantity($_POST['quantity']);
+	$sell->setMinquantity($_POST['min_quantity']);
+	$sell->setPrice($_POST['price']);
+	$sell->setOrigin($_POST['origin']);
+    $em->flush();
+ 
+ 
+ return $this->render('AcmeUserBundle:Default:poulimena_edit_new.html.twig');
+	
+	}
+	
+	
+	
 }

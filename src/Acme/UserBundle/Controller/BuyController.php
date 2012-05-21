@@ -11,12 +11,29 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class BuyController extends Controller
 {
     public function indexAction()
-    { $loc[]=$_GET['id'];
-    $em = $this->getDoctrine()->getEntityManager();
-    $sell = $em->getRepository('AcmeUserBundle:Sell')->findAll(); 
-    $users = $em->getRepository('AcmeUserBundle:User')->findAll();
-    $loca=$em->getRepository('AcmeUserBundle:Location')->findAll();
-    return $this->render('AcmeUserBundle:Default:buy.html.twig', array ('sell'=>$sell, 'users'=>$users, 'loc'=>$loc, 'loca'=>$loca));
+    { 
+	$id=$_GET['id'];
+	 $query = $this->getDoctrine()->getEntityManager()
+        ->createQuery('SELECT p.name FROM AcmeUserBundle:Location l JOIN l.product p  WHERE l.id='.$id) ;
+		
+		 try {
+        $p=$query->getResult();
+		
+    } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    }
+	
+	$q = $this->getDoctrine()->getEntityManager()
+        ->createQuery('SELECT s.id, u.name, s.origin, s.quantity, s.min_quantity, s.price FROM AcmeUserBundle:Sell s JOIN s.user u ') ;
+		
+		 try {
+        $b=$q->getResult();
+		
+    } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    }
+
+    return $this->render('AcmeUserBundle:Default:buy.html.twig', array ('p'=>$p, 'b'=>$b));
     }
 
 
