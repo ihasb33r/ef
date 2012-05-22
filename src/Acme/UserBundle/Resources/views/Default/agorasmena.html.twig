@@ -3,30 +3,74 @@
 {% block title %} Τι έχω αγοράσει {% endblock %}
 {% block content %}
 <h1> Τι έχω αγοράσει</h1>
+
 <div class="row">
-    <div class="span9 listing">
-
+    <div class="span9">
+        <h1> Τι έχω αγοράσει </h1>
+    </div>
+</div>
 {%for key in l%}
-	<h6>Η ημερομηνία του παζαριού είναι:{{key.date|date("d/m/Y")}}</h6>
-							
-								<h6>Σε ποσότητα: {{key.quantity}} κιλά</h6>
-			<h6>Με ελάχιστη ποσότητα αγοράς: {{key.min_quantity}} κιλά</h6></br>
-						
-	
-{%endfor%}
 
-</div>
+ <div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span9 title">
+			{%for i in name%}
+                <h2><span class="hidden-phone">Παζάρι με:</span> {{i.name}}</h2>
+              
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2" >
+                <div class="details">
+                    <img class="product" src="{{ asset (i.image)}}">
+                </div>
+            </div>
+			{%endfor%}
+            <div class="span7">
+                <div class="details">
+                    <div class="groupinfo">
+                        <dl class="info">
+                            
+                           
+                        </dl>
+                        <dl class="info">
+                            <dt>Ποσότητα: </dt>
+                            <dd>{{ key.quantity }}</dd>
+                            <dt>Τιμή:</dt>
+                            <dd>{{ key.price }}</dd>
+                           
+                        </dl>
+                 
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="row">
+			
+                <div class="span9 buttons">
+				
+				<a class="btn btn-large" href="{{ path('buy')}}?id={{location.id}}">Προβολή προσφορών</a>
+                    <a class="btn btn-large" href="{{ path('sell')}}?id={{location.id}}">Συμμετοχή ως αγρότης</a></div>
+            </div>
+        </div>
+    </div>
+   
 </div>
 
-{%endblock %}
+{% endfor %}
+{% endblock %}
+
+
 {% block sidebar %}
 <div class="row ">
     <div class="span3 sidebar">
         <ul class="extra-nav">
-
-            <li><a href="pazari" >Αρχική</a></li>
-            <li><a href="profile">Τι έχω αγοράσει</a></li>
-			<li><a href="profile">Τι έχω πουλήσει</a></li>
+  <li><a href="pazari" >Αρχική</a></li>
+            <li><a href="agorasmena">Τι έχω αγοράσει</a></li>
+			<li><a href="poulimena">Τι έχω πουλήσει</a></li>
             <li><a href="price">Πόσο κοστίζει</a></li>
             <li><a href="logout">Αποσύνδεση</a></li>
 

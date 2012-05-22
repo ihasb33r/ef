@@ -10,7 +10,15 @@ class PazariController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $locat = $em->getRepository('AcmeUserBundle:Location')->findAll();
-        return $this->render('AcmeUserBundle:Default:pazari.html.twig',array('locations'=>$locat));		  
+         $locat = $em->getRepository('AcmeUserBundle:Location')
+            ->createQueryBuilder("p")
+            ->where('p.date > :date')
+            ->setParameter('date',new \DateTime("today"))
+            ->orderby('p.date', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('AcmeUserBundle:Default:Pazari.html.twig',array('locations'=>$locat));
+        
     }
 }

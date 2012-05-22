@@ -3,14 +3,12 @@
 namespace Acme\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller ;
 use FOS\UserBundle\Entity\UserManager;
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Controller\ProfileController as BaseController;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Acme\UserBundle\Entity\Sell;
 use Acme\UserBundle\Entity\User;
-class ProfileController extends Controller
+class PoulimenaController extends Controller
 {
  
     public function showAction()
@@ -20,19 +18,19 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 		 $id=$users->getId();
-		 
+		  $em = $this->getDoctrine()->getEntityManager();
+		 $locat = $em->getRepository('AcmeUserBundle:Location')->findAll();
 		 $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT s.id, l.address, s.price, s.origin, l.date, s.quantity, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$id) ;
+        ->createQuery('SELECT s.id, l.address, s.price,  l.date,  s.quantity, s.agor, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l WHERE s.id='.$id) ;
 		
 		 try {
         $l=$query->getResult();
-		
     } catch (\Doctrine\ORM\NoResultException $e) {
         return null;
     }
 	
 		
-      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('l'=>$l));
+      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('l'=>$l, 'locat'=>$locat));
     }
 
     

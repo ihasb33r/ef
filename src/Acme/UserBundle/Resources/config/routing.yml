@@ -23,13 +23,16 @@ profile:
     defaults: { _controller: AcmeUserBundle:Profile:show}
 edit:
     pattern:  /edit/
-    defaults: { _controller: AcmeUserBundle:Profile:edit}
+    defaults: { _controller: AcmeUserBundle:Poulimena:edit}
 edit_new:
     pattern:  /edit_new
-    defaults: { _controller: AcmeUserBundle:Profile:editnew}
+    defaults: { _controller: AcmeUserBundle:Poulimena:editnew}
 poulimena:
     pattern:  /poulimena
-    defaults: { _controller: AcmeUserBundle:Profile:show}
+    defaults: { _controller: AcmeUserBundle:Poulimena:show}
+agorasmena:
+    pattern:  /agorasmena
+    defaults: { _controller: AcmeUserBundle:Kalathi:show}
 sell_new:
     pattern:  /sell_new
     defaults: { _controller: AcmeUserBundle:Sell:new }
@@ -38,10 +41,10 @@ price:
     defaults: { _controller: AcmeUserBundle:Price:new }
 edit_new:
    pattern: /edit_new
-   defaults: { _controller: AcmeUserBundle:Profile:editnew}
+   defaults: { _controller: AcmeUserBundle:Poulimena:editnew}
 edit_new_sell:
    pattern: /edit_new_sell
-   defaults: { _controller: AcmeUserBundle:Profile:editnewsell}
+   defaults: { _controller: AcmeUserBundle:Poulimena:editnewsell}
 
 admin:
     resource: "@AcmeUserBundle/Resources/config/routingadmin.yml"
