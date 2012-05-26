@@ -10,36 +10,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 class BuyController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id)
     { 
-	$id=$_GET['id'];
-	 $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT p.name FROM AcmeUserBundle:Location l JOIN l.product p  WHERE l.id='.$id) ;
-		
-		 try {
-        $p=$query->getResult();
-		
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
-	
-	$q = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT s.id, u.name, s.origin, s.quantity, s.min_quantity, s.price FROM AcmeUserBundle:Sell s JOIN s.user u ') ;
-		
-		 try {
-        $b=$q->getResult();
-		
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
 
-    return $this->render('AcmeUserBundle:Default:buy.html.twig', array ('p'=>$p, 'b'=>$b));
+	 $em = $this->getDoctrine()->getEntityManager();
+		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findAll();
+
+    return $this->render('AcmeUserBundle:Default:buy.html.twig', array ('sell'=>$sell, 'id'=>$id));
     }
 
 
     public function newAction()
     {
-        #get sell_id  and quantity kai upol
+        echo 'aaaaaaaaa';
         $id=$_POST['id'];
         $quantity=$_POST['quant'];
         $em = $this->getDoctrine()->getEntityManager();
@@ -73,7 +56,7 @@ class BuyController extends Controller
                 $em->flush();
 
                 $kod[]=$buy->getId();}
-                return $this->render('AcmeUserBundle:Default:buy_new.html.twig', array('kod'=>$kod));
+               // return $this->render('AcmeUserBundle:Default:buy_new.html.twig', array('kod'=>$kod));
 
 
     }

@@ -130,7 +130,10 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Buy", mappedBy="user")
      */
     protected $buy;
-
+    /**
+	     * @ORM\OneToMany(targetEntity="Rate", mappedBy="user")
+	     */
+    protected $rate;
 
 
     /**
@@ -171,5 +174,25 @@ class User extends BaseUser
     public function getBuy()
     {
         return $this->buy;
+    }
+
+    /**
+     * Add rate
+     *
+     * @param Acme\UserBundle\Entity\Rate $rate
+     */
+    public function addRate(\Acme\UserBundle\Entity\Rate $rate)
+    {
+        $this->rate[] = $rate;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getRate()
+    {
+        return $this->rate;
     }
 }

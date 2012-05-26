@@ -1,44 +1,37 @@
-{% extends "AcmeUserBundle:Default:base.html.twig" %}
-{% block title %}
-Τιμοκατάλογος
-{% endblock %}
-
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block content %}
 <div class="row">
-    <div class="twelve columns">
-        <img style="position:relative;top:10px;" src="{{ asset('images/backgroundarticle.png') }}">
-    </div>
+    <div class="span9">
+         
+         <h1>Πόσο κοστίζει</h1>  </div>
+
 </div>
-<div class="row header">
-<div class="twelve columns">
-<h3> Τιμοκατάλογος </h3>
+<div class="row ">
+<div class="span9 listing">
+	<div class="row">
+            <div class="span7">
+                <div class="details">
+  <img  src="{{ asset('images/price.jpg') }}">
 </div>
-</div>
-<div class="row article">
-   <img  src="{{ asset('images/price.jpg') }}">
-</div>
-{% endblock %}
+</div></div></div></div>
+{% endblock%}
+
+ 
+
 
 {% block sidebar %}
-<div class="three colums nava">
-	<div class="art-vmenublock">
-									<div class="art-vmenublock-body">
-										<div class="art-vmenublockcontent">
-											<div class="art-vmenublockcontent-body">
-												<ul class="art-vmenu">
-												
-													<li><a href="pazari" ><span class="l"> </span><span class="r"> </span><span class="t">Αρχική</span></a></li>
-													<li><a href="profile"><span class="l"> </span><span class="r"> </span><span class="t">Προφίλ</span></a></li>
-													<li><a href="price"><span class="l" class="active"> </span><span class="r"> </span><span class="t">Τιμοκατάλογος</span></a></li>
-													<li><a href="logout"><span class="l"> </span><span class="r"> </span><span class="t">Αποσύνδεση</span></a></li>
-											
-												</ul>
-												<div class="cleared"></div>
-											</div>
-										</div>
-										<div class="cleared"></div>
-									</div>
-									</div>
-								</div>{%endblock %}
+<div class="row ">
+    <div class="span3 sidebar">
+        <ul class="extra-nav">
+  <li><a href="pazari" >Αρχική</a></li>
+            <li><a href="agorasmena">Τι έχω αγοράσει</a></li>
+			<li><a href="poulimena">Τι έχω πουλήσει</a></li>
+            <li><a href="price">Πόσο κοστίζει</a></li>
+            <li><a href="logout">Αποσύνδεση</a></li>
+
+        </ul>
+    </div>
+</div>
+</div>{%endblock %}
 

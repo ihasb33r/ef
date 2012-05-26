@@ -19,36 +19,20 @@ class PoulimenaController extends Controller
         }
 		 $id=$users->getId();
 		  $em = $this->getDoctrine()->getEntityManager();
-		 $locat = $em->getRepository('AcmeUserBundle:Location')->findAll();
-		 $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT s.id, l.address, s.price,  l.date,  s.quantity, s.agor, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l WHERE s.id='.$id) ;
+		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findAll();
 		
-		 try {
-        $l=$query->getResult();
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
-	
-		
-      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('l'=>$l, 'locat'=>$locat));
+      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('id'=>$id, 'sell'=>$sell));
     }
 
     
-    public function editAction()
+    public function editAction($id)
     {
-      $id=$_GET['id'];
-	   $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT s.id, l.address, s.price, s.origin, l.date, s.quantity, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$id) ;
-		
-		 try {
-        $l=$query->getResult();
-		
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
+      
+	 $em = $this->getDoctrine()->getEntityManager();
+		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findById($id);
 	
 		
-      return $this->render('AcmeUserBundle:Default:poulimena_edit.html.twig', array('l'=>$l));
+      return $this->render('AcmeUserBundle:Default:poulimena_edit.html.twig', array('sell'=>$sell, 'id'=>$id));
 
     }
 	

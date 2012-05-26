@@ -3,30 +3,36 @@
 {% block title %} Προσφορές {% endblock %}
 
 {% block content %}
-
+{%for sell in sell%}
+{%if sell.location.id==id%}
 <div class="row">
     <div class="span9">
-         {%for key in p%}
-         <h1>Παζάρι με: {{key.name}}</h1>
-         {%endfor%}
+         
+         <h1>Παζάρι με: {{sell.location.product.name}}</h1>
+         
     </div>
 </div>
-{%for key in b%}
+
 <div class="row ">
 <div class="span9 listing">
 	<div class="row">
+	<div class="span2" >
+                <div class="details">
+                    <img class="product" src="{{ asset (sell.location.product.image)}}">
+                </div>
+            </div>
             <div class="span7">
                 <div class="details">
                     <div class="groupinfo">
                         <dl class="info">
-                            <dt>Παραγωγός:</dt><dd>{{key.name}}</dd>
-                            <dt>Προέλευση:</dt> <dd>{{ key.origin }}</dd>
-                            <dt>Ποσότητα:</dt><dd> {{ key.quantity}} </dd>
+                            <dt>Παραγωγός:</dt><dd>{{sell.user.name}} {{sell.user.lastname}}</dd>
+                            <dt>Προέλευση:</dt> <dd>{{ sell.origin }}</dd>
+                            <dt>Ποσότητα:</dt><dd> {{ sell.quantity}} κιλά</dd>
                         </dl>
 						 <dl class="info">
                             <dt>Βαθμολογία:</dt> <dd></dd>
-                            <dt>Τιμή:</dt> <dd>{{ key.price }}</dd>
-                            <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd> {{ key.min_quantity}} </dd>
+                            <dt>Τιμή:</dt> <dd>{{ sell.price }} ευρώ</dd>
+                            <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd>{{ sell.minquantity}} κιλά</dd>
                         </dl>
 	                </div>
 				</div>
@@ -35,16 +41,17 @@
     <div class="row">
 	<div class="span9 buttons">
 	 <form  action="{{ path('buy_new') }}" method="post" >
-                <input type="hidden" name="id" value="{{key.id}}"/>
-                <tr><td><h6>Ποσότητα:</td><td><input type="text" name="quant" /></h6></td></tr>
-                <tr><td></td><td><button type="submit">Αγορά</button></td></tr>
+                <input type="hidden" name="id" value="{{sell.id}}"/>
+                <tr><td><dd>Ποσότητα:</td><td><input type="text" name="quant" />κιλά</dd></td></tr>
+                <button type="submit">Αγορά</button>
      </form>
 	 </div>
     </div>
 </div>			
 	</div>
 </div>
-</div>	
+</div>
+{%endif%}	
 {%endfor%}
 {% endblock%}
 

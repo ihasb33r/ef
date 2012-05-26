@@ -70,9 +70,9 @@
             <div class="row">
 			
                 <div class="span9 buttons">
-				
-				<a class="btn btn-large" href="{{ path('buy')}}?id={{location.id}}">Προβολή προσφορών</a>
-                    <a class="btn btn-large" href="{{ path('sell')}}?id={{location.id}}">Συμμετοχή ως αγρότης</a></div>
+				<a class="btn btn-large" href="{{ url('buy', { 'id': location.id}) }}">Προβολή προσφορών</a>
+				<a class="btn btn-large" href="{{ url('sell', { 'id': location.id}) }}">Συμμετοχή ως αγρότης</a>
+				</div>
             </div>
         </div>
     </div>

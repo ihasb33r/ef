@@ -2,64 +2,71 @@
 
 {% block title %} Τι έχω αγοράσει {% endblock %}
 {% block content %}
-<h1> Τι έχω αγοράσει</h1>
 
 <div class="row">
     <div class="span9">
         <h1> Τι έχω αγοράσει </h1>
     </div>
 </div>
-{%for key in l%}
 
+{%for buy in buy%}
+{%if buy.user.id==id%}
  <div class="row ">
     <div class="span9 listing">
         <div class="row">
             <div class="span9 title">
-			{%for i in name%}
-                <h2><span class="hidden-phone">Παζάρι με:</span> {{i.name}}</h2>
-              
+			
+                <h2><span class="hidden-phone">Αγόρασα:</span> {{buy.sell.location.product.name}}</h2>
+                   <h3>{{buy.sell.location.date|date("d/m/Y")}}</h3>
             </div>
         </div>
         <div class="row">
             <div class="span2" >
                 <div class="details">
-                    <img class="product" src="{{ asset (i.image)}}">
+                    <img class="product" src="{{ asset (buy.sell.location.product.image)}}">
                 </div>
             </div>
-			{%endfor%}
+		
             <div class="span7">
                 <div class="details">
                     <div class="groupinfo">
                         <dl class="info">
-                            
-                           
+                           <dt>Παραγωγός: </dt> <dd>{{buy.sell.user.name}}</dd> 
+                           <dt>Ποσότητα: </dt><dd>{{buy.quantity}}</dd>
                         </dl>
                         <dl class="info">
-                            <dt>Ποσότητα: </dt>
-                            <dd>{{ key.quantity }}</dd>
-                            <dt>Τιμή:</dt>
-                            <dd>{{ key.price }}</dd>
+                            <dt>Διεύθυνση: </dt><dd>{{buy.sell.location.address}} </dd>
+                            <dt>Τελική τιμή:</dt><dd> {{buy.sell.price * buy.quantity}}</dd>
+                            <dd></dd>
                            
                         </dl>
                  
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            
-            <div class="row">
-			
-                <div class="span9 buttons">
-				
-				<a class="btn btn-large" href="{{ path('buy')}}?id={{location.id}}">Προβολή προσφορών</a>
-                    <a class="btn btn-large" href="{{ path('sell')}}?id={{location.id}}">Συμμετοχή ως αγρότης</a></div>
+			<div class="row">
+				{%if buy.sell.location.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
+			        <div class="row">
+			           <div class="span9 buttons"><a class="btn btn-large" href="{{ url('buy_delete', { 'id': buy.id}) }}">Ακύρωση Παραγγελίας</a>
+                       </div>	
+                    </div>
+                 {%else%}
+					<div class="row">
+						<div class="span9 buttons"><a class="btn btn-large" href="{{ url('vote', { 'name': buy.sell.user.name}) }}">Βαθμολόγησε τον παραγωγό</a>
+						</div>	
+                    </div>				 
+	            {%endif%}
             </div>
-        </div>
-    </div>
-   
+			
+			
+			
+			
+   </div>
+ </div>   
 </div>
 
+{%endif%}
 {% endfor %}
 {% endblock %}
 

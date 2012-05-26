@@ -6,7 +6,6 @@ use FOS\UserBundle\Entity\UserManager;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use FOS\UserBundle\Controller\ProfileController as BaseController;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Acme\UserBundle\Entity\Sell;
 use Acme\UserBundle\Entity\User;
@@ -21,51 +20,19 @@ class KalathiController extends Controller
         }
 		 $id=$users->getId();
 		 $em = $this->getDoctrine()->getEntityManager();
-		 $sell_id = $em->getRepository('AcmeUserBundle:Buy')->findById($id);
-		 foreach ($sell_id as $s)
-		 {
-		 $s_id=$s->getSell()->getId();
-		 $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT l.id, l.address, s.price, s.origin, l.date FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$s_id) ;
-		
-		 try {
-        $l=$query->getResult();
-		$i=$l[0]['id'];
-		$q = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT p.image, p.name FROM AcmeUserBundle:Location l JOIN l.product p  WHERE l.id='.$i) ;
-		try{
-		$name=$q->getResult();
-		   return $this->render('AcmeUserBundle:Default:agorasmena.html.twig', array('l'=>$l, 'name'=>$name));
-		}
-		 catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-        }
-		}
-		
-    catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
-	
-		
-      return $this->render('AcmeUserBundle:Default:agorasmena.html.twig', array('l'=>$l, 'name'=>$name));
-    }}
+		 $buy = $em->getRepository('AcmeUserBundle:Buy')->findAll();
 
-    
-    public function editAction()
-    {
-      $id=$_GET['id'];
-	   $query = $this->getDoctrine()->getEntityManager()
-        ->createQuery('SELECT s.id, l.address, s.price, s.origin, l.date, s.quantity, s.min_quantity FROM AcmeUserBundle:Sell s JOIN s.location l  WHERE s.id='.$id) ;
-		
-		 try {
-        $l=$query->getResult();
-		
-    } catch (\Doctrine\ORM\NoResultException $e) {
-        return null;
-    }
-	
-		
-      return $this->render('AcmeUserBundle:Default:poulimena_edit.html.twig', array('l'=>$l));
+				 return $this->render('AcmeUserBundle:Default:agorasmena.html.twig', array('id'=>$id, 'buy'=>$buy ));
+			}	
+     
+
+         public function deleteAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $buys = $em->getRepository('AcmeUserBundle:Buy')->findOneById($id);
+        $em->remove($buys);
+        $em->flush();
+
+        return $this->showAction();
 
     }
 	

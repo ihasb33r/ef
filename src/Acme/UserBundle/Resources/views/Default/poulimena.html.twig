@@ -2,55 +2,58 @@
 
 {% block title %} Τι έχω πουλήσει {% endblock %}
 {% block content %}
+
 <h1> Τι έχω πουλήσει</h1>
+{%for sell in sell%}
+	{%if sell.user.id==id%}
 <div class="row">
     <div class="span9 listing">
-	{%for key in l%}
+	
         <div class="row">
             <div class="span9 title">
-			{%for location in locat%}
-			{%if key.date|date("d/m/Y") ==location.date|date("d/m/Y")%}
-                <h2><span class="hidden-phone">Πουλήσατε:</span> {{location.product.name}}</h2>
-                <h3>{{location.date|date("d/m/Y")}}</h3>
+			
+			
+                <h2><span class="hidden-phone">Πουλήσατε:</span> {{sell.location.product.name}}</h2>
+                <h3>{{sell.location.date|date("d/m/Y")}}</h3>
             </div>
         </div>
         <div class="row">
             <div class="span2" >
                 <div class="details">
-                    <img class="product" src="{{ asset (location.product.image)}}">
+                    <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
             </div>
-			{%endif%}
-			{%endfor%}
+		
+			
             <div class="span7">
                 <div class="details">
                     <div class="groupinfo">
                         <dl class="info">
-						<dt>Ημερομηνία:</dt><dd>{{key.date|date("d/m/Y")}}</dd>
-					    <dt>Αρχική ποσότητα:</dt><dd> {{key.quantity}} κιλά</dd>
-						<dt>Ελάχιστη ποσότητα αγοράς:</dt><dd>{{key.min_quantity}} </dd>
+						<dt>Ημερομηνία:</dt><dd>{{sell.location.date|date("d/m/Y")}}</dd>
+					    <dt>Αρχική ποσότητα:</dt><dd> {{sell.quantity}} κιλά</dd>
+						<dt>Ελάχιστη ποσότητα αγοράς:</dt><dd>{{sell.minquantity}} </dd>
 						</dl>
 						<dl class="info">
-						<dt>Τόπος:</dt><dd>{{key.address}}</dd>
-						<dt>Πουληθέντα:</dt><dd>{{key.agor}} </dd>
-						<dt>Τιμή:</dt><dd>{{key.price}} ευρώ</dd>
+						<dt>Τόπος:</dt><dd>{{sell.location.address}}</dd>
+						<dt>Πουληθέντα:</dt><dd>{{sell.agor}} </dd>
+						<dt>Τιμή:</dt><dd>{{sell.price}} ευρώ</dd>
 								
 				   </div>
                 </div>
              </div>
 		</div>
-		{%if key.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
+		{%if sell.location.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
 			<div class="row">
-			
-                <div class="span9 buttons"><a class="btn btn-large" href="{{ path('edit')}}?id={{key.id}}">Επεξεργασία</a>
-                </div>	
+			<div class="span9 buttons"><a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
+						</div>	       
             </div>	
 	    {%endif%}
+		
+
+</div>
+</div>
+{%endif%}
 {%endfor%}
-
-</div>
-</div>
-
 {%endblock %}
 {% block sidebar %}
 <div class="row ">

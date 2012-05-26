@@ -6,17 +6,17 @@
 <div class="row">
     <div class="span9 listing">
 
-{%for key in l%}
+{%for sell in sell%}
  <div class="span7">
                 <div class="details">
                     <div class="groupinfo">
               <form  action="{{ path('edit_new') }}" method="post"  class="nice">
 			<table><tr>
-			<td>Ποσότητα:</td><td><input type="text" name="quantity" value={{key.quantity}}  /></td><td>κιλά</td></tr>
-			<tr><td>Ελάχιστη ποσότητα αγοράς:</td><td><input type="text" name="min_quantity" value={{key.min_quantity}} /><td>κιλά</td></td></tr>
-			<tr><td>Τιμή:</td><td><input type="text" name="price" value={{key.price}}  /></td><td>ευρώ</td></tr>
-			<tr><td>Προέλευση:</td><td><input type="text" name="origin" value={{key.origin}} /></td></tr>
-			<input type="hidden" name="id" value={{key.id}} />
+			<td>Ποσότητα:</td><td><input type="text" name="quantity" value={{sell.quantity}}  /></td><td>κιλά</td></tr>
+			<tr><td>Ελάχιστη ποσότητα αγοράς:</td><td><input type="text" name="min_quantity" value={{sell.minquantity}} /><td>κιλά</td></td></tr>
+			<tr><td>Τιμή:</td><td><input type="text" name="price" value={{sell.price}}  /></td><td>ευρώ</td></tr>
+			<tr><td>Προέλευση:</td><td><input type="text" name="origin" value={{sell.origin}} /></td></tr>
+			<input type="hidden" name="id" value={{sell.id}} />
             <tr><td></td><td><input type="submit" /></td></tr></table>
         </form>
 		

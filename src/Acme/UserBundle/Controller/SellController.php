@@ -11,10 +11,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 class SellController extends Controller
 {
-   public function indexAction(Request $request)
+   public function indexAction($id)
 {
    
-		$id[]=$_GET['id'];		
+			
         return $this->render('AcmeUserBundle:Default:sell.html.twig', array('id'=>$id));
 
 				
