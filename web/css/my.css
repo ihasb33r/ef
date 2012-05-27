@@ -49,6 +49,53 @@ h1 {
     margin-top: 17px;
     text-align:right;
 }
+
+.offer {
+    text-align:center;
+    padding-top:20px;
+    padding-bottom:30px;
+}
+
+.offer h2 {
+    margin-bottom:20px;
+
+}
+.offer img {
+    width:80%;
+}
+
+dl.faq {
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+    font-family: "Comfortaa", sans-serif;
+}
+dl.faq dt {
+    font-size:1.3em;
+    line-height:2.0em;
+    margin-top:20px;
+
+}
+
+dl.faq dd {
+    line-height:1.5em;
+    font-family:Georgia;
+    font-size:1em;
+}
+
+.price {
+    font-size:3.5em;
+    font-weight:bold;
+    height:50px;
+    vertical-align:middle;
+    margin-top:20px;
+    display:block;
+}
+
+.offer h3 {
+    margin-top:20px;
+}
+
 .buttons{
     text-align:right;
     margin-top:20px;
