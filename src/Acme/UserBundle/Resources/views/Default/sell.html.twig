@@ -3,42 +3,64 @@
 {% block content %}
 <div class="row">
     <div class="span9">
-         
-         <h1>Πώληση προϊόντος</h1>  </div>
+
+        <h1>Πώληση προϊόντος</h1>  </div>
 
 </div>
 <div class="row ">
-<div class="span9 listing">
-	<div class="row">
+    <div class="span9 listing">
+        <div class="row">
             <div class="span7">
                 <div class="details">
+                        <form action='{{path ("sell", { 'id': location_id})}}' {{form_enctype(form) }} method="POST">
+                            <div class="control-group">
+                                {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.quantity)}}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                {{form_label(form.min_quantity,"Ελάχιστη Ποσότητα", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.min_quantity)}}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                {{form_label(form.price,"Τιμή", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.price)}}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                {{form_label(form.origin,"Προέλευση", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.origin)}}
+                                </div>
+                            </div>
+                            {{ form_rest(form)}}
+                            <input name="ajax" value="true" type="hidden"/>
+                            <input name="submit" value="submit" type="submit"/>
 
-        <form  action="{{ path('sell_new') }}" method="post"  class="nice">
-			<table><tr>
-			<td>Ποσότητα:</td><td><input type="text" name="quantity" /></td><td>κιλά</td></tr>
-			<tr><td>Ελάχιστη ποσότητα αγοράς:</td><td><input type="text" name="min_quantity" /><td>κιλά</td></td></tr>
-			<tr><td>Τιμή:</td><td><input type="text" name="price" /></td><td>ευρώ</td></tr>
-			<tr><td>Προέλευση:</td><td><input type="text" name="origin" /></td></tr>
-			<input type="hidden" name="agor" value="0" />
-			{%for key in id%}
-<input type="hidden" name="id" value="{{key}}" />
-{%endfor%}
-            <tr><td></td><td><input type="submit" /></td></tr></table>
-        </form>
-</div>
-</div></div></div></div>
-{% endblock%}
-{% block sidebar %}
-<div class="row ">
-    <div class="span3 sidebar">
-        <ul class="extra-nav">
-  <li><a href="pazari" >Αρχική</a></li>
-            <li><a href="agorasmena">Τι έχω αγοράσει</a></li>
-			<li><a href="poulimena">Τι έχω πουλήσει</a></li>
-            <li><a href="price">Πόσο κοστίζει</a></li>
-            <li><a href="logout">Αποσύνδεση</a></li>
+                        </form>
 
-        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    {% endblock%}
+    {% block sidebar %}
+    <div class="row ">
+        <div class="span3 sidebar">
+            <ul class="extra-nav">
+                <li><a href="pazari" >Αρχική</a></li>
+                <li><a href="agorasmena">Τι έχω αγοράσει</a></li>
+                <li><a href="poulimena">Τι έχω πουλήσει</a></li>
+                <li><a href="price">Πόσο κοστίζει</a></li>
+                <li><a href="logout">Αποσύνδεση</a></li>
+
+            </ul>
+        </div>
+    </div>
 </div>{%endblock %}

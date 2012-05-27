@@ -18,7 +18,7 @@ class PazariController extends Controller
             ->getQuery()
             ->getResult();
 
-        return $this->render('AcmeUserBundle:Default:Pazari.html.twig',array('locations'=>$locat));
+        return $this->render('AcmeUserBundle:Default:pazari.html.twig',array('locations'=>$locat));
         
     }
 }

@@ -1,37 +1,90 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Τιμοκατάλογος
+{% endblock %}
+
 
 {% block content %}
 <div class="row">
     <div class="span9">
-         
-         <h1>Πόσο κοστίζει</h1>  </div>
-
+        <h1> Τιμοκατάλογος</h1>
+    </div>
 </div>
+
+
 <div class="row ">
-<div class="span9 listing">
-	<div class="row">
-            <div class="span7">
-                <div class="details">
-  <img  src="{{ asset('images/price.jpg') }}">
+    <div class="span9">
+        <div class="row">
+            <div class="span3">
+                <div class="offer listing">
+                <h2>Περβάζι</h2>
+                <img src="{{asset('img/small.png')}}">
+                <h3>1 Συνάντηση</h3>
+                <span class="price">5</span>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="offer listing">
+                <h2>Λαχανόκηπος</h2>
+                <img src="{{asset('img/medium.png')}}">
+                <h3>5 Συνάντησεις</h3>
+                <span class="price">20</span>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="offer listing">
+                <h2>Χωράφι</h2>
+                <img src="{{asset('img/large.png')}}">
+                <h3>20 Συνάντησεις</h3>
+                <span class="price">60</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div></div></div></div>
-{% endblock%}
+<div class="row">
+    <div class="span9">
+        <h1> Συχνές Ερωτήσεις </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span9 listing">
+        <dl class="faq">
+            <dt>Τι χρειάζεται για να συμμετάσχω;</dt>
+            <dd>Lettuce - pea sprouts broccoli rabe moth bean broadleaf arrowhead yardlong bean - celtuce komatsuna; elephant foot yam. Lamb's lettuce brussels sprout. Epazote green bean land cress lizard's tail - tarwi bitter gourd. Broadleaf arrowhead pignut drumstick. Pea lamb's lettuce pea leaves water chestnut, corn salad rutabaga lima bean.</dd>
 
- 
+            <dt>Άμα αλλάξω γνώμη;</dt>
+            <dd>Lettuce - pea sprouts broccoli rabe moth bean broadleaf arrowhead yardlong bean - celtuce komatsuna; elephant foot yam. Lamb's lettuce brussels sprout. Epazote green bean land cress lizard's tail - tarwi bitter gourd. Broadleaf arrowhead pignut drumstick. Pea lamb's lettuce pea leaves water chestnut, corn salad rutabaga lima bean.</dd>
+            
+            <dt>Πόσο κοστίζει;</dt>
+            <dd>Lettuce - pea sprouts broccoli rabe moth bean broadleaf arrowhead yardlong bean - celtuce komatsuna; elephant foot yam. Lamb's lettuce brussels sprout. Epazote green bean land cress lizard's tail - tarwi bitter gourd. Broadleaf arrowhead pignut drumstick. Pea lamb's lettuce pea leaves water chestnut, corn salad rutabaga lima bean.</dd>
+            
+            <dt>Εως πότε ισχύουν οι συμμετοχές μου;</dt>
+            <dd>Lettuce - pea sprouts broccoli rabe moth bean broadleaf arrowhead yardlong bean - celtuce komatsuna; elephant foot yam. Lamb's lettuce brussels sprout. Epazote green bean land cress lizard's tail - tarwi bitter gourd. Broadleaf arrowhead pignut drumstick. Pea lamb's lettuce pea leaves water chestnut, corn salad rutabaga lima bean.</dd>
 
+            <dt>Είναι ασφαλείς οι συναλλαγές μου;</dt>
+            <dd>Lettuce - pea sprouts broccoli rabe moth bean broadleaf arrowhead yardlong bean - celtuce komatsuna; elephant foot yam. Lamb's lettuce brussels sprout. Epazote green bean land cress lizard's tail - tarwi bitter gourd. Broadleaf arrowhead pignut drumstick. Pea lamb's lettuce pea leaves water chestnut, corn salad rutabaga lima bean.</dd>
+
+        </dl>
+    </div>
+</div>
+
+
+{% endblock %}
 
 {% block sidebar %}
 <div class="row ">
     <div class="span3 sidebar">
         <ul class="extra-nav">
-  <li><a href="pazari" >Αρχική</a></li>
+            <li><a href="pazari" >Αρχική</a></li>
             <li><a href="agorasmena">Τι έχω αγοράσει</a></li>
-			<li><a href="poulimena">Τι έχω πουλήσει</a></li>
+            <li><a href="poulimena">Τι έχω πουλήσει</a></li>
             <li><a href="price">Πόσο κοστίζει</a></li>
             <li><a href="logout">Αποσύνδεση</a></li>
 
         </ul>
     </div>
 </div>
-</div>{%endblock %}
+</div>
+{%endblock %}
 
