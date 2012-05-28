@@ -44,12 +44,18 @@
                         <li>
                         <a href="{{path("pazari")}}">Αρχικη</a>
                         </li>
+                        {% if is_granted("ROLE_USER") %}
+                        <li>
+                        <a href="login">Αποσύνδεση</a>
+                        </li>
+                        {% else %}
                         <li>
                         <a href="login">Σύνδεση</a>
                         </li>
                         <li>
                         <a href="register">Εγγραφή</a>
                         </li>
+                        {% endif %}
                     </ul>
                     <div class="clearfix"></div>
                 </div>
