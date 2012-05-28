@@ -46,14 +46,14 @@
                         </li>
                         {% if is_granted("ROLE_USER") %}
                         <li>
-                        <a href="login">Αποσύνδεση</a>
+                        <a href="{{path("fos_user_security_logout")}}">Αποσύνδεση</a>
                         </li>
                         {% else %}
                         <li>
-                        <a href="login">Σύνδεση</a>
+                        <a href="{{path("fos_user_security_login")}}">Σύνδεση</a>
                         </li>
                         <li>
-                        <a href="register">Εγγραφή</a>
+                        <a href="{{path("fos_user_registration_register")}}">Εγγραφή</a>
                         </li>
                         {% endif %}
                     </ul>

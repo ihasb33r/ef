@@ -1,6 +1,6 @@
 {% extends 'AcmeUserBundle:Default:base.html.twig' %}
 
-{% block title %}Acme Demo Application{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -11,3 +11,6 @@
 </div>
 </div>
 {% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}
