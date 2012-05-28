@@ -6,17 +6,16 @@
 
 <div class="row">
     <div class="span9">
-         
-         <h1>Προσφορές</h1>
-         
+
+        <h1>Προσφορές</h1>
+
     </div>
 </div>
 {%for sell in sell%}
-{%if sell.location.id==id%}
 <div class="row ">
-<div class="span9 listing">
-	<div class="row">
-	<div class="span2" >
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span2" >
                 <div class="details">
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
@@ -29,47 +28,46 @@
                             <dt>Προέλευση:</dt> <dd>{{ sell.origin }}</dd>
                             <dt>Ποσότητα:</dt><dd> {{ sell.quantity}} κιλά</dd>
                         </dl>
-						 <dl class="info">
+                        <dl class="info">
                             <dt>Βαθμολογία:</dt> <dd></dd>
                             <dt>Τιμή:</dt> <dd>{{ sell.price }} ευρώ</dd>
                             <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd>{{ sell.minquantity}} κιλά</dd>
                         </dl>
-						<dl class="extrainfo">
-                        <dt >Διαθέσιμη Ποσότητα</dt>
-                        <dd > {{sell.quantity-sell.agor }} κιλά</dd>
-                    </dl>
-	                </div>
-				</div>
+                        <dl class="extrainfo">
+                            <dt >Διαθέσιμη Ποσότητα</dt>
+                            <dd > {{sell.quantity-sell.agor }} κιλά</dd>
+                        </dl>
+                    </div>
+                </div>
             </div>	
-<div class="row">
-    <div class="row">
-	<div class="span9 buttons">
-	 
-	<form action='{{path ("buy", { 'id': sell.id})}}' {{form_enctype(form) }} method="POST">
+            <div class="row">
+                <div class="row">
+                    <div class="span9 buttons">
+
+                        <form action='{{path ("buy_new", {'location_id':location_id, 'offer_id': sell.id})}}' {{form_enctype(form) }} method="POST">
                             <div class="control-group">
                                 {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
                                 <div class="controls">
                                     {{ form_widget(form.quantity)}}
-									
+
                                 </div>
                             </div>
-                            
+
                             {{ form_rest(form)}}
                             <input name="ajax" value="true" type="hidden"/>
                             <input name="submit" value="Υποβολή" type="submit"/>
 
                         </form>
- 
-	 
-	 
-	
-	 </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>			
+        </div>
     </div>
-</div>			
-	</div>
 </div>
-</div>
-{%endif%}	
 {%endfor%}
 {% endblock%}
 

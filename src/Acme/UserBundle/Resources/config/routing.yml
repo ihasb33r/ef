@@ -16,7 +16,7 @@ buy:
     pattern:  /buy/{id}
     defaults: { _controller: AcmeUserBundle:Buy:index }
 buy_new:
-    pattern:  /buy_new
+    pattern:  /buy_new/{location_id}/{offer_id}
     defaults: { _controller: AcmeUserBundle:Buy:new }
 profile:
     pattern:  /profile
