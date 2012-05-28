@@ -22,7 +22,7 @@ profile:
     pattern:  /profile
     defaults: { _controller: AcmeUserBundle:Profile:show}
 edit:
-    pattern:  /edit{id}
+    pattern:  /edit/{id}
     defaults: { _controller: AcmeUserBundle:Poulimena:edit}
 edit_new:
     pattern:  /edit_new
@@ -34,10 +34,10 @@ agorasmena:
     pattern:  /agorasmena
     defaults: { _controller: AcmeUserBundle:Kalathi:show}
 buy_delete:
-    pattern:  /agorasmena{id}
+    pattern:  /agorasmena/{id}
     defaults: { _controller: AcmeUserBundle:Kalathi:delete}
 vote:
-    pattern:  /vote{name}
+    pattern:  /vote/{name}
     defaults: { _controller: AcmeUserBundle:Vote:index}
 sell_new:
     pattern:  /sell_new

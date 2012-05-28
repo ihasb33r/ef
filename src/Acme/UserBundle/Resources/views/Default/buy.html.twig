@@ -3,16 +3,16 @@
 {% block title %} Προσφορές {% endblock %}
 
 {% block content %}
-{%for sell in sell%}
-{%if sell.location.id==id%}
+
 <div class="row">
     <div class="span9">
          
-         <h1>Παζάρι με: {{sell.location.product.name}}</h1>
+         <h1>Προσφορές</h1>
          
     </div>
 </div>
-
+{%for sell in sell%}
+{%if sell.location.id==id%}
 <div class="row ">
 <div class="span9 listing">
 	<div class="row">
@@ -34,17 +34,35 @@
                             <dt>Τιμή:</dt> <dd>{{ sell.price }} ευρώ</dd>
                             <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd>{{ sell.minquantity}} κιλά</dd>
                         </dl>
+						<dl class="extrainfo">
+                        <dt >Διαθέσιμη Ποσότητα</dt>
+                        <dd > {{sell.quantity-sell.agor }} κιλά</dd>
+                    </dl>
 	                </div>
 				</div>
             </div>	
 <div class="row">
     <div class="row">
 	<div class="span9 buttons">
-	 <form  action="{{ path('buy_new') }}" method="post" >
-                <input type="hidden" name="id" value="{{sell.id}}"/>
-                <tr><td><dd>Ποσότητα:</td><td><input type="text" name="quant" />κιλά</dd></td></tr>
-                <button type="submit">Αγορά</button>
-     </form>
+	 
+	<form action='{{path ("buy", { 'id': sell.id})}}' {{form_enctype(form) }} method="POST">
+                            <div class="control-group">
+                                {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.quantity)}}
+									
+                                </div>
+                            </div>
+                            
+                            {{ form_rest(form)}}
+                            <input name="ajax" value="true" type="hidden"/>
+                            <input name="submit" value="Υποβολή" type="submit"/>
+
+                        </form>
+ 
+	 
+	 
+	
 	 </div>
     </div>
 </div>			
