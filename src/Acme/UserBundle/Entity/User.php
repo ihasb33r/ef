@@ -195,4 +195,28 @@ class User extends BaseUser
     {
         return $this->rate;
     }
+	/**
+     * @ORM\OneToMany(targetEntity="location", mappedBy="user")
+     */
+    protected $location;
+
+    /**
+     * Add location
+     *
+     * @param Acme\UserBundle\Entity\location $location
+     */
+    public function addlocation(\Acme\UserBundle\Entity\location $location)
+    {
+        $this->location[] = $location;
+    }
+
+    /**
+     * Get location
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 }

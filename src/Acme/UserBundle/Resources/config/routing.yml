@@ -102,3 +102,15 @@ locations:
 locations_new:
     pattern: /locations_new
     defaults: { _controller: AcmeUserBundle:Locations:new }
+prosfores:
+    pattern: /prosfores
+    defaults: { _controller: AcmeUserBundle:Prosfores:index }
+approval:
+    pattern: /approval
+    defaults: { _controller: AcmeUserBundle:Approval:index }
+ok:
+    pattern: /ok{id}
+    defaults: { _controller: AcmeUserBundle:Approval:ok }
+no:
+    pattern: /no{id}
+    defaults: { _controller: AcmeUserBundle:Approval:no }

@@ -336,4 +336,49 @@ class Location
     {
         return $this->endtime;
     }
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
+     * Set public
+     *
+     * @param boolean $public
+     */
+    public function setPublic($public)
+    {
+        $this->public = $public;
+    }
+
+    /**
+     * Get public
+     *
+     * @return boolean 
+     */
+    public function getPublic()
+    {
+        return $this->public;
+    }
+/**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="location")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+	 protected $user;
 }

@@ -195,4 +195,8 @@ class User extends BaseUser
     {
         return $this->rate;
     }
+	/**
+     * @ORM\OneToMany(targetEntity="location", mappedBy="user")
+     */
+    protected $location;
 }

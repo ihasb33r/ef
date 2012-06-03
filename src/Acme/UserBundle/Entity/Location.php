@@ -376,4 +376,29 @@ class Location
     {
         return $this->public;
     }
+/**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="location")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+	 protected $user;
+
+    /**
+     * Set user
+     *
+     * @param Acme\UserBundle\Entity\User $user
+     */
+    public function setUser(\Acme\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Acme\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

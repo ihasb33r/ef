@@ -1,0 +1,66 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block content %}
+<div class="row">
+    <div class="span9">
+         
+         <h1> Προσθήκη προσφορών</h1>  </div>
+</div>
+<div class="row ">
+<div class="span9 listing">
+	<div class="row">
+            <div class="span7">
+                <div class="details">
+{%for location in location%}
+{%if location.date|date("d/m/Y")>"now"|date("d/m/Y") and location.approved==1 and location.user.id=%}
+{%for sell in sell%}
+{%if location.id==sell.location.id%}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span2" >
+                <div class="details">
+                    <img class="product" src="{{ asset (sell.location.product.image)}}">
+                </div>
+            </div>
+            <div class="span7">
+                <div class="details">
+                    <div class="groupinfo">
+                        <dl class="info">
+                            <dt>Παραγωγός:</dt><dd>{{sell.user.name}} {{sell.user.lastname}}</dd>
+                            <dt>Προέλευση:</dt> <dd>{{ sell.origin }}</dd>
+                            <dt>Ποσότητα:</dt><dd> {{ sell.quantity}} κιλά</dd>
+                        </dl>
+                        <dl class="info">
+                            <dt>Βαθμολογία:</dt> <dd></dd>
+                            <dt>Τιμή:</dt> <dd>{{ sell.price }} ευρώ</dd>
+                            <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd>{{ sell.minquantity}} κιλά</dd>
+                        </dl>
+                        <dl class="extrainfo">
+                            <dt >Διαθέσιμη Ποσότητα</dt>
+                            <dd > {{sell.quantity-sell.agor }} κιλά</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>	
+            <div class="row">
+                <div class="row">
+                    <div class="span9 buttons">
+						<a class="btn btn-large" href="{{ path('ok', { 'id': sell.id}) }}">Έγκρυση</a>
+						<a class="btn btn-large" href="{{ path('no', { 'id': sell.id}) }}">Απόρυψη</a>
+                    </div>
+                </div>
+            </div>			
+        </div>
+    </div>
+</div>
+{%endfor%}
+
+{%endif%}
+{%endfor%}
+{%endif%}
+{%endfor%}
+</div></div></div></div></div>
+{%endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}
