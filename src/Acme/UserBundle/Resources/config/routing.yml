@@ -96,3 +96,9 @@ viologika:
 alla:
     pattern:  /pazari?category=άλλα
     defaults: { _controller: AcmeUserBundle:Pazari:index }
+locations:
+    pattern: /locations
+    defaults: { _controller: AcmeUserBundle:Locations:index }
+locations_new:
+    pattern: /locations_new
+    defaults: { _controller: AcmeUserBundle:Locations:new }

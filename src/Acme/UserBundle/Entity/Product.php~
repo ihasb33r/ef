@@ -185,4 +185,24 @@ class Product
 
 
 
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

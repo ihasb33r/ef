@@ -50,6 +50,17 @@ class Location
      * @ORM\Column(name="organiser", type="string", length=255)
      */
     private $organiser;
+	 /**
+     * @var string $approved
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved; /**
+     * @var string $public
+     *
+     * @ORM\Column(name="public", type="boolean")
+     */
+    private $public;
 
     /**
      * @var string $name
@@ -324,5 +335,45 @@ class Location
     public function getEndtime()
     {
         return $this->endtime;
+    }
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
+     * Set public
+     *
+     * @param boolean $public
+     */
+    public function setPublic($public)
+    {
+        $this->public = $public;
+    }
+
+    /**
+     * Get public
+     *
+     * @return boolean 
+     */
+    public function getPublic()
+    {
+        return $this->public;
     }
 }
