@@ -3,9 +3,6 @@
 home:
     pattern: /
     defaults: { _controller: AcmeUserBundle:Pazari:index }
-pazari:
-    pattern:  /pazari
-    defaults: { _controller: AcmeUserBundle:Pazari:index }
 sell:
     pattern:  /sell/{id}
     defaults: { _controller: AcmeUserBundle:Sell:index }
@@ -57,3 +54,45 @@ vote:
 admin:
     resource: "@AcmeUserBundle/Resources/config/routingadmin.yml"
     prefix:   /admin
+pazari:
+    pattern:  /pazari
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+ola:
+    pattern:  /ola
+    defaults: { _controller: AcmeUserBundle:Pazari:new }
+laxanika:
+    pattern:  /pazari?category=λαχανικά
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+opwrokhpeutika:
+    pattern:  /pazari?category=οπωροκηπευτικά
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+frouta:
+    pattern:  /pazari?category=φρούτα
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+ospria:
+    pattern:  /pazari?category=όσπρια
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+ladi:
+    pattern:  /pazari?category=λάδι
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+meli:
+    pattern:  /pazari?category=μέλι
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+galaktokomika:
+    pattern:  /pazari?category=γαλακτοκομικά
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+xorta:
+    pattern:  /pazari?category=χόρτα
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+kreas:
+    pattern:  /pazari?category=κρέας
+    defaults: { _controller: AcmeUserBundle:Pazari:index }
+8alassina:
+    pattern:  /pazari?category=θαλασσινά
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+viologika:
+    pattern:  /pazari?category=βιολογικά-προϊόντα
+    defaults: { _controller: AcmeUserBundle:Pazari:index}
+alla:
+    pattern:  /pazari?category=άλλα
+    defaults: { _controller: AcmeUserBundle:Pazari:index }

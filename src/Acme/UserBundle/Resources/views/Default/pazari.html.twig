@@ -1,6 +1,6 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
-{% block title %} Επόμενα Παζάρια {% endblock %}
+{% block title %} Προγραμματισμένες Αγορές{% endblock %}
 
 {% block extracssjava %}
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="span9">
-        <h1> Επόμενα Παζάρια </h1>
+        <h1> Προγραμματισμένες Αγορές</h1>
     </div>
 </div>
 
@@ -71,7 +71,7 @@
 			
                 <div class="span9 buttons">
 				<a class="btn btn-large" href="{{ path('buy', { 'id': location.id}) }}">Προβολή προσφορών</a>
-				<a class="btn btn-large" href="{{ path('sell', { 'id': location.id}) }}">Συμμετοχή ως αγρότης</a>
+			
 				</div>
             </div>
         </div>
