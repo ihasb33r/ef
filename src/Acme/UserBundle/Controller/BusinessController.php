@@ -2,27 +2,24 @@
 namespace Acme\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Acme\UserBundle\Entity\Location;
+use Acme\UserBundle\Entity\Business;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-class LocationsController extends Controller
+class BusinessController extends Controller
 {
     public function indexAction(Request $request)
     {
-         $location = new Location();
-        $form = $this->createFormBuilder($location)
-            ->add('name', "text")
-            ->add('longitude', "number")
-            ->add('latitude', "number")
-            ->add('organiser', "text")
-            ->add('extrainfo', "textarea")
-            ->add('date', "date")
+         $business = new Business();
+        $form = $this->createFormBuilder($business)
+            ->add('business_name', "text")
             ->add('address', "text")
+            ->add('town', "text")
+            ->add('postal', "number")
 			->add('phone', "number")
-			->add('starttime', "time")
-			->add('endtime', "time")
+			->add('amount', "number")
+            ->add('extra', "textarea")
             ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
             ->getForm()
             ;
@@ -35,19 +32,18 @@ class LocationsController extends Controller
                 $form->bindRequest($this->getRequest());
                 if ($form->isValid()){
                     $em = $this->getDoctrine()->getEntityManager();
-					$location->setApproved(false);
-					$location->setPublic(false);
-					$location->setUser($user);
-                    $em->persist($location);
+					$business->setUser($user);
+					$business->setApproved(false);
+                    $em->persist($business);
                     $em->flush();
-                }return $this->redirect($this->generateUrl('locations_new'));
+                }return $this->redirect($this->generateUrl('business_add')); 
             }
         }
-        return $this->render('AcmeUserBundle:Default:locations.html.twig', array('form'=>$form->createView()));
+        return $this->render('AcmeUserBundle:Default:business.html.twig', array('form'=>$form->createView()));
     }
-    public function newAction()
+    public function addAction()
     {
         
-        return $this->render('AcmeUserBundle:Default:add_location.html.twig');
+        return $this->render('AcmeUserBundle:Default:add_business.html.twig');
     }
 }

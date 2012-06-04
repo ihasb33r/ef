@@ -1,0 +1,78 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Προσφορές αγροτών{% endblock %}
+
+{% block extracssjava %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span9">
+        <h1> Προσφορές αγροτών σε επιχειρήσεις</h1>
+    </div>
+</div>
+
+
+{%for business in business %}	
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span9 title">
+                <h2><span class="hidden-phone">Η επιχείρηση ζητά:</span> {{business.product.name}}</h2>
+             
+            </div>
+        </div>
+        <div class="row">
+            <div class="span2" >
+                <div class="details">
+                    <img class="product" src="{{ asset (business.product.image)}}">
+                </div>
+            </div>
+            <div class="span7">
+                <div class="details">
+                    <div class="groupinfo">
+                        <dl class="info">
+                            <dt>Διοργανωτής</dt><dd>{{business.businessname}}</dd>
+							<dt>Διεύθυνση</dt><dd> {{ business.address}} </dd>
+						
+							
+                        </dl>
+                        <dl class="info">
+                            <dt>Πόλη</dt><dd> {{ business.town}} </dd>
+							<dt>Ταχυδρομικός Κώδικας</dt><dd> {{ business.postal}} </dd>
+							
+                        </dl>
+                        <div class="clearfix"></div>
+                    </div>
+                    <dl class="extrainfo">
+					<dt>Τηλέφωνο</dt><dd> {{ business.phone}} </dd>
+                        <dt >Επιπλέον Πληροφορίες </dt>
+                        <dd > {{business.extra }}</dd>
+                    </dl>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+			
+                <div class="span9 buttons">
+				<a class="btn btn-large" href="{{ path('sell', { 'id': business.id}) }}">Συμμετοχή ως αγρότης</a>
+			
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}
+
+
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}

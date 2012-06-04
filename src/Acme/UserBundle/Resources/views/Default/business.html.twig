@@ -1,0 +1,81 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+
+        <h1>Καταχώρηση παραγγελίας από επιχείρηση</h1>  </div>
+
+</div>
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span7">
+                <div class="details">
+                        <form action='{{path ("business")}}' {{form_enctype(form) }} method="POST">
+                             <div class="control-group">
+        {{form_label(form.business_name,"Όνομα Εταιρίας", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.business_name)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.address)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.town,"Πόλη", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.town)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.postal,"Ταχυδρομικός Κώδικας", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.postal)}}
+        </div>
+    </div>
+	<div class="control-group">
+        {{form_label(form.phone,"Τηλέφωνο", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.phone) }} 
+        </div>
+    </div>
+	 <div class="control-group">
+        {{form_label(form.product,"Προιόν", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.product)}}
+        </div>
+    </div>
+	<div class="control-group">
+        {{form_label(form.amount,"Ποσότητα", {'attr': {'class':'control-label'} })}}
+        <div class="controls">
+            {{ form_widget(form.amount)}}
+        </div>
+    </div>
+    <div class="control-group">
+        {{form_label(form.extra,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
+        <div class="controls">
+            {{ form_widget(form.extra)}}
+        </div>
+    </div>
+	
+    {{ form_rest(form)}}
+ <input name="ajax" value="true" type="hidden"/>
+<input name="submit" value="Υποβολή" type="submit"/>
+</form>
+
+                    </div>
+                </div>
+            </div>
+     
+    </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}
+

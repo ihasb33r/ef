@@ -196,16 +196,18 @@ class User extends BaseUser
         return $this->rate;
     }
 	/**
-     * @ORM\OneToMany(targetEntity="location", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Location", mappedBy="user")
      */
     protected $location;
+ 
+    
 
     /**
      * Add location
      *
-     * @param Acme\UserBundle\Entity\location $location
+     * @param Acme\UserBundle\Entity\Location $location
      */
-    public function addlocation(\Acme\UserBundle\Entity\location $location)
+    public function addLocation(\Acme\UserBundle\Entity\Location $location)
     {
         $this->location[] = $location;
     }
@@ -218,5 +220,31 @@ class User extends BaseUser
     public function getLocation()
     {
         return $this->location;
+    }
+	 /**
+     * @ORM\OneToMany(targetEntity="Business", mappedBy="user")
+     */
+    protected $business;
+
+   
+
+    /**
+     * Add business
+     *
+     * @param Acme\UserBundle\Entity\Business $business
+     */
+    public function addBusiness(\Acme\UserBundle\Entity\Business $business)
+    {
+        $this->business[] = $business;
+    }
+
+    /**
+     * Get business
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
     }
 }

@@ -5,13 +5,10 @@
          
          <h1> Προσθήκη προσφορών</h1>  </div>
 </div>
-<div class="row ">
-<div class="span9 listing">
-	<div class="row">
-            <div class="span7">
-                <div class="details">
+
 {%for location in location%}
-{%if location.date|date("d/m/Y")>"now"|date("d/m/Y") and location.approved==1 and location.user.id=%}
+{{location.user.id}}
+{%if location.date|date("d/m/Y")<"now"|date("d/m/Y") and location.approved==1 and location.user.getId==id%}
 {%for sell in sell%}
 {%if location.id==sell.location.id%}
 <div class="row ">
@@ -53,13 +50,12 @@
         </div>
     </div>
 </div>
-{%endfor%}
 
 {%endif%}
 {%endfor%}
 {%endif%}
 {%endfor%}
-</div></div></div></div></div>
+
 {%endblock %}
 {% block sidebar %}
 {% include "AcmeUserBundle:Default:sidebar.html.twig" %}

@@ -205,4 +205,32 @@ class Product
     {
         return $this->category;
     }
+	// ...
+
+    /**
+     * @ORM\OneToMany(targetEntity="Business", mappedBy="product")
+     */
+    protected $business;
+
+  
+
+    /**
+     * Add business
+     *
+     * @param Acme\UserBundle\Entity\Business $business
+     */
+    public function addBusiness(\Acme\UserBundle\Entity\Business $business)
+    {
+        $this->business[] = $business;
+    }
+
+    /**
+     * Get business
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
 }

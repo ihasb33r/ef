@@ -114,3 +114,12 @@ ok:
 no:
     pattern: /no{id}
     defaults: { _controller: AcmeUserBundle:Approval:no }
+business:
+    pattern: /business
+    defaults: { _controller: AcmeUserBundle:Business:index }
+business_add:
+    pattern: /business_add
+    defaults: { _controller: AcmeUserBundle:Business:add }
+businessprosfores:
+    pattern: /businessprosfores
+    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }

@@ -55,7 +55,8 @@ class Location
      *
      * @ORM\Column(name="approved", type="boolean")
      */
-    private $approved; /**
+    private $approved; 
+	/**
      * @var string $public
      *
      * @ORM\Column(name="public", type="boolean")
