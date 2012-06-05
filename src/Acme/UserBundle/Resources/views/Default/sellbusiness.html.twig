@@ -1,0 +1,50 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+
+        <h1>Πώληση προϊόντος</h1>  </div>
+
+</div>
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span7">
+                <div class="details">
+                        <form action='{{path ("sellbusiness", { 'id': business_id})}}' {{form_enctype(form) }} method="POST">
+                            <div class="control-group">
+                                {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.quantity)}}
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                {{form_label(form.price,"Τιμή", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.price)}}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                {{form_label(form.origin,"Προέλευση", {'attr': {'class':'control-label'} } ) }}
+                                <div class="controls">
+                                    {{ form_widget(form.origin)}}
+                                </div>
+                            </div>
+                            {{ form_rest(form)}}
+                            <input name="ajax" value="true" type="hidden"/>
+                            <input name="submit" value="Υποβολή" type="submit"/>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock%}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}

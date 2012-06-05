@@ -6,9 +6,15 @@ home:
 sell:
     pattern:  /sell/{id}
     defaults: { _controller: AcmeUserBundle:Sell:index }
+sellbusiness:
+    pattern:  /sellbusiness/{id}
+    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
 sell_add:
     pattern: /sell_add
     defaults: { _controller: AcmeUserBundle:Sell:index }
+sellbusiness_add:
+    pattern: /sellbusiness_add
+    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
 buy:
     pattern:  /buy/{id}
     defaults: { _controller: AcmeUserBundle:Buy:index }
@@ -39,6 +45,9 @@ vote:
 sell_new:
     pattern:  /sell_new
     defaults: { _controller: AcmeUserBundle:Sell:new }
+sellbusiness_new:
+    pattern:  /sellbusiness_new
+    defaults: { _controller: AcmeUserBundle:Sellbusiness:new }
 price:
     pattern:  /price
     defaults: { _controller: AcmeUserBundle:Price:new }
