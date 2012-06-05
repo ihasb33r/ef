@@ -2,6 +2,8 @@ html{
     min-height:100%;
 }
 
+
+
 body{
     min-height:100%;
     background-image:url("../img/background-bottom.png");
@@ -20,6 +22,26 @@ h1 {
     margin-bottom:20px;
     border-radius:5px;
 }
+
+
+.loginbox {
+    margin:0px;
+    list-style:none;
+}
+
+.loginbox li{
+background-color: #506100;
+color:white;
+padding: 10px ;
+margin-bottom: 5px;
+margin-top:5px;
+border-radius: 5px;
+}
+.loginbox a {
+    color:white;
+    font-weight:bold;
+}
+
 
 .listing,.sidebar {
     clear:left;
