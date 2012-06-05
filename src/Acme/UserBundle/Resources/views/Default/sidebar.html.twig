@@ -1,34 +1,51 @@
-<div class="row ">
 {% if is_granted("ROLE_USER") %}
+<div class="row">
+    <div class="span3">
+        <h2 class="side">Επιλογές</h2>
+    </div>
+</div>
+<div class="row ">
     <div class="span3 sidebar">
         <ul class="extra-nav">
             <li><a href='{{path("agorasmena")}}'>Τα Αγορασμένα μου</a></li>
             <li><a href='{{path("poulimena")}}'>Τα Πουλημένα μου</a></li>
         </ul>
     </div>
- {% endif %}
+</div>
+{% endif %}
+<div class="row"><div class="span3">
+        <h2 class="side">Κατηγορίες</h2>
+</div></div>
+<div class="row">
     <div class="span3 sidebar">
         <ul class="extra-nav">
             <li><a href='{{path("ola")}}'>Όλα</a></li>
-			<li><a href='{{path("laxanika")}}'>Λαχανικά</a></li>
-			<li><a href='{{path("opwrokhpeutika")}}'>Οπωροκηπευτικά</a></li>
-			<li><a href='{{path("frouta")}}'>Φρούτα</a></li>
-			<li><a href='{{path("ospria")}}'>Όσπρια</a></li>
-			<li><a href='{{path("ladi")}}'>Λάδι</a></li>
-			<li><a href='{{path("meli")}}'>Μέλι</a></li>
-			<li><a href='{{path("galaktokomika")}}'>Γαλακτοκομικά</a></li>
-			<li><a href='{{path("xorta")}}'>Χόρτα</a></li>
-			<li><a href='{{path("kreas")}}'>Κρέας</a></li>
-			<li><a href='{{path("8alassina")}}'>Θαλασσινά</a></li>
-			<li><a href='{{path("viologika")}}'>Βιολογικά Προϊόντα</a></li>
-			<li><a href='{{path("alla")}}'>Άλλα</a></li>
+            <li><a href='{{path("laxanika")}}'>Λαχανικά</a></li>
+            <li><a href='{{path("opwrokhpeutika")}}'>Οπωροκηπευτικά</a></li>
+            <li><a href='{{path("frouta")}}'>Φρούτα</a></li>
+            <li><a href='{{path("ospria")}}'>Όσπρια</a></li>
+            <li><a href='{{path("ladi")}}'>Λάδι</a></li>
+            <li><a href='{{path("meli")}}'>Μέλι</a></li>
+            <li><a href='{{path("galaktokomika")}}'>Γαλακτοκομικά</a></li>
+            <li><a href='{{path("xorta")}}'>Χόρτα</a></li>
+            <li><a href='{{path("kreas")}}'>Κρέας</a></li>
+            <li><a href='{{path("8alassina")}}'>Θαλασσινά</a></li>
+            <li><a href='{{path("viologika")}}'>Βιολογικά Προϊόντα</a></li>
+            <li><a href='{{path("alla")}}'>Άλλα</a></li>
         </ul>
     </div>
-	<div class="span3 sidebar">
+</div>
+<div class="row">
+    <div class="span3">
+        <h2 class="side">Πληροφορίες</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="span3 sidebar">
         <ul class="extra-nav">
-         <li><a href='{{path("price")}}'>Τιμοκατάλογος</a></li>
-		 <li><a href='{{path("price")}}'>Εκδηλώσεις</a></li>
-		 <li><a href='{{path("price")}}'>Blog</a></li>
+            <li><a href='{{path("price")}}'>Τιμοκατάλογος</a></li>
+            <li><a href='{{path("price")}}'>Εκδηλώσεις</a></li>
+            <li><a href='{{path("price")}}'>Blog</a></li>
         </ul>
     </div>
 </div>
