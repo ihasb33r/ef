@@ -206,6 +206,13 @@ dl.faq dd {
     font-family: "Comfortaa", sans-serif;
 }
 
+.newsbody {
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
 .imgmap {
     margin-right:20px;
     margin-left:20px;
