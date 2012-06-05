@@ -123,3 +123,6 @@ business_add:
 businessprosfores:
     pattern: /businessprosfores
     defaults: { _controller: AcmeUserBundle:Businessprosfores:index }
+about:
+    pattern: /about
+    defaults: { _controller: AcmeUserBundle:About:new }
