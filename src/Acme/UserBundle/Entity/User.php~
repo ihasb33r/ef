@@ -199,7 +199,10 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Location", mappedBy="user")
      */
     protected $location;
- 
+ /**
+     * @ORM\OneToMany(targetEntity="Sellbusiness", mappedBy="user")
+     */
+    protected $sellbusiness;
     
 
     /**

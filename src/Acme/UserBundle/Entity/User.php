@@ -199,7 +199,10 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Location", mappedBy="user")
      */
     protected $location;
- 
+ /**
+     * @ORM\OneToMany(targetEntity="Sellbusiness", mappedBy="user")
+     */
+    protected $sellbusiness;
     
 
     /**
@@ -246,5 +249,25 @@ class User extends BaseUser
     public function getBusiness()
     {
         return $this->business;
+    }
+
+    /**
+     * Add sellbusiness
+     *
+     * @param Acme\UserBundle\Entity\Sellbusiness $sellbusiness
+     */
+    public function addSellbusiness(\Acme\UserBundle\Entity\Sellbusiness $sellbusiness)
+    {
+        $this->sellbusiness[] = $sellbusiness;
+    }
+
+    /**
+     * Get sellbusiness
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSellbusiness()
+    {
+        return $this->sellbusiness;
     }
 }
