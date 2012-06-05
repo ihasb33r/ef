@@ -44,8 +44,27 @@
                 <div class="span6">
                     <ul class="nav">
                         <li>
-                        <a href="{{path("pazari")}}">Αρχικη</a>
+                        <a href="{{path("ola")}}">Αρχικη</a>
                         </li>
+                        <li>
+                        <a href="">Είμαι Αγρότης</a>
+                        </li>
+                        <li>
+                        <a href="">Είμαι Καταναλωτής</a>
+                        </li>
+                        <li>
+                        <a href="">Είμαι Επιχείρηση</a>
+                        </li>
+                        <li>
+                        <a href="">Θέλω να Βοηθήσω</a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="span3 phone">
+                    <div>
+                        <ul class="loginbox">
                         {% if is_granted("ROLE_USER") %}
                         <li>
                         <a href="{{path("fos_user_security_logout")}}">Αποσύνδεση</a>
@@ -58,18 +77,8 @@
                         <a href="{{path("fos_user_registration_register")}}">Εγγραφή</a>
                         </li>
                         {% endif %}
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="span3 phone">
-                    <div>
-                        <p class="phonehelp">
-                        Για βοήθεια καλέστε:
-                        </p>
-                        <h2>12345</h2>
-                        <p class="phonetax">
-                        Αστική Χρέωση
-                        </p>
+
+                        </ul>
                     </div>
                 </div>
             </div>
