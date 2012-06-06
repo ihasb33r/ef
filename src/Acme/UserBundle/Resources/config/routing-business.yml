@@ -1,0 +1,9 @@
+business:
+    pattern: /
+    defaults: { _controller: AcmeUserBundle:Business:index }
+business_add:
+    pattern: /business_add
+    defaults: { _controller: AcmeUserBundle:Business:add }
+businessprosfores:
+    pattern: /businessprosfores
+    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }

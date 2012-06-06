@@ -35,7 +35,7 @@ class SellController extends Controller
                 $em->persist($sell);
                 $em->flush();
             }
-			return $this->redirect($this->generateUrl('sell_new'));
+            return $this->redirect($this->generateUrl('sell_new'));
         }
         return $this->render('AcmeUserBundle:Default:sell.html.twig', array("location_id"=>$id,"form"=>$form->createView()));
     }
@@ -44,6 +44,6 @@ class SellController extends Controller
 
     public function newAction()
     {
- return $this->render('AcmeUserBundle:Default:sell_new.html.twig');
+        return $this->render('AcmeUserBundle:Default:sell_new.html.twig');
     }
 }

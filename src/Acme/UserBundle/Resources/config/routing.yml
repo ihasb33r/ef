@@ -3,36 +3,43 @@
 home:
     pattern: /
     defaults: { _controller: AcmeUserBundle:News:index }
-sell:
-    pattern:  /sell/{id}
-    defaults: { _controller: AcmeUserBundle:Sell:index }
-sellbusiness:
-    pattern:  /sellbusiness/{id}
-    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
-sell_add:
-    pattern: /sell_add
-    defaults: { _controller: AcmeUserBundle:Sell:index }
-sellbusiness_add:
-    pattern: /sellbusiness_add
-    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
+#sell:
+#    pattern:  /sell/{id}
+#    defaults: { _controller: AcmeUserBundle:Sell:index }
+#sellbusiness:
+#    pattern:  /sellbusiness/{id}
+#    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
+#sell_add:
+#    pattern: /sell_add
+#    defaults: { _controller: AcmeUserBundle:Sell:index }
+#sellbusiness_add:
+#    pattern: /sellbusiness_add
+#    defaults: { _controller: AcmeUserBundle:Sellbusiness:index }
+#user
 buy:
     pattern:  /buy/{id}
     defaults: { _controller: AcmeUserBundle:Buy:index }
+#user
 buy_new:
     pattern:  /buy_new/{location_id}/{offer_id}
     defaults: { _controller: AcmeUserBundle:Buy:new }
+#all
 profile:
     pattern:  /profile
     defaults: { _controller: AcmeUserBundle:Profile:show}
+#all
 edit:
     pattern:  /edit/{id}
     defaults: { _controller: AcmeUserBundle:Poulimena:edit}
+#all
 edit_new:
     pattern:  /edit_new
     defaults: { _controller: AcmeUserBundle:Poulimena:editnew}
-poulimena:
-    pattern:  /poulimena
-    defaults: { _controller: AcmeUserBundle:Poulimena:show}
+#farmer
+#poulimena:
+#    pattern:  /poulimena
+#    defaults: { _controller: AcmeUserBundle:Poulimena:show}
+#user
 agorasmena:
     pattern:  /agorasmena
     defaults: { _controller: AcmeUserBundle:Kalathi:show}
@@ -42,12 +49,12 @@ buy_delete:
 vote:
     pattern:  /vote/{name}
     defaults: { _controller: AcmeUserBundle:Vote:index}
-sell_new:
-    pattern:  /sell_new
-    defaults: { _controller: AcmeUserBundle:Sell:new }
-sellbusiness_new:
-    pattern:  /sellbusiness_new
-    defaults: { _controller: AcmeUserBundle:Sellbusiness:new }
+#sell_new:
+#    pattern:  /sell_new
+#    defaults: { _controller: AcmeUserBundle:Sell:new }
+#sellbusiness_new:
+#    pattern:  /sellbusiness_new
+#    defaults: { _controller: AcmeUserBundle:Sellbusiness:new }
 price:
     pattern:  /price
     defaults: { _controller: AcmeUserBundle:Price:new }
@@ -60,21 +67,39 @@ edit_new_sell:
 vote:
    pattern: /vote
    defaults: { _controller: AcmeUserBundle:Vote:index}
+
+
+
+
 admin:
     resource: "@AcmeUserBundle/Resources/config/routingadmin.yml"
     prefix:   /admin
+agrotis:
+    resource: "@AcmeUserBundle/Resources/config/routing-agrotis.yml"
+    prefix:   /agrotis
+businessroute:
+    resource: "@AcmeUserBundle/Resources/config/routing-business.yml"
+    prefix:   /business
+organiser:
+    resource: "@AcmeUserBundle/Resources/config/routing-organiser.yml"
+    prefix:   /organiser
+
+
+
+#user
 ola:
     pattern:  /agora
     defaults: { _controller: AcmeUserBundle:Pazari:new }
+#user
 pazari:
     pattern:  /agora/{category}
     defaults: { _controller: AcmeUserBundle:Pazari:index, category:"all" }
-locations:
-    pattern: /locations
-    defaults: { _controller: AcmeUserBundle:Locations:index }
-locations_new:
-    pattern: /locations_new
-    defaults: { _controller: AcmeUserBundle:Locations:new }
+#locations:
+#    pattern: /locations
+#    defaults: { _controller: AcmeUserBundle:Locations:index }
+#locations_new:
+#    pattern: /locations_new
+#    defaults: { _controller: AcmeUserBundle:Locations:new }
 prosfores:
     pattern: /prosfores
     defaults: { _controller: AcmeUserBundle:Prosfores:index }
@@ -87,15 +112,16 @@ ok:
 no:
     pattern: /no{id}
     defaults: { _controller: AcmeUserBundle:Approval:no }
-business:
-    pattern: /business
-    defaults: { _controller: AcmeUserBundle:Business:index }
-business_add:
-    pattern: /business_add
-    defaults: { _controller: AcmeUserBundle:Business:add }
-businessprosfores:
-    pattern: /businessprosfores
-    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }
-about:
-    pattern: /about
-    defaults: { _controller: AcmeUserBundle:About:new }
+
+#business:
+#    pattern: /business
+#    defaults: { _controller: AcmeUserBundle:Business:index }
+#business_add:
+#    pattern: /business_add
+#    defaults: { _controller: AcmeUserBundle:Business:add }
+#businessprosfores:
+#    pattern: /businessprosfores
+#    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }
+#about:
+#    pattern: /about
+#    defaults: { _controller: AcmeUserBundle:About:new }

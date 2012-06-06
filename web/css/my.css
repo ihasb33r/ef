@@ -22,13 +22,13 @@ h1 , h2.side{
 }
 
 h2.side{
-float: none;
-text-align: center;
-font-size: 1.5em;
-padding: 5px 15px;
-background-color: 
-#6F8D8D;
-margin-bottom: 5px;
+    float: none;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 5px 15px;
+    background-color: 
+    #6F8D8D;
+    margin-bottom: 5px;
 }
 
 
@@ -38,15 +38,15 @@ margin-bottom: 5px;
 }
 
 .loginbox li{
-background-color: #506100;
-color:white;
-padding: 10px ;
-margin-bottom: 5px;
-margin-top:5px;
-border-radius: 5px;
+    /*background-color: #506100;*/
+    /*color:white;*/
+    padding: 10px ;
+    margin-bottom: 5px;
+    margin-top:5px;
+    border-radius: 5px;
 }
 .loginbox a {
-    color:white;
+    /*color:white;*/
     font-weight:bold;
 }
 
@@ -163,7 +163,7 @@ dl.faq dd {
 }
 
 .top {
-    margin-bottom:20px;
+    /*margin-bottom:20px;*/
 }
 
 .nav{
@@ -231,10 +231,10 @@ dl.faq dd {
     max-width:none;
 }
 .details img.product{
-/*    float:left;*/
+    /*    float:left;*/
     border:solid 1px #ddd;
     width:152px;
-/*    height:152px;*/
+    /*    height:152px;*/
     margin-right:20px;
     margin-bottom:20px;
 }
