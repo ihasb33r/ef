@@ -1,16 +1,44 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Προσθήκη/Αλλαγή Προιόντος
 
-<form action='{{path ("admin_product_new")}}' {{form_enctype(form) }} method="POST" id="modalForm">
-    <div class="control-group">
-        <label class="control-label" for="input01">Όνομα προϊόντος</label>
-        <div class="controls">
-            {{ form_row(form.name)}}
+{% endblock %}
+
+{% block content %}
+<h1>Προσθήκη/Αλλαγή Προϊόντος</h1>
+<div class="row">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span4">
+                <form action='{{path ("admin_product_new")}}' {{form_enctype(form) }}  method="POST" >
+                    <div class="control-group">
+                        {{form_label(form.name,"Όνομα Προϊόντος", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.name)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.name,"Κατηγορία Προϊόντος", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.category)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.name,"Φωτογραφία", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.file)}}
+                            {{ form_rest(form)}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="span4">
+                <div style="width:180px;height:180px;background-color:lightgrey"class="img"></div>
+            </div>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="fileInput">Φωτογραφία</label>
-        <div class="controls">
-            {{ form_row(form.file)}}
-            {{ form_rest(form)}}
-        </div>
-  </div>
-</form>
+</div>
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

@@ -9,34 +9,6 @@
 
 {% block content %}
 
-<script>
-
-    $(document).ready(function(){
-        $($(this).attr("href")).modal();
-    $(".edit").click( function (){
-
-        $("#myModalForm h3").html("Επεξεργασία");
-        $("#myModalForm form").attr("action", "edit");
-        $("#myModalForm #productname").attr("value", "patata");
-
-    });
-
-    $(".new").click( function (){
-
-        $("#myModalForm .modal-body")
-        $.get("{{path('admin_locations_new')}}", function(data){
-
-            $("#myModalForm .modal-body").empty();
-            $("#myModalForm .modal-body").append(data);
-            $("#myModalForm h3").html("Καινούρια Συνάντηση");
-            
-        });
-//        $($(this).attr("href")).show();
-//        $("#myModalForm form").attr("action", "{{path('admin_product_new')}}");
-
-    });
-});
-</script>
 
 <h1>Διαχείριση Προϊόντων</h1>
 <div class="row">
@@ -47,46 +19,35 @@
                     <th></th>
                     <th class="visible-desktop">ID</th>
                     <th>Οργανωτής</th>
-                    <th>Όνομα Σημείου</th>
-                    <th>Διεύθυνση</th>
+                    <th>Σημείο</th>
                     <th class="hidden-phone">Τηλέφωνο Επικοινωνίας</th>
-                    <th class="visible-desktop">Γεωγραφικό Πλάτος</th>
-                    <th class="visible-desktop">Γεωγραφικό Μήκος</th>
-                    <th class="visible-desktop">Επιπλέον πληροφορίες</th>
+                    <th class="visible-desktop">Στιγμα</th>
+                    <th class="">Ώρες</th>
+                    <th class="">Εγγρισή</th>
                 </tr>
                 </thead>
                 <tbody>
         {% for location  in locations %}
             <tr>
-                <td><a href="#edit{{location.id}}">Ε</a></td>
+                <td class="actions">
+                    <a id="edit{{location.id}}" class="edit" href="{{path('admin_locations_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
+                    <a id="delete{{location.id}}" class="delete" href="{{path('admin_locations_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
+                </td>
                 <td class="visible-desktop">{{location.id}}</td>
                 <td>{{location.organiser}}"</td>
-                <td>{{location.name}}</td>
-                <td>{{location.address}}</td>
-                <td class="hidden-phone"></td>
-                <td class="visible-desktop">{{location.longitude}}</td>
-                <td class="visible-desktop">{{location.latitude}}</td>
-                <td class="visible-desktop">{{location.extrainfo}}</td>
+                <td>{{location.name}}<br>{{location.address}}</td>
+                <td class="hidden-phone">{{location.phone}}</td>
+                <td class="visible-desktop">{{location.longitude}} <br> {{location.latitude}}</td>
+                <td class="visible-desktop"></td>
+                <td><a href="">OK</a></td>
             </tr>
         {% endfor %}
             </tbody>
         </table>
-        <a data-toggle="modal" class="btn btn-large new" href="#myModalForm"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
+        <a class="btn btn-large new" href="{{path ("admin_locations_new")}}"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
     </div>
 </div>
 
-<div class="modal" id="myModalForm">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3 id="modalheader"></h3>
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-        <a href="#" data-dismiss="modal" class="btn">Close</a>
-        <a href="#" id="save" class="btn btn-primary" >Save changes</a>
-    </div>
-</div>
 
 {% endblock %}
 {% block sidebar %}
