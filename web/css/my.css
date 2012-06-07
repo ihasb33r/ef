@@ -96,6 +96,23 @@ h2.side{
     text-align:right;
 }
 
+#news_admin_title {
+    font-size:1.5em;
+    padding:10px;
+    width:100%;
+    margin-left:-10px;
+
+}
+
+#html5textarea{
+    width:100%;
+    height:500px;
+    font-size:1em;
+    padding:10px;
+    margin-left:-10px;
+}
+
+
 .offer {
     text-align:center;
     padding-top:20px;
@@ -379,12 +396,53 @@ dl.info dd {
 }
 
 
+/* media queries */
+@media (max-width: 767px){
+
+
+    #html5textarea { 
+        padding-left:0px;
+        padding-right:0px;
+        margin-left:0px;
+    }
+
+    #news_admin_title{
+        padding-left:0px;
+        padding-right:0px;
+        margin-left:0px;
+
+
+    }
+    .html5textarea { 
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .news_admin_title{
+        padding-left:10px;
+        padding-right:10px;
+
+
+    }
+
+
+
+}
+
+
+
+
+/* end media queries */
+
 /*overrides of bootstrap */
 
 
 
 h1,h2,h3,h4,h5,h6 {
     line-height:1.5em;
+}
+
+.btn {
+    font-size:1em;
 }
 
 .btn-large {
@@ -406,13 +464,14 @@ h1,h2,h3,h4,h5,h6 {
     -webkit-font-smoothing: antialiased;
 }
 
-
-
-
 .nav>li>a:hover {
     background-color:transparent;
 }
 
 .modal {
     display:none;
+}
+label {
+
+    font-size:1em;
 }

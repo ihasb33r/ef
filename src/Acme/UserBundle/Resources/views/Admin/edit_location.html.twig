@@ -9,7 +9,7 @@
 <h1>Προσθήκη/Αλλαγή Συνάντησης</h1>
 <div class="row">
     <div class="span9 listing">
-        <form action='{{path ("admin_locations_new")}}' {{form_enctype(form) }} method="POST" id="locationForm">
+        <form action='{{path ("admin_locations_edit", {'id':id}) }}' {{form_enctype(form) }} method="POST" id="locationForm">
             <div class="row">
                 <div class="span4 offset1">
                     <div class="control-group">

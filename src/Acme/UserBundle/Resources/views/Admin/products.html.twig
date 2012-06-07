@@ -64,22 +64,10 @@
         {% endfor %}
             </tbody>
         </table>
-        <a data-toggle="modal" class="btn btn-large new" href="#myModalForm"><span class="new-icon"></span>Καινούριο Προϊόν</a>
+        <a class="btn btn-large new" href="{{path("admin_product_new")}}"><span class="new-icon"></span>Καινούριο Προϊόν</a>
     </div>
 </div>
 
-<div class="modal" id="myModalForm">
-    <div class="modal-header">
-        <button class="close" data-dismiss="modal">×</button>
-        <h3 id="modalheader"></h3>
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-        <a href="#" data-dismiss="modal" class="btn">Close</a>
-        <a href="#" class="btn btn-primary" >Save changes</a>
-    </div>
-</div>
 
 {% endblock %}
 
