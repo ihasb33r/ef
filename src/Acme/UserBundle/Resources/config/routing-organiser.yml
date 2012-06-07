@@ -4,3 +4,6 @@ locations:
 locations_new:
     pattern: /locations_new
     defaults: { _controller: AcmeUserBundle:Locations:new }
+diorganotis:
+    pattern: /
+    defaults: { _controller: AcmeUserBundle:Organizer:index }

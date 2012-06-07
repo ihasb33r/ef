@@ -1,0 +1,42 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Διοργανωτής
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1>Διοργανωτής</h1>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="span9 listing">
+        <p>
+        Ο διαδικτυακός μας τόπος παρέχει τη δυνατότητα σε δήμους, οργανισμούς, μη κερδοσκοπικές οργανώσεις κτλ να οργανώνουν συναντήσεις σε δικές τους τοποθεσίες
+		βοηθώντας τους καταναλωτές να προμυθεύονται τα προϊόντα πολύ φτηνότερα απευθείας από τους αγρότες.
+        </p>
+        <dl><dt>
+            Για να οργανώσετε μια συνάντηση αρκεί να:
+            </dt>
+            <dd>
+            <ul>
+                <li>Συμπληρώσετε φόρμα ενδιαφέροντος</li>
+                <li>Διαλέξετε αγρότες ανάμεσα από τις προσφορές</li>
+                <li>Δείτε την συνάντηση να πραγματοποιείται</li>
+            </ul>
+            </dd>
+        </dl>
+
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar_agrotis.html.twig" %}
+{%endblock %}
