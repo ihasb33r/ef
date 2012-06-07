@@ -24,7 +24,7 @@ poulimena:
     pattern:  /poulimena
     defaults: { _controller: AcmeUserBundle:Poulimena:show}
 agrotis:
-    pattern:  /agrotis
+    pattern:  /
     defaults: { _controller: AcmeUserBundle:Agrotis:index}
 prosfores:
     pattern: /prosfores

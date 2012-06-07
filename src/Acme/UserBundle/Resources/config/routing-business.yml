@@ -1,7 +1,10 @@
-business:
-    pattern: /
+prosfora:
+    pattern: /offer
     defaults: { _controller: AcmeUserBundle:Business:index }
 business_add:
-    pattern: /business_add
+    pattern: /add
     defaults: { _controller: AcmeUserBundle:Business:add }
+business:
+    pattern: /
+    defaults: { _controller: AcmeUserBundle:Epixeirhsh:index }
 

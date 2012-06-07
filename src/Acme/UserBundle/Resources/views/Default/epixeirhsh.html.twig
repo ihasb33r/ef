@@ -1,0 +1,38 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Επιχείρηση
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1>Επιχείρηση</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span9 listing">
+        <p>
+        Ο διαδικτυακός μας τόπος παρέχει τη δυνατότητα στις επιχειρήσεις να προμηθεύονται αγροτικά προϊόντα σε πολύ χαμηλές τιμές από τους καλύτερους αγρότες.
+        </p>
+        <dl><dt>
+            Οι επιχειρήσεις:
+            </dt>
+            <dd>
+            <ul>
+                <li>Προσθέτουν το προϊόν και την ποσότητα που επιθυμούν</li>
+                <li>Βλέπουν τις προσφορές που κάνουν οι αγρότες</li>
+                <li>Διαλέγουν αυτή που τους ικανοποιεί</li>
+				<li>Προμυθεύονται το προϊόν σε συνενόηση με τον αγρότη</li>
+            </ul>
+            </dd>
+        </dl>
+        <p>Διαλέξτε το πακέτο που σας ταιριάζει και συμμετέχετε σήμερα κιολας σε μια αγορά!</p>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar_business.html.twig" %}
+{%endblock %}
