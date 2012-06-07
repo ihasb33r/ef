@@ -27,6 +27,19 @@ admin_locations_delete:
     pattern: /locations/delete/{id}
     defaults: { _controller: AcmeUserBundle:AdminLocations:delete }
 
+admin_news:
+    pattern: /news
+    defaults: { _controller: AcmeUserBundle:AdminNews:index }
+admin_news_edit:
+    pattern: /news/edit/{id}
+    defaults: { _controller: AcmeUserBundle:AdminNews:edit }
+admin_news_new:
+    pattern: /news/new
+    defaults: { _controller: AcmeUserBundle:AdminNews:new }
+admin_news_delete:
+    pattern: /news/delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminNews:delete }
+
 #admin_locations_new:
 #    pattern: /locations_new
 #    defaults: { _controller: AcmeUserBundle:AdminLocations:new }
