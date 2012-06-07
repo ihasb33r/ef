@@ -100,9 +100,7 @@ pazari:
 #locations_new:
 #    pattern: /locations_new
 #    defaults: { _controller: AcmeUserBundle:Locations:new }
-prosfores:
-    pattern: /prosfores
-    defaults: { _controller: AcmeUserBundle:Prosfores:index }
+
 approval:
     pattern: /approval
     defaults: { _controller: AcmeUserBundle:Approval:index }

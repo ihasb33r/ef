@@ -23,3 +23,12 @@ sellbusiness_new:
 poulimena:
     pattern:  /poulimena
     defaults: { _controller: AcmeUserBundle:Poulimena:show}
+agrotis:
+    pattern:  /agrotis
+    defaults: { _controller: AcmeUserBundle:Agrotis:index}
+prosfores:
+    pattern: /prosfores
+    defaults: { _controller: AcmeUserBundle:Prosfores:index }
+businessoffer:
+    pattern: /businessoffer
+    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }

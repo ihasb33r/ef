@@ -1,0 +1,35 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+About
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1>Αγρότης</h1>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="span9 listing">
+        <dl class="faq">
+			<dt></dt>
+            <dd>Ο διαδικτυακός μας τόπος παρέχει τη δυνατότητα στους αγρότες να πουλάνε τα προϊόντα τους στο κόσμο χωρίς τους μεσάζοντες.</dd>
+			<dd>Κάθε αγρότης μπορεί:</dd>
+			<dd> - Να πουλάει σε αγορές που διοργανώνονται κυρίως από δήμους</dd>
+			<dd> - Να δίνει προσφορές και να πουλάει σε επιχειρήσεις που ζητάνε αγροτικά προϊόντα</dd>
+			<dd> - Να ελέγχει και να επεξεργάζεται αυτά που πουλάει</dd>
+            <dt>Διαλέξτε το πακέτο που σας ταιριάζει και συμμετέχετε σήμερα κιολας σε μια αγορά!</dt>
+        </dl>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar_agrotis.html.twig" %}
+{%endblock %}

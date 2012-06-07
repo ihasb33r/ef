@@ -18,7 +18,7 @@ class ProsforesController extends Controller
             ->getQuery()
             ->getResult();
 
-        return $this->render('AcmeUserBundle:Default:pazari3.html.twig',array('locations'=>$locat));
+        return $this->render('AcmeUserBundle:Default:prosforesagrotwn.html.twig',array('locations'=>$locat));
       
     }
 }

@@ -16,7 +16,7 @@ class BusinessprosforesController extends Controller
             ->getQuery()
             ->getResult();
 
-        return $this->render('AcmeUserBundle:Default:pazari4.html.twig',array('business'=>$business));
+        return $this->render('AcmeUserBundle:Default:prosforesepixeirhseis.html.twig',array('business'=>$business));
       
     }
 }
