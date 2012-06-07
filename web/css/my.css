@@ -50,6 +50,23 @@ h2.side{
     font-weight:bold;
 }
 
+.listing p {
+
+    font-size:1em;
+    line-height:1.5em;
+    margin-left:20px;
+    margin-right:20px;
+}
+.listing dl {
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.listing {
+
+    padding-top:20px;
+    padding-bottom:20px;
+}
 
 .listing,.sidebar {
     clear:left;
@@ -64,7 +81,6 @@ h2.side{
 
 .listing .title h2{
     height:30px;
-    margin-top:10px;
     padding-left:20px;
     float:left;
 }
@@ -100,14 +116,14 @@ dl.faq {
     margin-top:20px;
     font-family: "Comfortaa", sans-serif;
 }
-dl.faq dt {
+dt {
     font-size:1.3em;
     line-height:2.0em;
     margin-top:20px;
 
 }
 
-dl.faq dd {
+dd {
     line-height:1.5em;
     font-family:Georgia;
     font-size:1em;
