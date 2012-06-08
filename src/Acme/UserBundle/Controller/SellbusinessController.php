@@ -33,13 +33,13 @@ class SellbusinessController extends Controller
             }
 			return $this->redirect($this->generateUrl('sellbusiness_new'));
         }
-        return $this->render('AcmeUserBundle:Default:sellbusiness.html.twig', array("form"=>$form->createView()));
+        return $this->render('AcmeUserBundle:Agrotis:sellbusiness.html.twig', array("sellbusiness_id"=>$id, "form"=>$form->createView()));
     }
 
 
 
     public function newAction()
     {
- return $this->render('AcmeUserBundle:Default:sellbusiness_new.html.twig');
+ return $this->render('AcmeUserBundle:Agrotis:sellbusiness_new.html.twig');
     }
 }

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="span7">
                 <div class="details">
-                        <form action='{{path ("sellbusiness", { 'id': business_id})}}' {{form_enctype(form) }} method="POST">
+                        <form action='{{path ("sellbusiness", { 'id': sellbusiness_id})}}' {{form_enctype(form) }} method="POST">
                             <div class="control-group">
                                 {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
                                 <div class="controls">
@@ -46,5 +46,5 @@
     </div>
     {% endblock%}
 {% block sidebar %}
-{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{% include "AcmeUserBundle:Agrotis:sidebar_agrotis.html.twig" %}
 {%endblock %}
