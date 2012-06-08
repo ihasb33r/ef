@@ -6,11 +6,7 @@
          <h1> Προσθήκη προσφορών</h1>  </div>
 </div>
 
-{%for location in location%}
-{{location.user.id}}
-{%if location.date|date("d/m/Y")<"now"|date("d/m/Y") and location.approved==1 and location.user.getId==id%}
 {%for sell in sell%}
-{%if location.id==sell.location.id%}
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
@@ -42,8 +38,8 @@
             <div class="row">
                 <div class="row">
                     <div class="span9 buttons">
-						<a class="btn btn-large" href="{{ path('ok', { 'id': sell.id}) }}">Έγκρυση</a>
-						<a class="btn btn-large" href="{{ path('no', { 'id': sell.id}) }}">Απόρυψη</a>
+						<a class="btn btn-large" href="{{ path('ok', { 'id': sell.id}) }}">Έγκριση</a>
+						<a class="btn btn-large" href="{{ path('no', { 'id': sell.id}) }}">Απόρριψη</a>
                     </div>
                 </div>
             </div>			
@@ -51,12 +47,8 @@
     </div>
 </div>
 
-{%endif%}
-{%endfor%}
-{%endif%}
 {%endfor%}
 
 {%endblock %}
 {% block sidebar %}
-{% include "AcmeUserBundle:Business:sidebar_organiser.html.twig" %}
 {%endblock %}
