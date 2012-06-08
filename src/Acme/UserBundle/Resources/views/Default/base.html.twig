@@ -38,15 +38,15 @@
                 <div class="span3 logo">
 
                     <a href="{{path("home")}}">
-                    <img src="{{ asset('img/logo.png')}}">
-                </a>
+                        <img src="{{ asset('img/logo.png')}}">
+                    </a>
                 </div>
                 <div class="span6">
                     <ul class="nav">
                         <li>
                         <a href="{{path("home")}}">Αρχικη</a>
                         </li>
-						<li>
+                        <li>
                         <a href="{{path("diorganotis")}}">Είμαι Διοργανωτής</a>
                         </li>
                         <li>
@@ -68,18 +68,23 @@
                 <div class="span3 phone">
                     <div>
                         <ul class="loginbox">
-                        {% if is_granted("ROLE_USER") %}
-                        <li>
-                        <a href="{{path("fos_user_security_logout")}}">Αποσύνδεση</a>
-                        </li>
-                        {% else %}
-                        <li>
-                        <a href="{{path("fos_user_security_login")}}">Σύνδεση</a>
-                        </li>
-                        <li>
-                        <a href="{{path("fos_user_registration_register")}}">Εγγραφή</a>
-                        </li>
-                        {% endif %}
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <li>
+                            <a href="{{path("admin")}}">Διαχείριση</a>
+                            </li>
+                            {% endif %}
+                            {% if is_granted("ROLE_USER") %}
+                            <li>
+                            <a href="{{path("fos_user_security_logout")}}">Αποσύνδεση</a>
+                            </li>
+                            {% else %}
+                            <li>
+                            <a href="{{path("fos_user_security_login")}}">Σύνδεση</a>
+                            </li>
+                            <li>
+                            <a href="{{path("fos_user_registration_register")}}">Εγγραφή</a>
+                            </li>
+                            {% endif %}
 
                         </ul>
                     </div>
@@ -89,19 +94,19 @@
         <div class="container">
             <div class="row">
                 <div class="span9">
-            <div class="row">
-                <div class="span9">
-                    <div style="background-color:#D6DDDF; height:100px;margin-bottom:20px;"><p style="text-align:center; color:black;padding-top:40px; margin-top:20px;">Διαφημιση</p></div>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="span9">
+                            <div style="background-color:#D6DDDF; height:100px;margin-bottom:20px;"><p style="text-align:center; color:black;padding-top:40px; margin-top:20px;">Διαφημιση</p></div>
+                        </div>
+                    </div>
                     {% block content %} {% endblock %}
                 </div>
                 <div class="span3">
-            <div class="row">
-                <div class="span3">
-                    <div style="background-color:#D6DDDF; height:100px;margin-bottom:20px;"><p style="text-align:center; color:black;padding-top:40px; margin-top:20px;">Διαφημιση</p></div>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="span3">
+                            <div style="background-color:#D6DDDF; height:100px;margin-bottom:20px;"><p style="text-align:center; color:black;padding-top:40px; margin-top:20px;">Διαφημιση</p></div>
+                        </div>
+                    </div>
                     {% block sidebar %} {%endblock %}
                 </div>
             </div>

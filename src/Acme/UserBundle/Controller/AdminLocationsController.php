@@ -51,7 +51,8 @@ class AdminLocationsController extends Controller
                 $location->setUser($user);
                 $em->persist($location);
                 $em->flush();
-            }return $this->redirect($this->generateUrl('admin_locations'));
+            }
+            return $this->redirect($this->generateUrl('admin_locations'));
         }
         return $this->render('AcmeUserBundle:Admin:locations.html.twig', array('locations'=>$locations,' form'=>$form->createView()));
     }
@@ -81,7 +82,8 @@ class AdminLocationsController extends Controller
                 #                $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($location);
                 $em->flush();
-            }return $this->redirect($this->generateUrl('admin_locations'));
+                return $this->redirect($this->generateUrl('admin_locations'));
+            }
         }
         return $this->render('AcmeUserBundle:Admin:edit_location.html.twig', array('form'=>$form->createView(), 'id'=>$id));
 

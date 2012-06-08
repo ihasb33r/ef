@@ -265,17 +265,17 @@ div.quantities {
     text-align:center;
     float:left;
     width:50%;
-font-size:2em;
-line-height:1.5em;
-min-width:80px;
+    font-size:2em;
+    line-height:1.5em;
+    min-width:80px;
 }
 
 input.squarequantity {
     font-size:1.5em;
     height:50px;
-width: 100%;
-padding: 0px;
-text-align: center;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
 }
 
 .imgmap .map {
@@ -423,17 +423,17 @@ dl.info dd {
 /* media queries */
 @media (max-width: 767px){
 
-.details {
-    margin-top:20px;
-    margin-left:20px;
-    margin-right:20px;
-    margin-bottom:20px;
+    .details {
+        margin-top:20px;
+        margin-left:20px;
+        margin-right:20px;
+        margin-bottom:20px;
 
-}
-.details.photo {
-    overflow:hidden;
-    max-height:150px;
-}
+    }
+    .details.photo {
+        overflow:hidden;
+        max-height:150px;
+    }
 
 
     #html5textarea { 
