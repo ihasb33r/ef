@@ -15,56 +15,50 @@
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
-            <div class="span2" >
-                <div class="details">
+            <div class="span6 title">
+                <h2>
+                    {{sell.user.name}} {{sell.user.lastname}}
+                </h2>
+            </div>
+            <div class="span3 title">
+                <h3>
+
+                    {{ sell.origin }}
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3" >
+                <div class="details photo">
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
             </div>
-            <div class="span7">
+            <div class="span4">
                 <div class="details">
-                    <div class="groupinfo">
-                        <dl class="info">
-                            <dt>Παραγωγός:</dt><dd>{{sell.user.name}} {{sell.user.lastname}}</dd>
-                            <dt>Προέλευση:</dt> <dd>{{ sell.origin }}</dd>
-                            <dt>Ποσότητα:</dt><dd> {{ sell.quantity}} κιλά</dd>
-                        </dl>
-                        <dl class="info">
-                            <dt>Βαθμολογία:</dt> <dd></dd>
-                            <dt>Τιμή:</dt> <dd>{{ sell.price }} ευρώ</dd>
-                            <dt>Ελάχιστη ποσότητα παραγγελιών:</dt><dd>{{ sell.minquantity}} κιλά</dd>
-                        </dl>
-                        <dl class="extrainfo">
-                            <dt >Διαθέσιμη Ποσότητα</dt>
-                            <dd > {{sell.quantity-sell.agor }} κιλά</dd>
-                        </dl>
-                    </div>
+                    <div class="quantities" >   {{ sell.quantity - sell.agor }}kg <br><span class="quantities"> Διαθέσιμα</span></div> 
+                    <div class="quantities" >{{ sell.price }}ευρώ/kg<span class="quantities"><br>&nbsp;</span></div>
+                    <div class="quantities" >    {{ sell.quantity }}kg <br><span class="quantities"> Συνολικά</span> </div>
+                    <div class="quantities" >   {{ sell.minquantity }}kg <br><span class="quantities">  ελάχιστη</span></div>
                 </div>
             </div>	
-            <div class="row">
-                <div class="row">
-                    <div class="span9 buttons">
+            <div class="span2 ">
 
-                        <form action='{{path ("buy_new", {'location_id':location_id, 'offer_id': sell.id})}}' {{form_enctype(form) }} method="POST">
-                            <div class="control-group">
-                                {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
-                                <div class="controls">
-                                    {{ form_widget(form.quantity)}}
 
-                                </div>
+                <div class="details">
+                    <form action='{{path ("buy_new", {'location_id':location_id, 'offer_id': sell.id})}}' {{form_enctype(form) }} method="POST">
+                        <div class="control-group">
+                            <div class="controls">
+
+                                {{ form_widget(form.quantity, {'attr': {'class':'span1 squarequantity'} } ) }}
                             </div>
+                        </div>
+                        {{ form_rest(form)}}
+                        <input name="submit" value="Υποβολή" type="submit"/>
 
-                            {{ form_rest(form)}}
-                            <input name="ajax" value="true" type="hidden"/>
-                            <input name="submit" value="Υποβολή" type="submit"/>
-
-                        </form>
-
-
-
-
-                    </div>
+                    </form>
                 </div>
-            </div>			
+
+            </div>
         </div>
     </div>
 </div>
