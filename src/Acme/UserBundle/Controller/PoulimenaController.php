@@ -21,7 +21,7 @@ class PoulimenaController extends Controller
 		  $em = $this->getDoctrine()->getEntityManager();
 		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findAll();
 		
-      return $this->render('AcmeUserBundle:Default:poulimena.html.twig', array('id'=>$id, 'sell'=>$sell));
+      return $this->render('AcmeUserBundle:Agrotis:poulimena.html.twig', array('id'=>$id, 'sell'=>$sell));
     }
 
     
@@ -32,7 +32,7 @@ class PoulimenaController extends Controller
 		 $sell = $em->getRepository('AcmeUserBundle:Sell')->findById($id);
 	
 		
-      return $this->render('AcmeUserBundle:Default:poulimena_edit.html.twig', array('sell'=>$sell, 'id'=>$id));
+      return $this->render('AcmeUserBundle:Agrotis:poulimena_edit.html.twig', array('sell'=>$sell, 'id'=>$id));
 
     }
 	
@@ -54,7 +54,7 @@ class PoulimenaController extends Controller
     $em->flush();
  
  
- return $this->render('AcmeUserBundle:Default:poulimena_edit_new.html.twig');
+ return $this->render('AcmeUserBundle:Agrotis:poulimena_edit_new.html.twig');
 	
 	}
 	

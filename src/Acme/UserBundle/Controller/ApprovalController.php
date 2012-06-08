@@ -20,7 +20,7 @@ class ApprovalController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 		$location = $em->getRepository("AcmeUserBundle:Location")->findAll();
 		$sell = $em->getRepository("AcmeUserBundle:Sell")->findAll();
-        return $this->render('AcmeUserBundle:Default:approval.html.twig', array('location'=>$location,'sell'=>$sell, 'id'=>$id));
+        return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('location'=>$location,'sell'=>$sell, 'id'=>$id));
     }
     public function okAction($id)
     { 

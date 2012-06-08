@@ -11,7 +11,7 @@ class PriceController extends Controller
     {
       
 			 
-        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Default:price.html.twig');
+        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Agrotis:price.html.twig');
     }
 
   }

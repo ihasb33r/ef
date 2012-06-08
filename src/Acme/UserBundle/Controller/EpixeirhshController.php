@@ -11,7 +11,7 @@ class EpixeirhshController extends Controller
     {
       
 			 
-        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Default:epixeirhsh.html.twig');
+        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Business:epixeirhsh.html.twig');
     }
 
   }

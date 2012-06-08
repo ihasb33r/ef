@@ -39,11 +39,11 @@ class BusinessController extends Controller
                 }return $this->redirect($this->generateUrl('business_add')); 
             }
         }
-        return $this->render('AcmeUserBundle:Default:business.html.twig', array('form'=>$form->createView()));
+        return $this->render('AcmeUserBundle:Business:business.html.twig', array('form'=>$form->createView()));
     }
     public function addAction()
     {
         
-        return $this->render('AcmeUserBundle:Default:add_business.html.twig');
+        return $this->render('AcmeUserBundle:Busibess:add_business.html.twig');
     }
 }

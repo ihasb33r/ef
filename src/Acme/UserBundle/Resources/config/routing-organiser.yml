@@ -6,4 +6,13 @@ locations_new:
     defaults: { _controller: AcmeUserBundle:Locations:new }
 diorganotis:
     pattern: /
-    defaults: { _controller: AcmeUserBundle:Organizer:index }
+    defaults: { _controller: AcmeUserBundle:Organiser:index }
+approval:
+    pattern: /approval
+    defaults: { _controller: AcmeUserBundle:Approval:index }
+ok:
+    pattern: /ok{id}
+    defaults: { _controller: AcmeUserBundle:Approval:ok }
+no:
+    pattern: /no{id}
+    defaults: { _controller: AcmeUserBundle:Approval:no }

@@ -11,7 +11,7 @@ class AgrotisController extends Controller
     {
       
 			 
-        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Default:agrotis.html.twig');
+        return $this->container->get('templating')->renderResponse('AcmeUserBundle:Agrotis:agrotis.html.twig');
     }
 
   }

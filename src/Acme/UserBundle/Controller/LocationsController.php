@@ -43,11 +43,11 @@ class LocationsController extends Controller
                 }return $this->redirect($this->generateUrl('locations_new'));
             }
         }
-        return $this->render('AcmeUserBundle:Default:locations.html.twig', array('form'=>$form->createView()));
+        return $this->render('AcmeUserBundle:Organiser:locations.html.twig', array('form'=>$form->createView()));
     }
     public function newAction()
     {
         
-        return $this->render('AcmeUserBundle:Default:add_location.html.twig');
+        return $this->render('AcmeUserBundle:Organiser:add_location.html.twig');
     }
 }
