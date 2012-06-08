@@ -27,6 +27,22 @@ admin_locations_delete:
     pattern: /locations/delete/{id}
     defaults: { _controller: AcmeUserBundle:AdminLocations:delete }
 
+
+admin_b2b:
+    pattern: /b2b
+    defaults: { _controller: AcmeUserBundle:AdminBusiness:index }
+admin_b2b_edit:
+    pattern: /b2b/edit/{id}
+    defaults: { _controller: AcmeUserBundle:AdminBusiness:edit }
+admin_b2b_new:
+    pattern: /b2b/new
+    defaults: { _controller: AcmeUserBundle:AdminBusiness:new }
+admin_b2b_delete:
+    pattern: /b2b/delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminBusiness:delete }
+
+
+
 admin_news:
     pattern: /news
     defaults: { _controller: AcmeUserBundle:AdminNews:index }

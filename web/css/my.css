@@ -511,3 +511,6 @@ label {
 
     font-size:1em;
 }
+input, textarea, select, .uneditable-input{
+    font-size:1em;
+}
