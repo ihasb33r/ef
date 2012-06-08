@@ -11,8 +11,8 @@ approval:
     pattern: /approval
     defaults: { _controller: AcmeUserBundle:Approval:index }
 ok:
-    pattern: /ok{id}
+    pattern: /ok/{id}
     defaults: { _controller: AcmeUserBundle:Approval:ok }
 no:
-    pattern: /no{id}
+    pattern: /no/{id}
     defaults: { _controller: AcmeUserBundle:Approval:no }

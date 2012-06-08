@@ -22,7 +22,7 @@ class KalathiController extends Controller
 		 $em = $this->getDoctrine()->getEntityManager();
 		 $buy = $em->getRepository('AcmeUserBundle:Buy')->findAll();
 
-				 return $this->render('AcmeUserBundle:Default:agorasmena.html.twig', array('id'=>$id, 'buy'=>$buy ));
+				 return $this->render('AcmeUserBundle:User:agorasmena.html.twig', array('id'=>$id, 'buy'=>$buy ));
 			}	
      
 

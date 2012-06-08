@@ -21,7 +21,7 @@ class PazariController extends Controller
                 ->orderby('p.date', 'ASC')
                 ->getQuery()
                 ->getResult();
-        return $this->render('AcmeUserBundle:Default:pazari.html.twig',array('locations'=>$locat, 'category'=>$category));
+        return $this->render('AcmeUserBundle:User:pazari.html.twig',array('locations'=>$locat, 'category'=>$category));
 
     }
     public function newAction()
@@ -35,7 +35,7 @@ class PazariController extends Controller
             ->getQuery()
             ->getResult();
 
-        return $this->render('AcmeUserBundle:Default:pazari.html.twig',array('locations'=>$locat));
+        return $this->render('AcmeUserBundle:User:pazari.html.twig',array('locations'=>$locat));
 
     }
 }

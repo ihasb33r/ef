@@ -48,7 +48,7 @@ class BuyController extends Controller
                 $em->persist($buy);
                 $em->flush();
             }
-            return $this->render('AcmeUserBundle:Default:buy_new.html.twig'); 	   
+            return $this->render('AcmeUserBundle:User:buy_new.html.twig'); 	   
         }
         return $this->redirect($this->generateUrl('buy'));
 
