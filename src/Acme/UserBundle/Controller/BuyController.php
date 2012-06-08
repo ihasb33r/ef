@@ -20,7 +20,7 @@ class BuyController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $current_location = $em->getRepository("AcmeUserBundle:Location")->find($id);
         $sell = $em->getRepository('AcmeUserBundle:Sell')->findBy(array("location"=>$id));
-        return $this->render('AcmeUserBundle:Default:buy.html.twig', array("location_id"=>$id,"form"=>$form->createView(), "sell"=>$sell, "id"=>$id));
+        return $this->render('AcmeUserBundle:User:buy.html.twig', array("location_id"=>$id,"form"=>$form->createView(), "sell"=>$sell, "id"=>$id));
     }
 
 
