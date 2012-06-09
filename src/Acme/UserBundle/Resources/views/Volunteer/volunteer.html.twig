@@ -1,0 +1,37 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Εθελοντές
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1>Εθελοντές</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span9 listing">
+        <p>
+        Για την ομαλή λειτουργία του e-agrotis χρειαζόμαστε την βοήθειά σας.
+        </p>
+        <dl><dt>
+            Οι εθελοντές βοηθούν:
+            </dt>
+            <dd>
+            <ul>
+                <li>Στην οργάνωση των αγορών</li>
+                <li>Στην οργάνωση των αγροτών</li>
+				<li>Στην τήρηση της ασφάλειας</li>
+            </ul>
+            </dd>
+        </dl>
+        <p>Δήλωσε τώρα εθελοντής για να βοηθήσουμε όλοι μαζί το τόπο μας!</p>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Volunteer:sidebar_volunteer.html.twig" %}
+{%endblock %}

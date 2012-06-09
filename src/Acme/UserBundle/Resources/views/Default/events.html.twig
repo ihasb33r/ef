@@ -1,0 +1,41 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Εκδηλώσεις{% endblock %}
+
+{% block extracssjava %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span9">
+        <h1> Εκδηλώσεις</h1>
+    </div>
+</div>
+
+{% for events in events %}
+<div class="row">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span11 title">
+                <h2>{{ events.title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9">
+                <div class="newsbody">
+                    {{ events.content|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}
+

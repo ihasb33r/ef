@@ -1,0 +1,41 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Πρόγραμμα Εθελοντών{% endblock %}
+
+{% block extracssjava %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span9">
+        <h1> Πρόγραμμα Εθελοντών</h1>
+    </div>
+</div>
+
+{% for new in news %}
+<div class="row">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span11 title">
+                <h2>{{ new.title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9">
+                <div class="newsbody">
+                    {{ new.content|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+{% block sidebar %}
+{% include "AcmeUserBundle:Volunteer:sidebar_volunteer.html.twig" %}
+{%endblock %}
+

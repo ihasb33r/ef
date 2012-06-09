@@ -1,0 +1,42 @@
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+    Προσθήκη/Αλλαγή Εκδηλώσεων
+{% endblock %}
+
+{% block content %}
+<h1>Διαχείριση Εκδηλώσεων</h1>
+<div class="row">
+    <div class="span9 listing">
+        <table class="admin table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="visible-desktop">ID</th>
+                    <th>Τίτλος</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+        {% for items in events %}
+            <tr>
+                <td class="actions">
+                    <a id="edit{{items.id}}" class="edit" href="{{path('admin_events_edit', {'id':items.id})}}"><span class="edit-icon"></span></a>
+                    <a id="delete{{items.id}}" class="delete" href="{{path('admin_events_delete', {'id':items.id})}}"><span class="delete-icon"></span></a>
+                </td>
+                <td class="visible-desktop">{{items.id}}</td>
+                <td>{{items.title}}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-large new" href="{{path ("admin_events_new")}}"><span class="new-icon"></span>Καινούρια Εκδήλωση</a>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

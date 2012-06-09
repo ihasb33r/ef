@@ -1,0 +1,12 @@
+vindex:
+   pattern: /
+   defaults: { _controller: AcmeUserBundle:Volunteer:index}
+volunteer_add:
+   pattern: /volunteer_add
+   defaults: { _controller: AcmeUserBundle:VolunteerAdd:index}
+volunteer_new:
+   pattern: /volunteer_new
+   defaults: { _controller: AcmeUserBundle:VolunteerAdd:new}
+volunteer_program:
+   pattern: /program
+   defaults: { _controller: AcmeUserBundle:VolunteerProgram:index}

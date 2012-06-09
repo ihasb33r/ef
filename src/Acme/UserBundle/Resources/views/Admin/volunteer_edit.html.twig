@@ -1,0 +1,52 @@
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Πρόγραμμα Εθελοντών
+
+{% endblock %}
+
+{% block extracssjava %}
+<link rel="stylesheet" href="{{asset ("css/bootstrap-wysihtml5.css") }}">
+<script src="{{asset ("js/wysihtml5-0.3.0_rc2.js")}}"></script>
+<script src="{{asset ("js/bootstrap-wysihtml5.min.js")}}"></script>
+
+<script> 
+    $("document").ready(function (){
+
+        $("#html5textarea").wysihtml5();
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Πρόγραμμα Εθελοντών</h1>
+<div class="row">
+    <div class="span9 listing">
+        <form action='{{path ("admin_volunteer_edit", {'id':id} ) }}' {{form_enctype(form) }} method="POST" id="volunteerForm">
+            <div class="row">
+                <div class="span7 offset1">
+                    <div class="control-group volunteer_admin_title">
+                        {{form_label(form.title,"", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.title, {'id':'news_admin_title'})}}
+                        </div>
+                    </div>
+                    <div class="control-group html5textarea">
+                        {{form_label(form.content,"", {'attr': {'class':'control-label', } } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.content, {'id':'html5textarea'}) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form)}}
+                    <a href="#" style=" float:right" onclick="$('#volunteerForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}
