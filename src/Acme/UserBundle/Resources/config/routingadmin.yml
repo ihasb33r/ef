@@ -40,6 +40,31 @@ admin_news_delete:
     pattern: /news/delete/{id}
     defaults: { _controller: AcmeUserBundle:AdminNews:delete }
 
+admin_events:
+    pattern: /events
+    defaults: { _controller: AcmeUserBundle:AdminEvents:index }
+admin_events_edit:
+    pattern: /events/edit/{id}
+    defaults: { _controller: AcmeUserBundle:AdminEvents:edit }
+admin_events_new:
+    pattern: /events/new
+    defaults: { _controller: AcmeUserBundle:AdminEvents:new }
+admin_events_delete:
+    pattern: /events/delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminEvents:delete }
+
+admin_volunteer:
+    pattern: /volunteer
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:index }
+admin_volunteer_edit:
+    pattern: /volunteer/edit/{id}
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:edit }
+admin_volunteer_new:
+    pattern: /volunteer/new
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:new }
+admin_volunteer_delete:
+    pattern: /volunteer/delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:delete }
 #admin_locations_new:
 #    pattern: /locations_new
 #    defaults: { _controller: AcmeUserBundle:AdminLocations:new }

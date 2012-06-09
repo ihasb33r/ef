@@ -1,7 +1,7 @@
 
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 {% block title %}
-    Προσθήκη/Αλλαγή Προιόντος
+    Προσθήκη/Αλλαγή Νέων
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
                     <th></th>
                     <th class="visible-desktop">ID</th>
                     <th>Τίτλος</th>
-                    <th>Ημερομηνία</th>
+                 
                 </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
         {% endfor %}
             </tbody>
         </table>
-        <a class="btn btn-large new" href="{{path ("admin_news_new")}}"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
+        <a class="btn btn-large new" href="{{path ("admin_news_new")}}"><span class="new-icon"></span>Καινούρια Νέα</a>
     </div>
 </div>
 

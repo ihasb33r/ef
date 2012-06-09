@@ -250,4 +250,24 @@ class User extends BaseUser
     {
         return $this->business;
     }
+
+    /**
+     * Add sellbusiness
+     *
+     * @param Acme\UserBundle\Entity\Sellbusiness $sellbusiness
+     */
+    public function addSellbusiness(\Acme\UserBundle\Entity\Sellbusiness $sellbusiness)
+    {
+        $this->sellbusiness[] = $sellbusiness;
+    }
+
+    /**
+     * Get sellbusiness
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSellbusiness()
+    {
+        return $this->sellbusiness;
+    }
 }

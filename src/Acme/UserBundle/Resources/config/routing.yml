@@ -3,6 +3,9 @@
 home:
     pattern: /
     defaults: { _controller: AcmeUserBundle:News:index }
+events:
+    pattern: /events
+    defaults: { _controller: AcmeUserBundle:Events:index }
 #sell:
 #    pattern:  /sell/{id}
 #    defaults: { _controller: AcmeUserBundle:Sell:index }
@@ -35,6 +38,10 @@ edit:
 edit_new:
     pattern:  /edit_new
     defaults: { _controller: AcmeUserBundle:Poulimena:editnew}
+#all
+about:
+    pattern:  /about
+    defaults: { _controller: AcmeUserBundle:About:new}
 #farmer
 #poulimena:
 #    pattern:  /poulimena
@@ -83,6 +90,9 @@ businessroute:
 organiser:
     resource: "@AcmeUserBundle/Resources/config/routing-organiser.yml"
     prefix:   /organiser
+volunteer:
+    resource: "@AcmeUserBundle/Resources/config/routing-volunteer.yml"
+    prefix:   /volunteer
 
 
 
@@ -94,23 +104,4 @@ ola:
 pazari:
     pattern:  /agora/{category}
     defaults: { _controller: AcmeUserBundle:Pazari:index, category:"all" }
-#locations:
-#    pattern: /locations
-#    defaults: { _controller: AcmeUserBundle:Locations:index }
-#locations_new:
-#    pattern: /locations_new
-#    defaults: { _controller: AcmeUserBundle:Locations:new }
 
-
-#business:
-#    pattern: /business
-#    defaults: { _controller: AcmeUserBundle:Business:index }
-#business_add:
-#    pattern: /business_add
-#    defaults: { _controller: AcmeUserBundle:Business:add }
-#businessprosfores:
-#    pattern: /businessprosfores
-#    defaults: { _controller: AcmeUserBundle:Businessprosfores:index }
-#about:
-#    pattern: /about
-#    defaults: { _controller: AcmeUserBundle:About:new }
