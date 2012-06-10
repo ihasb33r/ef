@@ -1,0 +1,13 @@
+$(document).ready( function (){
+    var optgroups = $("optgroup");
+    $.each(optgroups, function(key, opt){
+        var links = $("#" + $(opt).attr("class")+" a");
+        $.each(links, function( key, link){
+            $(opt).append(" <option value='" + $(link).attr("href") +"'>"+$(link).text()+ "</option>");
+        });
+    });
+
+    $("#navigation").change(function(){
+       window.location =  $(this).val();
+    });
+});
