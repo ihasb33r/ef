@@ -135,7 +135,12 @@ class User extends BaseUser
 	     */
     protected $rate;
 
-
+ /**
+     * @var string $newsletterSubscription
+     *
+     * @ORM\Column(name="newsletterSubscription", type="boolean")
+     */
+    private $newsletterSubscription; 
     /**
      * Add sell
      *

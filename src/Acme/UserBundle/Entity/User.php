@@ -135,7 +135,12 @@ class User extends BaseUser
 	     */
     protected $rate;
 
-
+ /**
+     * @var string $newsletterSubscription
+     *
+     * @ORM\Column(name="newsletterSubscription", type="boolean")
+     */
+    private $newsletterSubscription; 
     /**
      * Add sell
      *
@@ -269,5 +274,25 @@ class User extends BaseUser
     public function getSellbusiness()
     {
         return $this->sellbusiness;
+    }
+
+    /**
+     * Set newsletterSubscription
+     *
+     * @param boolean $newsletterSubscription
+     */
+    public function setNewsletterSubscription($newsletterSubscription)
+    {
+        $this->newsletterSubscription = $newsletterSubscription;
+    }
+
+    /**
+     * Get newsletterSubscription
+     *
+     * @return boolean 
+     */
+    public function getNewsletterSubscription()
+    {
+        return $this->newsletterSubscription;
     }
 }

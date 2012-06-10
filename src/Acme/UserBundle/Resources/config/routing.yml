@@ -6,6 +6,9 @@ home:
 events:
     pattern: /events
     defaults: { _controller: AcmeUserBundle:Events:index }
+newsletter:
+    pattern: /newsletter
+    defaults: { _controller: AcmeUserBundle:Newsletter:index }
 #sell:
 #    pattern:  /sell/{id}
 #    defaults: { _controller: AcmeUserBundle:Sell:index }
