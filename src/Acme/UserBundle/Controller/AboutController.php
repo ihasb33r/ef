@@ -14,4 +14,4 @@ class AboutController extends Controller
         return $this->container->get('templating')->renderResponse('AcmeUserBundle:Default:about.html.twig');
     }
 
-  }
+}
