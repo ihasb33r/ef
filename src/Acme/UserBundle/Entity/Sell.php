@@ -64,7 +64,12 @@ class Sell
     {
         return $this->id;
     }
-
+	 /**
+     * @var string $approved
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved; 
     /**
      * Set quantity
      *
@@ -248,4 +253,24 @@ class Sell
 
 
  
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
 }

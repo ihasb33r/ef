@@ -24,7 +24,7 @@ class ApprovalController extends Controller
         $locat =  $qb
             ->innerJoin("p.location", "l")
             ->where($qb->expr()->andX(
-                $qb->expr()->eq('l.approved',':approval'),
+                $qb->expr()->eq('p.approved',':approval'),
                 $qb->expr()->gt('l.date',':date'),
                 $qb->expr()->eq('l.user',":user")
                 ))
@@ -34,30 +34,13 @@ class ApprovalController extends Controller
                 ->orderby('l.date', 'ASC')
                 ->getQuery()
                 ->getResult();
-        /*
 
-        $locat =  $qb
-            ->innerJoin("p.location", "l")
-            ->innerJoin("l.user", "u")
-            ->where($qb->expr()->eq('u.id',':user')
-                )
-                ->setParameter("user", $user->getId())
-                ->orderby('l.date', 'ASC')
-                ->getQuery()
-                ->getResult();
-         */
-
-
-        //        $em = $this->getDoctrine()->getEntityManager();
-        //		$location = $em->getRepository("AcmeUserBundle:Location")->findAll();
-        //		$sell = $em->getRepository("AcmeUserBundle:Sell")->findAll();
         return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('items'=>$locat, 'id'=>$id));
     }
     public function okAction($id)
     { 
         $em = $this->getDoctrine()->getEntityManager();
         $sell = $em->getRepository('AcmeUserBundle:Sell')->findById($id);
-        echo $sell->getId();
         $sell->setApproved(true);
         $em->flush();
 

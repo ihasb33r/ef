@@ -64,7 +64,12 @@ class Sell
     {
         return $this->id;
     }
-
+	 /**
+     * @var string $approved
+     *
+     * @ORM\Column(name="approved", type="boolean")
+     */
+    private $approved; 
     /**
      * Set quantity
      *
