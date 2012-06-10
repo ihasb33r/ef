@@ -1,0 +1,55 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block content %}
+<div class="row">
+    <div class="span9">
+
+        <h1> Εγκρίσεις προσφορών</h1>  </div>
+</div>
+
+{%for sellbusiness in items%}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span3" >
+                <div class="details photo">
+                    <img class="product" src="{{ asset (sellbusiness.location.product.image)}}">
+                </div>
+            </div>
+            <div class="span6">
+                <div class="details">
+                    <div class="groupinfo">
+                        <dl class="info">
+                            <dt>Παραγωγός:</dt><dd>{{sellbusiness.user.name}} {{sellbusiness.user.lastname}}</dd>
+                            <dt>Προέλευση:</dt> <dd>{{ sellbusiness.origin }}</dd>
+                            <dt>Ποσότητα:</dt><dd> {{ sellbusiness.quantity}} κιλά</dd>
+                        </dl>
+                        <dl class="info">
+                            <dt>Βαθμολογία:</dt> <dd></dd>
+                            <dt>Τιμή:</dt> <dd>{{ sellbusiness.price }} ευρώ</dd>
+                        </dl>
+
+                    </div>
+                </div>
+            </div>	
+            <div class="row">
+                <div class="row">
+                    <div class="span9 buttons">
+                        {% if sell.approved is null or sell.approved==false %}
+                        <a class="btn btn-large" href="{{ path('ok', { 'id': sell.id}) }}">Έγκριση</a>
+                        {% endif %}
+                        {% if sell.approved is null or sell.approved==true %}
+                        <a class="btn btn-large" href="{{ path('no', { 'id': sell.id}) }}">Απόρριψη</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>			
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+
+{%endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Organiser:sidebar_organiser.html.twig" %}
+{%endblock %}

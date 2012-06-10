@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-class ApprovalController extends Controller
+
+class BusinessApprovalController extends Controller
 {
     public function indexAction()
     {
@@ -20,21 +21,17 @@ class ApprovalController extends Controller
 
 
         $em = $this->getDoctrine()->getEntityManager();
-        $qb = $em->getRepository('AcmeUserBundle:Sell')->createQueryBuilder("p");
+        $qb = $em->getRepository('AcmeUserBundle:SellBusiness')->createQueryBuilder("p");
         $locat =  $qb
-            ->innerJoin("p.location", "l")
             ->where($qb->expr()->andX(
-                $qb->expr()->gt('l.date',':date'),
-                $qb->expr()->eq('l.user',":user")
+                $qb->expr()->eq('p.user',":user")
                 ))
                 ->andWhere("p.approved is Null")
-                ->setParameter('date', new \Datetime("today"))
                 ->setParameter('user', $user->getId())
-                ->orderby('l.date', 'ASC')
                 ->getQuery()
                 ->getResult();
 
-        return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('items'=>$locat, 'id'=>$id));
+        return $this->render('AcmeUserBundle:Business:approval.html.twig', array('items'=>$locat, 'id'=>$id));
     }
     public function isApprovedAction($approval)
     {
@@ -52,18 +49,14 @@ class ApprovalController extends Controller
 
 
         $em = $this->getDoctrine()->getEntityManager();
-        $qb = $em->getRepository('AcmeUserBundle:Sell')->createQueryBuilder("p");
+        $qb = $em->getRepository('AcmeUserBundle:Sellbusiness')->createQueryBuilder("p");
         $locat =  $qb
-            ->innerJoin("p.location", "l")
             ->where($qb->expr()->andX(
                 $qb->expr()->eq('p.approved',":approved"),
-                $qb->expr()->gt('l.date',':date'),
                 $qb->expr()->eq('l.user',":user")
                 ))
-                ->setParameter('date', new \Datetime("today"))
                 ->setParameter('approved', $approval==="true")
                 ->setParameter('user', $user->getId())
-                ->orderby('l.date', 'ASC')
                 ->getQuery()
                 ->getResult();
 
@@ -72,7 +65,7 @@ class ApprovalController extends Controller
     public function okAction($id)
     { 
         $em = $this->getDoctrine()->getEntityManager();
-        $sell = $em->getRepository('AcmeUserBundle:Sell')->findOneById($id);
+        $sell = $em->getRepository('AcmeUserBundle:Sellbusiness')->findOneById($id);
         $sell->setApproved(true);
         $em->flush();
 
@@ -81,7 +74,7 @@ class ApprovalController extends Controller
     public function noAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $sell = $em->getRepository('AcmeUserBundle:Sell')->findOneById($id);
+        $sell = $em->getRepository('AcmeUserBundle:Sellbusiness')->findOneById($id);
         $sell->setApproved(false);
         $em->flush();
 

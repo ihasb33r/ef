@@ -162,4 +162,30 @@ class Sellbusiness
     {
         return $this->business;
     }
+	 /**
+     * @var string $approved
+     *
+     * @ORM\Column(name="approved", type="boolean", nullable=true)
+     */
+    private $approved; 
+
+    /**
+     * Set approved
+     *
+     * @param boolean $approved
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+    }
+
+    /**
+     * Get approved
+     *
+     * @return boolean 
+     */
+    public function getApproved()
+    {
+        return $this->approved;
+    }
 }

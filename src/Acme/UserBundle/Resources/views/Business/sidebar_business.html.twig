@@ -7,7 +7,9 @@
     <div class="span3 sidebar">
         <ul class="extra-nav">
             <li><a href='{{path("prosfora")}}'>Ζήτηση προϊόντος</a></li>
-			 <li><a href='{{path("prosfora")}}'>Προσφορές από αγρότες</a></li>
+			 <li><a href='{{path("bapproval")}}'>Αναμένουν έγγριση</a></li>
+             <li><a href='{{path("bapproval", {'approval':'true'} ) }}'>Εχουν εγγριθεί</a></li>
+			 <li><a href='{{path("bapproval", {'approval':'false'} ) }}'>Έχουν Απορριθεί</a></li>
         </ul>
 
     </div>
