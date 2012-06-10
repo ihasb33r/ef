@@ -24,6 +24,10 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/sell.*, role: ROLE_USER }
+        - { path: ^/organiser/approval.*, role: ROLE_USER }
+        - { path: ^/organiser/locations, role: ROLE_USER }
+        - { path: ^/business/offer, role: ROLE_USER }
+        - { path: ^/business/approval.*, role: ROLE_USER }
         - { path: ^/buy.*, role: ROLE_USER }
         - { path: ^/agorasmena.*, role: ROLE_USER }
         - { path: ^/poulimena.*, role: ROLE_USER }
