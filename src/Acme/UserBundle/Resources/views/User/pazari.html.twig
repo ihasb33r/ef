@@ -21,7 +21,9 @@
     <div class="span9 listing">
         <div class="row">
             <div class="span6 title">
-                <h2><span class="hidden-phone">Αγορά με:</span> {{location.product.name}}</h2>
+                <h2>
+                    <span class="hidden-phone">Αγορά με:</span> {{location.product.name}}
+                </h2>
             </div>
             <div class="span3 title">
                 <h3>{{location.date|date("d/m/Y")}}</h3>
@@ -56,30 +58,30 @@
                 </div>
             </div>
         </div>
-            <div class="row">
-                <div class="span9">
-                    <div class="imgmap">
-                        <div class="map" id="#map{{location.id}}"></div>
-                    </div>
+        <div class="row">
+            <div class="span9">
+                <div class="imgmap">
+                    <div class="map" id="#map{{location.id}}"></div>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
 
-                    <div class="span9 buttons">
-                        <a class="btn btn-large" href="{{ path('buy', { 'id': location.id}) }}">Προβολή προσφορών</a>
+                <div class="span9 buttons">
+                    <a class="btn btn-large" href="{{ path('buy', { 'id': location.id}) }}">Προβολή προσφορών</a>
 
-                    </div>
                 </div>
             </div>
         </div>
-        <script>	
-            addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}", "{{location.name}}", "2102121222" );
-        </script>
     </div>
+    <script>	
+        addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}", "{{location.name}}", "{{location.phone}}" );
+    </script>
+</div>
 
-    {% endfor %}
-    {% endblock %}
+{% endfor %}
+{% endblock %}
 
 
-    {% block sidebar %}
-    {% include "AcmeUserBundle:User:sidebar.html.twig" %}
-    {%endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:User:sidebar.html.twig" %}
+{%endblock %}

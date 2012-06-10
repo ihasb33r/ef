@@ -8,11 +8,8 @@
 {%if sell.user.id==id%}
 <div class="row">
     <div class="span9 listing">
-
         <div class="row">
             <div class="span6 title">
-
-
                 <h2><span class="hidden-phone">Πουλήσατε:</span> {{sell.location.product.name}}</h2>
             </div>
             <div class="span3 title">
@@ -25,29 +22,28 @@
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
             </div>
-
-
             <div class="span6">
-                <div class="details">
-                    <div class="groupinfo">
-                        <div>Αρχική ποσότητα:{{sell.quantity}} κιλά</div>
-                        <div>Ελάχιστη ποσότητα αγοράς:{{sell.minquantity}}</div>
-                        <div>Τόπος:{{sell.location.name }},  {{sell.location.address}}</div>
-                        <div>Πουληθέντα:{{sell.agor}}</div>
-                        <div>Τιμή:{{sell.price}} ευρώ</div>
+                <div class="row">
+                    <div class="span3">
+                        <div class="details">
+                            <div>Αρχική ποσότητα:{{sell.quantity}} κιλά</div>
+                            <div>Ελάχιστη ποσότητα αγοράς:{{sell.minquantity}}</div>
+                            <div>Τόπος:{{sell.location.name }},  {{sell.location.address}}</div>
+                            <div>Πουληθέντα:{{sell.agor}}</div>
+                            <div>Τιμή:{{sell.price}} ευρώ</div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="span6 buttons">
+                        <a class="btn btn-large" href="">Προβολή Αγορών</a>
+                {%if sell.location.date|date("Ymd")>"now"|date("Ymd")%}
+                        <a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
+                {%endif%}
+                    </div>	       
+                </div>	
             </div>
         </div>
-        {%if sell.location.date|date("Ymd")>"now"|date("Ymd")%}
-        <div class="row">
-            <div class="span9 buttons">
-                <a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
-            </div>	       
-        </div>	
-        {%endif%}
-
-
     </div>
 </div>
 {%endif%}

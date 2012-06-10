@@ -14,56 +14,42 @@
     </div>
 </div>
 
-
 {%for business in business %}	
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
             <div class="span9 title">
                 <h2><span class="hidden-phone">Η επιχείρηση ζητά:</span> {{business.product.name}}</h2>
-             
+
             </div>
         </div>
         <div class="row">
-            <div class="span2" >
-                <div class="details">
+            <div class="span3" >
+                <div class="details photo">
                     <img class="product" src="{{ asset (business.product.image)}}">
                 </div>
             </div>
-            <div class="span7">
-                <div class="details">
-                    <div class="groupinfo">
-                        <dl class="info">
-                            <dt>Διοργανωτής</dt><dd>{{business.businessname}}</dd>
-							<dt>Διεύθυνση</dt><dd> {{ business.address}} </dd>
-						
-							
-                        </dl>
-                        <dl class="info">
-                            <dt>Πόλη</dt><dd> {{ business.town}} </dd>
-							<dt>Ταχυδρομικός Κώδικας</dt><dd> {{ business.postal}} </dd>
-							
-                        </dl>
-                        <div class="clearfix"></div>
+            <div class="span6">
+                <div class="row">
+                    <div class="span3">
+                        <div class="details">
+                                <h2 style="text-decoration">{{business.businessname}}</h2>
+                                <h4>{{ business.town}} , {{ business.address}} , ΤΚ {{ business.postal}} </h4>
+
+                                <h4>{{ business.phone}} </h4>
+                        </div>
                     </div>
-                    <dl class="extrainfo">
-					<dt>Τηλέφωνο</dt><dd> {{ business.phone}} </dd>
-                        <dt >Επιπλέον Πληροφορίες </dt>
-                        <dd > {{business.extra }}</dd>
-                    </dl>
-
-                    <div class="clearfix"></div>
-
+                    <div class="span3">
+                        <div class="details">
+                            {{business.extra }}
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="span6 buttons">
+                    <a class="btn btn-large" href="{{ path('sellbusiness', { 'id': business.id}) }}">Συμμετοχή ως αγρότης</a>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="row">
-			
-                <div class="span9 buttons">
-				<a class="btn btn-large" href="{{ path('sellbusiness', { 'id': business.id}) }}">Συμμετοχή ως αγρότης</a>
-			
-				</div>
             </div>
         </div>
     </div>

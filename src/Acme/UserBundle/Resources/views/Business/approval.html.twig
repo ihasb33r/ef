@@ -2,8 +2,8 @@
 {% block content %}
 <div class="row">
     <div class="span9">
-
-        <h1> Εγκρίσεις προσφορών</h1>  </div>
+        <h1> Εγκρίσεις προσφορών</h1> 
+    </div>
 </div>
 
 {%for sellbusiness in items%}
@@ -18,12 +18,11 @@
             <div class="span6">
                 <div class="details">
                     <div class="groupinfo">
-                            <div>Παραγωγός:{{sellbusiness.user.name}} {{sellbusiness.user.lastname}}</div>
-                            <div>Προέλευση:{{ sellbusiness.origin }}</div>
-                            <div>Ποσότητα:{{ sellbusiness.quantity}} κιλά</div>
+                        <div>Παραγωγός:{{sellbusiness.user.name}} {{sellbusiness.user.lastname}}</div>
+                        <div>Προέλευση:{{ sellbusiness.origin }}</div>
+                        <div>Ποσότητα:{{ sellbusiness.quantity}} κιλά</div>
                         <div>Βαθμολογία:</div>
-                            <div>Τιμή: {{ sellbusiness.price }} ευρώ</div>
-
+                        <div>Τιμή: {{ sellbusiness.price }} ευρώ</div>
                     </div>
                 </div>
             </div>	

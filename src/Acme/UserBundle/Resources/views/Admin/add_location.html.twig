@@ -11,77 +11,81 @@
     <div class="span9 listing">
         <form action='{{path ("admin_locations_new")}}' {{form_enctype(form) }} method="POST" id="locationForm">
             <div class="row">
-                <div class="span4 offset1">
-                    <div class="control-group">
-                        {{form_label(form.name,"Όνομα Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.name)}}
+                <div class="span4">
+                    <div style="padding:20px;">
+                        <div class="control-group">
+                            {{form_label(form.name,"Όνομα Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.name)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.address)}}
+                        <div class="control-group">
+                            {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.address)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.latitude,"Γεωγραφικό Πλάτος", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.latitude)}}
+                        <div class="control-group">
+                            {{form_label(form.latitude,"Γεωγραφικό Πλάτος", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.latitude)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.longitude,"Γεωγραφικό Μήκος", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.longitude)}}
+                        <div class="control-group">
+                            {{form_label(form.longitude,"Γεωγραφικό Μήκος", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.longitude)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.date,"Ημερομηνία", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.date) }} 
+                        <div class="control-group">
+                            {{form_label(form.date,"Ημερομηνία", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.date) }} 
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.organiser,"Όνομα Οργανωτή", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.organiser)}}
+                        <div class="control-group">
+                            {{form_label(form.organiser,"Όνομα Οργανωτή", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.organiser)}}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="span3">
-                    <div class="control-group">
-                        {{form_label(form.extrainfo,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.extrainfo)}}
+                <div class="span4">
+                    <div style="padding:20px;">
+                        <div class="control-group">
+                            {{form_label(form.extrainfo,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.extrainfo)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.product,"Προιόν", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.product)}}
+                        <div class="control-group">
+                            {{form_label(form.product,"Προιόν", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.product)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.phone,"Τηλέφωνο", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.phone)}}
+                        <div class="control-group">
+                            {{form_label(form.phone,"Τηλέφωνο", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.phone)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.starttime,"Ώρα έναρξης", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.starttime)}}
+                        <div class="control-group">
+                            {{form_label(form.starttime,"Ώρα έναρξης", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.starttime)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.endtime,"Ώρα λήξης", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.endtime)}}
+                        <div class="control-group">
+                            {{form_label(form.endtime,"Ώρα λήξης", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.endtime)}}
+                            </div>
                         </div>
+                        {{ form_rest(form)}}
+                        <a href="#" style=" float:right" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
                     </div>
-                    {{ form_rest(form)}}
-                    <a href="#" style=" float:right" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
                 </div>
             </div>
             <div class="row">
