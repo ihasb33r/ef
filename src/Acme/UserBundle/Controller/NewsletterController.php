@@ -10,7 +10,9 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class NewsletterController extends Controller
 {
 public function indexAction(Request $request)
-{  
+{echo"why?";  
+ if ($this->getRequest()->getMethod() === 'POST') {
+          
     $email = $request->request->get('email');
 
     try {
@@ -57,12 +59,12 @@ public function indexAction(Request $request)
 
     }
     catch (\Exception $e) {
-        $msg = 'Some problem occured. Please try again later';
+        $msg = 'Υπήρξε κάποιο πρόβλημα. Προσπαθείστε αργότερα';
     }
 
     if ($this->getRequest()->isXmlHttpRequest()) {
         return new \Symfony\Component\HttpFoundation\Response($msg);
         return array('msg' => $msg);
-    }
- //return $this->render('AcmeUserBundle:Default:newslatter.html.twig');
+    } return $this->render('AcmeUserBundle:Default:newslatter.html.twig', array('msg' => $msg));} 
+	return $this->render('AcmeUserBundle:Default:base.html.twig');
 }}
