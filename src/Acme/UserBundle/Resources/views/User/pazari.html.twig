@@ -16,6 +16,11 @@
 </div>
 
 
+{% if locations|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
+
+
 {%for location in locations %}	
 <div class="row ">
     <div class="span9 listing">
