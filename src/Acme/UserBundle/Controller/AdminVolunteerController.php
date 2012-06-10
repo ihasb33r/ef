@@ -19,6 +19,13 @@ class AdminVolunteerController extends Controller
             ->getResult();
         return $this->render('AcmeUserBundle:Admin:volunteer.html.twig',array('news'=>$locat));
     }
+	   public function echoAction()
+    {
+	 $em = $this->getDoctrine()->getEntityManager();
+		 $qb = $em->getRepository('AcmeUserBundle:Volunteer')->findAll();
+        
+        return $this->render('AcmeUserBundle:Admin:echo_volunteer.html.twig',array('news'=>$qb));
+    }
     public function newAction()
     {
         $item = new Newsvolunteer();
@@ -65,6 +72,15 @@ class AdminVolunteerController extends Controller
         $em->remove($item);
         $em->flush();
         return $this->redirect($this->generateUrl('admin_volunteer'));
+
+    }
+	  public function echodeleteAction($id){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $item = $em->getRepository('AcmeUserBundle:Volunteer')->findOneById($id);
+        $em->remove($item);
+        $em->flush();
+        return $this->redirect($this->generateUrl('admin_volunteer_echo'));
 
     }
 

@@ -1,11 +1,11 @@
 
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 {% block title %}
-  Διαχείριση Προγράμματος Εθελοντών
+  Διαχείριση Εθελοντών
 {% endblock %}
 
 {% block content %}
-<h1>Διαχείριση Προγράμματος Εθελοντών</h1>
+<h1>Διαχείριση Εθελοντών</h1>
 <div class="row">
     <div class="span9 listing">
         <table class="admin table-striped">
@@ -13,25 +13,33 @@
                 <tr>
                     <th></th>
                     <th class="visible-desktop">ID</th>
-                    <th>Τίτλος</th>
-                 
+                    <th>Όνομα</th>
+                 <th>Επίθετο</th>
+				 <th>Ηλικία</th>
+				   <th>Email</th>
+                 <th>Τηλέφωνο</th>
+				 <th>Πόλη</th>
                 </tr>
                 </thead>
                 <tbody>
         {% for item  in news %}
             <tr>
                 <td class="actions">
-                    <a id="edit{{item.id}}" class="edit" href="{{path('admin_volunteer_edit', {'id':item.id})}}"><span class="edit-icon"></span></a>
-                    <a id="delete{{item.id}}" class="delete" href="{{path('admin_volunteer_delete', {'id':item.id})}}"><span class="delete-icon"></span></a>
+         
+                    <a id="delete{{item.id}}" class="delete" href="{{path('admin_volunteer_echo_delete', {'id':item.id})}}"><span class="delete-icon"></span></a>
                 </td>
                 <td class="visible-desktop">{{item.id}}</td>
-                <td>{{item.title}}</td>
-                <td></td>
+                <td>{{item.name}}</td>
+                <td>{{item.surname}}</td>
+				<td>{{item.age}}</td>
+				<td>{{item.email}}</td>
+				<td>{{item.phone}}</td>
+				<td>{{item.town}}</td>
             </tr>
         {% endfor %}
             </tbody>
         </table>
-        <a class="btn btn-large new" href="{{path ("admin_volunteer_new")}}"><span class="new-icon"></span>Καινούριο Πρόγραμμα Εθελοντών</a>
+        
     </div>
 </div>
 

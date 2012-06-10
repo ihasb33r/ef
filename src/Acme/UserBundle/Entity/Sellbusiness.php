@@ -137,4 +137,29 @@ class Sellbusiness
     {
         return $this->user;
     }
+	/**
+     * @ORM\ManyToOne(targetEntity="Business", inversedBy="sellbusiness")
+     * @ORM\JoinColumn(name="business_id", referencedColumnName="id")
+     */
+    protected $business;
+
+    /**
+     * Set business
+     *
+     * @param Acme\UserBundle\Entity\Business $business
+     */
+    public function setBusiness(\Acme\UserBundle\Entity\Business $business)
+    {
+        $this->business = $business;
+    }
+
+    /**
+     * Get business
+     *
+     * @return Acme\UserBundle\Entity\Business 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
 }

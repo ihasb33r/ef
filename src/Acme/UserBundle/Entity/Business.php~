@@ -299,4 +299,9 @@ class Business
     {
         return $this->approved;
     }
+	
+    /**
+     * @ORM\OneToMany(targetEntity="Sellbusiness", mappedBy="business")
+     */
+    protected $sellbusiness;
 }
