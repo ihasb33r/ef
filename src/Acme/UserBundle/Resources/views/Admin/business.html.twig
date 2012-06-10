@@ -1,0 +1,54 @@
+
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %}
+Διαχείριση
+{% endblock %}
+
+
+{% block content %}
+
+
+<h1>Διαχείριση Προϊόντων</h1>
+<div class="row">
+    <div class="span9 listing">
+        <table class="admin table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="visible-desktop">ID</th>
+                    <th>Όνομα</th>
+                    <th>Σημείο</th>
+                    <th class="hidden-phone">Τηλέφωνο Επικοινωνίας</th>
+                    <th class="visible-desktop">Ποσότητα</th>
+                    <th class="">Προιόν</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for location  in locations %}
+                <tr>
+                    <td class="actions">
+                        <a id="edit{{location.id}}" class="edit" href="{{path('admin_locations_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
+                        <a id="delete{{location.id}}" class="delete" href="{{path('admin_locations_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
+                    </td>
+                    <td class="visible-desktop">{{location.id}}</td>
+                    <td>{{ location.getBusinessName }}</td>
+                    <td>{{location.address}}<br>{{location.town}}<br>{{location.postal}}</td>
+                    <td class="hidden-phone">{{location.phone}}</td>
+                    <td class="visible-desktop">{{location.amount}}</td>
+                    <td class="visible-desktop">{{location.product}}</td>
+                    <td><a href="">OK</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="btn btn-large new" href="{{path ("admin_b2b_new")}}"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

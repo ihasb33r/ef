@@ -5,7 +5,7 @@
         <title>{% block title %} {% endblock %}- eAgrotis.gr</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="author" content="araksia, ihasb33r">
 
         <!-- Le styles -->
         <link href={{ asset('css/bootstrap.css')}} rel="stylesheet">
@@ -25,10 +25,6 @@
         <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,300,700&subset=latin,greek' rel='stylesheet' type='text/css'>
         {% block extracssjava %}
         {% endblock %}
-        <style>
-
-
-        </style>
     </head>
 
     <body>
@@ -41,8 +37,8 @@
                         <img src="{{ asset('img/logo.png')}}">
                     </a>
                 </div>
-                <div class="span6">
-                    <ul class="nav">
+                <div class="span6 hidden-phone">
+                    <ul id="main" class="nav">
                         <li>
                         <a href="{{path("home")}}">Αρχικη</a>
                         </li>
@@ -61,13 +57,12 @@
                         <li>
                         <a href="{{path("vindex")}}">Θέλω να Βοηθήσω</a>
                         </li>
-
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                <div class="span3 phone">
+                <div class="span3 phone hidden-phone">
                     <div>
-                        <ul class="loginbox">
+                        <ul id="login" class="loginbox">
                             {% if is_granted("ROLE_ADMIN") %}
                             <li>
                             <a href="{{path("admin")}}">Διαχείριση</a>
@@ -85,9 +80,25 @@
                             <a href="{{path("fos_user_registration_register")}}">Εγγραφή</a>
                             </li>
                             {% endif %}
-
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="row visible-phone">
+                <div class="span12">
+                <select id="navigation" style="width:100%;">
+                    <option value="/"> Επιλέξτε που θέλετε να πάτε </test>
+                    <optgroup class="main" label="Κεντρικό Μενού">
+                    </optgroup>
+                    <optgroup class="actions" label="Επιλογές Χρήστη">
+                    </optgroup>
+                    <optgroup class="productcategories" label="Κατηγορίες Προιόντων">
+                    </optgroup>
+                    <optgroup class="information" label="Πληροφορίες">
+                    </optgroup>
+                    <optgroup class="login" label="Χρήστης">
+                    </optgroup>
+                </select>
                 </div>
             </div>
         </div>
@@ -101,7 +112,7 @@
                     </div>
                     {% block content %} {% endblock %}
                 </div>
-                <div class="span3">
+                <div class="span3 hidden-phone">
                     <div class="row">
                         <div class="span3">
                             <div style="background-color:#D6DDDF; height:100px;margin-bottom:20px;"><p style="text-align:center; color:black;padding-top:40px; margin-top:20px;">Διαφημιση</p></div>
@@ -112,5 +123,6 @@
             </div>
         </div>
         <script src={{ asset('js/bootstrap.min.js')}}></script>
+        <script src={{ asset('js/menu.js')}}></script>
     </body>
 </html>

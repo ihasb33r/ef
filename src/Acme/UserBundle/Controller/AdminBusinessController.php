@@ -14,7 +14,6 @@ class AdminBusinessController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:Business')->createQueryBuilder("p");
         $locat =  $qb
-            ->orderby('p.date', 'DESC')
             ->getQuery()
             ->getResult();
         return $this->render('AcmeUserBundle:Admin:business.html.twig',array('locations'=>$locat));
@@ -38,50 +37,42 @@ class AdminBusinessController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        if ($this->getRequest()->get('ajax')=="true"){ 
-            if ($this->getRequest()->getMethod() === 'POST') {
-                $form->bindRequest($this->getRequest());
-                if ($form->isValid()){
-                    $em = $this->getDoctrine()->getEntityManager();
-					$business->setUser($user);
-					$business->setApproved(false);
-                    $em->persist($business);
-                    $em->flush();
-                }return $this->redirect($this->generateUrl('admin_business_add')); 
-            }
+        if ($this->getRequest()->getMethod() === 'POST') {
+            $form->bindRequest($this->getRequest());
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getEntityManager();
+                $location->setUser($user);
+                $location->setApproved(false);
+                $em->persist($location);
+                $em->flush();
+            }return $this->redirect($this->generateUrl('admin_b2b')); 
         }
         return $this->render('AcmeUserBundle:Admin:add_business.html.twig', array('form'=>$form->createView()));
     }
 
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
         $location = $em->getRepository('AcmeUserBundle:Business')->find($id);
         $form = $this->createFormBuilder($location)
-            ->add('name', "text")
-            ->add('longitude', "number")
-            ->add('latitude', "number")
-            ->add('organiser', "text")
-            ->add('extrainfo', "textarea")
-            ->add('date', "date")
+            ->add('business_name', "text")
             ->add('address', "text")
-            ->add('phone', "text")
-            ->add('starttime', "time")
-            ->add('endtime', "time")
+            ->add('town', "text")
+            ->add('postal', "number")
+			->add('phone', "number")
+			->add('amount', "number")
+            ->add('extra', "textarea")
             ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
             ->getForm()
             ;
-        //        $form->setData($locationdata);
         if ($this->getRequest()->getMethod() === 'POST') {
             $form->bindRequest($this->getRequest());
             if ($form->isValid()){
-                #                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($location);
                 $em->flush();
-                return $this->redirect($this->generateUrl('admin_locations'));
-            }
+            }return $this->redirect($this->generateUrl('admin_b2b')); 
         }
-        return $this->render('AcmeUserBundle:Admin:edit_location.html.twig', array('form'=>$form->createView(), 'id'=>$id));
+        return $this->render('AcmeUserBundle:Admin:edit_business.html.twig', array('form'=>$form->createView(), 'id'=>$id));
 
     }
 
