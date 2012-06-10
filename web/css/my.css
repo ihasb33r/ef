@@ -420,6 +420,31 @@ dl.info dd {
 }
 
 
+.votes{
+    margin-left:10px;
+    width:160px;
+}
+
+.vote {
+    background-image:url("../img/tomato.png");
+    width:32px;
+    height:32px;
+    float:left;
+    background-repeat:no-repeat;
+}
+
+.vote:hover {
+    background-image:url("../img/tomato.png");
+    background-position:-37px 0px;
+    background-repeat:no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+
+
+}
+
+
 /* media queries */
 @media (max-width: 767px){
 

@@ -22,7 +22,6 @@
             </div>
             <div class="span3 title">
                 <h3>
-
                     {{ sell.origin }}
                 </h3>
             </div>
@@ -32,6 +31,7 @@
                 <div class="details photo">
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
+                {% include "AcmeUserBundle:Default:rating.html.twig" %}
             </div>
             <div class="span4">
                 <div class="details">
