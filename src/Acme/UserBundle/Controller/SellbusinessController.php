@@ -4,6 +4,7 @@ namespace Acme\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Acme\UserBundle\Entity\Sellbusiness;
 use Acme\UserBundle\Entity\User;
+use Acme\UserBundle\Entity\Business;
 use Acme\UserBundle\Entity\Location;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,8 @@ class SellbusinessController extends Controller
             if ($form->isValid()){
                 $em = $this->getDoctrine()->getEntityManager();
                 $sellbusiness->setUser($user);
+                $business = $em->getRepository('AcmeUserBundle:Business')->findOneById($id);
+                $sellbusiness->setBusiness($business);
                 $em->persist($sellbusiness);
                 $em->flush();
             }

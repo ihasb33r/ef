@@ -19,7 +19,6 @@ class BusinessApprovalController extends Controller
         }
         $id=$user->getId();
 
-
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:SellBusiness')->createQueryBuilder("p");
         $locat =  $qb
@@ -53,14 +52,14 @@ class BusinessApprovalController extends Controller
         $locat =  $qb
             ->where($qb->expr()->andX(
                 $qb->expr()->eq('p.approved',":approved"),
-                $qb->expr()->eq('l.user',":user")
+                $qb->expr()->eq('p.user',":user")
                 ))
                 ->setParameter('approved', $approval==="true")
                 ->setParameter('user', $user->getId())
                 ->getQuery()
                 ->getResult();
 
-        return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('items'=>$locat, 'id'=>$id));
+        return $this->render('AcmeUserBundle:Business:approval.html.twig', array('items'=>$locat, 'id'=>$id));
     }
     public function okAction($id)
     { 
