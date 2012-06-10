@@ -31,6 +31,21 @@ h2.side{
     margin-bottom: 5px;
 }
 
+.newsletter{
+
+padding-top: 10px;
+padding-left: 10px;
+background-color: white;
+margin-top: 20px;
+margin-bottom: 20px;
+
+}
+
+.newsletter input {
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+}
 
 .loginbox {
     margin:0px;

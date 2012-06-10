@@ -1,0 +1,88 @@
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Προσθήκη/Αλλαγή Προιόντος
+
+{% endblock %}
+
+{% block content %}
+<h1>Προσθήκη/Αλλαγή Συνάντησης</h1>
+<div class="row">
+    <div class="span9 listing">
+        <form action='{{path ("admin_b2b_new")}}' {{form_enctype(form) }} method="POST" id="locationForm">
+            <div class="row">
+                <div class="span4 offset1">
+                    <div class="control-group">
+                        {{form_label(form.business_name,"Όνομα Εταιρίας", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.business_name)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.address)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.town,"Πόλη", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.town)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.postal,"Ταχυδρομικός Κώδικας", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.postal)}}
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="control-group">
+                        {{form_label(form.phone,"Τηλέφωνο", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.phone)}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{form_label(form.amount,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.amount) }} 
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.product,"Προϊόν", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.product)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        {{form_label(form.extra,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.extra)}}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                {{ form_widget(form.approved) }} Έγκριση
+                            </label>
+                        </div>
+                    </div>
+
+                    {{ form_rest(form)}}
+                    <a href="#" style=" float:right" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 offset5">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+{%endblock %}

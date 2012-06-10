@@ -29,8 +29,8 @@
                 {% for location  in locations %}
                 <tr>
                     <td class="actions">
-                        <a id="edit{{location.id}}" class="edit" href="{{path('admin_locations_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
-                        <a id="delete{{location.id}}" class="delete" href="{{path('admin_locations_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
+                        <a id="edit{{location.id}}" class="edit" href="{{path('admin_b2b_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
+                        <a id="delete{{location.id}}" class="delete" href="{{path('admin_b2b_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
                     </td>
                     <td class="visible-desktop">{{location.id}}</td>
                     <td>{{ location.getBusinessName }}</td>
@@ -38,7 +38,6 @@
                     <td class="hidden-phone">{{location.phone}}</td>
                     <td class="visible-desktop">{{location.amount}}</td>
                     <td class="visible-desktop">{{location.product}}</td>
-                    <td><a href="">OK</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

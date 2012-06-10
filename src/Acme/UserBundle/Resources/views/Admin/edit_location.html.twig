@@ -80,6 +80,18 @@
                             {{ form_widget(form.endtime)}}
                         </div>
                     </div>
+                    <div class="control-group">
+                        <label class="checkbox">
+                            <div class="controls">
+                                {{ form_widget(form.approved)}} Έγγριση
+                            </div>
+                        </label>
+                        <label class="checkbox">
+                            <div class="controls">
+                                {{ form_widget(form.public)}} Δημοσιευμένο
+                            </div>
+                        </label>
+                    </div>
                     {{ form_rest(form)}}
                     <a href="#" style=" float:right" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
                 </div>

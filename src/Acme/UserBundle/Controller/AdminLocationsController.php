@@ -71,6 +71,8 @@ class AdminLocationsController extends Controller
             ->add('phone', "text")
             ->add('starttime', "time")
             ->add('endtime', "time")
+            ->add('approved', "checkbox")
+            ->add('public', "checkbox")
             ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
             ->getForm()
             ;
