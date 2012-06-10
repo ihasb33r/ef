@@ -1,0 +1,29 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Newsletter
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1> Newsletter</h1>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="span9 listing">
+        <dl class="faq">
+			{{msg}}
+        </dl>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}
