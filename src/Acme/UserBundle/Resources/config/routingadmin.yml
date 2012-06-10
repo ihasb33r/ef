@@ -81,6 +81,12 @@ admin_volunteer_new:
 admin_volunteer_delete:
     pattern: /volunteer/delete/{id}
     defaults: { _controller: AcmeUserBundle:AdminVolunteer:delete }
+admin_volunteer_echo:
+    pattern: /volunteer/echo
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:echo }
+admin_volunteer_echo_delete:
+    pattern: /volunteer/echo/delete/{id}
+    defaults: { _controller: AcmeUserBundle:AdminVolunteer:echodelete }
 #admin_locations_new:
 #    pattern: /locations_new
 #    defaults: { _controller: AcmeUserBundle:AdminLocations:new }

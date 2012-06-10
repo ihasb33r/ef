@@ -299,4 +299,33 @@ class Business
     {
         return $this->approved;
     }
+	
+    /**
+     * @ORM\OneToMany(targetEntity="Sellbusiness", mappedBy="business")
+     */
+    protected $sellbusiness;
+    public function __construct()
+    {
+        $this->sellbusiness = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add sellbusiness
+     *
+     * @param Acme\UserBundle\Entity\Sellbusiness $sellbusiness
+     */
+    public function addSellbusiness(\Acme\UserBundle\Entity\Sellbusiness $sellbusiness)
+    {
+        $this->sellbusiness[] = $sellbusiness;
+    }
+
+    /**
+     * Get sellbusiness
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getSellbusiness()
+    {
+        return $this->sellbusiness;
+    }
 }
