@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 class ApprovalController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
 
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -24,12 +24,44 @@ class ApprovalController extends Controller
         $locat =  $qb
             ->innerJoin("p.location", "l")
             ->where($qb->expr()->andX(
-                $qb->expr()->eq('p.approved',':approval'),
                 $qb->expr()->gt('l.date',':date'),
                 $qb->expr()->eq('l.user',":user")
                 ))
-                ->setParameter('approval', "0")
+                ->andWhere("p.approved is Null")
                 ->setParameter('date', new \Datetime("today"))
+                ->setParameter('user', $user->getId())
+                ->orderby('l.date', 'ASC')
+                ->getQuery()
+                ->getResult();
+
+        return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('items'=>$locat, 'id'=>$id));
+    }
+    public function isApprovedAction($approval)
+    {
+
+        if (is_null($approval)){
+            echo "test";
+            return $this->indexAction();
+        }
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $id=$user->getId();
+
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->getRepository('AcmeUserBundle:Sell')->createQueryBuilder("p");
+        $locat =  $qb
+            ->innerJoin("p.location", "l")
+            ->where($qb->expr()->andX(
+                $qb->expr()->eq('p.approved',":approved"),
+                $qb->expr()->gt('l.date',':date'),
+                $qb->expr()->eq('l.user',":user")
+                ))
+                ->setParameter('date', new \Datetime("today"))
+                ->setParameter('approved', $approval==="true")
                 ->setParameter('user', $user->getId())
                 ->orderby('l.date', 'ASC')
                 ->getQuery()
@@ -40,7 +72,7 @@ class ApprovalController extends Controller
     public function okAction($id)
     { 
         $em = $this->getDoctrine()->getEntityManager();
-        $sell = $em->getRepository('AcmeUserBundle:Sell')->findById($id);
+        $sell = $em->getRepository('AcmeUserBundle:Sell')->findOneById($id);
         $sell->setApproved(true);
         $em->flush();
 
@@ -48,10 +80,9 @@ class ApprovalController extends Controller
     }
     public function noAction($id)
     {
-
         $em = $this->getDoctrine()->getEntityManager();
-        $sell= $em->getRepository('AcmeUserBundle:Sell')->findOneById($id);
-        $em->remove($sell);
+        $sell = $em->getRepository('AcmeUserBundle:Sell')->findOneById($id);
+        $sell->setApproved(false);
         $em->flush();
 
         return $this->indexAction();

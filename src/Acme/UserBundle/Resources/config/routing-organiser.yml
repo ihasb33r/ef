@@ -8,8 +8,8 @@ diorganotis:
     pattern: /
     defaults: { _controller: AcmeUserBundle:Organiser:index }
 approval:
-    pattern: /approval
-    defaults: { _controller: AcmeUserBundle:Approval:index }
+    pattern: /approval/{approval}
+    defaults: { _controller: AcmeUserBundle:Approval:isApproved, approval:NULL  }
 ok:
     pattern: /ok/{id}
     defaults: { _controller: AcmeUserBundle:Approval:ok }

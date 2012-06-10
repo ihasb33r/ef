@@ -7,7 +7,9 @@
     <div class="span3 sidebar">
         <ul class="extra-nav">
             <li><a href='{{path("locations")}}'>Προσθήκη συνάντησης</a></li>
-			 <li><a href='{{path("approval")}}'>Έγκρυση προσφορών</a></li>
+			 <li><a href='{{path("approval")}}'>Αναμένουν έγγριση</a></li>
+             <li><a href='{{path("approval", {'approval':'true'} ) }}'>Εχουν εγγριθεί</a></li>
+			 <li><a href='{{path("approval", {'approval':'false'} ) }}'>Έχουν Απορριθεί</a></li>
         </ul>
 
     </div>

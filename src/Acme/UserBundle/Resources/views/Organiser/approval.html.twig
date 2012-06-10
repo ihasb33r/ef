@@ -10,13 +10,12 @@
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
-            <div class="span2" >
-                <div class="details">
+            <div class="span3" >
+                <div class="details photo">
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
-                    {{sell.location.date|date }}
                 </div>
             </div>
-            <div class="span7">
+            <div class="span6">
                 <div class="details">
                     <div class="groupinfo">
                         <dl class="info">
@@ -39,8 +38,12 @@
             <div class="row">
                 <div class="row">
                     <div class="span9 buttons">
+                        {% if sell.approved is null or sell.approved==false %}
                         <a class="btn btn-large" href="{{ path('ok', { 'id': sell.id}) }}">Έγκριση</a>
+                        {% endif %}
+                        {% if sell.approved is null or sell.approved==true %}
                         <a class="btn btn-large" href="{{ path('no', { 'id': sell.id}) }}">Απόρριψη</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>			
