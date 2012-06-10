@@ -1,56 +1,54 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
-{% block title %} Τι έχω πουλήσει {% endblock %}
+{% block title %}Συμμετοχές σε αγορές {% endblock %}
 {% block content %}
 
-<h1> Τι έχω πουλήσει</h1>
+<h1>Συμμετοχές σε αγορές</h1>
 {%for sell in sell%}
-	{%if sell.user.id==id%}
+{%if sell.user.id==id%}
 <div class="row">
     <div class="span9 listing">
-	
+
         <div class="row">
-            <div class="span9 title">
-			
-			
+            <div class="span6 title">
+
+
                 <h2><span class="hidden-phone">Πουλήσατε:</span> {{sell.location.product.name}}</h2>
+            </div>
+            <div class="span3 title">
                 <h3>{{sell.location.date|date("d/m/Y")}}</h3>
             </div>
         </div>
         <div class="row">
-            <div class="span2" >
-                <div class="details">
+            <div class="span3" >
+                <div class="details photo">
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
             </div>
-		
-			
-            <div class="span7">
+
+
+            <div class="span6">
                 <div class="details">
                     <div class="groupinfo">
-                        <dl class="info">
-						<dt>Ημερομηνία:</dt><dd>{{sell.location.date|date("d/m/Y")}}</dd>
-					    <dt>Αρχική ποσότητα:</dt><dd> {{sell.quantity}} κιλά</dd>
-						<dt>Ελάχιστη ποσότητα αγοράς:</dt><dd>{{sell.minquantity}} </dd>
-						</dl>
-						<dl class="info">
-						<dt>Τόπος:</dt><dd>{{sell.location.address}}</dd>
-						<dt>Πουληθέντα:</dt><dd>{{sell.agor}} </dd>
-						<dt>Τιμή:</dt><dd>{{sell.price}} ευρώ</dd>
-								
-				   </div>
+                        <div>Αρχική ποσότητα:{{sell.quantity}} κιλά</div>
+                        <div>Ελάχιστη ποσότητα αγοράς:{{sell.minquantity}}</div>
+                        <div>Τόπος:{{sell.location.name }},  {{sell.location.address}}</div>
+                        <div>Πουληθέντα:{{sell.agor}}</div>
+                        <div>Τιμή:{{sell.price}} ευρώ</div>
+                    </div>
                 </div>
-             </div>
-		</div>
-		{%if sell.location.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
-			<div class="row">
-			<div class="span9 buttons"><a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
-						</div>	       
-            </div>	
-	    {%endif%}
-		
+            </div>
+        </div>
+        {%if sell.location.date|date("Ymd")>"now"|date("Ymd")%}
+        <div class="row">
+            <div class="span9 buttons">
+                <a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
+            </div>	       
+        </div>	
+        {%endif%}
 
-</div>
+
+    </div>
 </div>
 {%endif%}
 {%endfor%}
