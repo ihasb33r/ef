@@ -8,11 +8,24 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class VoteController extends Controller
 {
+
+    public function showvotes($canditate){
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getEntityManager();
+        $location = $em->getRepository('AcmeUserBundle:Rate')->findOneByUser($id);
+
+
+
+
+    }
+
+
     public function voteAction($canditate, $vote )
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        
-
+        $em = $this->getDoctrine()->getEntityManager();
+        $location = $em->getRepository('AcmeUserBundle:Rate')->findOneByUser($id);
 
     }
 

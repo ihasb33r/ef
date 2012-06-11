@@ -92,6 +92,13 @@ class Rate
 	    protected $user;
 
 
+    /** @ORM\ManyToOne(targetEntity="User", inversedBy="vote")
+     *  @ORM\JoinColumn(name="candidate_id", referencedColumnName="id")
+     */
+    protected $candidate;
+
+
+
 
     /**
      * Set user
@@ -111,5 +118,25 @@ class Rate
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set candidate
+     *
+     * @param Acme\UserBundle\Entity\User $candidate
+     */
+    public function setCandidate(\Acme\UserBundle\Entity\User $candidate)
+    {
+        $this->candidate = $candidate;
+    }
+
+    /**
+     * Get candidate
+     *
+     * @return Acme\UserBundle\Entity\User 
+     */
+    public function getCandidate()
+    {
+        return $this->candidate;
     }
 }
