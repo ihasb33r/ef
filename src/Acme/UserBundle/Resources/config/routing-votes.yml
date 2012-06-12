@@ -1,0 +1,3 @@
+givenvotes:
+    pattern: /given
+    defaults: { _controller: AcmeUserBundle:Vote:showgiven }

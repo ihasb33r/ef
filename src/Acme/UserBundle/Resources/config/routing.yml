@@ -96,6 +96,9 @@ organiser:
 volunteer:
     resource: "@AcmeUserBundle/Resources/config/routing-volunteer.yml"
     prefix:   /volunteer
+votes:
+    resource: "@AcmeUserBundle/Resources/config/routing-votes.yml"
+    prefix: /votes
 
 
 

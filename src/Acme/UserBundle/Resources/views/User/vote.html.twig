@@ -1,0 +1,27 @@
+
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %}Κριτικές {% endblock %}
+{% block content %}
+<h1>Κριτικές</h1>
+
+<div class="row">
+    <ul class="votes">
+{%for vote in votes%}
+        <li class="vuote">
+            <div class="span3 listing">
+                <div class="vote-{{vote.pshfos}}">
+                    {% include "AcmeUserBundle:Default:rating.html.twig" %}
+                </div>
+                <div class="comments">
+                    {{ vote.sxolia }}
+                </div>
+            </div>
+        </li>
+{%endfor%}
+    </ul>
+</div>
+{%endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:Agrotis:sidebar_agrotis.html.twig" %}
+{%endblock %}

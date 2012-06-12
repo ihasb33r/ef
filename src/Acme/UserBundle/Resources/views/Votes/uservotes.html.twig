@@ -1,0 +1,92 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Προγραμματισμένες Αγορές{% endblock %}
+
+{% block extracssjava %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span9">
+        <h1> Προγραμματισμένες Αγορές</h1>
+    </div>
+</div>
+
+{% if votesremaining|length >0 %}
+
+<div class="row ">
+    <div class="span9 listing">
+        <div id="showremainingvotes"> Μπορείς να βαθμολογήσεις <strong>{{ votesremaining|length }}</strong> αγορές, πατώντας εδώ. </div>
+        <script>
+            $("#showremainingvotes").click(function(){
+                $(".remaining").show();
+            });
+        </script>
+
+{%for vote in votesremaining %}	
+        <div class="row remaining" style="display:none">
+            <div class="span7" >
+                <div class="remainingvote">
+                    Αγορά με <strong>{{ vote.sell.location.product }}</strong>
+                    από <strong>{{ vote.user.name }}</strong>
+                    στις<strong> {{ vote.sell.location.date|date("d/m/Y") }}</strong>
+                            στο σημείο <strong>{{ vote.sell.location.name }}</strong>
+                </div>
+            </div>
+            <div class="span2">
+                <div class="details">
+
+                    <div class="location">
+                        comment
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+            </div>
+        </div>
+{% endfor %}
+
+    </div>
+</div>
+{% endif %}
+
+
+{% if votescasted|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
+
+{% for vote in votescasted %}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span3" >
+                <div class="details photo">
+                    <span class="vote">{{ vote.score }}</span>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="details">
+
+                    <div class="location">
+                        <p>
+                        {{vote.comment}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+{%endblock %}

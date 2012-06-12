@@ -96,6 +96,11 @@ class Rate
      *  @ORM\JoinColumn(name="candidate_id", referencedColumnName="id")
      */
     protected $candidate;
+    
+/**
+     * @ORM\OneToOne(targetEntity="Buy", mappedBy="vote")
+     */
+    protected $buy;
 
 
 
@@ -138,5 +143,25 @@ class Rate
     public function getCandidate()
     {
         return $this->candidate;
+    }
+
+    /**
+     * Set buy
+     *
+     * @param Acme\UserBundle\Entity\Buy $buy
+     */
+    public function setBuy(\Acme\UserBundle\Entity\Buy $buy)
+    {
+        $this->buy = $buy;
+    }
+
+    /**
+     * Get buy
+     *
+     * @return Acme\UserBundle\Entity\Buy 
+     */
+    public function getBuy()
+    {
+        return $this->buy;
     }
 }
