@@ -11,46 +11,62 @@
 
 <div class="row">
     <div class="span9">
-        <h1> Προγραμματισμένες Αγορές</h1>
+        <h1> Κριτικές που έχω δώσει</h1>
     </div>
 </div>
 
 {% if votesremaining|length >0 %}
 
-<div class="row ">
+<div class="row remainingvotesprompt ">
     <div class="span9 listing">
-        <div id="showremainingvotes"> Μπορείς να βαθμολογήσεις <strong>{{ votesremaining|length }}</strong> αγορές, πατώντας εδώ. </div>
+        <div id="showremainingvotes"> Μπορείς να βαθμολογήσεις
+            <strong>{{ votesremaining|length }}</strong> αγορές,
+            πατώντας εδώ. 
+        </div>
         <script>
-            $("#showremainingvotes").click(function(){
+            $(".remainingvotesprompt").click(function(){
                 $(".remaining").show();
+                $(".remainingvotesprompt").hide();
             });
         </script>
+    </div>
+</div>
 
 {%for vote in votesremaining %}	
-        <div class="row remaining" style="display:none">
-            <div class="span7" >
+<div class="row remaining">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span6" >
                 <div class="remainingvote">
-                    Αγορά με <strong>{{ vote.sell.location.product }}</strong>
+                    Αγορά με
+                    <strong>{{ vote.sell.location.product }}</strong>
                     από <strong>{{ vote.user.name }}</strong>
-                    στις<strong> {{ vote.sell.location.date|date("d/m/Y") }}</strong>
-                            στο σημείο <strong>{{ vote.sell.location.name }}</strong>
+                    στις
+                    <strong> 
+                        {{ vote.sell.location.date|date("d/m/Y") }}
+                    </strong>
+                    στο σημείο
+                    <strong>{{ vote.sell.location.name }}</strong>
                 </div>
             </div>
-            <div class="span2">
-                <div class="details">
+            <div class="span3">
+                <a href="#vote-{{vote.id}}" class="btn btn-large showvotebox">Γράψτε Κριτική</a>
+                {% include "AcmeUserBundle:Default:rating.html.twig" %}
+                <script>
+                    $(".showvotebox").click(function(){
+                        $($(this).attr("href")).show();
+                        $(this).hide();
+                    });
 
-                    <div class="location">
-                        comment
-                    </div>
-                </div>
+                </script>
             </div>
             <div class="span3">
             </div>
         </div>
-{% endfor %}
-
     </div>
 </div>
+{% endfor %}
+
 {% endif %}
 
 
@@ -63,8 +79,8 @@
     <div class="span9 listing">
         <div class="row">
             <div class="span3" >
-                <div class="details photo">
-                    <span class="vote">{{ vote.score }}</span>
+                <div class="details ">
+                    <span class="score">{{ vote.vath }}</span>
                 </div>
             </div>
             <div class="span3">
@@ -72,7 +88,7 @@
 
                     <div class="location">
                         <p>
-                        {{vote.comment}}
+                        {{vote.sxolia}}
                         </p>
                     </div>
                 </div>
@@ -82,8 +98,32 @@
         </div>
     </div>
 </div>
+
 {% endfor %}
 
+<script>
+    $(document).ready(function(){
+
+        $.each($(".score"), function(key, val){
+
+            $value = parseInt($(val).text());
+
+            $(val).empty();
+
+            for(i=0;i<5;i++){
+                if (i<$value){
+                console.log(i);
+                    $(val).append("<span class='vote'><span>");
+                }
+                else{
+                     $(val).append("<span class='novote'><span>");
+                    
+                }
+
+            }
+        });
+    });
+</script>
 
 {% endblock %}
 
