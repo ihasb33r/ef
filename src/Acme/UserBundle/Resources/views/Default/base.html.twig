@@ -120,11 +120,19 @@
                                 <h4>Newsletter</h4>
                                 <form action="{{path('newsletter')}}" method="POST">
                                     <input type="text" name="email"></text>
-                                    <input name="submit" value="Εγγραφή" type="submit" class="btn btn-large btn-green/>
+                                    <input name="submit" value="Εγγραφή" type="submit" class="btn btn-large btn-green"/>
                                 </form>
                             </div>
                         </div>
                     </div>
+                <div class="row">
+                    <div class="span3 social-icons">
+                        <a href="http://www.facebook.com/pages/E-agrotis/384657824924546"><img alt=""  src="{{ asset('img/facebook.png')}}" hspace="3"   /></a>
+                        <a href="https://twitter.com/#!/eagrotis"><img alt=""  src="{{ asset('img/twitter.png')}}"  hspace="3"/></a>
+                        <a href="http://e-agrotis.blogspot.gr/"><img alt=""  src="{{ asset('img/blogger.png')}}" hspace="3" /></a>
+                        <a href="http://www.youtube.com/user/eagrotis?feature=guide"><img alt=""  src="{{ asset('img/youtube.png')}}" hspace="3" /></a>
+                    </div>
+                </div>
                     {% block sidebar %} {%endblock %}
                 </div>
             </div>
