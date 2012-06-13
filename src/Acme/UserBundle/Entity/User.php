@@ -112,8 +112,8 @@ class User extends BaseUser
     }
 
     /**
-     * Get phone
-     *
+     * Get phone            
+     *h
      * @return integer 
      */
     public function getPhone()
@@ -134,6 +134,10 @@ class User extends BaseUser
 	     * @ORM\OneToMany(targetEntity="Rate", mappedBy="user")
 	     */
     protected $rate;
+    /**
+	     * @ORM\OneToMany(targetEntity="Rate", mappedBy="candidate")
+	     */
+    protected $vote;
 
  /**
      * @var string $newsletterSubscription
@@ -294,5 +298,15 @@ class User extends BaseUser
     public function getNewsletterSubscription()
     {
         return $this->newsletterSubscription;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getVote()
+    {
+        return $this->vote;
     }
 }

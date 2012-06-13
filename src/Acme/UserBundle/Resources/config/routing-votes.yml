@@ -1,0 +1,7 @@
+givenvotes:
+    pattern: /given
+    defaults: { _controller: AcmeUserBundle:Vote:showgiven }
+give:
+    pattern: /vote/{candidate}
+    defaults: { _controller: AcmeUserBundle:Vote:vote }
+

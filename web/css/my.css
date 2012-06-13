@@ -31,6 +31,21 @@ h2.side{
     margin-bottom: 5px;
 }
 
+.newsletter{
+
+padding-top: 10px;
+padding-left: 10px;
+background-color: white;
+margin-top: 20px;
+margin-bottom: 20px;
+
+}
+
+.newsletter input {
+    margin-left:auto;
+    margin-right:auto;
+    width:80%;
+}
 
 .loginbox {
     margin:0px;
@@ -409,8 +424,8 @@ dl.info dd {
     margin-top:4px;
     background-repeat:no-repeat;
     background-image:url("../img/icons/plus-icon.png");
-
 }
+
 .actions {
     width:70px;
 }
@@ -419,35 +434,64 @@ dl.info dd {
     margin:20px;
 }
 
-
-.votes{
-    margin-left:10px;
-    width:160px;
+#showremainingvotes{
+    margin-left:20px;
+    margin-right:20px;
 }
 
+.remaining {
+    display:none;
+}
+
+.remainingvote{
+    padding-left:80px;
+    padding-top:15px;
+    background-image:url("../img/bluecircle.png");
+    background-repeat:no-repeat;
+    background-position: 20px 18px;
+}
+.vote-comment textarea {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.votes{
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+width: 130px
+}
 .vote {
     background-image:url("../img/tomato.png");
-    width:32px;
-    height:32px;
+    width:26px;
+    height:26px;
     float:left;
     background-repeat:no-repeat;
 }
-
-.vote:hover {
+.novote {
     background-image:url("../img/tomato.png");
-    background-position:-37px 0px;
-    background-repeat:no-repeat;
-    width:32px;
-    height:32px;
+    background-position:-30px 0px;
+    width:26px;
+    height:26px;
     float:left;
-
-
+    background-repeat:no-repeat;
+}
+.votebox{
+    text-align:center;
+    display:none;
 }
 
 
 /* media queries */
 @media (max-width: 767px){
 
+.remainingvote{
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:15px;
+    padding-bottom:15px;
+    background-image:none;
+
+}
     .details {
         margin-top:20px;
         margin-left:20px;

@@ -52,6 +52,7 @@ class AdminBusinessController extends Controller
 
     public function editAction($id)
     {
+        $em = $this->getDoctrine()->getEntityManager();
         $location = $em->getRepository('AcmeUserBundle:Business')->find($id);
         $form = $this->createFormBuilder($location)
             ->add('business_name', "text")
@@ -61,6 +62,7 @@ class AdminBusinessController extends Controller
 			->add('phone', "number")
 			->add('amount', "number")
             ->add('extra', "textarea")
+            ->add('approved', "checkbox")
             ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
             ->getForm()
             ;

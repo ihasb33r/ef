@@ -36,16 +36,20 @@ class Buy
     {
         return $this->id;
     }
-/**
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="buy")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-/**
+    /**
      * @ORM\ManyToOne(targetEntity="Sell", inversedBy="buy")
      * @ORM\JoinColumn(name="sell_id", referencedColumnName="id")
      */
     protected $sell;
+    /** @ORM\ManyToOne(targetEntity="Rate", inversedBy="buy")
+     *  @ORM\JoinColumn(name="vote_id", referencedColumnName="id")
+     */
+    protected $vote;
 
     /**
      * Set user
@@ -105,5 +109,25 @@ class Buy
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set vote
+     *
+     * @param Acme\UserBundle\Entity\Rate $vote
+     */
+    public function setVote(\Acme\UserBundle\Entity\Rate $vote)
+    {
+        $this->vote = $vote;
+    }
+
+    /**
+     * Get vote
+     *
+     * @return Acme\UserBundle\Entity\Rate 
+     */
+    public function getVote()
+    {
+        return $this->vote;
     }
 }

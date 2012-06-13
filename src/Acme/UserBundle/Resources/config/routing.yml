@@ -56,9 +56,9 @@ agorasmena:
 buy_delete:
     pattern:  /agorasmena/{id}
     defaults: { _controller: AcmeUserBundle:Kalathi:delete}
-vote:
-    pattern:  /vote/{name}
-    defaults: { _controller: AcmeUserBundle:Vote:index}
+#vote:
+#    pattern:  /vote/{name}
+#    defaults: { _controller: AcmeUserBundle:Vote:index}
 #sell_new:
 #    pattern:  /sell_new
 #    defaults: { _controller: AcmeUserBundle:Sell:new }
@@ -74,9 +74,9 @@ edit_new:
 edit_new_sell:
    pattern: /edit_new_sell
    defaults: { _controller: AcmeUserBundle:Poulimena:editnewsell}
-vote:
-   pattern: /vote
-   defaults: { _controller: AcmeUserBundle:Vote:index}
+#vote:
+   #pattern: /vote
+   #defaults: { _controller: AcmeUserBundle:Vote:index}
 
 
 
@@ -96,6 +96,9 @@ organiser:
 volunteer:
     resource: "@AcmeUserBundle/Resources/config/routing-volunteer.yml"
     prefix:   /volunteer
+votes:
+    resource: "@AcmeUserBundle/Resources/config/routing-votes.yml"
+    prefix: /votes
 
 user:
     pattern:  /user
