@@ -1,13 +1,25 @@
-<div class="votebox" id="vote-{{vote.id}}">
-    <div class="votes">
-        <select>
+<div class="row votebox" id="vote-{{vote.id}}" >
+    <div class="span3">
+        <div class="vote-score">
+            <select  class="span2" id="vote-score-{{vote.id}}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
     </div>
 
-    <div class="vote-comment">
-        <textarea>
-        </textarea>
+    <div class="span4">
+        <div class="vote-comment">
+            <textarea id="vote-comment-{{vote.id}}">
+            </textarea>
+        </div>
     </div>
-    <a href="/vote/{{vote.sell.id}}/" class="btn btn-large">
-        Καταχώρηση
-    </a>
+    <div class="span2 vote-submit">
+        <a id="vote-submit-{{vote.id}}" href="{{path("give", {candidate:vote.id})}}" class="btn btn-large">
+            Καταχώρηση
+        </a>
+    </div>
 </div>

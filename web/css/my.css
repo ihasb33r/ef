@@ -475,6 +475,13 @@ width: 130px
     float:left;
     background-repeat:no-repeat;
 }
+.vote-score{
+    padding-top:20px;
+    text-align:center;
+}
+.vote-submit {
+    padding-top:20px;
+}
 .votebox{
     text-align:center;
     display:none;

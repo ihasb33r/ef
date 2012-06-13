@@ -36,7 +36,7 @@
 <div class="row remaining">
     <div class="span9 listing">
         <div class="row">
-            <div class="span6" >
+            <div class="span5" >
                 <div class="remainingvote">
                     Αγορά με
                     <strong>{{ vote.sell.location.product }}</strong>
@@ -49,9 +49,8 @@
                     <strong>{{ vote.sell.location.name }}</strong>
                 </div>
             </div>
-            <div class="span3">
+            <div class="span4">
                 <a href="#vote-{{vote.id}}" class="btn btn-large showvotebox">Γράψτε Κριτική</a>
-                {% include "AcmeUserBundle:Default:rating.html.twig" %}
                 <script>
                     $(".showvotebox").click(function(){
                         $($(this).attr("href")).show();
@@ -63,9 +62,39 @@
             <div class="span3">
             </div>
         </div>
+                {% include "AcmeUserBundle:Default:rating.html.twig" %}
     </div>
 </div>
 {% endfor %}
+<script>
+    function vote(path, id){
+
+       var vote = $("#vote-score-"+id).val();
+       var comment = $("#vote-comment-"+id).val();
+       $.ajax({
+        type: "GET",
+        url: path,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: {"vote":vote, "comment": comment},
+        success: function (response) {
+        },
+        failure: function (msg) {
+        }
+    });
+
+    }
+    $(document).ready( function(){
+
+        $(".vote-submit a").click(function(){
+            
+           var id = $(this).attr("id").split("-")[2];
+            vote($(this).attr("href"), id);
+            return false;
+        });
+
+    });
+</script>
 
 {% endif %}
 
