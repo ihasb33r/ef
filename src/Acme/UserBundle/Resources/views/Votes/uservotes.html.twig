@@ -1,10 +1,33 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
-{% block title %} Προγραμματισμένες Αγορές{% endblock %}
+{% block title %} Κριτικές που έχω δώσει {% endblock %}
 
 {% block extracssjava %}
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
-<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/vote.js')}}"></script>
+<script>
+
+$(document).ready( function(){
+
+    $(".remainingvotesprompt").click(function(){
+        $(".remaining").show();
+        $(".remainingvotesprompt").hide();
+    });
+    $(".showvotebox").click(function(){
+        $($(this).attr("href")).show();
+        $(this).hide();
+    });
+
+    $(".vote-submit a").click(function(){
+
+        var id = $(this).attr("id").split("-")[2];
+        vote($(this).attr("href"), id);
+        return false;
+    });
+    transformVotes();
+
+});
+
+</script>
 {% endblock %}
 
 {% block content %}
@@ -23,12 +46,6 @@
             <strong>{{ votesremaining|length }}</strong> αγορές,
             πατώντας εδώ. 
         </div>
-        <script>
-            $(".remainingvotesprompt").click(function(){
-                $(".remaining").show();
-                $(".remainingvotesprompt").hide();
-            });
-        </script>
     </div>
 </div>
 
@@ -51,50 +68,14 @@
             </div>
             <div class="span4">
                 <a href="#vote-{{vote.id}}" class="btn btn-large showvotebox">Γράψτε Κριτική</a>
-                <script>
-                    $(".showvotebox").click(function(){
-                        $($(this).attr("href")).show();
-                        $(this).hide();
-                    });
-
-                </script>
             </div>
             <div class="span3">
             </div>
         </div>
-                {% include "AcmeUserBundle:Default:rating.html.twig" %}
+        {% include "AcmeUserBundle:Default:rating.html.twig" %}
     </div>
 </div>
 {% endfor %}
-<script>
-    function vote(path, id){
-
-       var vote = $("#vote-score-"+id).val();
-       var comment = $("#vote-comment-"+id).val();
-       $.ajax({
-        type: "GET",
-        url: path,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: {"vote":vote, "comment": comment},
-        success: function (response) {
-        },
-        failure: function (msg) {
-        }
-    });
-
-    }
-    $(document).ready( function(){
-
-        $(".vote-submit a").click(function(){
-            
-           var id = $(this).attr("id").split("-")[2];
-            vote($(this).attr("href"), id);
-            return false;
-        });
-
-    });
-</script>
 
 {% endif %}
 
@@ -107,22 +88,15 @@
 <div class="row ">
     <div class="span9 listing">
         <div class="row">
-            <div class="span3" >
-                <div class="details ">
+            <div class="span4" >
+                <div class="vote-score clearfix">
                     <span class="score">{{ vote.vath }}</span>
                 </div>
             </div>
-            <div class="span3">
-                <div class="details">
-
-                    <div class="location">
-                        <p>
-                        {{vote.sxolia}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="span3">
+            <div class="span5">
+                <p>
+                {{vote.sxolia}}
+                </p>
             </div>
         </div>
     </div>
@@ -130,29 +104,6 @@
 
 {% endfor %}
 
-<script>
-    $(document).ready(function(){
-
-        $.each($(".score"), function(key, val){
-
-            $value = parseInt($(val).text());
-
-            $(val).empty();
-
-            for(i=0;i<5;i++){
-                if (i<$value){
-                console.log(i);
-                    $(val).append("<span class='vote'><span>");
-                }
-                else{
-                     $(val).append("<span class='novote'><span>");
-                    
-                }
-
-            }
-        });
-    });
-</script>
 
 {% endblock %}
 

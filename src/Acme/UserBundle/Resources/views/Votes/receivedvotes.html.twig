@@ -1,0 +1,56 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %} Κριτικές που έχω λάβει {% endblock %}
+
+{% block extracssjava %}
+<script type="text/javascript" src="{{asset('js/vote.js')}}"></script>
+<script>
+
+$(document).ready( function(){
+
+    transformVotes();
+
+});
+
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="span9">
+        <h1> Κριτικές που έχω δώσει</h1>
+    </div>
+</div>
+
+
+{% if votescasted|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
+
+{% for vote in votescasted %}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span4" >
+                <div class="vote-score clearfix">
+                    <span class="score">{{ vote.vath }}</span>
+                </div>
+            </div>
+            <div class="span5">
+                <p>
+                {{vote.sxolia}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+{%endblock %}

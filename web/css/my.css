@@ -9,10 +9,11 @@ body{
     padding-bottom:200px;
     background-position:right bottom;
     padding-top:20px;
+    font-size:100%;
 }
 
 h1 , h2.side{
-    font-size:2em;
+    font-size:1.5em;
     background-color:#506100;
     color:white;
     padding: 10px 30px;
@@ -24,7 +25,7 @@ h1 , h2.side{
 h2.side{
     float: none;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 5px 15px;
     background-color: 
     #6F8D8D;
@@ -33,11 +34,11 @@ h2.side{
 
 .newsletter{
 
-padding-top: 10px;
-padding-left: 10px;
-background-color: white;
-margin-top: 20px;
-margin-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 
@@ -55,7 +56,6 @@ margin-bottom: 20px;
 .loginbox li{
     /*background-color: #506100;*/
     /*color:white;*/
-    padding: 10px ;
     margin-bottom: 5px;
     margin-top:5px;
     border-radius: 5px;
@@ -83,7 +83,7 @@ margin-bottom: 20px;
     padding-bottom:20px;
 }
 
-.listing,.sidebar {
+.listing,.sidebar, .newsletter, .phone>div {
     clear:left;
     background-color:white;
     border-radius:3px;
@@ -196,11 +196,11 @@ dd {
 .logo img {
     width:50%;
 }
-.phone {
-    background-color:white;
-    border-radius:5px;
-    text-align:center;
-}
+/*.phone {*/
+/*background-color:white;*/
+/*border-radius:5px;*/
+/*text-align:center;*/
+/*}*/
 .phone div {
     padding:10px;
 }
@@ -216,7 +216,7 @@ dd {
     margin-bottom:10px;
     float: left;
     margin-left: 20px;
-    font-size: 1.3em;
+    font-size: 0.8em;
     padding: 9px;
     background-color: white;
     border-radius: 5px;
@@ -243,7 +243,7 @@ dd {
 }
 .extra-nav li {
     margin-top:5px;
-    font-size:1.2em;
+    font-size:0.9em;
 }
 .extra-nav a {
     font-family: "Comfortaa", sans-serif;
@@ -439,20 +439,27 @@ dl.info dd {
     margin-right:20px;
 }
 
+.showvotebox{
+
+    display:block;
+    margin:20px;
+
+}
 .remaining {
     display:none;
 }
 
 .remainingvote{
-    padding-left:80px;
-    padding-top:15px;
-    background-image:url("../img/bluecircle.png");
+    padding-left:20px;
     background-repeat:no-repeat;
     background-position: 20px 18px;
 }
-.vote-comment textarea {
-    margin-top:15px;
-    margin-bottom:15px;
+.vote-comment  {
+    padding:0px 20px;
+}
+.vote-comment textarea{
+    margin:15px 0px;
+    width:100%;
 }
 .votes{
     margin-left:auto;
@@ -475,13 +482,22 @@ width: 130px
     float:left;
     background-repeat:no-repeat;
 }
+.vote-select{
+    padding:0px 20px;
+    padding-top:15px;
+}
 .vote-score{
-    padding-top:20px;
+    padding-left:20px;
     text-align:center;
 }
 .vote-submit {
-    padding-top:20px;
 }
+.vote-submit a.btn{
+    display:block;
+    margin:15px 20px;
+}
+
+
 .votebox{
     text-align:center;
     display:none;
@@ -559,7 +575,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .btn-large {
     margin-bottom:10px;
-    font-size:1.25em;
+    font-size:1em;
     background-color: hsl(77, 58%, 35%) !important;
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7c9d29", endColorstr="#6f8d25");

@@ -26,6 +26,27 @@ class VoteController extends Controller
     }
 
 
+    public function showreceivedAction(){
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->getRepository('AcmeUserBundle:Buy')->createQueryBuilder("p");
+        $votescasted = $em->getRepository('AcmeUserBundle:Rate')->findByCandidate($user->getId());
+        return $this->render('AcmeUserBundle:Votes:receivedvotes.html.twig', array('votescasted'=>$votescasted));
+
+    }
+
+    public function showreceivedforAction($id){
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->getRepository('AcmeUserBundle:Buy')->createQueryBuilder("p");
+        $votescasted = $em->getRepository('AcmeUserBundle:Rate')->findByCandidate($id);
+        return $this->render('AcmeUserBundle:Votes:receivedvotes.html.twig', array('votescasted'=>$votescasted));
+
+
+    }
+
     public function voteAction($candidate)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -38,6 +59,7 @@ class VoteController extends Controller
         $rating->setUser($user);
         $rating->setVath(intval($vote));
         $rating->setSxolia($comment);
+        $rating->setCandidate($buy->getSell()->getUser());
         $em->persist($rating);
         $em->flush();
         $buy->setVote($rating);

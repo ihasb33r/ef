@@ -1,6 +1,12 @@
 givenvotes:
     pattern: /given
     defaults: { _controller: AcmeUserBundle:Vote:showgiven }
+receivedvotes:
+    pattern: /received
+    defaults: { _controller: AcmeUserBundle:Vote:showreceived }
+receivedvotesfor:
+    pattern: /foruser/{id}
+    defaults: { _controller: AcmeUserBundle:Vote:showreceived }
 give:
     pattern: /vote/{candidate}
     defaults: { _controller: AcmeUserBundle:Vote:vote }
