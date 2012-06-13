@@ -5,12 +5,12 @@ namespace Acme\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Acme\UserBundle\Entity\Rate
+ * Acme\UserBundle\Entity\Message
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Rate
+class Message
 {
     /**
      * @var integer $id
@@ -35,4 +35,54 @@ class Rate
     protected $sender;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param Acme\UserBundle\Entity\User $sender
+     */
+    public function setSender(\Acme\UserBundle\Entity\User $sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return Acme\UserBundle\Entity\User 
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
 }
