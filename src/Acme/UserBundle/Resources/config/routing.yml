@@ -100,7 +100,12 @@ votes:
     resource: "@AcmeUserBundle/Resources/config/routing-votes.yml"
     prefix: /votes
 
-
+user:
+    pattern:  /user
+    defaults: { _controller: AcmeUserBundle:User:index }
+sumvoulos:
+    pattern:  /sumvoulos
+    defaults: { _controller: AcmeUserBundle:Sumvoulos:index }
 
 #user
 ola:

@@ -1,0 +1,38 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Σύμβουλος τιμών
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="span9">
+        <h1>Σύμβουλος Τιμών</h1>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="span9 listing">
+        <p>
+        Ο σύμβουλος τιμών περιλαμβάνει ενδεικτικές τιμές προϊόντων για να βοηθά και τους παραγωγούς και τους καταναλωτές.
+        </p>
+        <dl><dt>
+            Ενδεικτικές τιμές:
+            </dt>
+            <dd>
+           {%for items in events%}
+		<p>  Το προϊόν {{items.name}} έχει ενδεικτική τιμή: {{items.sumvoulos}} €/ανά κιλό</p>
+		   {%endfor%}
+            </dd>
+        </dl>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block sidebar %}
+{% include "AcmeUserBundle:User:sidebar_user.html.twig" %}
+{%endblock %}

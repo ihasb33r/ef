@@ -49,7 +49,7 @@
                         <a href="{{path("agrotis")}}">Είμαι Αγρότης</a>
                         </li>
                         <li>
-                        <a href="{{path("ola")}}">Είμαι Καταναλωτής</a>
+                        <a href="{{path("user")}}">Είμαι Καταναλωτής</a>
                         </li>
                         <li>
                         <a href="{{path("business")}}">Είμαι Επιχείρηση</a>
@@ -112,14 +112,15 @@
                     </div>
                     {% block content %} {% endblock %}
                 </div>
+				
                 <div class="span3 hidden-phone">
                     <div class="row">
                         <div class="span3">
                             <div class="newsletter">
                                 <h4>Newsletter</h4>
-                                <form action="{{path("newsletter")}}" method="POST">
+                                <form action="{{path('newsletter')}}" method="POST">
                                     <input type="text" name="email"></text>
-                                    <input name="submit" value="Υποβολή" type="submit"/>
+                                    <input name="submit" value="Εγγραφή" type="submit" class="btn btn-large btn-green/>
                                 </form>
                             </div>
                         </div>

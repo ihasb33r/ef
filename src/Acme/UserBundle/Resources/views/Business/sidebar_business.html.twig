@@ -1,4 +1,12 @@
 <div class="row">
+    <div class="span2"><br>
+<center>
+        <a href="http://www.facebook.com/pages/E-agrotis/384657824924546"><img alt=""  src="{{ asset('img/facebook.png')}}" hspace="3"   /></a>
+		<a href="https://twitter.com/#!/eagrotis"><img alt=""  src="{{ asset('img/twitter.png')}}"  hspace="3"/></a>
+		<a href="http://e-agrotis.blogspot.gr/"><img alt=""  src="{{ asset('img/blogger.png')}}" hspace="3" /></a>
+		<a href="http://www.youtube.com/user/eagrotis?feature=guide"><img alt=""  src="{{ asset('img/youtube.png')}}" hspace="3" /></a>
+    </center></div></div><br><br>
+<div class="row">
     <div class="span3">
         <h2 class="side">Επιλογές</h2>
     </div>
@@ -14,6 +22,28 @@
 
     </div>
 </div>
+<div class="row"><div class="span3">
+        <h2 class="side">Κατηγορίες</h2>
+</div></div>
+<div class="row">
+    <div class="span3 sidebar">
+        <ul class="extra-nav">
+            <li><a href='{{path("ola")}}'>Όλα</a></li>
+            <li><a href='{{path("pazari", {category:"λαχανικά"}) }}'>Λαχανικά</a></li>
+            <li><a href='{{path("pazari", {category:"οπωροκηπευτικά"}) }}'>Οπωροκηπευτικά</a></li>
+            <li><a href='{{path("pazari", {category:"φρούτα"}) }}'>Φρούτα</a></li>
+            <li><a href='{{path("pazari", {category:"όσπρια"}) }}'>Όσπρια</a></li>
+            <li><a href='{{path("pazari", {category:"λάδι"}) }}'>Λάδι</a></li>
+			<li><a href='{{path("pazari", {category:"αλεύρι"}) }}'>Αλεύρι</a></li>
+			<li><a href='{{path("pazari", {category:"ζυμαρικά"}) }}'>Ζυμαρικά</a></li>
+            <li><a href='{{path("pazari", {category:"μέλι"}) }}'>Μέλι</a></li>
+            <li><a href='{{path("pazari", {category:"γαλακτοκομικά"}) }}'>Γαλακτοκομικά</a></li>
+            <li><a href='{{path("pazari", {category:"κρέας"}) }}'>Κρέας</a></li>
+            <li><a href='{{path("pazari", {category:"βιολογικά-προιόντα"}) }}'>Βιολογικά Προϊόντα</a></li>
+            <li><a href='{{path("pazari", {category:"άλλα"}) }}'>Άλλα</a></li>
+        </ul>
+    </div>
+</div>
 <div class="row">
     <div class="span3">
         <h2 class="side">Πληροφορίες</h2>
@@ -24,7 +54,6 @@
         <ul class="extra-nav">
             <li><a href='{{path("about")}}'>Ποιοι είμαστε</a></li>
             <li><a href='{{path("events")}}'>Εκδηλώσεις</a></li>
-            <li><a href='{{path("price")}}'>Blog</a></li>
         </ul>
     </div>
 </div>
