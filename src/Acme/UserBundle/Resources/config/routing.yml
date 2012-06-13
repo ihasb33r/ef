@@ -106,6 +106,9 @@ user:
 sumvoulos:
     pattern:  /sumvoulos
     defaults: { _controller: AcmeUserBundle:Sumvoulos:index }
+anazhthsh:
+    pattern:  /anazhthsh
+    defaults: { _controller: AcmeUserBundle:Anazhthsh:index }
 
 #user
 ola:
