@@ -7,9 +7,8 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
-
-# doctrine entities generation backup 
 *.php~ 
+
 
 # 
 # OS garbage, Editors, IDEs, etc 
