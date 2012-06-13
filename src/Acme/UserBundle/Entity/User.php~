@@ -275,4 +275,24 @@ class User extends BaseUser
     {
         return $this->sellbusiness;
     }
+
+    /**
+     * Set newsletterSubscription
+     *
+     * @param boolean $newsletterSubscription
+     */
+    public function setNewsletterSubscription($newsletterSubscription)
+    {
+        $this->newsletterSubscription = $newsletterSubscription;
+    }
+
+    /**
+     * Get newsletterSubscription
+     *
+     * @return boolean 
+     */
+    public function getNewsletterSubscription()
+    {
+        return $this->newsletterSubscription;
+    }
 }

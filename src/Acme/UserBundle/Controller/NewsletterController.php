@@ -36,7 +36,7 @@ class NewsletterController extends Controller
                     $record = $query->getSingleResult();
 
                     if($record){
-                        $msg = "You are already subscribed!";
+                        $msg = "Έχετε ήδη εγγραφεί στο newsletter!";
                     }else{
                         $newsletter = new Newsletter();
                         $newsletter->setEmail($email);
@@ -44,16 +44,16 @@ class NewsletterController extends Controller
                         $em = $this->getDoctrine()->getEntityManager();
                         $em->persist($newsletter);
                         $em->flush();
-                        $msg = "You have been subscribed to our newsletter! Thank You.";
+                        $msg = "Γραφτήκατε επιτυχώς στο newsletter μας! Ευχαριστούμε.";
                     }
                 }else{
                     if($user->getNewsletterSubscription()){
-                        $msg = "You are already subscribed!";
+                        $msg = "Έχετε ήδη εγγραφεί στο newsletter!";
                     }else{
                         $user->setNewsletterSubscription(1);
                         $em = $this->getDoctrine()->getEntityManager();
                         $em->flush();                    
-                        $msg = "You have been subscribed to our newsletter! Thank You.";
+                        $msg = "Γραφτήκατε επιτυχώς στο newsletter μας! Ευχαριστούμε.";
                     }                
                 }
 

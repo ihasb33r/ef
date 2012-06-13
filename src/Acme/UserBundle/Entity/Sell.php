@@ -67,7 +67,7 @@ class Sell
 	 /**
      * @var string $approved
      *
-     * @ORM\Column(name="approved", type="boolean", nullable=true)
+     * @ORM\Column(name="approved", type="boolean")
      */
     private $approved; 
     /**

@@ -35,6 +35,12 @@ class Product
      * @ORM\Column(name="category", type="string", length=255)
      */
     private $category;
+	/**
+     * @var string $sumvoulos
+     *
+     * @ORM\Column(name="sumvoulos", type="integer" )
+     */
+    private $sumvoulos;
 
     /**
      * @var string $image
@@ -232,5 +238,25 @@ class Product
     public function getBusiness()
     {
         return $this->business;
+    }
+
+    /**
+     * Set sumvoulos
+     *
+     * @param integer $sumvoulos
+     */
+    public function setSumvoulos($sumvoulos)
+    {
+        $this->sumvoulos = $sumvoulos;
+    }
+
+    /**
+     * Get sumvoulos
+     *
+     * @return integer 
+     */
+    public function getSumvoulos()
+    {
+        return $this->sumvoulos;
     }
 }

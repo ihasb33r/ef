@@ -1,19 +1,18 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Πώληση Προϊόντος
+
+{% endblock %}
 
 {% block content %}
+<h1>Πώληση Προϊόντος</h1>
+
 <div class="row">
-    <div class="span9">
-
-        <h1>Πώληση προϊόντος</h1>  </div>
-
-</div>
-<div class="row ">
     <div class="span9 listing">
-        <div class="row">
-            <div class="span7">
-                <div class="details">
-                        <form action='{{path ("sell", { 'id': location_id})}}' {{form_enctype(form) }} method="POST">
-                            <div class="control-group">
+                        <form action='{{path ("sell", { 'id': location_id})}}' {{form_enctype(form) }} method="POST" id="sellForm">
+                            <div class="row">
+                <div class="span4 offset1">
+							<div class="control-group">
                                 {{form_label(form.quantity,"Ποσότητα", {'attr': {'class':'control-label'} } ) }}
                                 <div class="controls">
                                     {{ form_widget(form.quantity)}}
@@ -38,17 +37,16 @@
                                 </div>
                             </div>
                             {{ form_rest(form)}}
-                            <input name="ajax" value="true" type="hidden"/>
-                            <input name="submit" value="Υποβολή" type="submit"/>
-
-                        </form>
-
-
-                    </div>
+                    <a href="#" style=" float:right" onclick="$('#sellForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="span2 offset5">
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+</div>
     {% endblock%}
 {% block sidebar %}
 {% include "AcmeUserBundle:Agrotis:sidebar_agrotis.html.twig" %}
