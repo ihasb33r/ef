@@ -1,0 +1,41 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+
+{% block title %}
+Διαχείριση
+{% endblock %}
+
+
+{% block content %}
+
+
+<h1>Διαχείριση Μηνυμάτων</h1>
+<div class="row">
+    <div class="span9 listing">
+        <table class="admin table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>email</th>
+                    <th>ημερομηνία</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message  in messages %}
+                <tr>
+                    <td class="actions">
+                        <a id="delete{{message.id}}" class="delete" href="{{path('admin_message_delete', {'id':message.id})}}"><span class="delete-icon"></span></a>
+                    </td>
+                    <td><a href="{{path ("admin_message_view",{'id':message.id })}}">{{message.sender}}"</td>
+                        <td>{{message.date|date("d/m/Y")}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    {% endblock %}
+    {% block sidebar %}
+    {% include "AcmeUserBundle:Admin:sidebar.html.twig" %}
+    {%endblock %}
