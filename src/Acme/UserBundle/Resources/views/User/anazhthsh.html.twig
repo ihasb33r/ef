@@ -1,20 +1,122 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block extracssjava %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script type="text/javascript" src="{{asset('js/maps.js')}}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="span9">
-
-        <h1>Καταχώρηση παραγγελίας από επιχείρηση</h1>  </div>
-
+        <h1>Αναζήτηση</h1>
+    </div>
 </div>
 <div class="row">
     <div class="span9 listing">
-       
+        <div class="row">
+            <form id="search" name="search" action="{{path("anazhthsh")}}" method="GET">
+                <div class="span3">
+                    <div class="spacer">
+                        <select name="town">
+            <option value="">Επιλέξτε Πόλη</option>
+                            {% for item in locat %}
+                            <option value="{{item.town}}">{{item.town}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="spacer">
+                        <select name="product">
+                <option value="">Επιλέξτε Προϊόν</option> 
+                            {% for product in products %}
+
+                            <option value="{{product.id}}"> {{product.name }}</option> 
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="spacer">
+                        <a class="btn btn-large btn-green" href="#" onclick="javascript:$('#search').submit()">Αναζήτηση</a>
+                    </div>
+                </div>
+            <input type="hidden" name="search" value="search">
+            </form>
+        </div>
+
     </div>
 </div>
+{% if results is defined %}
+{% if results|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% else %}
+{%for location in results %}	
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span6 title">
+                <h2>
+                    <span class="hidden-phone">Αγορά με:</span> {{location.product.name}}
+                </h2>
+            </div>
+            <div class="span3 title">
+                <h3>{{location.date|date("d/m/Y")}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3" >
+                <div class="details photo">
+                    <img class="product" src="{{ asset (location.product.image)}}">
+                </div>
+            </div>
+            <div class="span3">
+                <div class="details">
+
+                    <div class="location">
+                        <h3>
+                            {{ location.name }},
+                        </h3>
+                        <h3>
+                            {{ location.address}} 
+                        </h3>
+                        <h3>
+                            {{ location.starttime | date("H:00") }}-{{ location.endtime | date("H:00") }}
+                        </h3>
+                        <div>{{location.organiser}}, {{ location.phone }} </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="details">
+                    {{location.extrainfo }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9">
+                <div class="imgmap">
+                    <div class="map" id="#map{{location.id}}"></div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="span9 buttons">
+                    <a class="btn btn-large" href="{{ path('buy', { 'id': location.id}) }}">Προβολή προσφορών</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>	
+        addmap("#map{{location.id}}", {{location.latitude}}, {{location.longitude}}, "{{location.address}}", "{{location.name}}", "{{location.phone}}" );
+    </script>
+</div>
+{% endfor %}
+{% endif %}
+{% endif %}
 
 {% endblock %}
 {% block sidebar %}
-{% include "AcmeUserBundle:Business:sidebar_business.html.twig" %}
+{% include "AcmeUserBundle:User:sidebar_user.html.twig" %}
 {%endblock %}
 
