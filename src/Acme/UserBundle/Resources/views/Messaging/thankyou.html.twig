@@ -1,0 +1,32 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Αποστολή Μηνύματος
+{% endblock %}
+
+{% block extracssjava %}
+<link rel="stylesheet" href="{{asset ("css/bootstrap-wysihtml5.css") }}">
+<script src="{{asset ("js/wysihtml5-0.3.0_rc2.js")}}"></script>
+<script src="{{asset ("js/bootstrap-wysihtml5.min.js")}}"></script>
+<script> 
+    $("document").ready(function (){
+        $("#html5textarea").wysihtml5();
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Αποστολή Μηνύματος</h1>
+<div class="row">
+    <div class="span9 listing">
+        <div class="spacer">
+        <p>
+        Ευχαριστούμε παρα πολύ για την επικοινωνία σας, θα προσπαθήσουμε να επικοινωνήσουμε μαζι σας το συντομότερο δυνατό.
+        </p>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+    {% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}

@@ -80,6 +80,9 @@ edit_new_sell:
 
 
 
+message:
+    resource: "@AcmeUserBundle/Resources/config/routing-messages.yml"
+    prefix:   /messaging
 
 admin:
     resource: "@AcmeUserBundle/Resources/config/routingadmin.yml"

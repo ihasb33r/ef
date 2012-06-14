@@ -1,0 +1,34 @@
+<?php
+namespace Acme\UserBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Acme\UserBundle\Entity\Message;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\DependencyInjection\ContainerAware;
+class MessageController extends Controller
+{
+    public function indexAction()
+    {
+        $message = new Message();
+        $form = $this->createFormBuilder($message)
+            ->add('sender', "text")
+            ->add('message', "textarea")
+            ->getForm()
+            ;
+
+        if ($this->getRequest()->getMethod()==="POST"){
+            $form->bindRequest($this->getRequest());
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getEntityManager();
+                $message->setDate(new \DateTime("today"));
+                $em->persist($message);
+                $em->flush();
+            }
+
+            return $this->render('AcmeUserBundle:Messaging:thankyou.html.twig');
+        }
+        return $this->render('AcmeUserBundle:Messaging:sendform.html.twig', array("form"=>$form->createView()));
+    }
+}

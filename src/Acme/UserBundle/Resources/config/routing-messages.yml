@@ -1,0 +1,6 @@
+showform:
+    pattern: /showform
+    defaults: { _controller: AcmeUserBundle:Message:index }
+sendmessage:
+    pattern: /sendmessage
+    defaults: { _controller: AcmeUserBundle:Message:index }

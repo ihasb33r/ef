@@ -1,0 +1,47 @@
+{% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Αποστολή Μηνύματος
+{% endblock %}
+
+{% block extracssjava %}
+<link rel="stylesheet" href="{{asset ("css/bootstrap-wysihtml5.css") }}">
+<script src="{{asset ("js/wysihtml5-0.3.0_rc2.js")}}"></script>
+<script src="{{asset ("js/bootstrap-wysihtml5.min.js")}}"></script>
+<script> 
+    $("document").ready(function (){
+        $("#html5textarea").wysihtml5();
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Αποστολή Μηνύματος</h1>
+<div class="row">
+    <div class="span9 listing">
+        <form action='{{path ("sendmessage") }}' {{form_enctype(form) }} method="POST" id="newsForm">
+            <div class="row">
+                <div class="span7 offset1">
+                    <div class="control-group news_admin_title">
+                        {{form_label(form.sender,"", {'attr': {'class':'control-label'} } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.sender, {'id':'news_admin_title', 'attr':{'placeholder':'email'} }) }}
+                        </div>
+                    </div>
+                    <div class="control-group html5textarea">
+                        {{form_label(form.message,"", {'attr': {'class':'control-label', } } ) }}
+                        <div class="controls">
+                            {{ form_widget(form.message, {'id':'html5textarea'}) }}
+                        </div>
+                    </div>
+                    {{ form_rest(form)}}
+                    <a href="#" style=" float:right" onclick="$('#newsForm').submit()" class="btn btn-large btn-green">Αποστολή</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+{% block sidebar %}
+    {% include "AcmeUserBundle:Default:sidebar.html.twig" %}
+{%endblock %}

@@ -73,25 +73,6 @@ class Message
         return $this->message;
     }
 
-    /**
-     * Set sender
-     *
-     * @param Acme\UserBundle\Entity\User $sender
-     */
-    public function setSender(\Acme\UserBundle\Entity\User $sender)
-    {
-        $this->sender = $sender;
-    }
-
-    /**
-     * Get sender
-     *
-     * @return Acme\UserBundle\Entity\User 
-     */
-    public function getSender()
-    {
-        return $this->sender;
-    }
 
     /**
      * Set date
@@ -111,5 +92,25 @@ class Message
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param string $sender
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return string 
+     */
+    public function getSender()
+    {
+        return $this->sender;
     }
 }
