@@ -122,3 +122,7 @@ pazari:
     pattern:  /agora/{category}
     defaults: { _controller: AcmeUserBundle:Pazari:index, category:"all" }
 
+sendemail:
+    pattern: /sendemail/{email}/{name}
+    defaults: {_controller: AcmeUserBundle:TestEmail:index}
+    
