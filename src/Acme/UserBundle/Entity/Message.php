@@ -22,18 +22,25 @@ class Message
     private $id;
 
     /**
-     * @var string $sxolia
+     * @var string $message
      *
-     * @ORM\Column(name="sxolia", type="string", length=255)
+     * @ORM\Column(name="message", type="string", length=255)
      */
     private $message;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var string $sender
+     *
+     * @ORM\Column(name="sender", type="string", length=255)
      */
-    protected $sender;
+    private $sender;
 
+    /**
+     * @var string $date
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
 
 
     /**
@@ -84,5 +91,25 @@ class Message
     public function getSender()
     {
         return $this->sender;
+    }
+
+    /**
+     * Set date
+     *
+     * @param date $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }
