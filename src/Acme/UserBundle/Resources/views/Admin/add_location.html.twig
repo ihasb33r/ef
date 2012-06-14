@@ -54,6 +54,12 @@
                 <div class="span4">
                     <div style="padding:20px;">
                         <div class="control-group">
+                            {{form_label(form.town,"Πόλη", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.town)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
                             {{form_label(form.extrainfo,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
                             <div class="controls">
                                 {{ form_widget(form.extrainfo)}}
@@ -84,7 +90,7 @@
                             </div>
                         </div>
                         {{ form_rest(form)}}
-                        <a href="#" style=" float:right" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
+                        <a href="#" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
                     </div>
                 </div>
             </div>

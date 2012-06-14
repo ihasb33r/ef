@@ -10,30 +10,35 @@
     <div class="span9 listing">
         <div class="row">
             <div class="span4">
-                <form action='{{path ("admin_product_new")}}' {{form_enctype(form) }}  method="POST" >
-                    <div class="control-group">
-                        {{form_label(form.name,"Όνομα Προϊόντος", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.name)}}
+                <div class="spacer">
+                    <form action='{{path ("admin_product_new")}}' {{form_enctype(form) }}  method="POST" >
+                        <div class="control-group">
+                            {{form_label(form.name,"Όνομα Προϊόντος", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.name)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.name,"Κατηγορία Προϊόντος", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.category)}}
+                        <div class="control-group">
+                            {{form_label(form.category,"Κατηγορία Προϊόντος", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.category)}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        {{form_label(form.name,"Φωτογραφία", {'attr': {'class':'control-label'} } ) }}
-                        <div class="controls">
-                            {{ form_widget(form.file)}}
-                            {{ form_rest(form)}}
+                        <div class="control-group">
+                            {{form_label(form.sumvoulos,"Σύμβουλος Τιμών", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.sumvoulos)}}
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="span4">
-                <div style="width:180px;height:180px;background-color:lightgrey"class="img"></div>
+                        <div class="control-group">
+                            {{form_label(form.name,"Φωτογραφία", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.file)}}
+                                {{ form_rest(form)}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

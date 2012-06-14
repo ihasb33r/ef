@@ -1,28 +1,21 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
 {% block title %} Κριτικές που έχω λάβει {% endblock %}
-
 {% block extracssjava %}
 <script type="text/javascript" src="{{asset('js/vote.js')}}"></script>
 <script>
-
 $(document).ready( function(){
-
     transformVotes();
-
 });
-
 </script>
 {% endblock %}
 
 {% block content %}
-
 <div class="row">
     <div class="span9">
-        <h1> Κριτικές που έχω δώσει</h1>
+        <h1> Κριτικές που έχω λάβει</h1>
     </div>
 </div>
-
 
 {% if votescasted|length==0 %}
 {% include "AcmeUserBundle:Default:empty.html.twig" %}
@@ -53,4 +46,5 @@ $(document).ready( function(){
 
 
 {% block sidebar %}
+{% include "AcmeUserBundle:Agrotis:sidebar_agrotis.html.twig" %}
 {%endblock %}

@@ -4,12 +4,37 @@ html{
 
 body{
     min-height:100%;
-    background-image:url("../img/background-bottom.png");
-    background-repeat:repeat-x;
-    padding-bottom:200px;
-    background-position:right bottom;
     padding-top:20px;
     font-size:100%;
+}
+
+.spacer {
+    margin:20px;
+
+}
+.container.body{
+
+}
+
+.footerbg {
+    /*background-color:#20130b;*/
+    background-color:#1A0F09;
+    background-image:url("../img/background-bottom.png");
+    background-repeat:repeat-x;
+    background-position:right top;
+    min-height:330px;
+    width:100%;
+    padding-bottom:10px;
+}
+.footer {
+    padding-top:310px;
+    color:#A0866D;
+}
+
+.terms {
+}
+.credits {
+    text-align:right;
 }
 
 h1 , h2.side{

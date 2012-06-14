@@ -13,7 +13,7 @@ class AnazhthshController extends Controller
     { 
 			 $em = $this->getDoctrine()->getEntityManager();
 			 $qb = $em->getRepository('AcmeUserBundle:Location')->createQueryBuilder("p");
-        $locat =  $qb
+            $locat =  $qb
             ->innerJoin("p.product", "c")
             ->where($qb->expr()->gt('p.date',':date'))
             ->setParameter('date',new \DateTime("today"))

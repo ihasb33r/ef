@@ -35,6 +35,7 @@ class AdminProductsController extends Controller
         $form = $this->createFormBuilder($product)
             ->add('name', "text")
             ->add('category',"text")
+            ->add('sumvoulos',"number")
             ->add('file', "file")
             ->getForm()
             ;
@@ -62,6 +63,7 @@ class AdminProductsController extends Controller
         $form = $this->createFormBuilder($product)
             ->add('name', "text")
             ->add('category', "text")
+            ->add('sumvoulos',"number")
             ->add('file', "file")
             ->getForm()
             ;
