@@ -1,5 +1,6 @@
 # Bootstrap
 app/bootstrap*
+app/config/parameters.ini
 
 # Symfony directories
 vendor/*
