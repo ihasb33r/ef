@@ -74,7 +74,15 @@ class NewsletterController extends Controller
 
         $em = $this->getDoctrine()->getEntityManager();
         $emails = $em->getRepository('AcmeUserBundle:Newsletter')->findAll();
-        $locations = $em->getRepository('AcmeUserBundle:Location')->findAll();
+        $locations =$em->getRepository('AcmeUserBundle:Location')
+            ->createQueryBuilder("p")
+            ->where('p.date > :date and p.approved=:approved and p.public=:public')
+            ->setParameter('date',new \DateTime("today"))
+            ->setParameter('approved',"1")
+            ->setParameter('public',"1")
+            ->orderby('p.date', 'ASC')
+            ->getQuery()
+            ->getResult();
         $news = $em->getRepository('AcmeUserBundle:NewsEntry')->findAll();
         $events = $em->getRepository('AcmeUserBundle:Events')->findAll();
         return $this->render('AcmeUserBundle:Email:newsletter.html.twig', array('locations'=>$locations,'news'=>$news));

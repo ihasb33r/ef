@@ -35,6 +35,12 @@ class NewsEntry
      */
     private $content;
 
+    /**
+     * @var date $date
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
 
     /**
      * Get id
@@ -84,5 +90,25 @@ class NewsEntry
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set date
+     *
+     * @param date $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

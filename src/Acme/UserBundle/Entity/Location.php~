@@ -437,4 +437,24 @@ class Location
     {
         return $this->town;
     }
+
+    /**
+     * Set postalcode
+     *
+     * @param string $postalcode
+     */
+    public function setPostalcode($postalcode)
+    {
+        $this->postalcode = $postalcode;
+    }
+
+    /**
+     * Get postalcode
+     *
+     * @return string 
+     */
+    public function getPostalcode()
+    {
+        return $this->postalcode;
+    }
 }
