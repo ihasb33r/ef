@@ -65,7 +65,19 @@ class NewsletterController extends Controller
             if ($this->getRequest()->isXmlHttpRequest()) {
                 return new \Symfony\Component\HttpFoundation\Response($msg);
                 return array('msg' => $msg);
-            } return $this->render('AcmeUserBundle:Default:newslatter.html.twig', array('msg' => $msg));} 
-                return $this->render('AcmeUserBundle:Default:base.html.twig');
+            }
+            return $this->render('AcmeUserBundle:Default:newslatter.html.twig', array('msg' => $msg));
+        } 
+        return $this->render('AcmeUserBundle:Default:base.html.twig');
+    }
+    public function sendNewsLetterAction(){
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $emails = $em->getRepository('AcmeUserBundle:Newsletter')->findAll();
+        $locations = $em->getRepository('AcmeUserBundle:Location')->findAll();
+        $news = $em->getRepository('AcmeUserBundle:NewsEntry')->findAll();
+        $events = $em->getRepository('AcmeUserBundle:Events')->findAll();
+        return $this->render('AcmeUserBundle:Email:newsletter.html.twig', array('locations'=>$locations,'news'=>$news));
+
     }
 }

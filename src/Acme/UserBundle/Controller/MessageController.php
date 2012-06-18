@@ -25,6 +25,17 @@ class MessageController extends Controller
                 $message->setDate(new \DateTime("today"));
                 $em->persist($message);
                 $em->flush();
+
+            $mailmessage = \Swift_Message::newInstance()
+                ->setContentType("text/html")
+                ->setSubject('mail from' . $message->getSender())
+                ->setFrom($message->getSender())
+                ->setTo("foroutsideview@gmail.com")
+                ->setBody($this->renderView('AcmeUserBundle:Email:email.txt.twig', array('content' => $message->getMessage())))
+                ;
+
+            $this->get('mailer')->send($mailmessage);
+
             }
 
             return $this->render('AcmeUserBundle:Messaging:thankyou.html.twig');

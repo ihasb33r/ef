@@ -125,4 +125,7 @@ pazari:
 sendemail:
     pattern: /sendemail/{email}/{name}
     defaults: {_controller: AcmeUserBundle:TestEmail:index}
+sendnewsletter:
+    pattern: /sendnewsletter
+    defaults: {_controller: AcmeUserBundle:Newsletter:sendNewsLetter}
     
