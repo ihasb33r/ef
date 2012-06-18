@@ -93,4 +93,24 @@ class Message
     {
         return $this->date;
     }
+
+    /**
+     * Set sender
+     *
+     * @param string $sender
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return string 
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
 }

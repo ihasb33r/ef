@@ -42,6 +42,14 @@ class Location
      * @ORM\Column(name="town", type="string", length=255)
      */
     private $town;
+
+     /**
+     * @var string $postalcode
+     *
+     * @ORM\Column(name="postalcode", type="string", length=255)
+     */
+    private $postalcode;
+
 	
     /**
      * @var date $date
@@ -428,5 +436,25 @@ class Location
     public function getTown()
     {
         return $this->town;
+    }
+
+    /**
+     * Set postalcode
+     *
+     * @param string $postalcode
+     */
+    public function setPostalcode($postalcode)
+    {
+        $this->postalcode = $postalcode;
+    }
+
+    /**
+     * Get postalcode
+     *
+     * @return string 
+     */
+    public function getPostalcode()
+    {
+        return $this->postalcode;
     }
 }

@@ -42,6 +42,14 @@ class Location
      * @ORM\Column(name="town", type="string", length=255)
      */
     private $town;
+
+     /**
+     * @var string $postalcode
+     *
+     * @ORM\Column(name="postalcode", type="string", length=255)
+     */
+    private $postalcode;
+
 	
     /**
      * @var date $date
