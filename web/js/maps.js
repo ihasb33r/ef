@@ -32,13 +32,16 @@ var map;
         lng: -77.028333
     });
 
-    $("#form_postalcode").blur(function(){
+    function findlnglat(){
+var myaddress = $('#form_address').val() + ", " + $("#form_postalcode").val() + "," + $("#form_town").val()
+    console.log(myaddress);
         GMaps.geocode({
-          address: $('#form_address').val() + ", " + $("#form_postalcode").val(),
+          address: myaddress, 
           callback: function(results, status) {
+        console.log(status);
+        console.log(results);
             if (status == 'OK') {
               var latlng = results[0].geometry.location;
-
               map.setCenter(latlng.lat(), latlng.lng());
               map.addMarker({
                 lat: latlng.lat(),
@@ -50,6 +53,14 @@ var map;
           }
 });
 
+    }
+    $("#form_town").blur( findlnglat);
+    $("#form_address").blur(function(){
+        findlnglat();
+    });
+
+    $("#form_postalcode").blur(function(){
+        findlnglat();
     });
 });
 
