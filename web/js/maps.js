@@ -4,7 +4,7 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
     var myOptions = {
-        zoom: 4,
+        zoom: 15,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false
@@ -16,11 +16,40 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
         title: ttl
     }); 
     var contentString ="<h5>"+name+"</h5><h6>"+ttl+"</h6><h6>"+phone+"</h6>";
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.open(map,marker);
     });
 
 }
+$(document).ready(function(){
+var map;
+    map = new GMaps({
+        div: '#map',
+        lat: -12.043333,
+        lng: -77.028333
+    });
+
+    $("#form_postalcode").blur(function(){
+        GMaps.geocode({
+          address: $('#form_address').val() + ", " + $("#form_postalcode").val(),
+          callback: function(results, status) {
+            if (status == 'OK') {
+              var latlng = results[0].geometry.location;
+
+              map.setCenter(latlng.lat(), latlng.lng());
+              map.addMarker({
+                lat: latlng.lat(),
+                lng: latlng.lng()
+              });
+              $("#form_longitute").attr("value",latlng.lng());
+              $("#form_latitude").attr("value",latlng.lat());
+            }
+          }
+});
+
+    });
+});
+

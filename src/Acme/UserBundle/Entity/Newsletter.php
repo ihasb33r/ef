@@ -85,4 +85,9 @@ class Newsletter
     {
         return $this->isSubscribed;
     }
+
+    public function _toString()
+    {
+        return $this->getEmail();
+    }
 }

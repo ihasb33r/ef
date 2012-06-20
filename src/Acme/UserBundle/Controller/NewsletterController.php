@@ -85,6 +85,17 @@ class NewsletterController extends Controller
             ->getResult();
         $news = $em->getRepository('AcmeUserBundle:NewsEntry')->findAll();
         $events = $em->getRepository('AcmeUserBundle:Events')->findAll();
+
+        $mailmessage = \Swift_Message::newInstance()
+            ->setContentType("text/html")
+            ->setSubject('Newsletter ')
+            ->setFrom("foroutsideview@gmail.com")
+            ->setTo("bckdotgr@gmail.com")
+            ->setBody($this->renderView('AcmeUserBundle:Email:newsletter.html.twig',array('locations'=>$locations,'news'=>$news) ))
+            ;
+
+        $this->get('mailer')->send($mailmessage);
+
         return $this->render('AcmeUserBundle:Email:newsletter.html.twig', array('locations'=>$locations,'news'=>$news));
 
     }

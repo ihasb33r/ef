@@ -14,9 +14,11 @@ class LocationsController extends Controller
         $location = new Location();
         $form = $this->createFormBuilder($location)
             ->add('name', "text")
-            ->add('longitude', "number")
-            ->add('latitude', "number")
+            ->add('longitude', "hidden")
+            ->add('latitude', "hidden")
             ->add('organiser', "text")
+            ->add('town', "text")
+            ->add('postalcode', "text")
             ->add('extrainfo', "textarea")
             ->add('date', "date")
             ->add('address', "text")
