@@ -27,7 +27,7 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
 $(document).ready(function(){
 var map;
     map = new GMaps({
-        div: '#map',
+        div: '#setmap',
         lat: -12.043333,
         lng: -77.028333
     });
