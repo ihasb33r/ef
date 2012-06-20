@@ -44,7 +44,7 @@ var map;
                 lat: latlng.lat(),
                 lng: latlng.lng()
               });
-              $("#form_longitute").attr("value",latlng.lng());
+              $("#form_longitude").attr("value",latlng.lng());
               $("#form_latitude").attr("value",latlng.lat());
             }
           }
