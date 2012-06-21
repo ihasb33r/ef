@@ -25,7 +25,7 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
 
 }
 $(document).ready(function(){
-var map;
+    var map;
     map = new GMaps({
         div: '#setmap',
         lat: -12.043333,
@@ -33,25 +33,22 @@ var map;
     });
 
     function findlnglat(){
-var myaddress = $('#form_address').val() + ", " + $("#form_postalcode").val() + "," + $("#form_town").val()
-    console.log(myaddress);
+        var myaddress = $('#form_address').val() + ", " + $("#form_postalcode").val() + "," + $("#form_town").val();
         GMaps.geocode({
-          address: myaddress, 
-          callback: function(results, status) {
-        console.log(status);
-        console.log(results);
-            if (status == 'OK') {
-              var latlng = results[0].geometry.location;
-              map.setCenter(latlng.lat(), latlng.lng());
-              map.addMarker({
-                lat: latlng.lat(),
-                lng: latlng.lng()
-              });
-              $("#form_longitude").attr("value",latlng.lng());
-              $("#form_latitude").attr("value",latlng.lat());
+            address: myaddress, 
+            callback: function(results, status) {
+                if (status == 'OK') {
+                    var latlng = results[0].geometry.location;
+                    map.setCenter(latlng.lat(), latlng.lng());
+                    map.addMarker({
+                        lat: latlng.lat(),
+                        lng: latlng.lng()
+                    });
+                    $("#form_longitude").attr("value",latlng.lng());
+                    $("#form_latitude").attr("value",latlng.lat());
+                }
             }
-          }
-});
+        });
 
     }
     $("#form_town").blur( findlnglat);
