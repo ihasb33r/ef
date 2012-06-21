@@ -462,7 +462,7 @@ div.price-calculation h2{
     font-size:2.5em;
     text-align:center;
 }
-div.price-calculation h3 .metric {
+div.price-calculation .metric {
     font-size:0.7em;
 }
 
