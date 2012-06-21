@@ -11,59 +11,57 @@
 
 {%for buy in buy%}
 {%if buy.user.id==id%}
- <div class="row ">
+<div class="row ">
     <div class="span9 listing">
         <div class="row">
-            <div class="span9 title">
-			
+            <div class="span6 title">
                 <h2><span class="hidden-phone">Αγόρασα:</span> {{buy.sell.location.product.name}}</h2>
-                   <h3>{{buy.sell.location.date|date("d/m/Y")}}</h3>
+            </div>
+            <div class="span3 title">
+                <h3>{{buy.sell.location.date|date("d/m/Y")}}</h3>
             </div>
         </div>
         <div class="row">
-            <div class="span2" >
-                <div class="details">
+            <div class="span3" >
+                <div class="details photo">
                     <img class="product" src="{{ asset (buy.sell.location.product.image)}}">
                 </div>
             </div>
-		
-            <div class="span7">
+            <div class="span3">
                 <div class="details">
-                    <div class="groupinfo">
-                        <dl class="info">
-                           <dt>Παραγωγός: </dt> <dd>{{buy.sell.user.name}}</dd> 
-                           <dt>Ποσότητα: </dt><dd>{{buy.quantity}}</dd>
-                        </dl>
-                        <dl class="info">
-                            <dt>Διεύθυνση: </dt><dd>{{buy.sell.location.address}} </dd>
-                            <dt>Τελική τιμή:</dt><dd> {{buy.sell.price * buy.quantity}}</dd>
-                            <dd></dd>
-                           
-                        </dl>
-                 
-
-                    </div>
+                    <h3>
+                        Σημείο Παραλαβής: {{buy.sell.location.address}}, {{buy.sell.location.town}} {{buy.sell.location.postalcode}}
+                    </h3>
+                    <h4>Παραγωγός: {{buy.sell.user.name}} {{buy.sell.user.lastname}}</h4>
+                </div>
+                <div class="map" style="width:100%; height:80px; background-color:lightgrey">
                 </div>
             </div>
-			<div class="row">
-				{%if buy.sell.location.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
-			        <div class="row">
-			           <div class="span9 buttons"><a class="btn btn-large" href="{{ url('buy_delete', { 'id': buy.id}) }}">Ακύρωση Παραγγελίας</a>
-                       </div>	
-                    </div>
-                 {%else%}
-					<div class="row">
-						<div class="span9 buttons"><a class="btn btn-large" href="{{ url('vote', { 'name': buy.sell.user.name}) }}">Βαθμολόγησε τον παραγωγό</a>
-						</div>	
-                    </div>				 
-	            {%endif%}
+            <div class="span3">
+                <div class="details">
+                    <h3 style=" text-align:center;font-size:2.0em;border-bottom:3px solid lightgrey;" > {{buy.quantity}} <span style="font-size:0.7em;">kg</span> x {{buy.sell.price}}<span style="font-size:0.7em;">€/kg</span> </h3> 
+                    <h2 style=" font-size:2.5em; text-align:center;">{{buy.sell.price * buy.quantity}}€</h2>
+                </div>
             </div>
-			
-			
-			
-			
-   </div>
- </div>   
+            <div class="row">
+                {%if buy.sell.location.date|date("d/m/Y") >= "now"|date("d/m/Y")%}
+                <div class="row">
+                    <div class="span9 buttons"><a class="btn btn-large" href="{{ url('buy_delete', { 'id': buy.id}) }}">Ακύρωση Παραγγελίας</a>
+                    </div>	
+                </div>
+                {%else%}
+                <div class="row">
+                    <div class="span9 buttons"><a class="btn btn-large" href="{{ url('vote', { 'name': buy.sell.user.name}) }}">Βαθμολόγησε τον παραγωγό</a>
+                    </div>	
+                </div>				 
+                {%endif%}
+            </div>
+
+
+
+
+        </div>
+    </div>   
 </div>
 
 {%endif%}
