@@ -51,7 +51,7 @@
                 </div>
                 {%else%}
                 <div class="row">
-                    <div class="span9 buttons"><a class="btn btn-large" href="{{ url('vote', { 'name': buy.sell.user.name}) }}">Βαθμολόγησε τον παραγωγό</a>
+                    <div class="span9 buttons"><a class="btn btn-large" href="{{ url('give', { 'candidate': buy.sell.user.id}) }}">Βαθμολόγησε τον παραγωγό</a>
                     </div>	
                 </div>				 
                 {%endif%}
