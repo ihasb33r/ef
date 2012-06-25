@@ -1,20 +1,112 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
-{% block content %}
-<div class="row">
-    <div class="span9">
-         
-         <h1> Καταχώρηση συνάντησης</h1>  </div>
-</div>
-<div class="row ">
-<div class="span9 listing">
-	<div class="row">
-            <div class="span7">
-                <div class="details">
+{% block title %}
+Προσθήκη Συνάντησης
+{% endblock %}
 
-Η συνάντηση που ζητήσατε θα ελεγχθεί και θα ενημερωθείτε για το αποτέλεσμα
-<br><br>
-</div></div></div></div></div>
-{%endblock %}
+{% block extracssjava %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script src="{{asset("js/gmaps.js")}}"></script>
+<script src="{{asset("js/maps.js")}}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>ΠροσθήκηΣυνάντησης</h1>
+<div class="row">
+    <div class="span9 listing">
+        <form action='{{path ("admin_locations_new")}}' {{form_enctype(form) }} method="POST" id="locationForm">
+            <div class="row">
+                <div class="span4">
+                    <div style="padding:20px;">
+                        <div class="control-group">
+                            {{form_label(form.name,"Όνομα Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.name)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.address,"Διεύθυνση", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.address)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.postalcode,"TK", {'attr':{'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.postalcode)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.town,"Πόλη", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.town)}}
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div id="setmap" style="width:100%; height:200px;">
+                            </div>
+                        </div>
+                        {{ form_widget(form.latitude)}}
+                        {{ form_widget(form.longitude)}}
+                        <div class="control-group">
+                            {{form_label(form.date,"Ημερομηνία", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.date) }} 
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.organiser,"Όνομα Διοργανωτή", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.organiser)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div style="padding:20px;">
+                        <div class="control-group">
+                            {{form_label(form.extrainfo,"Επιπλέον Πληροφορίες", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.extrainfo)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.product,"Προιόν", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.product)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.phone,"Τηλέφωνο", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.phone)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.starttime,"Ώρα έναρξης", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.starttime)}}
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            {{form_label(form.endtime,"Ώρα λήξης", {'attr': {'class':'control-label'} } ) }}
+                            <div class="controls">
+                                {{ form_widget(form.endtime)}}
+                            </div>
+                        </div>
+                        {{ form_rest(form)}}
+                        <a href="#" onclick="$('#locationForm').submit()" class="btn btn-large btn-green">Αποθήκευση</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 offset5">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
 {% block sidebar %}
 {% include "AcmeUserBundle:Organiser:sidebar_organiser.html.twig" %}
 {%endblock %}

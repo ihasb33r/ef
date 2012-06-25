@@ -91,4 +91,24 @@ class NewsEntry
     {
         return $this->content;
     }
+
+    /**
+     * Set date
+     *
+     * @param date $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

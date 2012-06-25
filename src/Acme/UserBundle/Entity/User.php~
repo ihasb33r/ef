@@ -142,9 +142,9 @@ class User extends BaseUser
  /**
      * @var string $newsletterSubscription
      *
-     * @ORM\Column(name="newsletterSubscription", type="boolean")
+     * @ORM\Column(name="newsletterSubscription", type="boolean", nullable=true)
      */
-    private $newsletterSubscription; 
+    private $newsletterSubscription=true; 
     /**
      * Add sell
      *
