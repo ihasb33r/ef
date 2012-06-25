@@ -11,8 +11,6 @@
 <script>
     $(document).ready(function(){
         loadmaps();
-
-
     });
 </script>
 
@@ -54,7 +52,7 @@
             </div>
             <div class="span2">
                 <div class="details price-calculation">
-                    <h3> {{buy.quantity}} <span class="metric">kg</span> x {{buy.sell.price}}<span class="metric">€/kg</span> </h3> 
+                    <h3> {{buy.quantity}}<span class="metric">&nbsp;kg</span> x {{buy.sell.price}}<span class="metric">&nbsp;€/kg</span> </h3> 
                     <h2>{{buy.sell.price * buy.quantity}}<span class="metric">€</span></h2>
                 </div>
             </div>
@@ -66,7 +64,7 @@
                         <h1>{{ buy.sell.location.name }}</h1>
                         <h2>{{ buy.sell.location.address }}</h2>
                     </div> 
-                    <span class="lng">{{ buy.sell.location.longitude }}</span><span class="lat">,{{ buy.sell.location.latitude }}</span>
+                    <span class="lng">{{ buy.sell.location.longitude }}</span><span class="lat">{{ buy.sell.location.latitude }}</span>
 
                 </div>
             </div>

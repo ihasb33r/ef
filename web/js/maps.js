@@ -30,31 +30,36 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
 var loadmaps = function (){
 
     var mapcontainers = $(".imgmap");
-    
-    $.each(mapcontainers, function(key, mapcntr){
 
+    $.each(mapcontainers, function(key, mapcntr){
         var myname = $(this).find(".name").text();
         var myinfowindow = $(this).find(".infowindow").html();
-        var mylng = parseFloat($(this).find(".lng").text());
-        var mylat = parseFloat($(this).find(".lat").text());
-        $(this).empty();
+
+        var mylngf = parseFloat($(this).find(".lng").text());
+        var mylatf = parseFloat($(this).find(".lat").text());
+
         var map = new GMaps({
-          div: "#" + $(this).attr("id"),
-          lat: mylat,
-          lng: mylng
-        });
-        map.addMarker({
-            lat: mylat,
-            lng: mylng,
-            title: myname,
-            infoWindow: {
-                content: myinfowindow
-            }
+            div: "#" + $(this).attr("id"),
+            zoom: 3,
+            lat: mylatf,
+            lng: mylngf
         });
 
+        try{
+            map.addMarker({
+                lat: mylatf,
+                lng: mylngf,
+                title: myname,
+                infoWindow: {
+                    content: myinfowindow
+                }
+            });
+        }
+        catch(err) {
+
+        }
+        $(this).empty();
     });
-
-
 }
 
 
