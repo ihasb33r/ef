@@ -24,13 +24,52 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
     });
 
 }
-$(document).ready(function(){
-    var map;
+
+
+
+var loadmaps = function (){
+
+    var mapcontainers = $(".imgmap");
+    
+    $.each(mapcontainers, function(key, mapcntr){
+
+        var myname = $(this).find(".name").text();
+        var myinfowindow = $(this).find(".infowindow").html();
+        var mylng = parseFloat($(this).find(".lng").text());
+        var mylat = parseFloat($(this).find(".lat").text());
+        $(this).empty();
+        var map = new GMaps({
+          div: "#" + $(this).attr("id"),
+          lat: mylat,
+          lng: mylng
+        });
+        map.addMarker({
+            lat: mylat,
+            lng: mylng,
+            title: myname,
+            infoWindow: {
+                content: myinfowindow
+            }
+        });
+
+    });
+
+
+}
+
+
+var map;
+var loadRandomMap = function(){
+
     map = new GMaps({
         div: '#setmap',
         lat: -12.043333,
         lng: -77.028333
     });
+
+}
+
+$(document).ready(function(){
 
     function findlnglat(){
         var myaddress = $('#form_address').val() + ", " + $("#form_postalcode").val() + "," + $("#form_town").val();
@@ -49,15 +88,9 @@ $(document).ready(function(){
                 }
             }
         });
-
     }
     $("#form_town").blur( findlnglat);
-    $("#form_address").blur(function(){
-        findlnglat();
-    });
-
-    $("#form_postalcode").blur(function(){
-        findlnglat();
-    });
+    $("#form_address").blur(findlnglat);
+    $("#form_postalcode").blur(findlnglat);
 });
 

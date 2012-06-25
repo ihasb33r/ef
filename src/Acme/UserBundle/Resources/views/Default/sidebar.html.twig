@@ -1,9 +1,11 @@
-<div class="row"><div class="span3">
+<div class="row hidden-phone">
+    <div class="span3">
         <h2 class="side">Κατηγορίες</h2>
-</div></div>
-<div class="row">
+    </div>
+</div>
+<div class="row hidden-phone">
     <div class="span3 sidebar">
-        <ul class="extra-nav">
+        <ul id ="productcategories" class="extra-nav">
             <li><a href='{{path("ola")}}'>Όλα</a></li>
             <li><a href='{{path("pazari", {category:"λαχανικά"}) }}'>Λαχανικά</a></li>
             <li><a href='{{path("pazari", {category:"οπωροκηπευτικά"}) }}'>Οπωροκηπευτικά</a></li>
@@ -20,12 +22,12 @@
         </ul>
     </div>
 </div>
-<div class="row">
+<div class="row hidden-phone">
     <div class="span3">
         <h2 class="side">Πληροφορίες</h2>
     </div>
 </div>
-<div class="row">
+<div class="row hidden-phone">
     <div class="span3 sidebar">
         <ul id="information" class="extra-nav">
             <li><a href='{{path("about")}}'>Ποιοι είμαστε</a></li>

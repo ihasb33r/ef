@@ -1,6 +1,23 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 
 {% block title %} Τι έχω αγοράσει {% endblock %}
+
+{% block extracssjava %}
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script src="{{asset("js/gmaps.js")}}"></script>
+<script src="{{asset("js/maps.js")}}"></script>
+
+<script>
+    $(document).ready(function(){
+        loadmaps();
+
+
+    });
+</script>
+
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
@@ -44,7 +61,13 @@
         </div>
         <div class="row">
             <div class="span9">
-                <div class="imgmap" style="height:150px; background-color:lightgrey">
+                <div id="map{{buy.id}}" class="imgmap" style="height:150px; background-color:lightgrey">
+                    <div class="infowindow">
+                        <h1>{{ buy.sell.location.name }}</h1>
+                        <h2>{{ buy.sell.location.address }}</h2>
+                    </div> 
+                    <span class="lng">{{ buy.sell.location.longitude }}</span><span class="lat">,{{ buy.sell.location.latitude }}</span>
+
                 </div>
             </div>
         </div>
