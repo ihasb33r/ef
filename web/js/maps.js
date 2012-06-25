@@ -35,8 +35,9 @@ var loadmaps = function (){
         var myname = $(this).find(".name").text();
         var myinfowindow = $(this).find(".infowindow").html();
 
-        var mylngf = parseFloat($(this).find(".lng").text());
-        var mylatf = parseFloat($(this).find(".lat").text());
+        var mylngf = $(this).find(".lng").text();
+        var mylatf = $(this).find(".lat").text();
+        console.log(mylngf + "," + mylatf);
 
         var map = new GMaps({
             div: "#" + $(this).attr("id"),
