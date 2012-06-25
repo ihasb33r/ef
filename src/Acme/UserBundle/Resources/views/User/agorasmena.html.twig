@@ -52,20 +52,22 @@
             </div>
             <div class="span2">
                 <div class="details price-calculation">
-                    <h3> {{buy.quantity}}<span class="metric">&nbsp;kg</span> x {{buy.sell.price}}<span class="metric">&nbsp;€/kg</span> </h3> 
+                    <h3> {{buy.quantity}}<span class="metric">&nbsp;kg</span> x&nbsp;{{buy.sell.price}}<span class="metric">&nbsp;€/kg</span> </h3> 
                     <h2>{{buy.sell.price * buy.quantity}}<span class="metric">€</span></h2>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="span9">
-                <div id="map{{buy.id}}" class="imgmap" style="height:150px; background-color:lightgrey">
-                    <div class="infowindow">
-                        <h5>{{ buy.sell.location.name }}</h5>
-                        <h6>{{ buy.sell.location.address }}</h6>
-                        <h6>{{ buy.sell.location.phone }}</h6>
-                    </div> 
-                    <span class="lng">{{ buy.sell.location.longitude }}</span><span class="lat">{{ buy.sell.location.latitude }}</span>
+                <div  class="imgmap">
+                    <div id="map{{buy.id}}" class="map">
+                        <div class="infowindow">
+                            <h5>{{ buy.sell.location.name }}</h5>
+                            <h6>{{ buy.sell.location.address }}</h6>
+                            <h6>{{ buy.sell.location.phone }}</h6>
+                        </div> 
+                        <span class="lng">{{ buy.sell.location.longitude }}</span><span class="lat">{{ buy.sell.location.latitude }}</span>
+                    </div>
 
                 </div>
             </div>

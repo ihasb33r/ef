@@ -29,16 +29,14 @@ var addmap = function(id,lat, lng, ttl, name, phone) {
 
 var loadmaps = function (){
 
-    var mapcontainers = $(".imgmap");
+    var mapcontainers = $(".map");
 
     $.each(mapcontainers, function(key, mapcntr){
         var myname = $(this).find(".name").text();
         var myinfowindow = $(this).find(".infowindow").html();
-
         var mylngf = $(this).find(".lng").text();
         var mylatf = $(this).find(".lat").text();
-        console.log(mylngf + "," + mylatf);
-
+        $(this).empty();
         var map = new GMaps({
             div: "#" + $(this).attr("id"),
             lat: mylatf,
@@ -58,7 +56,6 @@ var loadmaps = function (){
         catch(err) {
 
         }
-        $(this).empty();
     });
 }
 

@@ -1,11 +1,23 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block extracssjava %}
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEPM5KnBooryeD7ln46Sa85Y7w9IencE0&sensor=false"></script>
+<script src="{{asset("js/gmaps.js")}}"></script>
+<script src="{{asset("js/maps.js")}}"></script>
+
+<script>
+    $(document).ready(function(){
+        loadmaps();
+    });
+</script>
+
+{% endblock %}
 
 {% block title %}Συμμετοχές σε αγορές {% endblock %}
 {% block content %}
 
 <h1>Συμμετοχές σε αγορές</h1>
 {%for sell in sell%}
-{%if sell.user.id==id%}
 <div class="row">
     <div class="span9 listing">
         <div class="row">
@@ -22,31 +34,46 @@
                     <img class="product" src="{{ asset (sell.location.product.image)}}">
                 </div>
             </div>
-            <div class="span6">
-                <div class="row">
-                    <div class="span3">
-                        <div class="details">
-                            <div>Αρχική ποσότητα:{{sell.quantity}} κιλά</div>
-                            <div>Ελάχιστη ποσότητα αγοράς:{{sell.minquantity}}</div>
-                            <div>Τόπος:{{sell.location.name }},  {{sell.location.address}}</div>
-                            <div>Πουληθέντα:{{sell.agor}}</div>
-                            <div>Τιμή:{{sell.price}} ευρώ</div>
-                        </div>
-                    </div>
+            <div class="span4">
+                <div class="details">
+                    <h2>{{sell.location.name }}</h2>
+                    <h4>{{sell.location.address}}, {{sell.location.town}} {{sell.location.postalcode}} </h4>
+                    <h4> {{sell.minquantity}}&nbsp;kg ελάχιστη ποσότητα παραγγελίας</h4>
+                    <h2>{{sell.price}}&nbsp;€/kg </h2>
                 </div>
-                <div class="row">
-                    <div class="span6 buttons">
-                        <a class="btn btn-large" href="">Προβολή Αγορών</a>
-                {%if sell.location.date|date("Ymd")>"now"|date("Ymd")%}
-                        <a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
-                {%endif%}
-                    </div>	       
-                </div>	
+            </div>
+            <div class="span2">
+                <div class="details price-calculation">
+                    <h3> {{sell.quantity}}<span class="metric">&nbsp;kg</span> -&nbsp;{{sell.agor}}<span class="metric">&nbsp;kg</span> </h3> 
+                    <h2>{{sell.quantity - sell.agor}}<span class="metric">kg</span></h2>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="span9">
+                <div  class="imgmap">
+                    <div id="map{{sell.id}}" class="map">
+                        <div class="infowindow">
+                            <h5>{{ sell.location.name }}</h5>
+                            <h6>{{ sell.location.address }}</h6>
+                            <h6>{{ sell.location.phone }}</h6>
+                        </div> 
+                        <span class="lng">{{ sell.location.longitude }}</span><span class="lat">{{ sell.location.latitude }}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9 buttons">
+                <a class="btn btn-large" href="">Προβολή Αγορών</a>
+                {%if sell.location.date|date("Ymd")>"now"|date("Ymd")%}
+                <a class="btn btn-large" href="{{ url('edit', { 'id': sell.id}) }}">Επεξεργασία</a>
+                {%endif%}
+            </div>	       
+        </div>	
     </div>
 </div>
-{%endif%}
 {%endfor%}
 {%endblock %}
 {% block sidebar %}
