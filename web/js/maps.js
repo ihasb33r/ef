@@ -41,7 +41,6 @@ var loadmaps = function (){
 
         var map = new GMaps({
             div: "#" + $(this).attr("id"),
-            zoom: 3,
             lat: mylatf,
             lng: mylngf
         });
