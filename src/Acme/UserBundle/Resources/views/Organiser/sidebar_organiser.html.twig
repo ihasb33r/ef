@@ -1,19 +1,37 @@
 <div class="row">
     <div class="span3">
-        <h2 class="side">Επιλογές</h2>
+        <h2 class="side">Οι συναντήσεις μου</h2>
     </div>
 </div>
 <div class="row ">
     <div class="span3 sidebar">
         <ul class="extra-nav">
-            <li><a href='{{path("locations")}}'>Προσθήκη Συνάντησης</a></li>
-			 <li><a href='{{path("approval")}}'>Αναμένουν Έγκριριση</a></li>
+            <li><a href='{{path("locations_new")}}'>Προσθήκη Συνάντησης</a></li>
+             <li><a href='{{path("locations") }}'>Διαχείριση Συναντήσεων</a></li>
+			 <li><a href='{{path("location_approval") }}'>Τύχη συναντήσεων</a></li>
+        </ul>
+
+    </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <h2 class="side">Προσφορές από αγρότες</h2>
+    </div>
+</div>
+<div class="row ">
+    <div class="span3 sidebar">
+        <ul class="extra-nav">
+			 <li><a href='{{path("approval")}}'>Αναμένουν Έγκριση</a></li>
              <li><a href='{{path("approval", {'approval':'true'} ) }}'>Εχουν Εγκριθεί</a></li>
 			 <li><a href='{{path("approval", {'approval':'false'} ) }}'>Έχουν Απορριθεί</a></li>
         </ul>
 
     </div>
 </div>
+
+
+
+
 <div class="row"><div class="span3">
         <h2 class="side">Κατηγορίες</h2>
 </div></div>

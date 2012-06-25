@@ -4,6 +4,12 @@ locations:
 locations_new:
     pattern: /locations_new
     defaults: { _controller: AcmeUserBundle:Locations:new }
+locations_edit:
+    pattern: /locations_edit/{id}
+    defaults: { _controller: AcmeUserBundle:Locations:edit }
+locations_delete:
+    pattern: /locations_delete/{id}
+    defaults: { _controller: AcmeUserBundle:Locations:edit }
 diorganotis:
     pattern: /
     defaults: { _controller: AcmeUserBundle:Organiser:index }
@@ -16,3 +22,9 @@ ok:
 no:
     pattern: /no/{id}
     defaults: { _controller: AcmeUserBundle:Approval:no }
+location_approval:
+    pattern: /location_approval
+    defaults: { _controller: AcmeUserBundle:Loc_Approval:index }
+public:
+    pattern: /public/{id}
+    defaults: { _controller: AcmeUserBundle:Loc_Approval:public }
