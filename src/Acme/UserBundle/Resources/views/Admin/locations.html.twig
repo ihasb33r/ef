@@ -1,54 +1,9 @@
-
-
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
-
 {% block title %}
 Διαχείριση
 {% endblock %}
-
-
 {% block content %}
-
-
-<h1>Διαχείριση Συναντήσεων</h1>
-<div class="row">
-    <div class="span9 listing">
-        <table class="admin table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th class="visible-desktop">ID</th>
-                    <th>Οργανωτής</th>
-                    <th>Σημείο</th>
-                    <th class="hidden-phone">Τηλέφωνο Επικοινωνίας</th>
-                    <th class="visible-desktop">Στιγμα</th>
-                    <th class="">Ώρες</th>
-                    <th class="">Εγγρισή</th>
-                </tr>
-                </thead>
-                <tbody>
-        {% for location  in locations %}
-            <tr>
-                <td class="actions">
-                    <a id="edit{{location.id}}" class="edit" href="{{path('admin_locations_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
-                    <a id="delete{{location.id}}" class="delete" href="{{path('admin_locations_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
-                </td>
-                <td class="visible-desktop">{{location.id}}</td>
-                <td>{{location.organiser}}"</td>
-                <td>{{location.name}}<br>{{location.address}}</td>
-                <td class="hidden-phone">{{location.phone}}</td>
-                <td class="visible-desktop">{{location.longitude}} <br> {{location.latitude}}</td>
-                <td class="visible-desktop"></td>
-                <td><a href="">OK</a></td>
-            </tr>
-        {% endfor %}
-            </tbody>
-        </table>
-        <a class="btn btn-large new" href="{{path ("admin_locations_new")}}"><span class="new-icon"></span>Καινούρια Συνάντηση</a>
-    </div>
-</div>
-
-
+{% include "AcmeUserBundle:Default:locations_manage.html.twig" %}
 {% endblock %}
 {% block sidebar %}
 {% include "AcmeUserBundle:Admin:sidebar.html.twig" %}

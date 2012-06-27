@@ -98,6 +98,10 @@ admin_message_delete:
     pattern: /messages/delete/{id}
     defaults: {_controller: AcmeUserBundle:AdminMessage:delete }
 
+admin_approve:
+    pattern: /approve/{id}
+    defaults: { _controller: AcmeUserBundle:Loc_Approval:approve }
+
 #admin_locations_new:
 #    pattern: /locations_new
 #    defaults: { _controller: AcmeUserBundle:AdminLocations:new }

@@ -9,22 +9,45 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 class AdminLocationsController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
+        $this->getRequest()->getSession()->set('referrer', $this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:Location')->createQueryBuilder("p");
         $locat =  $qb
             ->orderby('p.date', 'DESC')
             ->getQuery()
             ->getResult();
-        return $this->render('AcmeUserBundle:Admin:locations.html.twig',array('locations'=>$locat));
+        $template_vars=array(
+            'items'=>$locat,
+            'edit_path'=>'admin_locations_edit',
+            'delete_path'=>'admin_locations_delete',
+            'new_path'=>'admin_locations_new',
+            'approve_path'=>'admin_approve'
+        );
+        return $this->render('AcmeUserBundle:Admin:locations.html.twig',$template_vars);
 
 
     }
     public function newAction()
     {
+        return $this->redirect($this->generateUrl('admin_locations_edit',array("id"=>-1) ));
+    }
+
+    public function editAction($id)
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            return $this->redirect($this->generateUrl('main'));
+        }
+        if ($id == -1){
         $location = new Location();
-        $form = $this->createFormBuilder($location)
+        }
+        else {
+        $em = $this->getDoctrine()->getEntityManager();
+        $location = $em->getRepository('AcmeUserBundle:Location')->find($id);
+        }
+        $formbuilder = $this->createFormBuilder($location)
             ->add('name', "text")
             ->add('longitude', "hidden")
             ->add('latitude', "hidden")
@@ -37,59 +60,29 @@ class AdminLocationsController extends Controller
             ->add('phone', "text")
             ->add('starttime', "time")
             ->add('endtime', "time")
-            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
-            ->getForm()
-            ;
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-        if ($this->getRequest()->getMethod() === 'POST') {
-            $form->bindRequest($this->getRequest());
-            if ($form->isValid()){
-                $em = $this->getDoctrine()->getEntityManager();
-                $location->setApproved(false);
-                $location->setPublic(false);
-                $location->setUser($user);
-                $em->persist($location);
-                $em->flush();
-            }return $this->redirect($this->generateUrl('admin_locations'));
-        }
-        return $this->render('AcmeUserBundle:Admin:add_location.html.twig', array('form'=>$form->createView()));
-    }
-
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-        $location = $em->getRepository('AcmeUserBundle:Location')->find($id);
-        $form = $this->createFormBuilder($location)
-            ->add('name', "text")
-            ->add('longitude', "number")
-            ->add('latitude', "number")
-            ->add('organiser', "text")
-            ->add('extrainfo', "textarea")
-            ->add('date', "date")
-            ->add('address', "text")
-            ->add('town', "text")
-            ->add('postalcode', "text")
-            ->add('phone', "text")
-            ->add('starttime', "time")
-            ->add('endtime', "time")
-            ->add('approved', "checkbox")
             ->add('public', "checkbox")
-            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
-            ->getForm()
-            ;
-        //        $form->setData($locationdata);
+            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') );
+            
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN')){
+            $formbuilder->add('approved', "checkbox");
+        }
+
+        $form = $formbuilder->getForm();
         if ($this->getRequest()->getMethod() === 'POST') {
             $form->bindRequest($this->getRequest());
             if ($form->isValid()){
-                #                $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($location);
                 $em->flush();
-            }return $this->redirect($this->generateUrl('admin_locations'));
+            }
+            return $this->redirect($this->generateUrl('admin_locations'));
         }
-        return $this->render('AcmeUserBundle:Admin:edit_location.html.twig', array('form'=>$form->createView(), 'id'=>$id));
+        $template_vars=array(
+            'form'=>$form->createView(),
+            'id'=>$id,
+            'action'=>'admin_locations_edit',
+            'back'=>'admin_locations',
+        );
+        return $this->render('AcmeUserBundle:Admin:add_location.html.twig',$template_vars);
 
     }
 

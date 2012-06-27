@@ -9,24 +9,42 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 class LocationsController extends Controller
 {
-    public function indexAction(Request $request)
-    {$user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-		$id=$user->getId();
+    public function indexAction()
+    {
+        $this->getRequest()->getSession()->set('referrer', $this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getEntityManager();
-        $locat= $em->createQuery(
-                   'SELECT l, u FROM AcmeUserBundle:Location l JOIN l.user u
-            WHERE l.id = :id')->setParameter('id', $id);
-        $locations = $locat->getResult();
- return $this->render('AcmeUserBundle:Organiser:locations.html.twig', array('locations'=>$locations));
-
+        $qb = $em->getRepository('AcmeUserBundle:Location')->createQueryBuilder("p");
+        $locat =  $qb
+            ->orderby('p.date', 'DESC')
+            ->getQuery()
+            ->getResult();
+        $template_vars=array(
+            'items'=>$locat,
+            'edit_path'=>'locations_edit',
+            'delete_path'=>'locations_delete',
+            'new_path'=>'locations_new'
+        );
+        return $this->render('AcmeUserBundle:Organiser:locations.html.twig',$template_vars);
     }
     public function newAction()
     {
-        $location = new Location();
-        $form = $this->createFormBuilder($location)
+        return $this->redirect($this->generateUrl('locations_edit',array("id"=>-1) ));
+    }
+
+    public function editAction($id)
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            return $this->redirect($this->generateUrl('main'));
+        }
+        $em = $this->getDoctrine()->getEntityManager();
+        if ($id == -1){
+            $location = new Location();
+        }
+        else {
+            $location = $em->getRepository('AcmeUserBundle:Location')->find($id);
+        }
+        $formbuilder = $this->createFormBuilder($location)
             ->add('name', "text")
             ->add('longitude', "hidden")
             ->add('latitude', "hidden")
@@ -39,70 +57,33 @@ class LocationsController extends Controller
             ->add('phone', "text")
             ->add('starttime', "time")
             ->add('endtime', "time")
-            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
-            ->getForm()
-            ;
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
+            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') );
+        
+        $form = $formbuilder->getForm();
         if ($this->getRequest()->getMethod() === 'POST') {
             $form->bindRequest($this->getRequest());
             if ($form->isValid()){
-                $em = $this->getDoctrine()->getEntityManager();
-                $location->setApproved(false);
-                $location->setPublic(false);
-                $location->setUser($user);
+                if ($id==-1){
+                    $location->setPublic(false);
+                }
                 $em->persist($location);
                 $em->flush();
-            }return $this->redirect($this->generateUrl('admin_locations'));
+            }
+            return $this->redirect($this->generateUrl('locations'));
         }
-        return $this->render('AcmeUserBundle:Organiser:add_location.html.twig', array('form'=>$form->createView()));
+        $template_vars=array(
+            'form'=>$form->createView(),
+            'id'=>$id,
+            'action'=>'locations_edit',
+            'back'=>'locations',
+        );
+        return $this->render('AcmeUserBundle:Organiser:add_location.html.twig',$template_vars);
     }
-
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-        $location = $em->getRepository('AcmeUserBundle:Location')->find($id);
-        $form = $this->createFormBuilder($location)
-            ->add('name', "text")
-            ->add('longitude', "number")
-            ->add('latitude', "number")
-            ->add('organiser', "text")
-            ->add('extrainfo', "textarea")
-            ->add('date', "date")
-            ->add('address', "text")
-            ->add('town', "text")
-            ->add('postalcode', "text")
-            ->add('phone', "text")
-            ->add('starttime', "time")
-            ->add('endtime', "time")
-            ->add('approved', "checkbox")
-            ->add('public', "checkbox")
-            ->add('product', "entity", array('class'=>'AcmeUserBundle:Product', 'property'=>'name') )
-            ->getForm()
-            ;
-        // $form->setData($locationdata);
-        if ($this->getRequest()->getMethod() === 'POST') {
-            $form->bindRequest($this->getRequest());
-            if ($form->isValid()){
-                # $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($location);
-                $em->flush();
-            }return $this->redirect($this->generateUrl('locations'));
-        }
-        return $this->render('AcmeUserBundle:Organiser:edit_location.html.twig', array('form'=>$form->createView(), 'id'=>$id));
-
-    }
-
     public function deleteAction($id){
-
         $em = $this->getDoctrine()->getEntityManager();
         $location = $em->getRepository('AcmeUserBundle:Location')->findOneById($id);
         $em->remove($location);
         $em->flush();
-        return $this->redirect($this->generateUrl('locations'));
-
+        return $this->redirect($this->generateUrl('locations_manage'));
     }
-
 }

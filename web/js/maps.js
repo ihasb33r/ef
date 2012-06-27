@@ -60,18 +60,15 @@ var loadmaps = function (){
 }
 
 
-var map;
-var loadRandomMap = function(){
+var initGeolocation = function(){
 
+    var map;
     map = new GMaps({
         div: '#setmap',
         lat: -12.043333,
-        lng: -77.028333
+        lng: -77.028333,
+        zoom: 17
     });
-
-}
-
-$(document).ready(function(){
 
     function findlnglat(){
         var myaddress = $('#form_address').val() + ", " + $("#form_postalcode").val() + "," + $("#form_town").val();
@@ -94,5 +91,9 @@ $(document).ready(function(){
     $("#form_town").blur( findlnglat);
     $("#form_address").blur(findlnglat);
     $("#form_postalcode").blur(findlnglat);
+}
+
+$(document).ready(function(){
+
 });
 

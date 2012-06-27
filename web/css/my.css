@@ -60,10 +60,10 @@ h2.side{
 .newsletter{
 
     padding-top: 10px;
-    padding-left: 10px;
     background-color: white;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-align:center;
 
 }
 
@@ -541,6 +541,32 @@ width: 130px
 .votebox{
     text-align:center;
     display:none;
+}
+
+p.label {
+    width:100%;
+    margin:0px;
+    text-align:center;
+    font-size:0.7em;
+    margin-bottom:10px;
+}
+
+p.label i {
+float: left;
+margin-top: 1px;
+}
+a.btn i {
+
+    margin-top:3px;
+}
+p.success {
+    color:green;
+}
+p.error {
+    color:red;
+}
+p.processing {
+    color:orange;
 }
 
 

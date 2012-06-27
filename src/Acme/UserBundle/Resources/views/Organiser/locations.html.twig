@@ -4,45 +4,8 @@
 Διαχείριση
 {% endblock %}
 
-
 {% block content %}
-
-
-<h1>Διαχείριση Συναντήσεων</h1>
-<div class="row">
-    <div class="span9 listing">
-        <table table-striped">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th class="visible-desktop">ID</th>
-                    <th>Διοργανωτής</th>
-                    <th>Σημείο</th>
-                    <th class="hidden-phone">Τηλέφωνο Επικοινωνίας</th>
-                    <th class="hidden-phone" >Ώρες</th>
-                </tr>
-                </thead>
-                <tbody>
-        {% for location  in locations %}
-		1
-            <tr>
-                <td class="actions">
-                    <a id="edit{{location.id}}" class="edit" href="{{path('locations_edit', {'id':location.id})}}"><span class="edit-icon"></span></a>
-                    <a id="delete{{location.id}}" class="delete" href="{{path('locations_delete', {'id':location.id})}}"><span class="delete-icon"></span></a>
-                </td>
-                <td class="visible-desktop">{{location.id}}</td>
-                <td>{{location.organiser}}</td>
-                <td>{{location.name}}<br>{{location.address}}</td>
-                <td class="hidden-phone">{{location.phone}}</td>
-                <td class="visible-desktop"></td>
-            </tr>
-        {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
+{% include "AcmeUserBundle:Default:locations_manage.html.twig" %}
 {% endblock %}
 {% block sidebar %}
 {% include "AcmeUserBundle:Organiser:sidebar_organiser.html.twig" %}

@@ -22,7 +22,6 @@ class Loc_ApprovalController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:Location')->createQueryBuilder("l");
         $locat =  $qb
-            ->innerJoin("l.user", "u")
             ->where($qb->expr()->andX(
                 $qb->expr()->gt('l.date',':date'),
                 $qb->expr()->eq('l.user',":user")
@@ -33,7 +32,14 @@ class Loc_ApprovalController extends Controller
                 ->getQuery()
                 ->getResult();
 
-        return $this->render('AcmeUserBundle:Organiser:locapproval.html.twig', array('items'=>$locat, 'id'=>$id));
+        $template_vars=array(
+            'items'=>$locat,
+            'edit_path'=>'locations_edit',
+            'delete_path'=>'locations_delete',
+            'new_path'=>'locations_new',
+            'id' => $id
+        );
+        return $this->render('AcmeUserBundle:Organiser:locapproval.html.twig',$template_vars);
     }
  
     public function publicAction($id)
@@ -41,9 +47,19 @@ class Loc_ApprovalController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $sell = $em->getRepository('AcmeUserBundle:Location')->findOneById($id);
         $sell->setPublic(true);
+        $em->persist($sell);
         $em->flush();
+        return $this->redirect($this->getRequest()->getSession()->get('referrer'));
+    }
 
-        return $this->indexAction();
+    public function approveAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $sell = $em->getRepository('AcmeUserBundle:Location')->findOneById($id);
+        $sell->setApproved(true);
+        $em->persist($sell);
+        $em->flush();
+        return $this->redirect($this->getRequest()->getSession()->get('referrer'));
     }
    
 }
