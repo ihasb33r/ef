@@ -1,18 +1,18 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
 {% block title %}
-Προσθήκη/Αλλαγή Συνάντησης
+Προσθήκη Συνάντησης
 
 {% endblock %}
 
 {% block content %}
-<h1>Αλλαγή Συνάντησης</h1>
+<h1>Προσθήκη Συνάντησης</h1>
 <div class="row">
     <div class="span9 listing">
         <form action='{{path ("locations_edit", {'id':id}) }}' {{form_enctype(form) }} method="POST" id="locationForm">
             <div class="row">
                 <div class="span4 offset1">
                     <div class="control-group">
-                        {{form_label(form.name,"Όνομα Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
+                        {{form_label(form.name,"Τοποθεσίας", {'attr': {'class':'control-label'} } ) }}
                         <div class="controls">
                             {{ form_widget(form.name)}}
                         </div>

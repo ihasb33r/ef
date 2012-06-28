@@ -1,10 +1,9 @@
 <div class="row">
     <div class="span9">
-        <h1>
-            Εγκρίσεις προσφορών
-        </h1>
+        <h1> Διαχείριση συναντήσεων</h1>
     </div>
 </div>
+
 {% for location in items %}
 <div class="row ">
     <div class="span9 listing">
@@ -86,7 +85,7 @@
                 </a>
                 {% if is_granted("ROLE_ADMIN") and approve_path is defined and location.approved!=true %}
                 <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': location.id}) }}">
-                    <i class="icon-ok icon-white"></i>    Έγγριση 
+                    <i class="icon-ok icon-white"></i>    Έγκριση 
                 </a>
                 {% endif %}
 

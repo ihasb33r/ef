@@ -27,14 +27,16 @@ class ApprovalController extends Controller
                 $qb->expr()->gt('l.date',':date'),
                 $qb->expr()->eq('l.user',":user")
                 ))
-                ->andWhere("p.approved is Null")
                 ->setParameter('date', new \Datetime("today"))
                 ->setParameter('user', $user->getId())
                 ->orderby('l.date', 'ASC')
                 ->getQuery()
                 ->getResult();
-
-        return $this->render('AcmeUserBundle:Organiser:approval.html.twig', array('items'=>$locat, 'id'=>$id));
+$template_vars=array(
+            'items'=>$locat,
+            'approve_path'=>'ok',
+            'delete_path'=>'no');
+        return $this->render('AcmeUserBundle:Organiser:approval.html.twig',$template_vars);
     }
     public function isApprovedAction($approval)
     {

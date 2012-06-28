@@ -1,0 +1,81 @@
+﻿<div class="row">
+    <div class="span9">
+        <h1> Εγκρίσεις προσφορών</h1> 
+	</div>
+</div>
+
+{%for sell in items%}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span5 title">
+                <h2>
+                    {{sell.location.name }}
+                </h2>
+            </div>
+            <div class="span4 title">
+                <h3>
+                    {{sell.location.date| date("d/m/Y")                    }}
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3" >
+                <div class="details photo">
+                    <img class="product" src="{{ asset (sell.location.product.image)}}">
+                </div>
+            </div>
+            <div class="span6">
+                <div class="row">
+                    <div class="span6">
+                        <div class="details">
+                                <h2>{{sell.user.lastname}} {{ sell.user.name }}</h2>
+                                <h3>
+                                    {{ sell.quantity}}kg, {{sell.location.product}}, {{ sell.origin }}
+                                </h3>
+                                <h2>{{ sell.price }} €/kg</h2>
+                                <h3 style="display:inline;">{{ sell.minquantity}}kg</h3> Ελάχιστη παραγγελία
+                        </div>
+                    </div>
+                </div>
+			</div>
+			
+            <div class="span3">
+                <div class="details">
+                {% if sell.approved is null%}
+                <p class="label label-info">
+                <i class="icon-info-sign icon-white"></i>Αναμένει έγκριση
+                </p>
+                {% elseif sell.approved==false %}
+                <p class="label label-important">
+                <i class="icon-remove-sign icon-white"></i>Έχει απορριφθεί
+                </p>
+                {% else %}
+                <p class="label label-success">
+                <i class="icon-ok-sign icon-white"></i>Έχει εγκριθεί
+                </p>
+                {% endif %}
+                </div>
+            </div>               
+
+        <div class="row">
+            <div class="span9 buttons">
+
+                {%if sell.approved==null or sell.approved==true %}
+                <a class="btn  btn-danger btn-mini" href="{{ path(delete_path, { 'id': sell.id}) }}">
+                   <i class="icon-remove icon-white"></i>  Απόρριψη
+                </a>
+				 {% endif %}
+                {%if sell.approved==null or sell.approved==false%}
+                <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': sell.id}) }}">
+                    <i class="icon-ok icon-white"></i>    Έγκριση 
+                </a>
+                {% endif %}
+
+            </div>
+        </div>
+</div>
+    </div>
+</div>
+
+{%endfor%}
