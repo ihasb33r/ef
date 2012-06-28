@@ -8,8 +8,8 @@ business:
     pattern: /
     defaults: { _controller: AcmeUserBundle:Epixeirhsh:index }
 bapproval:
-    pattern: /approval/{approval}
-    defaults: { _controller: AcmeUserBundle:BusinessApproval:isApproved, approval:NULL  }
+    pattern: /approval
+    defaults: { _controller: AcmeUserBundle:BusinessApproval:index  }
 bok:
     pattern: /ok/{id}
     defaults: { _controller: AcmeUserBundle:BusinessApproval:ok }
