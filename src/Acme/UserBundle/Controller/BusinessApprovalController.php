@@ -25,12 +25,14 @@ class BusinessApprovalController extends Controller
             ->where($qb->expr()->andX(
                 $qb->expr()->eq('p.user',":user")
                 ))
-                ->andWhere("p.approved is Null")
                 ->setParameter('user', $user->getId())
                 ->getQuery()
                 ->getResult();
-
-        return $this->render('AcmeUserBundle:Business:approval.html.twig', array('items'=>$locat, 'id'=>$id));
+$template_vars=array(
+            'items'=>$locat,
+            'approve_path'=>'ok',
+            'delete_path'=>'no');
+        return $this->render('AcmeUserBundle:Business:approval.html.twig',$template_vars);
     }
     public function isApprovedAction($approval)
     {

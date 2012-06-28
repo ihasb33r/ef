@@ -12,7 +12,6 @@ class BusinessprosforesController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
          $business = $em->getRepository('AcmeUserBundle:Business')
             ->createQueryBuilder("p")
-            ->where('p.approved=1')
             ->getQuery()
             ->getResult();
 

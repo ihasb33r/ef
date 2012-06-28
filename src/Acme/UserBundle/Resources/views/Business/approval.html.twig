@@ -1,50 +1,10 @@
 {% extends "AcmeUserBundle:Default:base.html.twig" %}
+{% block title %}
+Διαχείριση Παραγγελιών
+{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="span9">
-        <h1> Εγκρίσεις προσφορών</h1> 
-    </div>
-</div>
-
-{%for sellbusiness in items%}
-<div class="row ">
-    <div class="span9 listing">
-        <div class="row">
-            <div class="span3" >
-                <div class="details photo">
-                    <img class="product" src="{{ asset (sellbusiness.business.product.image)}}">
-                </div>
-            </div>
-            <div class="span6">
-                <div class="details">
-                    <div class="groupinfo">
-                        <div>Παραγωγός:{{sellbusiness.user.name}} {{sellbusiness.user.lastname}}</div>
-                        <div>Προέλευση:{{ sellbusiness.origin }}</div>
-                        <div>Ποσότητα:{{ sellbusiness.quantity}} κιλά</div>
-                        <div>Βαθμολογία:</div>
-                        <div>Τιμή: {{ sellbusiness.price }} ευρώ</div>
-                    </div>
-                </div>
-            </div>	
-            <div class="row">
-                <div class="row">
-                    <div class="span9 buttons">
-                        {% if sellbusiness.approved is null or sellbusiness.approved==false %}
-                        <a class="btn btn-large" href="{{ path('bok', { 'id': sellbusiness.id}) }}">Έγκριση</a>
-                        {% endif %}
-                        {% if sellbusiness.approved is null or sellbusiness.approved==true %}
-                        <a class="btn btn-large" href="{{ path('bno', { 'id': sellbusiness.id}) }}">Απόρριψη</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>			
-        </div>
-    </div>
-</div>
-
-{%endfor%}
-
-{%endblock %}
+{% include "AcmeUserBundle:Default:paraggelies_manage.html.twig" %}
+{% endblock %}
 {% block sidebar %}
-{% include "AcmeUserBundle:Business:sidebar_business.html.twig" %}
+{% include "AcmeUserBundle:Organiser:sidebar_organiser.html.twig" %}
 {%endblock %}

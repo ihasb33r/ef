@@ -32,10 +32,12 @@ class ApprovalController extends Controller
                 ->orderby('l.date', 'ASC')
                 ->getQuery()
                 ->getResult();
+				
 $template_vars=array(
             'items'=>$locat,
-            'approve_path'=>'ok',
-            'delete_path'=>'no');
+            'approve_path'=>'bok',
+            'delete_path'=>'bno');
+			
         return $this->render('AcmeUserBundle:Organiser:approval.html.twig',$template_vars);
     }
     public function isApprovedAction($approval)
