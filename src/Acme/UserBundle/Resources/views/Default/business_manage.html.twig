@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="span9">
+        <h1> Διαχείριση </h1>
+    </div>
+</div>
+
+{% for business in items %}
+<div class="row ">
+    <div class="span9 listing">
+        <div class="row">
+            <div class="span5 title">
+                <h2>
+                    {{business.businessname }}
+                </h2>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="span2" >
+                <div class="details photo">
+                    <img class="product" src="{{ asset (business.product.image)}}">
+                </div>
+            </div>
+            <div class="span4">
+                <div class="details">
+
+                    <div class="business">
+                        <h3>
+                            {{ business.businessname }},
+                        </h3>
+                        <h3>
+                            {{ business.address}} 
+                        </h3>
+                       
+                        <div>{{business.town}}, {{ business.phone }} </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="span3">
+                <div class="details">
+                {% if business.approved is null%}
+                <p class="label label-info">
+                <i class="icon-info-sign icon-white"></i>Αναμένει έγκριση
+                </p>
+                {% elseif business.approved==false %}
+                <p class="label label-important">
+                <i class="icon-remove-sign icon-white"></i>Έχει απορριφθεί
+                </p>
+                {% else %}
+                <p class="label label-success">
+                <i class="icon-ok-sign icon-white"></i>Έχει εγκριθεί
+                </p>
+                
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9 buttons">
+              
+                <a class="btn btn-warning btn-mini" href="{{ path(edit_path, { 'id': business.id}) }}">
+                    <i class="icon-edit icon-white"></i> Επεξεργασία
+                </a>
+                <a class="btn  btn-danger btn-mini" href="{{ path(delete_path, { 'id': business.id}) }}">
+                   <i class="icon-remove icon-white"></i>  Διαγραφή 
+                </a>
+                {% if is_granted("ROLE_ADMIN") and approve_path is defined and business.approved!=true %}
+                <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': business.id}) }}">
+                    <i class="icon-ok icon-white"></i>    Έγκριση 
+                </a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+    {%endfor%}

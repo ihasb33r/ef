@@ -2,7 +2,6 @@
 namespace Acme\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Acme\UserBundle\Entity\Location;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -17,21 +16,19 @@ class BusinessApprovalController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        $id=$user->getId();
 
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:SellBusiness')->createQueryBuilder("p");
         $locat =  $qb
-            ->where($qb->expr()->andX(
-                $qb->expr()->eq('p.user',":user")
-                ))
+		
+            ->where($qb->expr()->eq('p.user',":user"))
                 ->setParameter('user', $user->getId())
                 ->getQuery()
                 ->getResult();
 $template_vars=array(
             'items'=>$locat,
-            'approve_path'=>'ok',
-            'delete_path'=>'no');
+            'approve_path'=>'bok',
+            'delete_path'=>'bno');
         return $this->render('AcmeUserBundle:Business:approval.html.twig',$template_vars);
     }
     public function isApprovedAction($approval)

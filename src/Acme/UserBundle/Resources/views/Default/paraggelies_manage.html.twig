@@ -10,7 +10,7 @@
         <div class="row">
             <div class="span5 title">
                 <h2>
-                    {{sellbusiness.business.name }}
+                    {{sellbusiness.business.businessname }}
                 </h2>
             </div>
            
@@ -38,11 +38,11 @@
 			
             <div class="span3">
                 <div class="details">
-                {% if sell.approved is null%}
+                {% if sellbusiness.approved is null%}
                 <p class="label label-info">
                 <i class="icon-info-sign icon-white"></i>Αναμένει έγκριση
                 </p>
-                {% elseif sell.approved==false %}
+                {% elseif sellbusiness.approved==false %}
                 <p class="label label-important">
                 <i class="icon-remove-sign icon-white"></i>Έχει απορριφθεί
                 </p>
@@ -57,12 +57,12 @@
         <div class="row">
             <div class="span9 buttons">
 
-                {%if sell.approved==null or sell.approved==true %}
+                {%if sellbusiness.approved==null or sellbusiness.approved==true %}
                 <a class="btn  btn-danger btn-mini" href="{{ path(delete_path, { 'id': sellbusiness.id}) }}">
                    <i class="icon-remove icon-white"></i>  Απόρριψη
                 </a>
 				 {% endif %}
-                {%if sell.approved==null or sell.approved==false%}
+                {%if sellbusiness.approved==null or sellbusiness.approved==false%}
                 <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': sellbusiness.id}) }}">
                     <i class="icon-ok icon-white"></i>    Έγκριση 
                 </a>

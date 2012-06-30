@@ -1,9 +1,9 @@
 prosfora:
     pattern: /offer
     defaults: { _controller: AcmeUserBundle:Business:index }
-business_add:
-    pattern: /add
-    defaults: { _controller: AcmeUserBundle:Business:add }
+business_new:
+    pattern: /new
+    defaults: { _controller: AcmeUserBundle:Business:new}
 business:
     pattern: /
     defaults: { _controller: AcmeUserBundle:Epixeirhsh:index }
@@ -16,3 +16,12 @@ bok:
 bno:
     pattern: /no/{id}
     defaults: { _controller: AcmeUserBundle:BusinessApproval:no }
+business_view:
+    pattern: /business
+    defaults: { _controller: AcmeUserBundle:Business:index }
+business_edit:
+    pattern: /business_edit/{id}
+    defaults: { _controller: AcmeUserBundle:Business:edit }
+business_delete:
+    pattern: /business_delete/{id}
+    defaults: { _controller: AcmeUserBundle:Business:edit }
