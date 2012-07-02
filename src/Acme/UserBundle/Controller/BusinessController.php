@@ -10,11 +10,19 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class BusinessController extends Controller
 {
     public function indexAction()
-    {
+    {$user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
         $this->getRequest()->getSession()->set('referrer', $this->getRequest()->getRequestUri());
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->getRepository('AcmeUserBundle:Business')->createQueryBuilder("p");
         $locat =  $qb
+		 ->where($qb->expr()->andX(
+             
+                $qb->expr()->eq('p.user',":user")
+                ))
+		->setParameter('user', $user->getId())
             ->getQuery()
             ->getResult();
         $template_vars=array(
@@ -82,5 +90,14 @@ class BusinessController extends Controller
         $em->remove($business);
         $em->flush();
         return $this->redirect($this->generateUrl('business_view'));
+    }
+	    public function approveAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $sell = $em->getRepository('AcmeUserBundle:Business')->findOneById($id);
+        $sell->setApproved(true);
+        $em->persist($sell);
+        $em->flush();
+        return $this->redirect($this->generateUrl('admin_b2b'));
     }
 }

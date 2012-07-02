@@ -101,6 +101,9 @@ admin_message_delete:
 admin_approve:
     pattern: /approve/{id}
     defaults: { _controller: AcmeUserBundle:Loc_Approval:approve }
+admin_b2b_approve:
+    pattern: /b2bapprove/{id}
+    defaults: { _controller: AcmeUserBundle:Business:approve }
 
 #admin_locations_new:
 #    pattern: /locations_new

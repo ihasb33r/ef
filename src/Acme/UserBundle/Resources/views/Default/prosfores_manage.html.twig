@@ -3,7 +3,9 @@
         <h1> Εγκρίσεις προσφορών</h1> 
 	</div>
 </div>
-
+{% if items|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
 {%for sell in items%}
 <div class="row ">
     <div class="span9 listing">

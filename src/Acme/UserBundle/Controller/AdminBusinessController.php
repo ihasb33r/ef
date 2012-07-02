@@ -16,7 +16,14 @@ class AdminBusinessController extends Controller
         $locat =  $qb
             ->getQuery()
             ->getResult();
-        return $this->render('AcmeUserBundle:Admin:business.html.twig',array('locations'=>$locat));
+			$template_vars=array(
+            'items'=>$locat,
+            'edit_path'=>'admin_b2b_edit',
+            'delete_path'=>'admin_b2b_delete',
+            'new_path'=>'admin_b2b_new',
+            'approve_path'=>'admin_b2b_approve'
+        );
+        return $this->render('AcmeUserBundle:Admin:business.html.twig',$template_vars);
 
     }
     public function newAction()

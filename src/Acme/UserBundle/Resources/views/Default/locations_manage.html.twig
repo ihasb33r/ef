@@ -3,7 +3,9 @@
         <h1> Διαχείριση συναντήσεων</h1>
     </div>
 </div>
-
+{% if items|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
 {% for location in items %}
 <div class="row ">
     <div class="span9 listing">
@@ -80,9 +82,7 @@
                 <a class="btn btn-warning btn-mini" href="{{ path(edit_path, { 'id': location.id}) }}">
                     <i class="icon-edit icon-white"></i> Επεξεργασία
                 </a>
-                <a class="btn  btn-danger btn-mini" href="{{ path(delete_path, { 'id': location.id}) }}">
-                   <i class="icon-remove icon-white"></i>  Διαγραφή 
-                </a>
+
                 {% if is_granted("ROLE_ADMIN") and approve_path is defined and location.approved!=true %}
                 <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': location.id}) }}">
                     <i class="icon-ok icon-white"></i>    Έγκριση 

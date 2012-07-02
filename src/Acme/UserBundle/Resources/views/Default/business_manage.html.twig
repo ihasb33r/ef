@@ -1,9 +1,11 @@
 <div class="row">
     <div class="span9">
-        <h1> Διαχείριση </h1>
+        <h1> Διαχείριση Παραγγελιών</h1>
     </div>
 </div>
-
+{% if items|length==0 %}
+{% include "AcmeUserBundle:Default:empty.html.twig" %}
+{% endif %}
 {% for business in items %}
 <div class="row ">
     <div class="span9 listing">
@@ -62,9 +64,7 @@
                 <a class="btn btn-warning btn-mini" href="{{ path(edit_path, { 'id': business.id}) }}">
                     <i class="icon-edit icon-white"></i> Επεξεργασία
                 </a>
-                <a class="btn  btn-danger btn-mini" href="{{ path(delete_path, { 'id': business.id}) }}">
-                   <i class="icon-remove icon-white"></i>  Διαγραφή 
-                </a>
+               
                 {% if is_granted("ROLE_ADMIN") and approve_path is defined and business.approved!=true %}
                 <a class="btn  btn-success btn-mini" href="{{ path(approve_path, { 'id': business.id}) }}">
                     <i class="icon-ok icon-white"></i>    Έγκριση 
