@@ -26,8 +26,10 @@ security:
         - { path: ^/sell.*, role: ROLE_USER }
         - { path: ^/organiser/approval.*, role: ROLE_USER }
         - { path: ^/organiser/locations, role: ROLE_USER }
+        - { path: ^/organiser/location_approval, role: ROLE_USER }
         - { path: ^/business/offer, role: ROLE_USER }
         - { path: ^/business/approval.*, role: ROLE_USER }
+        - { path: ^/business/business.*, role: ROLE_USER }
         - { path: ^/buy.*, role: ROLE_USER }
         - { path: ^/agorasmena.*, role: ROLE_USER }
         - { path: ^/poulimena.*, role: ROLE_USER }
